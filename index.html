@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,515 +9,353 @@
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   CS2 LINEUPS — design tokens
+   CS2 LINEUPS — tokens
    ============================================================ */
 :root{
-  --bg0:#0A0D12;
-  --bg1:#11161E;
-  --bg2:#19202B;
-  --bg3:#222B38;
-  --ink:#E9EEF5;
-  --mut:#8E9AAB;
-  --line:rgba(141,160,184,.16);
-  --line-soft:rgba(141,160,184,.09);
-
-  --smoke:#A9B6C4;
-  --flash:#FFD75E;
-  --molotov:#FF6B45;
-  --he:#7ED491;
-
-  --t:#F0A33C;
-  --ct:#6FA8E8;
-
-  --danger:#FF5C5C;
-
-  --disp:"Chakra Petch", sans-serif;
-  --body:"IBM Plex Sans", system-ui, sans-serif;
-  --mono:"IBM Plex Mono", monospace;
-
+  --bg0:#0A0D12; --bg1:#11161E; --bg2:#19202B; --bg3:#222B38;
+  --ink:#E9EEF5; --mut:#8E9AAB;
+  --line:rgba(141,160,184,.16); --line-soft:rgba(141,160,184,.09);
+  --smoke:#EDF2F8; --flash:#FFD75E; --molotov:#FF6B45; --he:#7ED491;
+  --t:#F0A33C; --ct:#6FA8E8; --danger:#FF5C5C;
+  --disp:"Chakra Petch",sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",monospace;
   --r:10px;
-  --drawer-w:380px;
 }
-*{box-sizing:border-box; margin:0; padding:0}
+*{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{
-  background:var(--bg0);
-  color:var(--ink);
-  font-family:var(--body);
-  font-size:14.5px;
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
-body::before{ /* faint tactical grid on the page background */
-  content:"";
-  position:fixed; inset:0; z-index:-1;
-  background-image:
-    linear-gradient(rgba(141,160,184,.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(141,160,184,.035) 1px, transparent 1px);
-  background-size:44px 44px;
-}
-button{font-family:inherit; cursor:pointer; color:inherit; background:none; border:none}
-input,select,textarea{
-  font-family:inherit; font-size:14px; color:var(--ink);
-  background:var(--bg0); border:1px solid var(--line);
-  border-radius:7px; padding:8px 10px; width:100%;
-}
-input:focus,select:focus,textarea:focus{outline:2px solid rgba(240,163,60,.45); outline-offset:1px}
-textarea{resize:vertical; min-height:64px}
+body{background:var(--bg0);color:var(--ink);font-family:var(--body);font-size:14.5px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;
+  background-image:linear-gradient(rgba(141,160,184,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(141,160,184,.035) 1px,transparent 1px);
+  background-size:44px 44px}
+button{font-family:inherit;cursor:pointer;color:inherit;background:none;border:none}
+input,select,textarea{font-family:inherit;font-size:14px;color:var(--ink);background:var(--bg0);border:1px solid var(--line);border-radius:7px;padding:8px 10px;width:100%}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(240,163,60,.45);outline-offset:1px}
+textarea{resize:vertical;min-height:64px}
 ::placeholder{color:#5C6878}
-:focus-visible{outline:2px solid rgba(240,163,60,.55); outline-offset:2px}
+:focus-visible{outline:2px solid rgba(240,163,60,.55);outline-offset:2px}
 img{display:block}
 
-/* ============================================================
-   HEADER
-   ============================================================ */
-header{
-  height:54px; display:flex; align-items:center; gap:14px;
-  padding:0 18px; border-bottom:1px solid var(--line);
-  background:rgba(13,17,24,.85); backdrop-filter:blur(8px);
-  position:sticky; top:0; z-index:50;
-}
-.brand{
-  font-family:var(--disp); font-weight:700; font-size:16px;
-  letter-spacing:.14em; text-transform:uppercase; white-space:nowrap;
-}
+/* ============================================================ HEADER */
+header{height:54px;display:flex;align-items:center;gap:14px;padding:0 18px;border-bottom:1px solid var(--line);
+  background:rgba(13,17,24,.85);backdrop-filter:blur(8px);position:sticky;top:0;z-index:50}
+.brand{font-family:var(--disp);font-weight:700;font-size:16px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
 .brand b{color:var(--t)}
 .brand:hover{opacity:.85}
-.hdr-map{
-  font-family:var(--disp); font-weight:600; font-size:14px;
-  letter-spacing:.12em; text-transform:uppercase; color:var(--mut);
-  display:flex; align-items:center; gap:10px;
-}
-.hdr-map::before{content:"/"; color:#3B4656}
+.hdr-map{font-family:var(--disp);font-weight:600;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);display:flex;align-items:center;gap:10px}
+.hdr-map:not(:empty)::before{content:"/";color:#3B4656}
 .hdr-spacer{flex:1}
-.btn{
-  display:inline-flex; align-items:center; gap:7px;
-  font-family:var(--disp); font-weight:600; font-size:12.5px;
-  letter-spacing:.08em; text-transform:uppercase;
-  padding:7px 14px; border-radius:7px;
-  border:1px solid var(--line); background:var(--bg2); color:var(--ink);
-  transition:border-color .15s, background .15s, transform .05s;
-  white-space:nowrap;
-}
-.btn:hover{border-color:#3E4B5E; background:var(--bg3)}
+.btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--disp);font-weight:600;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;
+  padding:7px 14px;border-radius:7px;border:1px solid var(--line);background:var(--bg2);color:var(--ink);
+  transition:border-color .15s,background .15s,transform .05s;white-space:nowrap}
+.btn:hover{border-color:#3E4B5E;background:var(--bg3)}
 .btn:active{transform:translateY(1px)}
-.btn-amber{background:var(--t); border-color:var(--t); color:#1A1206}
-.btn-amber:hover{background:#F7B257; border-color:#F7B257}
+.btn-amber{background:var(--t);border-color:var(--t);color:#1A1206}
+.btn-amber:hover{background:#F7B257;border-color:#F7B257}
 .btn-ghost{background:transparent}
-.btn-danger{color:var(--danger); border-color:rgba(255,92,92,.4)}
-.btn-danger:hover{background:rgba(255,92,92,.1); border-color:var(--danger)}
-.btn-sm{padding:5px 10px; font-size:11.5px}
+.btn-danger{color:var(--danger);border-color:rgba(255,92,92,.4)}
+.btn-danger:hover{background:rgba(255,92,92,.1);border-color:var(--danger)}
+.btn-sm{padding:5px 10px;font-size:11.5px}
+.icon-btn{width:27px;height:27px;flex:0 0 auto;border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--mut);border:1px solid transparent;font-size:13px}
+.icon-btn:hover{color:var(--ink);background:var(--bg3);border-color:var(--line)}
+.icon-btn.danger:hover{color:var(--danger)}
 
-/* ============================================================
-   HOME — map grid
-   ============================================================ */
-#home{max-width:1060px; margin:0 auto; padding:46px 22px 80px}
-.home-eyebrow{
-  font-family:var(--mono); font-size:12px; letter-spacing:.22em;
-  text-transform:uppercase; color:var(--t); margin-bottom:10px;
-}
-.home-title{
-  font-family:var(--disp); font-weight:700; font-size:clamp(26px,4vw,38px);
-  letter-spacing:.04em; text-transform:uppercase; line-height:1.1;
-}
-.home-sub{color:var(--mut); margin-top:10px; max-width:520px}
-.map-grid{
-  margin-top:34px; display:grid; gap:16px;
-  grid-template-columns:repeat(auto-fill, minmax(230px,1fr));
-}
-.map-card{
-  position:relative; border:1px solid var(--line); border-radius:var(--r);
-  background:var(--bg1); overflow:hidden; text-align:left;
-  transition:border-color .15s, transform .15s;
-}
-.map-card:hover{border-color:var(--t); transform:translateY(-2px)}
-.map-card img{width:100%; aspect-ratio:16/10; object-fit:cover; opacity:.92}
-.map-card-body{
-  padding:12px 14px; display:flex; align-items:center; justify-content:space-between;
-  border-top:1px solid var(--line-soft);
-}
-.map-card-name{
-  font-family:var(--disp); font-weight:600; font-size:15px;
-  letter-spacing:.1em; text-transform:uppercase;
-}
-.map-card-count{font-family:var(--mono); font-size:12px; color:var(--mut)}
-.map-card-count b{color:var(--ink); font-weight:500}
+/* ============================================================ LOCALBAR */
+.localbar{display:none;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 18px 0;padding:10px 14px;
+  background:rgba(240,163,60,.08);border:1px solid rgba(240,163,60,.35);border-radius:8px;font-size:13px}
+.localbar.show{display:flex}
+.localbar .txt{flex:1;min-width:200px;color:#E8C58C}
 
-/* ============================================================
-   VIEWER LAYOUT
-   ============================================================ */
+/* ============================================================ HOME */
+#home{max-width:1060px;margin:0 auto;padding:46px 22px 80px}
+.home-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--t);margin-bottom:10px}
+.home-title{font-family:var(--disp);font-weight:700;font-size:clamp(26px,4vw,38px);letter-spacing:.04em;text-transform:uppercase;line-height:1.1}
+.home-sub{color:var(--mut);margin-top:10px;max-width:560px}
+.map-grid{margin-top:34px;display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.map-card{position:relative;border:1px solid var(--line);border-radius:var(--r);background:var(--bg1);overflow:hidden;text-align:left;transition:border-color .15s,transform .15s}
+.map-card:hover{border-color:var(--t);transform:translateY(-2px)}
+.map-card img{width:100%;aspect-ratio:16/10;object-fit:cover;opacity:.92}
+.map-card-body{padding:12px 14px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line-soft)}
+.map-card-name{font-family:var(--disp);font-weight:600;font-size:15px;letter-spacing:.1em;text-transform:uppercase}
+.map-card-count{font-family:var(--mono);font-size:12px;color:var(--mut)}
+.map-card-count b{color:var(--ink);font-weight:500}
+@media (prefers-reduced-motion:reduce){.map-card{transition:none}}
+
+/* ============================================================ VIEWER LAYOUT */
 #viewer{display:none}
-.toolbar{
-  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-  padding:12px 18px; border-bottom:1px solid var(--line-soft);
-}
-.pillgroup{display:flex; gap:6px; align-items:center}
-.pill{
-  display:inline-flex; align-items:center; gap:6px;
-  font-family:var(--disp); font-weight:600; font-size:12px;
-  letter-spacing:.07em; text-transform:uppercase;
-  padding:6px 12px; border-radius:99px;
-  border:1px solid var(--line); color:var(--mut);
-  transition:all .12s;
-}
-.pill .dot{width:8px; height:8px; border-radius:50%; background:currentColor; opacity:.5}
-.pill.on{color:var(--ink); border-color:#46556B; background:var(--bg2)}
-.pill.on .dot{opacity:1}
-.pill[data-type="smoke"].on{color:var(--smoke); border-color:rgba(169,182,196,.5)}
-.pill[data-type="flash"].on{color:var(--flash); border-color:rgba(255,215,94,.45)}
-.pill[data-type="molotov"].on{color:var(--molotov); border-color:rgba(255,107,69,.45)}
-.pill[data-type="he"].on{color:var(--he); border-color:rgba(126,212,145,.45)}
-.pill[data-side="T"].on{color:var(--t); border-color:rgba(240,163,60,.5)}
-.pill[data-side="CT"].on{color:var(--ct); border-color:rgba(111,168,232,.5)}
-.tb-sep{width:1px; height:22px; background:var(--line)}
-.tb-search{flex:1; min-width:140px; max-width:260px}
-.tb-search input{padding:6px 11px; border-radius:99px; font-size:13px}
+.stage{display:grid;grid-template-columns:236px minmax(0,1fr) 430px;gap:18px;align-items:start;padding:14px 18px 60px}
 
-/* execute chips */
-.execbar{
-  display:flex; gap:8px; align-items:center; flex-wrap:wrap;
-  padding:0 18px 12px;
-}
-.execbar:empty{display:none}
-.exec-label{
-  font-family:var(--mono); font-size:11px; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--mut); margin-right:2px;
-}
-.exec-chip{
-  font-family:var(--disp); font-weight:600; font-size:12px;
-  letter-spacing:.06em; text-transform:uppercase;
-  padding:6px 13px; border-radius:7px;
-  border:1px dashed #3E4B5E; color:var(--mut);
-  transition:all .12s;
-}
-.exec-chip:hover{color:var(--ink); border-color:#5A6B83}
-.exec-chip.on{
-  color:#1A1206; background:var(--t); border:1px solid var(--t);
-}
+/* ---- left rail ---- */
+.rail{position:sticky;top:68px;display:flex;flex-direction:column;gap:14px;max-height:calc(100vh - 90px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:#39455A transparent;padding-right:2px}
+.rail::-webkit-scrollbar{width:7px}
+.rail::-webkit-scrollbar-thumb{background:#39455A;border-radius:4px}
+.rail-h{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.rail-box{border:1px solid var(--line);border-radius:var(--r);background:var(--bg1);padding:12px}
 
-/* stage = map + drawer */
-.stage{display:flex; gap:0; align-items:flex-start; padding:6px 18px 40px}
-.map-col{flex:1; min-width:0; display:flex; justify-content:center}
+.modeswitch{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.modeswitch button{flex:1;padding:8px 4px;font-family:var(--disp);font-weight:600;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut)}
+.modeswitch button.on{background:var(--bg3);color:var(--ink);box-shadow:inset 0 -2px 0 var(--t)}
 
-/* map frame with corner brackets */
-.mapframe{
-  position:relative; width:min(78vh, 100%); max-width:820px;
-  padding:14px;
-}
-.mapframe::before,.mapframe::after,
-.mapframe .ck1,.mapframe .ck2{
-  content:""; position:absolute; width:26px; height:26px;
-  border:2px solid var(--t); opacity:.8;
-}
-.mapframe::before{top:0; left:0; border-right:none; border-bottom:none}
-.mapframe::after{top:0; right:0; border-left:none; border-bottom:none}
-.mapframe .ck1{position:absolute; bottom:0; left:0; border-right:none; border-top:none}
-.mapframe .ck2{position:absolute; bottom:0; right:0; border-left:none; border-top:none}
+.fgrid{display:flex;gap:6px;flex-wrap:wrap}
+.fico{width:36px;height:36px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:#5C6878;transition:all .12s;position:relative}
+.fico svg{width:17px;height:17px}
+.fico.on{color:var(--c);border-color:color-mix(in srgb,var(--c) 55%,transparent);background:color-mix(in srgb,var(--c) 9%,transparent)}
+.fico.side{font-family:var(--disp);font-weight:700;font-size:13px;letter-spacing:.03em}
 
-.mapwrap{
-  position:relative; width:100%; aspect-ratio:1/1;
-  background:var(--bg1); border:1px solid var(--line);
-  border-radius:6px; overflow:hidden;
-  touch-action:none;
-}
-.mapwrap img.radar{
-  position:absolute; inset:0; width:100%; height:100%;
-  object-fit:contain; user-select:none; -webkit-user-drag:none;
-}
+.xcard{display:block;width:100%;text-align:left;border:1px solid var(--line-soft);border-radius:8px;background:var(--bg2);padding:9px 11px;transition:border-color .12s}
+.xcard + .xcard{margin-top:7px}
+.xcard:hover{border-color:#46556B}
+.xcard.on{border-color:var(--t)}
+.xcard .xtop{display:flex;align-items:center;gap:8px}
+.xcard .xname{font-family:var(--disp);font-weight:600;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.xcard .xdesc{font-size:12px;color:var(--mut);margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.xcard .xmeta{font-family:var(--mono);font-size:10.5px;color:var(--mut);margin-top:4px}
+.sidedot{flex:0 0 auto;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:4px;border:1px solid}
+.sidedot.T{color:var(--t);border-color:rgba(240,163,60,.5)}
+.sidedot.CT{color:var(--ct);border-color:rgba(111,168,232,.5)}
+.buychip{flex:0 0 auto;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:4px;border:1px solid var(--line);color:var(--mut)}
+.rail-empty{font-size:12.5px;color:var(--mut)}
+.rail-clear{font-family:var(--mono);font-size:11px;color:var(--t);margin-top:8px}
+.rail-clear:hover{text-decoration:underline}
+
+/* ---- map ---- */
+.map-col{min-width:0}
+.mapframe{position:relative;width:100%;max-width:min(80vh,840px);margin:0 auto;padding:13px}
+.mapframe::before,.mapframe::after,.mapframe .ck1,.mapframe .ck2{content:"";position:absolute;width:24px;height:24px;border:2px solid var(--t);opacity:.8}
+.mapframe::before{top:0;left:0;border-right:none;border-bottom:none}
+.mapframe::after{top:0;right:0;border-left:none;border-bottom:none}
+.mapframe .ck1{bottom:46px;left:0;border-right:none;border-top:none}
+.mapframe .ck2{bottom:46px;right:0;border-left:none;border-top:none}
+.mapwrap{position:relative;width:100%;aspect-ratio:1/1;background:var(--bg1);border:1px solid var(--line);border-radius:6px;overflow:hidden;touch-action:none}
+.mapwrap img.radar{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
 .mapwrap.placing{cursor:crosshair}
-svg.traj{
-  position:absolute; inset:0; width:100%; height:100%;
-  pointer-events:none; overflow:visible;
-}
-.traj path{
-  fill:none; stroke-width:.55; stroke-dasharray:1.6 1.4;
-  opacity:.95;
-}
-.traj path.animated{animation:march 1.2s linear infinite}
-@keyframes march{to{stroke-dashoffset:-3}}
-@media (prefers-reduced-motion: reduce){
-  .traj path.animated{animation:none}
-  .map-card{transition:none}
-}
+.mapwrap.drawing{cursor:crosshair}
+svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:4}
+.traj path{fill:none;stroke-width:.32;stroke-dasharray:1.1 1.1;opacity:.95}
+#drawcanvas{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+.mapwrap.drawing #drawcanvas{pointer-events:auto;z-index:20}
 
 /* markers */
-.mk{
-  position:absolute; transform:translate(-50%,-50%);
-  width:26px; height:26px; z-index:5;
-  display:flex; align-items:center; justify-content:center;
-  transition:opacity .15s;
-}
-.mk .diamond{
-  position:absolute; inset:3px; transform:rotate(45deg);
-  background:rgba(10,13,18,.85); border:1.5px solid var(--c);
-  border-radius:3px;
-  box-shadow:0 0 0 1px rgba(0,0,0,.5), 0 0 10px -2px var(--c);
-}
-.mk svg{position:relative; width:13px; height:13px; color:var(--c)}
+.mk{position:absolute;transform:translate(-50%,-50%);width:25px;height:25px;z-index:6;display:flex;align-items:center;justify-content:center;transition:opacity .15s}
+.mk .diamond{position:absolute;inset:3px;transform:rotate(45deg);background:rgba(10,13,18,.88);border:1.6px solid var(--c);border-radius:3px;
+  box-shadow:0 0 0 1px rgba(0,0,0,.55),0 0 9px -2px var(--c)}
+.mk svg{position:relative;width:13px;height:13px;color:var(--c)}
 .mk:hover{z-index:9}
-.mk:hover .diamond{background:var(--c)}
-.mk:hover svg{color:#0A0D12}
+.mk:hover .diamond,.mk.sel .diamond{background:var(--c)}
+.mk:hover svg,.mk.sel svg{color:#0A0D12}
 .mk.sel{z-index:8}
-.mk.sel .diamond{background:var(--c); box-shadow:0 0 0 3px rgba(233,238,245,.18), 0 0 14px -2px var(--c)}
-.mk.sel svg{color:#0A0D12}
-.mk.dim{opacity:.14; pointer-events:none}
-.mk .stepnum{
-  position:absolute; top:-7px; right:-7px;
-  min-width:16px; height:16px; padding:0 4px;
-  display:flex; align-items:center; justify-content:center;
-  font-family:var(--mono); font-size:10px; font-weight:500;
-  background:var(--t); color:#1A1206; border-radius:99px;
-}
-.mk-throw{
-  position:absolute; transform:translate(-50%,-50%);
-  width:16px; height:16px; z-index:4; pointer-events:none;
-}
-.mk-throw::before{
-  content:""; position:absolute; inset:0; border-radius:50%;
-  border:1.5px solid var(--c); background:rgba(10,13,18,.7);
-}
-.mk-throw::after{
-  content:""; position:absolute; inset:5px; border-radius:50%;
-  background:var(--c);
-}
-.editmode .mk-throw{pointer-events:auto; cursor:grab}
+.mk.sel .diamond{box-shadow:0 0 0 3px rgba(233,238,245,.18),0 0 14px -2px var(--c)}
+.mk.dim{opacity:.13;pointer-events:none}
+.mk .stepnum{position:absolute;top:-7px;right:-7px;min-width:16px;height:16px;padding:0 4px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:10px;font-weight:500;background:var(--t);color:#1A1206;border-radius:99px}
+/* throw cross */
+.mk-throw{position:absolute;transform:translate(-50%,-50%);width:18px;height:18px;z-index:5;pointer-events:none;
+  filter:drop-shadow(0 0 2px rgba(0,0,0,.9))}
+.mk-throw::before,.mk-throw::after{content:"";position:absolute;background:var(--c);left:50%;top:50%}
+.mk-throw::before{width:2px;height:18px;transform:translate(-50%,-50%)}
+.mk-throw::after{width:18px;height:2px;transform:translate(-50%,-50%)}
+.editmode .mk-throw{pointer-events:auto;cursor:grab}
 .editmode .mk{cursor:grab}
+/* strategy zone marker */
+.mk-zone{position:absolute;transform:translate(-50%,-50%);z-index:6;display:flex;align-items:center;justify-content:center;
+  font-family:var(--disp);font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;
+  min-width:30px;height:30px;padding:0 9px;border-radius:99px;border:1.6px solid var(--t);color:var(--t);background:rgba(10,13,18,.88);
+  box-shadow:0 0 0 1px rgba(0,0,0,.55),0 0 10px -2px var(--t);transition:all .12s}
+.mk-zone:hover,.mk-zone.sel{background:var(--t);color:#1A1206;z-index:9}
+.mk-zone.CT{border-color:var(--ct);color:var(--ct);box-shadow:0 0 0 1px rgba(0,0,0,.55),0 0 10px -2px var(--ct)}
+.mk-zone.CT:hover,.mk-zone.CT.sel{background:var(--ct);color:#0A0D12}
+.editmode .mk-zone{cursor:grab}
 
-/* coordinate readout */
-.coords{
-  position:absolute; left:10px; bottom:8px; z-index:6;
-  font-family:var(--mono); font-size:11px; color:var(--mut);
-  background:rgba(10,13,18,.75); padding:3px 8px; border-radius:5px;
-  pointer-events:none;
-}
-.placing-hint{
-  position:absolute; top:10px; left:50%; transform:translateX(-50%);
-  z-index:7; font-family:var(--disp); font-size:12px; font-weight:600;
-  letter-spacing:.08em; text-transform:uppercase;
-  background:var(--t); color:#1A1206; padding:6px 14px; border-radius:99px;
-  display:none;
-}
+.coords{position:absolute;left:10px;bottom:8px;z-index:7;font-family:var(--mono);font-size:11px;color:var(--mut);background:rgba(10,13,18,.75);padding:3px 8px;border-radius:5px;pointer-events:none}
+.placing-hint{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:21;font-family:var(--disp);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--t);color:#1A1206;padding:6px 14px;border-radius:99px;display:none;white-space:nowrap}
 .mapwrap.placing .placing-hint{display:block}
+.map-empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;color:var(--mut);padding:30px;z-index:2}
+.map-empty .big{font-family:var(--disp);font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
 
-/* empty state on map */
-.map-empty{
-  position:absolute; inset:0; display:flex; flex-direction:column;
-  align-items:center; justify-content:center; gap:10px; text-align:center;
-  color:var(--mut); padding:30px; z-index:2;
-}
-.map-empty .big{font-family:var(--disp); font-size:17px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink)}
+/* map tools (draw) */
+.maptools{display:flex;align-items:center;gap:6px;justify-content:center;margin-top:9px;height:32px}
+.mt-btn{height:30px;min-width:30px;padding:0 8px;border-radius:7px;border:1px solid var(--line);background:var(--bg2);color:var(--mut);
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:var(--mono);font-size:11.5px}
+.mt-btn:hover{color:var(--ink);border-color:#46556B}
+.mt-btn.on{color:#fff;background:#D8372F;border-color:#D8372F}
 
-/* ============================================================
-   DRAWER (detail / editor)
-   ============================================================ */
-.drawer{
-  width:var(--drawer-w); flex:0 0 var(--drawer-w);
-  border:1px solid var(--line); border-radius:var(--r);
-  background:var(--bg1); margin:14px 0 0 16px;
-  max-height:calc(100vh - 200px); overflow-y:auto;
-  scrollbar-width:thin; scrollbar-color:#39455A transparent;
-}
-.drawer::-webkit-scrollbar{width:8px}
-.drawer::-webkit-scrollbar-thumb{background:#39455A; border-radius:4px}
+/* lineup cards (multi-open, draggable) */
+.lcard{border:1px solid var(--line);border-radius:10px;background:var(--bg2);padding:12px;transition:border-color .12s,opacity .12s}
+.lcard.dragging{opacity:.45}
+.lcard.dragover{border-color:var(--t);box-shadow:0 -2px 0 var(--t)}
+.lcard-head{display:flex;align-items:center;gap:8px;cursor:grab}
+.lcard-head:active{cursor:grabbing}
+.lcard-head .ic{width:15px;height:15px;flex:0 0 auto;display:flex}
+.lcard .grip{color:#5C6878;font-size:13px;flex:0 0 auto;user-select:none}
+.lcard-name{font-family:var(--disp);font-weight:600;font-size:13.5px;letter-spacing:.03em;text-transform:uppercase;flex:1;min-width:0}
+.lcard-tech{font-family:var(--mono);font-size:11.5px;color:var(--ink);background:var(--bg0);border:1px solid var(--line);padding:4px 9px;border-radius:5px;display:inline-block;margin-top:9px}
+.lb-nav{position:fixed;top:50%;transform:translateY(-50%);z-index:121;width:42px;height:42px;border-radius:50%;
+  background:var(--bg1);border:1px solid var(--line);color:var(--ink);font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center}
+.lb-nav:hover{border-color:var(--t);color:var(--t)}
+#lb-prev{left:16px}
+#lb-next{right:16px}
+#lb-cap{font-family:var(--mono);font-size:12px;color:var(--mut)}
+
+/* ---- right panel ---- */
+.panel{position:sticky;top:68px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg1);
+  max-height:calc(100vh - 90px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:#39455A transparent}
+.panel::-webkit-scrollbar{width:8px}
+.panel::-webkit-scrollbar-thumb{background:#39455A;border-radius:4px}
 .dr-pad{padding:18px}
-.dr-eyebrow{
-  font-family:var(--mono); font-size:11px; letter-spacing:.2em;
-  text-transform:uppercase; color:var(--mut); margin-bottom:6px;
-  display:flex; align-items:center; gap:8px; justify-content:space-between;
-}
-.dr-title{
-  font-family:var(--disp); font-weight:700; font-size:20px;
-  letter-spacing:.03em; line-height:1.2; text-transform:uppercase;
-}
-.badges{display:flex; gap:6px; flex-wrap:wrap; margin-top:10px}
-.badge{
-  font-family:var(--disp); font-weight:600; font-size:11px;
-  letter-spacing:.08em; text-transform:uppercase;
-  padding:4px 10px; border-radius:5px; border:1px solid var(--line);
-  color:var(--mut); display:inline-flex; align-items:center; gap:6px;
-}
+.dr-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:6px;display:flex;align-items:center;gap:8px;justify-content:space-between}
+.dr-title{font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:.03em;line-height:1.2;text-transform:uppercase}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.badge{font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:5px;border:1px solid var(--line);color:var(--mut);display:inline-flex;align-items:center;gap:6px}
 .badge .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
-.badge.type-smoke{color:var(--smoke); border-color:rgba(169,182,196,.4)}
-.badge.type-flash{color:var(--flash); border-color:rgba(255,215,94,.4)}
-.badge.type-molotov{color:var(--molotov); border-color:rgba(255,107,69,.4)}
-.badge.type-he{color:var(--he); border-color:rgba(126,212,145,.4)}
-.badge.side-T{color:var(--t); border-color:rgba(240,163,60,.45)}
-.badge.side-CT{color:var(--ct); border-color:rgba(111,168,232,.45)}
-.badge.tech{font-family:var(--mono); font-weight:500; letter-spacing:.03em; text-transform:none}
-.dr-desc{color:#C2CBD8; margin-top:14px; white-space:pre-wrap}
-.dr-h{
-  font-family:var(--mono); font-size:11px; letter-spacing:.2em;
-  text-transform:uppercase; color:var(--mut);
-  margin:20px 0 10px; padding-top:16px; border-top:1px solid var(--line-soft);
-  display:flex; justify-content:space-between; align-items:center;
-}
-.media-grid{display:grid; grid-template-columns:1fr; gap:10px}
-.media-item{
-  position:relative; border:1px solid var(--line); border-radius:8px;
-  overflow:hidden; background:var(--bg0); cursor:zoom-in; padding:0; width:100%;
-}
-.media-item img,.media-item video{width:100%; display:block}
-.media-item .cap{
-  font-size:12px; color:var(--mut); padding:7px 10px;
-  border-top:1px solid var(--line-soft); text-align:left;
-}
-.tips{list-style:none; display:flex; flex-direction:column; gap:8px}
-.tips li{
-  display:flex; gap:9px; color:#C2CBD8; font-size:13.5px;
-  background:var(--bg2); border:1px solid var(--line-soft);
-  border-radius:7px; padding:9px 11px;
-}
-.tips li::before{content:"▸"; color:var(--t); flex:0 0 auto}
-.dr-empty{color:var(--mut); padding:26px 18px; text-align:center}
-.dr-empty .big{font-family:var(--disp); letter-spacing:.06em; text-transform:uppercase; color:var(--ink); margin-bottom:6px}
-.dr-actions{display:flex; gap:8px; margin-top:18px; flex-wrap:wrap}
+.badge.type-smoke{color:var(--smoke);border-color:rgba(237,242,248,.4)}
+.badge.type-flash{color:var(--flash);border-color:rgba(255,215,94,.4)}
+.badge.type-molotov{color:var(--molotov);border-color:rgba(255,107,69,.4)}
+.badge.type-he{color:var(--he);border-color:rgba(126,212,145,.4)}
+.badge.side-T{color:var(--t);border-color:rgba(240,163,60,.45)}
+.badge.side-CT{color:var(--ct);border-color:rgba(111,168,232,.45)}
+.badge.tech{font-family:var(--mono);font-weight:500;letter-spacing:.03em;text-transform:none;color:var(--ink)}
 
-/* exec steps in drawer */
-.steps{list-style:none; display:flex; flex-direction:column; gap:7px; margin-top:12px}
-.steps button{
-  display:flex; align-items:center; gap:11px; width:100%; text-align:left;
-  background:var(--bg2); border:1px solid var(--line-soft); border-radius:8px;
-  padding:9px 11px; transition:border-color .12s;
-}
-.steps button:hover{border-color:#46556B}
-.steps .n{
-  font-family:var(--mono); font-size:11px; flex:0 0 22px; height:22px;
-  display:flex; align-items:center; justify-content:center;
-  background:var(--t); color:#1A1206; border-radius:50%;
-}
-.steps .ic{width:14px;height:14px; flex:0 0 auto}
-.steps .nm{font-weight:500; font-size:13.5px}
-.steps .sub{font-family:var(--mono); font-size:11px; color:var(--mut); margin-left:auto}
+/* throw-technique icon chips */
+.tk-row{display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap}
+.tk{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;
+  border:1px solid var(--line);background:var(--bg0);color:var(--ink)}
+.tk svg{width:15px;height:15px}
+.tk-sm .tk{width:19px;height:19px;border-radius:5px}
+.tk-sm .tk svg{width:12px;height:12px}
+.tk-note{font-family:var(--mono);font-size:10.5px;color:var(--mut);margin-left:2px}
+.tk-sm .tk-note{display:none}
+.tech-preview{margin-top:8px;min-height:24px}
+.tech-preview:empty{display:none}
+.xv-step-head .tech{background:none;border:none;padding:0}
+.xv-step-head .tech .tk{width:26px;height:26px}
+.xv-step-head .tech .tk svg{width:16px;height:16px}
 
-/* ============================================================
-   EDITOR PANEL
-   ============================================================ */
-.ed-tabs{display:flex; border-bottom:1px solid var(--line)}
-.ed-tab{
-  flex:1; padding:11px; font-family:var(--disp); font-weight:600;
-  font-size:12.5px; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--mut); border-bottom:2px solid transparent;
-}
-.ed-tab.on{color:var(--ink); border-bottom-color:var(--t)}
-.ed-list{display:flex; flex-direction:column; gap:6px}
-.ed-row{
-  display:flex; align-items:center; gap:9px;
-  background:var(--bg2); border:1px solid var(--line-soft);
-  border-radius:8px; padding:8px 10px;
-}
-.ed-row.sel{border-color:var(--t)}
-.ed-row .ic{width:14px; height:14px; flex:0 0 auto}
-.ed-row .nm{
-  flex:1; min-width:0; text-align:left; font-weight:500; font-size:13.5px;
-  overflow:hidden; text-overflow:ellipsis; white-space:nowrap; cursor:pointer;
-  background:none; border:none; color:var(--ink); padding:0;
-}
-.ed-row .sd{font-family:var(--mono); font-size:10.5px; color:var(--mut)}
-.icon-btn{
-  width:26px; height:26px; flex:0 0 auto; border-radius:6px;
-  display:flex; align-items:center; justify-content:center;
-  color:var(--mut); border:1px solid transparent; font-size:13px;
-}
-.icon-btn:hover{color:var(--ink); background:var(--bg3); border-color:var(--line)}
-.icon-btn.danger:hover{color:var(--danger)}
-.f-label{
-  display:block; font-family:var(--mono); font-size:11px;
-  letter-spacing:.16em; text-transform:uppercase; color:var(--mut);
-  margin:14px 0 6px;
-}
-.f-row{display:flex; gap:8px}
-.f-row > *{flex:1}
-.seg{display:flex; gap:5px; flex-wrap:wrap}
-.seg button{
-  font-family:var(--disp); font-weight:600; font-size:11.5px;
-  letter-spacing:.05em; text-transform:uppercase;
-  padding:6px 11px; border-radius:6px; border:1px solid var(--line);
-  color:var(--mut);
-}
-.seg button.on{color:var(--ink); background:var(--bg3); border-color:#5A6B83}
+/* legend (bottom-right) */
+.legend{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.legend-toggle{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:600;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  padding:7px 12px;border-radius:99px;border:1px solid var(--line);background:rgba(17,22,30,.92);backdrop-filter:blur(8px);color:var(--mut)}
+.legend-toggle:hover{color:var(--ink);border-color:#46556B}
+.legend-toggle .lg-key{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;border:1px solid currentColor;font-size:11px}
+.legend-body{display:none;width:236px;max-height:60vh;overflow-y:auto;padding:14px;border-radius:12px;border:1px solid var(--line);
+  background:rgba(17,22,30,.96);backdrop-filter:blur(10px);box-shadow:0 12px 30px -10px rgba(0,0,0,.6)}
+.legend.open .legend-body{display:block}
+.legend.open .legend-toggle{color:var(--ink);border-color:var(--t)}
+.lg-h{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin:0 0 8px}
+.lg-h:not(:first-child){margin-top:14px;padding-top:12px;border-top:1px solid var(--line-soft)}
+.lg-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px 10px}
+.lg-item{display:flex;align-items:center;gap:7px;font-size:12px;color:#C2CBD8}
+.lg-ic{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;flex:0 0 auto;border-radius:5px;border:1px solid var(--line);background:var(--bg0);color:var(--ink)}
+.lg-ic svg{width:14px;height:14px}
+@media (max-width:1200px){.legend{right:10px;bottom:10px}.legend-body{width:210px}}
+.dr-desc{color:#C2CBD8;margin-top:14px;white-space:pre-wrap}
+.dr-h{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin:20px 0 10px;padding-top:16px;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:center}
+.media-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.media-item{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--bg0);cursor:zoom-in;padding:0;width:100%}
+.media-item img,.media-item video{width:100%;display:block}
+.media-item .cap{font-size:12px;color:var(--mut);padding:7px 10px;border-top:1px solid var(--line-soft);text-align:left;font-family:var(--mono)}
+.tips{list-style:none;display:flex;flex-direction:column;gap:8px}
+.tips li{display:flex;gap:9px;color:#C2CBD8;font-size:13.5px;background:var(--bg2);border:1px solid var(--line-soft);border-radius:7px;padding:9px 11px}
+.tips li::before{content:"▸";color:var(--t);flex:0 0 auto}
+.dr-empty{color:var(--mut);padding:26px 18px;text-align:center}
+.dr-empty .big{font-family:var(--disp);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:6px}
+.linkrow{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:var(--bg2);border:1px solid var(--line-soft);border-radius:8px;padding:9px 11px;transition:border-color .12s}
+.linkrow + .linkrow{margin-top:7px}
+.linkrow:hover{border-color:#46556B}
+.linkrow .n{font-family:var(--mono);font-size:11px;flex:0 0 22px;height:22px;display:flex;align-items:center;justify-content:center;background:var(--t);color:#1A1206;border-radius:50%}
+.linkrow .ic{width:14px;height:14px;flex:0 0 auto;display:flex}
+.linkrow .nm{font-weight:500;font-size:13.5px;flex:1;min-width:0}
+.linkrow .sub{font-family:var(--mono);font-size:10.5px;color:var(--mut)}
+
+/* ============================================================ EDITOR */
+.ed-tabs{display:flex;border-bottom:1px solid var(--line)}
+.ed-tab{flex:1;padding:11px 4px;font-family:var(--disp);font-weight:600;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);border-bottom:2px solid transparent}
+.ed-tab.on{color:var(--ink);border-bottom-color:var(--t)}
+.ed-list{display:flex;flex-direction:column;gap:6px}
+.ed-row{display:flex;align-items:center;gap:9px;background:var(--bg2);border:1px solid var(--line-soft);border-radius:8px;padding:8px 10px}
+.ed-row .ic{width:14px;height:14px;flex:0 0 auto;display:flex}
+.ed-row .nm{flex:1;min-width:0;text-align:left;font-weight:500;font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;background:none;border:none;color:var(--ink);padding:0}
+.ed-row .sd{font-family:var(--mono);font-size:10.5px;color:var(--mut)}
+.f-label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin:14px 0 6px}
+.f-row{display:flex;gap:8px}
+.f-row>*{flex:1}
+.seg{display:flex;gap:5px;flex-wrap:wrap}
+.seg button{font-family:var(--disp);font-weight:600;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;padding:6px 11px;border-radius:6px;border:1px solid var(--line);color:var(--mut)}
+.seg button.on{color:var(--ink);background:var(--bg3);border-color:#5A6B83}
 .seg button[data-v="smoke"].on{color:var(--smoke)}
 .seg button[data-v="flash"].on{color:var(--flash)}
 .seg button[data-v="molotov"].on{color:var(--molotov)}
 .seg button[data-v="he"].on{color:var(--he)}
-.seg button[data-v="T"].on{color:var(--t); border-color:rgba(240,163,60,.5)}
-.seg button[data-v="CT"].on{color:var(--ct); border-color:rgba(111,168,232,.5)}
-.place-btns{display:flex; gap:8px}
-.place-btns .btn{flex:1; justify-content:center}
-.place-btns .btn.arming{background:var(--t); border-color:var(--t); color:#1A1206}
-.sub-list{display:flex; flex-direction:column; gap:7px}
-.sub-row{display:flex; gap:7px; align-items:center}
+.seg button[data-v="T"].on{color:var(--t);border-color:rgba(240,163,60,.5)}
+.seg button[data-v="CT"].on{color:var(--ct);border-color:rgba(111,168,232,.5)}
+.place-btns{display:flex;gap:8px;flex-wrap:wrap}
+.place-btns .btn{flex:1;justify-content:center;min-width:120px}
+.place-btns .btn.arming{background:var(--t);border-color:var(--t);color:#1A1206}
+.sub-list{display:flex;flex-direction:column;gap:7px}
+.sub-row{display:flex;gap:7px;align-items:center}
 .sub-row input{flex:1}
-.add-line{
-  font-family:var(--mono); font-size:12px; color:var(--t);
-  margin-top:8px; padding:4px 0;
-}
+.add-line{font-family:var(--mono);font-size:12px;color:var(--t);margin-top:8px;padding:4px 0}
 .add-line:hover{text-decoration:underline}
-.ed-foot{display:flex; gap:8px; margin-top:20px; flex-wrap:wrap}
-.exsel{display:flex; flex-direction:column; gap:6px; max-height:240px; overflow-y:auto}
-.exsel label{
-  display:flex; align-items:center; gap:9px; background:var(--bg2);
-  border:1px solid var(--line-soft); border-radius:7px; padding:7px 10px;
-  cursor:pointer; font-size:13px;
-}
+.f-hint{font-size:12px;color:var(--mut);margin-top:5px}
+.ed-foot{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
+.exsel{display:flex;flex-direction:column;gap:6px;max-height:250px;overflow-y:auto}
+.exsel label{display:flex;align-items:center;gap:9px;background:var(--bg2);border:1px solid var(--line-soft);border-radius:7px;padding:7px 10px;cursor:pointer;font-size:13px}
 .exsel input{width:auto}
-.exsel .num{
-  font-family:var(--mono); font-size:10.5px; min-width:18px; height:18px;
-  display:flex; align-items:center; justify-content:center;
-  background:var(--t); color:#1A1206; border-radius:50%;
-}
-.localbar{
-  display:none; align-items:center; gap:12px; flex-wrap:wrap;
-  margin:0 18px; padding:10px 14px;
-  background:rgba(240,163,60,.08); border:1px solid rgba(240,163,60,.35);
-  border-radius:8px; font-size:13px;
-}
-.localbar.show{display:flex}
-.localbar .txt{flex:1; min-width:200px; color:#E8C58C}
+.exsel .num{font-family:var(--mono);font-size:10.5px;min-width:18px;height:18px;display:flex;align-items:center;justify-content:center;background:var(--t);color:#1A1206;border-radius:50%}
+.exsel .ic{width:13px;height:13px;display:inline-flex}
 
-/* ============================================================
-   MODAL / LIGHTBOX / TOAST
-   ============================================================ */
-.modal{
-  position:fixed; inset:0; z-index:100; display:none;
-  align-items:center; justify-content:center; padding:20px;
-}
+/* ============================================================ EXEC OVERLAY */
+#execview{position:fixed;inset:0;z-index:90;display:none;background:rgba(5,7,10,.82);backdrop-filter:blur(4px);overflow-y:auto;padding:30px 18px 60px}
+#execview.show{display:block}
+.xv-box{max-width:880px;margin:0 auto;background:var(--bg1);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.xv-head{padding:22px 24px 18px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;gap:14px}
+.xv-head .xv-titles{flex:1;min-width:0}
+.xv-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
+.xv-title{font-family:var(--disp);font-weight:700;font-size:24px;letter-spacing:.03em;text-transform:uppercase;line-height:1.15}
+.xv-desc{color:#C2CBD8;margin-top:8px;white-space:pre-wrap}
+.xv-steps{padding:18px 24px 26px;display:flex;flex-direction:column;gap:14px}
+.xv-step{border:1px solid var(--line-soft);border-radius:10px;background:var(--bg2);overflow:hidden}
+.xv-step-head{display:flex;align-items:center;gap:12px;padding:12px 14px}
+.xv-num{font-family:var(--mono);font-size:13px;flex:0 0 28px;height:28px;display:flex;align-items:center;justify-content:center;background:var(--t);color:#1A1206;border-radius:50%}
+.xv-step-head .ic{width:16px;height:16px;display:flex;color:var(--c)}
+.xv-step-head .nm{font-family:var(--disp);font-weight:600;font-size:15px;letter-spacing:.03em;text-transform:uppercase;flex:1;min-width:0}
+.xv-step-head .tech{font-family:var(--mono);font-size:11.5px;color:var(--ink);background:var(--bg0);border:1px solid var(--line);padding:3px 9px;border-radius:5px;white-space:nowrap}
+.xv-media{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line-soft)}
+.xv-m{position:relative;background:var(--bg0);cursor:zoom-in;padding:0;text-align:left}
+.xv-m img,.xv-m video{width:100%;height:230px;object-fit:cover;display:block}
+.xv-m .cap{position:absolute;left:8px;bottom:8px;font-family:var(--mono);font-size:10.5px;color:var(--ink);background:rgba(10,13,18,.8);padding:2px 8px;border-radius:4px}
+.xv-step-desc{padding:10px 14px;color:#C2CBD8;font-size:13.5px;white-space:pre-wrap;border-top:1px solid var(--line-soft)}
+.xv-step-foot{padding:8px 14px;border-top:1px solid var(--line-soft)}
+
+/* ============================================================ MODAL / LIGHTBOX / TOAST */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
 .modal.show{display:flex}
-.modal .back{position:absolute; inset:0; background:rgba(5,7,10,.7); backdrop-filter:blur(2px)}
-.modal .box{
-  position:relative; width:min(440px,100%);
-  background:var(--bg1); border:1px solid var(--line); border-radius:12px;
-  padding:20px;
-}
-.modal .box h3{
-  font-family:var(--disp); font-size:16px; letter-spacing:.06em;
-  text-transform:uppercase; margin-bottom:10px;
-}
-.modal .box p{color:var(--mut); margin-bottom:18px}
-.modal .acts{display:flex; gap:8px; justify-content:flex-end}
-#lightbox{
-  position:fixed; inset:0; z-index:120; display:none;
-  align-items:center; justify-content:center;
-  background:rgba(5,7,10,.92); cursor:zoom-out; padding:24px;
-}
+.modal .back{position:absolute;inset:0;background:rgba(5,7,10,.7);backdrop-filter:blur(2px)}
+.modal .box{position:relative;width:min(460px,100%);background:var(--bg1);border:1px solid var(--line);border-radius:12px;padding:20px;max-height:88vh;overflow-y:auto}
+.modal .box h3{font-family:var(--disp);font-size:16px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.modal .box .mbody{color:var(--mut);margin-bottom:16px;font-size:13.5px}
+.modal .acts{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+#lightbox{position:fixed;inset:0;z-index:120;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(5,7,10,.94);padding:22px;gap:12px}
 #lightbox.show{display:flex}
-#lightbox img,#lightbox video{max-width:96vw; max-height:92vh; border-radius:8px}
-#toast{
-  position:fixed; bottom:24px; left:50%; transform:translate(-50%,16px);
-  z-index:130; background:var(--bg3); border:1px solid var(--line);
-  color:var(--ink); font-family:var(--disp); font-size:13px;
-  letter-spacing:.05em; padding:10px 18px; border-radius:99px;
-  opacity:0; pointer-events:none; transition:all .2s;
-}
-#toast.show{opacity:1; transform:translate(-50%,0)}
+#lb-media{display:flex;align-items:center;justify-content:center;min-height:0;flex:0 1 auto;max-width:96vw}
+#lb-media img,#lb-media video,#lb-media canvas{max-width:96vw;max-height:82vh;border-radius:8px;display:block}
+#lb-bar{display:flex;align-items:center;gap:12px;background:var(--bg1);border:1px solid var(--line);border-radius:99px;padding:8px 16px;max-width:96vw}
+#lb-bar.hidden{display:none}
+#lb-play{width:34px;height:34px;border-radius:50%;background:var(--smoke);color:#0A0D12;display:flex;align-items:center;justify-content:center;font-size:13px;flex:0 0 auto}
+#lb-seek{width:min(420px,52vw);accent-color:var(--t);padding:0;border:none;background:transparent}
+#lb-time{font-family:var(--mono);font-size:11.5px;color:var(--mut);white-space:nowrap}
+#lb-close{position:fixed;top:14px;right:16px;z-index:121;font-size:18px;color:var(--mut);width:36px;height:36px;border-radius:50%;background:var(--bg1);border:1px solid var(--line)}
+#lb-close:hover{color:var(--ink)}
+#toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,16px);z-index:130;background:var(--bg3);border:1px solid var(--line);color:var(--ink);
+  font-family:var(--disp);font-size:13px;letter-spacing:.05em;padding:10px 18px;border-radius:99px;opacity:0;pointer-events:none;transition:all .2s}
+#toast.show{opacity:1;transform:translate(-50%,0)}
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width:980px){
-  .stage{flex-direction:column; padding:6px 12px 40px}
-  .drawer{width:100%; flex:none; margin:14px 0 0; max-height:none}
-  .mapframe{width:100%; padding:10px}
-  header{padding:0 12px; gap:10px}
+/* ============================================================ RESPONSIVE */
+@media (max-width:1200px){
+  .stage{grid-template-columns:1fr;padding:12px 12px 50px}
+  .rail{position:static;max-height:none;flex-direction:row;flex-wrap:wrap;align-items:flex-start}
+  .rail>*{flex:1 1 280px}
+  .panel{position:static;max-height:none}
+  .mapframe{max-width:none}
+  header{padding:0 12px;gap:10px}
   .hdr-map{display:none}
 }
 </style>
@@ -528,1049 +366,1681 @@ svg.traj{
   <button class="brand" id="brand">CS2<b>/</b>LINEUPS</button>
   <span class="hdr-map" id="hdr-map"></span>
   <span class="hdr-spacer"></span>
+  <button class="btn btn-ghost btn-sm" id="btn-lang">FR</button>
   <button class="btn btn-ghost" id="btn-home" style="display:none">← Maps</button>
-  <button class="btn" id="btn-edit" style="display:none">✎ Éditeur</button>
+  <button class="btn" id="btn-edit" style="display:none"></button>
 </header>
 
-<!-- local data banner -->
-<div class="localbar" id="localbar" style="margin-top:12px">
-  <span class="txt">⚠ Tu as des modifications locales (visibles uniquement sur ce navigateur). Pour les publier sur ton site, exporte <b>data.json</b> et remplace-le dans ton dépôt GitHub.</span>
-  <button class="btn btn-sm btn-amber" id="lb-export">⬇ Exporter data.json</button>
-  <button class="btn btn-sm" id="lb-discard">Revenir à la version publiée</button>
+<div class="localbar" id="localbar">
+  <span class="txt" id="lb-txt"></span>
+  <button class="btn btn-sm btn-amber" id="lb-publish"></button>
+  <button class="btn btn-sm" id="lb-export"></button>
+  <button class="btn btn-sm" id="lb-discard"></button>
 </div>
 
-<!-- ============ HOME ============ -->
 <main id="home">
-  <div class="home-eyebrow">// Playbook personnel</div>
-  <h1 class="home-title">Choisis ta map</h1>
-  <p class="home-sub">Smokes, flashs, molotovs et executes — clique sur une map pour voir tes lineups, ou ouvre l'éditeur pour en ajouter.</p>
+  <div class="home-eyebrow" id="home-eyebrow"></div>
+  <h1 class="home-title" id="home-title"></h1>
+  <p class="home-sub" id="home-sub"></p>
   <div class="map-grid" id="map-grid"></div>
 </main>
 
-<!-- ============ VIEWER ============ -->
 <main id="viewer">
-  <div class="toolbar">
-    <div class="pillgroup" id="pills-type">
-      <button class="pill on" data-type="smoke"><span class="dot"></span>Smoke</button>
-      <button class="pill on" data-type="flash"><span class="dot"></span>Flash</button>
-      <button class="pill on" data-type="molotov"><span class="dot"></span>Molotov</button>
-      <button class="pill on" data-type="he"><span class="dot"></span>HE</button>
-    </div>
-    <div class="tb-sep"></div>
-    <div class="pillgroup" id="pills-side">
-      <button class="pill on" data-side="T">T</button>
-      <button class="pill on" data-side="CT">CT</button>
-    </div>
-    <div class="tb-sep"></div>
-    <div class="tb-search"><input id="search" type="search" placeholder="Rechercher…"></div>
-  </div>
+  <div class="stage">
+    <aside class="rail" id="rail"></aside>
 
-  <div class="execbar" id="execbar"></div>
-
-  <div class="stage" id="stage">
     <div class="map-col">
       <div class="mapframe">
         <span class="ck1"></span><span class="ck2"></span>
         <div class="mapwrap" id="mapwrap">
-          <img class="radar" id="radar" alt="Radar de la map" draggable="false">
+          <img class="radar" id="radar" alt="Radar" draggable="false">
+          <canvas id="drawcanvas"></canvas>
           <svg class="traj" id="traj" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <defs id="trajdefs"></defs>
-            <g id="trajpaths"></g>
+            <defs id="trajdefs"></defs><g id="trajpaths"></g>
           </svg>
           <div id="markers"></div>
           <div class="coords" id="coordbox">x:— y:—</div>
           <div class="placing-hint" id="placing-hint"></div>
           <div class="map-empty" id="map-empty" style="display:none">
-            <div class="big">Aucun lineup ici pour l'instant</div>
-            <div>Clique sur « ✎ Éditeur » en haut à droite pour ajouter ton premier lineup.</div>
+            <div class="big" id="me-big"></div><div id="me-sub"></div>
           </div>
         </div>
+        <div class="maptools" id="maptools"></div>
       </div>
     </div>
-    <aside class="drawer" id="drawer"></aside>
+
+    <aside class="panel" id="panel"></aside>
   </div>
 </main>
 
-<!-- modal -->
+<div id="execview"><div class="xv-box" id="xv-box"></div></div>
+
 <div class="modal" id="modal">
   <div class="back" data-close="1"></div>
   <div class="box">
     <h3 id="modal-title"></h3>
-    <p id="modal-msg"></p>
+    <div class="mbody" id="modal-body"></div>
     <div class="acts" id="modal-acts"></div>
   </div>
 </div>
 
-<!-- lightbox -->
-<div id="lightbox"><div id="lightbox-inner"></div></div>
+<div id="lightbox">
+  <button id="lb-close">✕</button>
+  <button class="lb-nav" id="lb-prev">‹</button>
+  <button class="lb-nav" id="lb-next">›</button>
+  <div id="lb-media"></div>
+  <div id="lb-cap"></div>
+  <div id="lb-bar" class="hidden">
+    <button id="lb-play">▶</button>
+    <input type="range" id="lb-seek" min="0" max="1000" value="0">
+    <span id="lb-time">0:00 / 0:00</span>
+  </div>
+</div>
 
 <div id="toast"></div>
 <input type="file" id="file-import" accept=".json,application/json" style="display:none">
 
+<div id="legend" class="legend">
+  <button class="legend-toggle" id="legend-toggle" aria-expanded="false" title="Legend"><span class="lg-key">?</span><span id="legend-label"></span></button>
+  <div class="legend-body" id="legend-body"></div>
+</div>
+
 <script>
 "use strict";
 /* ============================================================
-   CS2 LINEUPS — application
-   Données : data.json (publié) + localStorage (brouillon local)
+   CS2 LINEUPS — app (EN/FR, lineups + executes + strategies,
+   drawing layer, GitHub publish)
    ============================================================ */
 
-const MAPS = [
-  {id:"mirage",   name:"Mirage"},
-  {id:"inferno",  name:"Inferno"},
-  {id:"overpass", name:"Overpass"},
-  {id:"nuke",     name:"Nuke"},
-  {id:"ancient",  name:"Ancient"},
-  {id:"anubis",   name:"Anubis"},
-  {id:"dust2",    name:"Dust 2"},
-  {id:"train",    name:"Train"},
-  {id:"vertigo",  name:"Vertigo"},
+const MAPS=[
+  {id:"mirage",name:"Mirage"},{id:"inferno",name:"Inferno"},{id:"overpass",name:"Overpass"},
+  {id:"nuke",name:"Nuke"},{id:"ancient",name:"Ancient"},{id:"anubis",name:"Anubis"},
+  {id:"dust2",name:"Dust 2"},{id:"train",name:"Train"},{id:"vertigo",name:"Vertigo"},
 ];
-
-const TYPES = {
-  smoke:   {label:"Smoke",   color:"#A9B6C4"},
-  flash:   {label:"Flash",   color:"#FFD75E"},
-  molotov: {label:"Molotov", color:"#FF6B45"},
-  he:      {label:"HE",      color:"#7ED491"},
+const TYPES={
+  smoke:{label:"Smoke",color:"#EDF2F8"},
+  flash:{label:"Flash",color:"#FFD75E"},
+  molotov:{label:"Molotov",color:"#FF6B45"},
+  he:{label:"HE",color:"#7ED491"},
 };
-
-const TECHS = ["Clic gauche","Clic droit","Gauche + droit","Jumpthrow","Course + jumpthrow","W + jumpthrow","Accroupi + clic gauche","Autre"];
-
-const ICONS = {
-  smoke:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 18a4.5 4.5 0 0 1-.4-8.98A6 6 0 0 1 18.3 8.6 4 4 0 0 1 17.5 16.5 4 4 0 0 1 13 18H7z"/></svg>`,
-  flash:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4.5 13.5H11L9.5 22 19 10h-6.5L13 2z"/></svg>`,
-  molotov:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3-3 4.5-3 8a3 3 0 0 0 6 0c0-1.4-.7-2.4-1.3-3.4C15.6 7.7 18 9.6 18 13a6 6 0 0 1-12 0c0-5 4.5-7 6-11z"/></svg>`,
-  he:`<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="13" r="7"/><rect x="10" y="3" width="4" height="3" rx="1"/><rect x="13.5" y="1.4" width="5" height="2" rx="1" transform="rotate(20 16 2.4)"/></svg>`,
+const ICONS={
+  smoke:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 18a4.5 4.5 0 0 1-.6-8.96 6 6 0 0 1 11.7-.84A4.3 4.3 0 0 1 17.7 18H6.5z"/></svg>`,
+  flash:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 1.5 4 14h6l-1.5 8.5L18 10h-6l1.5-8.5z"/></svg>`,
+  molotov:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8c1.3 3.6-3.4 5.4-3.4 9.2a3.4 3.4 0 0 0 6.8 0c0-1.3-.6-2.4-1.2-3.3 2.6 1.1 4.6 3.3 4.6 6.4A6.8 6.8 0 0 1 12 22.3a6.8 6.8 0 0 1-6.8-6.7C5.2 9.9 10.4 7.5 12 1.8z"/></svg>`,
+  he:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l1.9 4.7L18 3.5l-1.2 4.3L21.5 9l-3.6 3 3.6 3-4.7 1.2L18 20.5l-4.1-2.2L12 23l-1.9-4.7L6 20.5l1.2-4.3L2.5 15l3.6-3-3.6-3 4.7-1.2L6 3.5l4.1 2.2L12 1z"/></svg>`,
 };
+const BUYS=["pistol","eco","semi","full","solo","other"];
 
-const STORE_KEY = "cs2lineups_v2";
-const $  = (s)=>document.querySelector(s);
-const $$ = (s)=>Array.from(document.querySelectorAll(s));
-const uid = ()=> (crypto.randomUUID ? crypto.randomUUID() : "id-"+Date.now()+"-"+Math.random().toString(36).slice(2,8));
-const esc = (s)=>String(s??"").replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+/* ---------------- throw-technique tokens → icons ----------------
+   A technique string like "Left and right click + W + Jumpthrow"
+   is split on "+" and each part matched to a token below. Anything
+   in (parentheses) is kept as a small text note. */
+const TECH_TOKENS=[
+  // id, test(lowercased part), icon svg (16x16 viewBox), label-en, label-fr
+  {id:"lr",   test:p=>/left and right|both click|left ?\+ ?right/.test(p),
+    svg:`<svg viewBox="0 0 16 16"><rect x="3.5" y="1.5" width="9" height="13" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 2v5" stroke="currentColor" stroke-width="1.3"/><path d="M3.6 4.2A4.5 4.5 0 0 1 8 1.7V7H3.6z" fill="currentColor"/><path d="M12.4 4.2A4.5 4.5 0 0 0 8 1.7V7h4.4z" fill="currentColor"/></svg>`,
+    en:"Left + right click",fr:"Clic gauche + droit"},
+  {id:"right", test:p=>/right click|rightclick/.test(p),
+    svg:`<svg viewBox="0 0 16 16"><rect x="3.5" y="1.5" width="9" height="13" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 2v5" stroke="currentColor" stroke-width="1.3"/><path d="M12.4 4.2A4.5 4.5 0 0 0 8 1.7V7h4.4z" fill="currentColor"/></svg>`,
+    en:"Right click",fr:"Clic droit"},
+  {id:"left",  test:p=>/left click|leftclick/.test(p),
+    svg:`<svg viewBox="0 0 16 16"><rect x="3.5" y="1.5" width="9" height="13" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 2v5" stroke="currentColor" stroke-width="1.3"/><path d="M3.6 4.2A4.5 4.5 0 0 1 8 1.7V7H3.6z" fill="currentColor"/></svg>`,
+    en:"Left click",fr:"Clic gauche"},
+  {id:"jump",  test:p=>/jump ?throw|jumpthrow/.test(p),
+    svg:`<svg viewBox="0 0 16 16"><path d="M8 13V4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M4.7 7.2 8 3.7l3.3 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 14h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>`,
+    en:"Jumpthrow",fr:"Jumpthrow"},
+  {id:"run",   test:p=>/running|^run\b|run /.test(p),
+    svg:`<svg viewBox="0 0 16 16"><circle cx="9.5" cy="3" r="1.5" fill="currentColor"/><path d="M9.5 5.2 6.5 7l1.8 1.4-.8 4M8.3 8.4l2.9 1 .8 2.4M8 7.2l3.3-.6M6.2 11.7 4 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    en:"Run",fr:"Courir"},
+  {id:"walk",  test:p=>/\bwalk\b/.test(p),
+    svg:`<svg viewBox="0 0 16 16"><circle cx="8.5" cy="3" r="1.5" fill="currentColor"/><path d="M8.5 5.2 7 8l-1.2 4M8.5 5.2 10 8.3 11.8 10M7 8l2.2.6M7 8 6 12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    en:"Walk",fr:"Marcher"},
+  {id:"w",     test:p=>/^w$|\bw\b|forward|move forward/.test(p),
+    svg:`<svg viewBox="0 0 16 16"><rect x="2.5" y="2.5" width="11" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M5 6.2 6.4 11 8 7.4 9.6 11 11 6.2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    en:"Hold W (forward)",fr:"Maintenir W (avancer)"},
+  {id:"crouch",test:p=>/crouch|duck/.test(p),
+    svg:`<svg viewBox="0 0 16 16"><circle cx="8" cy="3" r="1.5" fill="currentColor"/><path d="M8 4.6v3.2M5.4 11.4 8 7.8l2.6 3.6M5 11.4h6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 13.2h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`,
+    en:"Crouch",fr:"S'accroupir"},
+  {id:"shift", test:p=>/shift/.test(p),
+    svg:`<svg viewBox="0 0 16 16"><path d="M8 2.2 13 8h-2.6v5.4H5.6V8H3z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>`,
+    en:"Shift (slow walk)",fr:"Shift (marche lente)"},
+  {id:"throw", test:p=>/throw|stand/.test(p),
+    svg:`<svg viewBox="0 0 16 16"><circle cx="11" cy="4.5" r="1.4" fill="currentColor"/><path d="M11 6v3M8.5 7 11 6.2 13 7.6M11 9l-1.4 2.4M11 9l1.6 2.2M5.5 5.5 3 8l2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    en:"Throw (standing)",fr:"Lancer (debout)"},
+];
+const STRIP_RE={
+  lr:/left and right click|both click|left ?\+ ?right/,
+  right:/right click/,left:/left click/,
+  jump:/jump ?throw|jumpthrow/,run:/running|\brun\b/,walk:/\bwalk\b/,
+  w:/\bw\b|forward/,crouch:/crouch|duck/,shift:/shift/,throw:/throw|stand/,
+};
+function parseTech(str){
+  if(!str)return {tokens:[],note:""};
+  let note="";
+  const clean=str.replace(/\(([^)]*)\)/g,(_,n)=>{note=note?note+" · "+n.trim():n.trim();return " ";});
+  const parts=clean.split(/\+|,|&/).map(s=>s.trim()).filter(Boolean);
+  const tokens=[]; const seen=new Set();
+  const add=tk=>{if(!seen.has(tk.id)){seen.add(tk.id);tokens.push(tk);}};
+  for(const part of parts){
+    let p=part.toLowerCase();
+    let matchedAny=false;
+    for(const tk of TECH_TOKENS){
+      if(tk.test(p)){add(tk);matchedAny=true;
+        if(STRIP_RE[tk.id])p=p.replace(STRIP_RE[tk.id]," ");
+      }
+    }
+    if(!matchedAny&&part&&!note)note=part;
+  }
+  return {tokens,note};
+}
+function techIconsHTML(str,size="md"){
+  const {tokens,note}=parseTech(str);
+  if(!tokens.length&&!note) return "";
+  const chips=tokens.map(tk=>`<span class="tk" title="${esc(LANG==="fr"?tk.fr:tk.en)}" aria-label="${esc(LANG==="fr"?tk.fr:tk.en)}">${tk.svg}</span>`).join("");
+  return `<span class="tk-row ${size==="sm"?"tk-sm":""}">${chips}${note?`<span class="tk-note">${esc(note)}</span>`:""}</span>`;
+}
+
+/* ---------------- i18n ---------------- */
+const I18N={
+en:{
+  back:"← Maps",editor:"✎ Editor",doneEdit:"✓ Done editing",
+  homeEyebrow:"// Personal playbook",homeTitle:"Pick your map",
+  homeSub:"Smokes, flashes, molotovs, executes and strategies — click a map to browse, or open the editor to add your own.",
+  lineupsCnt:"lineups",lineupCnt:"lineup",
+  modeLineups:"Lineups",modeStrats:"Strategies",
+  filters:"Filters",search:"Search…",
+  execs:"Executes",strats:"Strategies",
+  noExecs:"No executes on this map yet.",
+  noStrats:"No strategies yet. Open the editor to create one (eco, full-buy, solo routes…).",
+  showAll:"✕ Show all",
+  briefing:"Briefing",
+  briefEmpty:"This map is empty. Open the editor (top right) to create your first lineup.",
+  briefText:"Click a marker on the map to open the full lineup. Hover a marker to preview the trajectory.",
+  briefExec:"Click an execute on the left to open the full step-by-step briefing.",
+  briefStrat:"Click a zone on the map or a strategy on the left to see what to do.",
+  howto:"How to",tips:"Tips",zone:"Zone",linked:"Utility & executes",
+  openBriefing:"⤢ Open full briefing",steps:"steps",utils:"utils",
+  close:"Close",cancel:"Cancel",del:"Delete",
+  newLineup:"+ New lineup",newExec:"+ New execute",newStrat:"+ New strategy",
+  edLineup:"Editor // lineup",edExec:"Editor // execute",edStrat:"Editor // strategy",
+  name:"Name",type:"Type",side:"Side",buy:"Round type",technique:"Throw technique",
+  position:"Position on the map",
+  placeImpact:"◆ Place impact",placeThrow:"＋ Place throw",placePoint:"◎ Place zone on map",
+  posHint:"Tip: you can also drag the points directly on the map.",
+  desc:"Description",visualsLabel:"How to (images, GIFs or videos)",
+  addVisual:"+ Add a visual",addTip:"+ Add a tip",
+  mediaHint:"Put files in the media/ folder of your site (e.g. media/mirage/smoke.gif) or paste a direct link. GIF and MP4 both work — MP4 can be paused & scrubbed.",
+  selOrder:"Pick lineups in execution order",
+  selOrderStrat:"Link lineups & executes (check in order)",
+  zoneLabel:"Zone / target (e.g. A, Mid, B)",zonePh:"A",
+  done:"✓ Done",impact:"impact",throwLbl:"throw",
+  importBtn:"⬆ Import JSON",exportBtn:"⬇ Export data.json",publishBtn:"⇪ Publish",
+  emptyLineups:"No lineups. Click “+ New lineup”, then place the impact and throw points on the map.",
+  emptyExecs:"An execute groups several lineups in a precise order (e.g. “B execute” = 2 smokes + 2 flashes).",
+  emptyStrats:"A strategy describes what to do in a round — pistol, eco, full-buy, or a solo route to a site — and can link lineups & executes. Place it on the map as a clickable zone (A, Mid, B…).",
+  delLineupT:"Delete this lineup?",delLineupM:"It will be removed from the map, executes and strategies.",
+  delExecT:"Delete this execute?",delExecM:"Lineups themselves are kept.",
+  delStratT:"Delete this strategy?",delStratM:"Lineups and executes are kept.",
+  placingImpact:"Click the map: impact point ◆",
+  placingThrow:"Click the map: throw position ＋",
+  placingPoint:"Click the map: strategy zone ◎",
+  tLineupSaved:"Lineup saved",tLineupDel:"Lineup deleted",
+  tExecSaved:"Execute saved",tExecDel:"Execute deleted",
+  tStratSaved:"Strategy saved",tStratDel:"Strategy deleted",
+  tImported:"Data imported",tBadFile:"Invalid JSON file",tUnknownFmt:"Unknown file format",
+  tOpenMapFirst:"Open a map before importing this file",
+  tExported:"data.json downloaded — replace it in your GitHub repo",
+  tPlaceImpact:"Click the map to place the impact",
+  tImpact:"Impact placed — now click the throw position",
+  tThrow:"Throw position placed",tZonePlaced:"Zone placed",
+  localTxt:"You have local changes (only in this browser). Publish them, or export data.json and replace it in your GitHub repo.",
+  discard:"Back to published version",
+  discardT:"Discard local changes?",
+  discardM:"Your drafts saved in this browser will be deleted and the published data.json will be reloaded.",
+  draw:"✎ Draw",undo:"↶",clear:"✕",savePreset:"💾",presets:"Presets…",
+  drawTip:"Draw",undoTip:"Undo last stroke",clearTip:"Clear drawing",savePresetTip:"Save as preset",
+  presetName:"Preset name",presetSaved:"Preset saved",presetDeleted:"Preset deleted",
+  noStrokes:"Nothing to save — draw first",savePresetT:"Save drawing preset",
+  delPresetT:"Delete this preset?",loadedPreset:"Preset loaded",
+  pubT:"Publish to GitHub",
+  pubIntro:"Commits data.json directly to your repository — for the site owner only. Visitors without a token keep their edits local to their browser.",
+  owner:"GitHub username",repo:"Repository name",branch:"Branch",token:"Personal access token",
+  tokenHint:"github.com → Settings → Developer settings → Fine-grained tokens → generate one with access to this repo and “Contents: Read and write”. It is stored only in this browser.",
+  pubBtn:"Publish now",pubSave:"Save & publish",
+  pubOk:"Published! Live in ~1 minute.",pubErr:"Publish failed: ",
+  step:"Step",
+  legend:"Legend",legendGren:"Grenades",legendTech:"Throw technique",
+  buyNames:{pistol:"Pistol",eco:"Eco",semi:"Semi-buy",full:"Full-buy",solo:"Solo",other:"Other"},
+},
+fr:{
+  back:"← Maps",editor:"✎ Éditeur",doneEdit:"✓ Terminer l'édition",
+  homeEyebrow:"// Playbook personnel",homeTitle:"Choisis ta map",
+  homeSub:"Smokes, flashs, molotovs, executes et stratégies — clique sur une map, ou ouvre l'éditeur pour ajouter les tiens.",
+  lineupsCnt:"lineups",lineupCnt:"lineup",
+  modeLineups:"Lineups",modeStrats:"Stratégies",
+  filters:"Filtres",search:"Rechercher…",
+  execs:"Executes",strats:"Stratégies",
+  noExecs:"Aucun execute sur cette map pour l'instant.",
+  noStrats:"Aucune stratégie. Ouvre l'éditeur pour en créer (eco, full-buy, routes solo…).",
+  showAll:"✕ Tout afficher",
+  briefing:"Briefing",
+  briefEmpty:"Cette map est vide. Ouvre l'éditeur (en haut à droite) pour créer ton premier lineup.",
+  briefText:"Clique sur un marqueur pour ouvrir la fiche complète. Survole un marqueur pour voir la trajectoire.",
+  briefExec:"Clique sur un execute à gauche pour ouvrir le briefing complet, étape par étape.",
+  briefStrat:"Clique sur une zone de la map ou une stratégie à gauche pour voir quoi faire.",
+  howto:"How to",tips:"Tips",zone:"Zone",linked:"Utilitaires & executes",
+  openBriefing:"⤢ Ouvrir le briefing complet",steps:"étapes",utils:"utils",
+  close:"Fermer",cancel:"Annuler",del:"Supprimer",
+  newLineup:"+ Nouveau lineup",newExec:"+ Nouvel execute",newStrat:"+ Nouvelle stratégie",
+  edLineup:"Éditeur // lineup",edExec:"Éditeur // execute",edStrat:"Éditeur // stratégie",
+  name:"Nom",type:"Type",side:"Side",buy:"Type de round",technique:"Technique de lancer",
+  position:"Position sur la map",
+  placeImpact:"◆ Placer l'impact",placeThrow:"＋ Placer le lancer",placePoint:"◎ Placer la zone",
+  posHint:"Astuce : tu peux aussi faire glisser les points directement sur la map.",
+  desc:"Description",visualsLabel:"How to (images, GIFs ou vidéos)",
+  addVisual:"+ Ajouter un visuel",addTip:"+ Ajouter un tip",
+  mediaHint:"Mets tes fichiers dans le dossier media/ du site (ex. media/mirage/smoke.gif) ou colle un lien direct. GIF et MP4 marchent — le MP4 peut être mis en pause et rembobiné.",
+  selOrder:"Coche les lineups dans l'ordre d'exécution",
+  selOrderStrat:"Lie des lineups & executes (coche dans l'ordre)",
+  zoneLabel:"Zone / cible (ex. A, Mid, B)",zonePh:"A",
+  done:"✓ Terminé",impact:"impact",throwLbl:"lancer",
+  importBtn:"⬆ Importer JSON",exportBtn:"⬇ Exporter data.json",publishBtn:"⇪ Publier",
+  emptyLineups:"Aucun lineup. Clique sur « + Nouveau lineup », puis place l'impact et le lancer sur la map.",
+  emptyExecs:"Un execute regroupe plusieurs lineups dans un ordre précis (ex. « B execute » = 2 smokes + 2 flashs).",
+  emptyStrats:"Une stratégie décrit quoi faire pendant un round — pistol, eco, full-buy, ou une route solo vers un site — et peut lier lineups & executes. Place-la sur la map comme zone cliquable (A, Mid, B…).",
+  delLineupT:"Supprimer ce lineup ?",delLineupM:"Il sera retiré de la map, des executes et des stratégies.",
+  delExecT:"Supprimer cet execute ?",delExecM:"Les lineups eux-mêmes sont conservés.",
+  delStratT:"Supprimer cette stratégie ?",delStratM:"Les lineups et executes sont conservés.",
+  placingImpact:"Clique sur la map : point d'impact ◆",
+  placingThrow:"Clique sur la map : position de lancer ＋",
+  placingPoint:"Clique sur la map : zone de la stratégie ◎",
+  tLineupSaved:"Lineup enregistré",tLineupDel:"Lineup supprimé",
+  tExecSaved:"Execute enregistré",tExecDel:"Execute supprimé",
+  tStratSaved:"Stratégie enregistrée",tStratDel:"Stratégie supprimée",
+  tImported:"Données importées",tBadFile:"Fichier JSON invalide",tUnknownFmt:"Format de fichier non reconnu",
+  tOpenMapFirst:"Ouvre d'abord une map avant d'importer ce fichier",
+  tExported:"data.json téléchargé — remplace-le dans ton dépôt GitHub",
+  tPlaceImpact:"Clique sur la map pour placer l'impact",
+  tImpact:"Impact placé — clique pour la position de lancer",
+  tThrow:"Position de lancer placée",tZonePlaced:"Zone placée",
+  localTxt:"Tu as des modifications locales (uniquement sur ce navigateur). Publie-les, ou exporte data.json et remplace-le dans ton dépôt GitHub.",
+  discard:"Revenir à la version publiée",
+  discardT:"Abandonner les modifications locales ?",
+  discardM:"Tes brouillons enregistrés dans ce navigateur seront effacés et le data.json publié sera rechargé.",
+  draw:"✎ Dessin",undo:"↶",clear:"✕",savePreset:"💾",presets:"Presets…",
+  drawTip:"Dessiner",undoTip:"Annuler le dernier trait",clearTip:"Tout effacer",savePresetTip:"Enregistrer en preset",
+  presetName:"Nom du preset",presetSaved:"Preset enregistré",presetDeleted:"Preset supprimé",
+  noStrokes:"Rien à enregistrer — dessine d'abord",savePresetT:"Enregistrer le dessin",
+  delPresetT:"Supprimer ce preset ?",loadedPreset:"Preset chargé",
+  pubT:"Publier sur GitHub",
+  pubIntro:"Envoie data.json directement dans ton dépôt — réservé au propriétaire du site. Les visiteurs sans token gardent leurs modifs en local.",
+  owner:"Pseudo GitHub",repo:"Nom du dépôt",branch:"Branche",token:"Personal access token",
+  tokenHint:"github.com → Settings → Developer settings → Fine-grained tokens → crée un token avec accès à ce dépôt et « Contents : Read and write ». Il reste uniquement dans ce navigateur.",
+  pubBtn:"Publier maintenant",pubSave:"Enregistrer & publier",
+  pubOk:"Publié ! En ligne dans ~1 minute.",pubErr:"Échec de la publication : ",
+  step:"Étape",
+  legend:"Légende",legendGren:"Grenades",legendTech:"Technique de lancer",
+  buyNames:{pistol:"Pistol",eco:"Eco",semi:"Semi-buy",full:"Full-buy",solo:"Solo",other:"Autre"},
+},
+};
+let LANG=localStorage.getItem("cs2_lang")||"en";
+const t=(k)=>I18N[LANG][k] ?? I18N.en[k] ?? k;
+
+/* ---------------- helpers ---------------- */
+const STORE_KEY="cs2lineups_v3";
+const SNAP_KEY="cs2lineups_published_snapshot";
+const GH_KEY="cs2lineups_gh";
+const $=(s)=>document.querySelector(s);
+const $$=(s)=>Array.from(document.querySelectorAll(s));
+const uid=()=>(crypto.randomUUID?crypto.randomUUID():"id-"+Date.now()+"-"+Math.random().toString(36).slice(2,8));
+const esc=(s)=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const isVideo=(u)=>/\.(mp4|webm|mov)(\?.*)?$/i.test(u||"");
+const isGif=(u)=>/\.gif(\?.*)?$/i.test(u||"");
+function num(v,f){const n=Number(v);return Number.isFinite(n)?Math.max(0,Math.min(100,n)):f}
 
 function emptyDb(){
-  const maps = {};
-  MAPS.forEach(m=> maps[m.id] = {lineups:[], executes:[]});
-  return {version:2, maps};
+  const maps={};
+  MAPS.forEach(m=>maps[m.id]={lineups:[],executes:[],strats:[],drawings:[]});
+  return {version:3,maps};
 }
-function mapData(){ 
-  if (!state.db.maps[state.map]) state.db.maps[state.map] = {lineups:[], executes:[]};
-  return state.db.maps[state.map];
-}
-
-/* ---------------- state ---------------- */
-const state = {
-  db: emptyDb(),
-  publishedRaw: null,     // raw fetched data.json (for "discard local")
-  usingLocal: false,
-  map: null,
-  editMode: false,
-  selected: null,         // lineup id shown in drawer
-  activeExec: null,
-  filters: { types:new Set(["smoke","flash","molotov","he"]), sides:new Set(["T","CT"]), q:"" },
-  placing: null,          // null | "land" | "throw"
-  edTab: "lineups",       // editor tab
-  editingId: null,        // lineup being edited (form)
-  editingExecId: null,
-  dragging: null,         // {id, kind}
-};
-
-/* ---------------- boot ---------------- */
-(async function boot(){
-  // fetched published data
-  try{
-    const res = await fetch("data.json", {cache:"no-store"});
-    if (res.ok){
-      const data = await res.json();
-      state.publishedRaw = data;
-      state.db = migrate(data);
-    }
-  }catch(e){ /* offline / file:// / missing -> empty db */ }
-
-  // local draft takes priority
-  try{
-    const raw = localStorage.getItem(STORE_KEY);
-    if (raw){
-      state.db = migrate(JSON.parse(raw));
-      state.usingLocal = true;
-    }
-  }catch(e){ console.warn("local data invalide", e); }
-
-  updateLocalbar();
-  bindGlobal();
-  routeFromHash();
-})();
-
 function migrate(data){
-  const db = emptyDb();
-  if (!data || typeof data !== "object") return db;
-  // format v2 : {maps:{id:{lineups,executes}}}
-  if (data.maps){
-    for (const [mid, md] of Object.entries(data.maps)){
-      db.maps[mid] = {
-        lineups: Array.isArray(md.lineups)? md.lineups.map(normLineup) : [],
-        executes: Array.isArray(md.executes)? md.executes.map(normExec) : [],
-      };
-    }
-    return db;
+  const db=emptyDb();
+  if(!data||typeof data!=="object"||!data.maps) return db;
+  for(const [mid,md] of Object.entries(data.maps)){
+    db.maps[mid]={
+      lineups:Array.isArray(md.lineups)?md.lineups.map(normLineup):[],
+      executes:Array.isArray(md.executes)?md.executes.map(normExec):[],
+      strats:Array.isArray(md.strats)?md.strats.map(normStrat):[],
+      drawings:Array.isArray(md.drawings)?md.drawings.filter(d=>d&&Array.isArray(d.strokes)):[],
+    };
   }
   return db;
 }
-function num(v, fallback){
-  const n = Number(v);
-  return Number.isFinite(n) ? Math.max(0, Math.min(100, n)) : fallback;
-}
 function normLineup(l){
   return {
-    id: l.id || uid(),
-    name: l.name || "Sans nom",
-    type: TYPES[l.type] ? l.type : "smoke",
-    side: (l.side==="CT")?"CT":"T",
-    technique: l.technique || "Clic gauche",
-    description: l.description || "",
-    land:  {x:num(l.land?.x, 50),  y:num(l.land?.y, 50)},
-    throw: {x:num(l.throw?.x, 50), y:num(l.throw?.y, 60)},
-    media: Array.isArray(l.media)? l.media.filter(m=>m&&m.url).map(m=>({url:m.url, label:m.label||""})) : [],
-    tips:  Array.isArray(l.tips)? l.tips.filter(Boolean) : [],
+    id:l.id||uid(), name:l.name||"Unnamed",
+    type:TYPES[l.type]?l.type:"smoke", side:(l.side==="CT")?"CT":"T",
+    technique:l.technique||"", description:l.description||"",
+    land:{x:num(l.land?.x,50),y:num(l.land?.y,50)},
+    throw:{x:num(l.throw?.x,50),y:num(l.throw?.y,60)},
+    media:Array.isArray(l.media)?l.media.filter(m=>m&&m.url).map(m=>({url:m.url,label:m.label||""})):[],
+    tips:Array.isArray(l.tips)?l.tips.filter(Boolean):[],
   };
 }
 function normExec(e){
-  return {
-    id: e.id || uid(),
-    name: e.name || "Execute",
-    side: (e.side==="CT")?"CT":"T",
-    description: e.description || "",
-    items: Array.isArray(e.items)? e.items : [],
-  };
+  return {id:e.id||uid(),name:e.name||"Execute",side:(e.side==="CT")?"CT":"T",
+    description:e.description||"",items:Array.isArray(e.items)?e.items:[]};
+}
+function normStrat(s){
+  return {id:s.id||uid(),name:s.name||"Strategy",side:(s.side==="CT")?"CT":"T",
+    buy:BUYS.includes(s.buy)?s.buy:"full", zone:s.zone||"",
+    point:(s.point&&Number.isFinite(+s.point.x))?{x:num(s.point.x,50),y:num(s.point.y,50)}:null,
+    description:s.description||"",
+    items:Array.isArray(s.items)?s.items.filter(i=>i&&i.id&&(i.kind==="lineup"||i.kind==="exec")):[]};
 }
 
-/* ---------------- persistence ---------------- */
+/* ---------------- state ---------------- */
+const state={
+  db:emptyDb(), usingLocal:false, map:null,
+  viewMode:"lineups",            // lineups | strats
+  editMode:false, edTab:"lineups",
+  openIds:[], activeExec:null, selectedStrat:null,
+  editingId:null, editingExecId:null, editingStratId:null,
+  filters:{types:new Set(Object.keys(TYPES)),sides:new Set(["T","CT"]),q:""},
+  placing:null,                  // land | throw | spoint
+  drawMode:false, strokes:[], curStroke:null,
+};
+function mapData(){
+  if(!state.db.maps[state.map]) state.db.maps[state.map]={lineups:[],executes:[],strats:[],drawings:[]};
+  const md=state.db.maps[state.map];
+  md.strats=md.strats||[]; md.drawings=md.drawings||[];
+  return md;
+}
+
+/* ---------------- boot ---------------- */
+(async function boot(){
+  try{
+    const res=await fetch("data.json",{cache:"no-store"});
+    if(res.ok){state.db=migrate(await res.json());}
+  }catch(e){}
+  try{
+    const raw=localStorage.getItem(STORE_KEY);
+    if(raw){state.db=migrate(JSON.parse(raw));state.usingLocal=true;}
+  }catch(e){console.warn("invalid local data",e);}
+  bindGlobal();
+  renderChrome();
+  routeFromHash();
+})();
+
+/* ---------------- persistence / publish ---------------- */
 function save(){
-  state.usingLocal = true;
-  localStorage.setItem(STORE_KEY, JSON.stringify(state.db));
+  state.usingLocal=true;
+  localStorage.setItem(STORE_KEY,JSON.stringify(state.db));
   updateLocalbar();
 }
-function updateLocalbar(){
-  $("#localbar").classList.toggle("show", state.usingLocal);
+function isDirty(){
+  if(!state.usingLocal) return false;
+  const snap=localStorage.getItem(SNAP_KEY);
+  return localStorage.getItem(STORE_KEY)!==snap;
 }
+function updateLocalbar(){ $("#localbar").classList.toggle("show",isDirty()); }
 function exportJSON(){
-  const blob = new Blob([JSON.stringify(state.db, null, 2)], {type:"application/json"});
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "data.json";
-  a.click();
+  const blob=new Blob([JSON.stringify(state.db,null,2)],{type:"application/json"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob); a.download="data.json"; a.click();
   URL.revokeObjectURL(a.href);
-  toast("data.json téléchargé — remplace-le dans ton dépôt GitHub");
+  toast(t("tExported"));
 }
 function importJSON(file){
-  const reader = new FileReader();
-  reader.onload = ()=>{
+  const reader=new FileReader();
+  reader.onload=()=>{
     try{
-      const data = JSON.parse(reader.result);
-
-      // Nouveau format complet : {maps:{...}} -> remplace toute la base
-      if (data && data.maps){
-        state.db = migrate(data);
-        save();
-        toast("Données importées (toutes les maps)");
-        renderAll();
-        return;
+      const data=JSON.parse(reader.result);
+      if(data&&data.maps){ state.db=migrate(data); save(); toast(t("tImported")); renderAll(); return; }
+      if(data&&(Array.isArray(data.lineups)||Array.isArray(data.executes))){
+        if(!state.map){toast(t("tOpenMapFirst"));return;}
+        const md=mapData();
+        const conv=(data.lineups||[]).map(convertOldLineup);
+        const convEx=(data.executes||[]).map(normExec);
+        const byId=new Map(md.lineups.map(l=>[l.id,l]));
+        conv.forEach(l=>byId.set(l.id,l));
+        md.lineups=Array.from(byId.values());
+        const exById=new Map(md.executes.map(e=>[e.id,e]));
+        convEx.forEach(e=>exById.set(e.id,e));
+        md.executes=Array.from(exById.values());
+        save(); toast(`${conv.length} lineups + ${convEx.length} executes → ${state.map}`); renderAll(); return;
       }
-
-      // Ancien format (un fichier par map) : {lineups:[...], executes:[...]}
-      if (data && (Array.isArray(data.lineups) || Array.isArray(data.executes))){
-        if (!state.map){ toast("Ouvre d'abord une map avant d'importer ce fichier"); return; }
-        const md = mapData();
-        const converted = (data.lineups||[]).map(convertOldLineup);
-        const convertedEx = (data.executes||[]).map(normExec);
-        // fusion par id : remplace si déjà présent, sinon ajoute
-        const byId = new Map(md.lineups.map(l=>[l.id,l]));
-        converted.forEach(l=> byId.set(l.id, l));
-        md.lineups = Array.from(byId.values());
-        const exById = new Map(md.executes.map(e=>[e.id,e]));
-        convertedEx.forEach(e=> exById.set(e.id, e));
-        md.executes = Array.from(exById.values());
-        save();
-        toast(`${converted.length} lineup(s) et ${convertedEx.length} execute(s) importés sur ${state.map}`);
-        renderAll();
-        return;
-      }
-
-      toast("Format de fichier non reconnu");
-    }catch(e){ toast("Fichier JSON invalide"); }
+      toast(t("tUnknownFmt"));
+    }catch(e){toast(t("tBadFile"));}
   };
   reader.readAsText(file);
 }
-
-/* Conversion d'un lineup de l'ancien site (ChatGPT)
-   Ancien format : {id, type, side, target, spot, name, variant,
-                    x, y, throw:{x,y}, images:{stand,aim,single}, description} */
 function convertOldLineup(l){
-  if (!l || typeof l !== "object") return normLineup({});
-  // déjà au nouveau format ?
-  if (l.land && l.media) return normLineup(l);
-
-  const title = [l.spot, l.name].map(s=>String(s||"").trim()).filter(Boolean).join(" — ") || l.id || "Sans nom";
-  const name  = l.variant ? `${title} (${String(l.variant).trim()})` : title;
-
-  const imgs = l.images || {};
-  const media = [];
-  const single = imgs.single || imgs.one;
-  if (imgs.stand) media.push({url:String(imgs.stand), label:"Position"});
-  if (imgs.aim)   media.push({url:String(imgs.aim),   label:"Visée"});
-  if (single && single!==imgs.stand && single!==imgs.aim) media.push({url:String(single), label:""});
-
-  const tips = [];
-  if (l.target && String(l.target).trim()) tips.push(`Cible / groupe : ${String(l.target).trim()}`);
-
+  if(!l||typeof l!=="object") return normLineup({});
+  if(l.land&&l.media) return normLineup(l);
+  const variant=String(l.variant||"").trim();
+  const base=[l.spot,l.name].map(s=>String(s||"").trim()).filter(Boolean).join(" — ")||l.id||"Unnamed";
+  const name=variant?`${base} (${variant})`:base;
+  const fix=p=>String(p).replace(/^images\//,"media/");
+  const imgs=l.images||{}; const media=[];
+  const single=imgs.single||imgs.one;
+  if(imgs.stand) media.push({url:fix(imgs.stand),label:"Stand"});
+  if(imgs.aim) media.push({url:fix(imgs.aim),label:"Aim"});
+  if(single&&single!==imgs.stand&&single!==imgs.aim) media.push({url:fix(single),label:""});
   return normLineup({
-    id: l.id,
-    name,
-    type: l.type,
-    side: l.side,
-    technique: l.technique || "Clic gauche",
-    description: l.description || "",
-    land:  {x: l.x, y: l.y},
-    throw: l.throw || {x: l.x, y: (Number(l.y)||50)+10},
-    media,
-    tips,
+    id:l.id,name,type:l.type,side:l.side,
+    technique:String(l.description||"").trim(),description:"",
+    land:{x:l.x,y:l.y},throw:l.throw||{x:l.x,y:(Number(l.y)||50)+10},
+    media,tips:[],
   });
+}
+
+/* GitHub publish */
+function ghCfg(){try{return JSON.parse(localStorage.getItem(GH_KEY)||"null")}catch(e){return null}}
+function openPublishModal(){
+  const c=ghCfg()||{owner:"",repo:"",branch:"main",token:""};
+  showModal({
+    title:t("pubT"),
+    html:`<p style="margin-bottom:12px">${esc(t("pubIntro"))}</p>
+      <label class="f-label" style="margin-top:0">${esc(t("owner"))}</label><input id="gh-owner" value="${esc(c.owner)}" placeholder="mqhx">
+      <label class="f-label">${esc(t("repo"))}</label><input id="gh-repo" value="${esc(c.repo)}" placeholder="CS2-Lineups-V2">
+      <label class="f-label">${esc(t("branch"))}</label><input id="gh-branch" value="${esc(c.branch||"main")}">
+      <label class="f-label">${esc(t("token"))}</label><input id="gh-token" type="password" value="${esc(c.token)}" placeholder="github_pat_…">
+      <p class="f-hint" style="margin-top:8px">${esc(t("tokenHint"))}</p>`,
+    buttons:[
+      {label:t("cancel"),cls:"btn"},
+      {label:t("pubSave"),cls:"btn btn-amber",onClick:async()=>{
+        const cfg={owner:$("#gh-owner").value.trim(),repo:$("#gh-repo").value.trim(),
+                   branch:$("#gh-branch").value.trim()||"main",token:$("#gh-token").value.trim()};
+        localStorage.setItem(GH_KEY,JSON.stringify(cfg));
+        await doPublish(cfg);
+      }},
+    ],
+  });
+}
+async function publish(){
+  const cfg=ghCfg();
+  if(!cfg||!cfg.token||!cfg.owner||!cfg.repo){openPublishModal();return;}
+  await doPublish(cfg);
+}
+async function doPublish(cfg){
+  const url=`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/data.json`;
+  const headers={"Authorization":`Bearer ${cfg.token}`,"Accept":"application/vnd.github+json"};
+  try{
+    let sha=null;
+    const g=await fetch(`${url}?ref=${encodeURIComponent(cfg.branch)}`,{headers,cache:"no-store"});
+    if(g.ok){sha=(await g.json()).sha;}
+    const content=btoa(unescape(encodeURIComponent(JSON.stringify(state.db,null,2))));
+    const body={message:"Update lineups via site editor",content,branch:cfg.branch};
+    if(sha) body.sha=sha;
+    const p=await fetch(url,{method:"PUT",headers,body:JSON.stringify(body)});
+    if(!p.ok){const err=await p.json().catch(()=>({}));throw new Error(err.message||p.status);}
+    localStorage.setItem(SNAP_KEY,localStorage.getItem(STORE_KEY)||JSON.stringify(state.db));
+    updateLocalbar();
+    toast(t("pubOk"));
+  }catch(e){ toast(t("pubErr")+e.message); }
 }
 
 /* ---------------- routing ---------------- */
 function routeFromHash(){
-  const h = location.hash.replace("#","");
-  const m = MAPS.find(x=>x.id===h);
-  if (m) openMap(m.id, false); else showHome(false);
+  const h=location.hash.replace("#","");
+  const m=MAPS.find(x=>x.id===h);
+  if(m) openMap(m.id,false); else showHome(false);
 }
-window.addEventListener("hashchange", routeFromHash);
+window.addEventListener("hashchange",routeFromHash);
 
 function showHome(push=true){
-  state.map = null; state.selected=null; state.activeExec=null;
-  if (push) history.pushState(null,"", location.pathname);
-  $("#home").style.display = "block";
-  $("#viewer").style.display = "none";
-  $("#btn-home").style.display = "none";
-  $("#btn-edit").style.display = "none";
-  $("#hdr-map").textContent = "";
+  state.map=null;resetSelections();
+  if(push) history.pushState(null,"",location.pathname);
+  $("#home").style.display="block"; $("#viewer").style.display="none";
+  $("#btn-home").style.display="none"; $("#btn-edit").style.display="none";
+  $("#hdr-map").textContent="";
   renderHome();
 }
-function openMap(id, push=true){
-  state.map = id; state.selected=null; state.activeExec=null;
-  state.placing=null; state.editingId=null; state.editingExecId=null;
-  if (push) location.hash = id;
-  $("#home").style.display = "none";
-  $("#viewer").style.display = "block";
-  $("#btn-home").style.display = "";
-  $("#btn-edit").style.display = "";
-  const m = MAPS.find(x=>x.id===id);
-  $("#hdr-map").textContent = m ? m.name : id;
-  const img = $("#radar");
-  img.onerror = ()=>{ img.onerror=null; img.src = placeholderRadar(m?m.name:id); };
-  img.src = `maps/${id}.png`;
+function openMap(id,push=true){
+  state.map=id;resetSelections();
+  state.editMode=false;state.strokes=[];state.drawMode=false;state.curStroke=null;
+  $("#mapwrap").classList.remove("drawing","placing");
+  if(push&&location.hash!=="#"+id) location.hash=id;
+  $("#home").style.display="none"; $("#viewer").style.display="block";
+  $("#btn-home").style.display=""; $("#btn-edit").style.display="";
+  const m=MAPS.find(x=>x.id===id);
+  $("#hdr-map").textContent=m?m.name:id;
+  const img=$("#radar");
+  img.onerror=()=>{img.onerror=null;img.src=placeholderRadar(m?m.name:id);};
+  img.src=`maps/${id}.png`;
   renderAll();
+  requestAnimationFrame(resizeCanvas);
+}
+function resetSelections(){
+  state.openIds=[];state.activeExec=null;state.selectedStrat=null;
+  state.placing=null;state.editingId=null;state.editingExecId=null;state.editingStratId=null;
+}
+function placeholderRadar(name){
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900">
+    <rect width="900" height="900" fill="#11161E"/>
+    <g stroke="#22304233" stroke-width="1">${Array.from({length:17},(_,i)=>`<line x1="${i*56.25}" y1="0" x2="${i*56.25}" y2="900"/><line x1="0" y1="${i*56.25}" x2="900" y2="${i*56.25}"/>`).join("")}</g>
+    <text x="450" y="430" fill="#8E9AAB" font-family="monospace" font-size="34" text-anchor="middle">${esc(name).toUpperCase()}</text>
+    <text x="450" y="475" fill="#5C6878" font-family="monospace" font-size="17" text-anchor="middle">maps/${esc(name).toLowerCase().replace(/\s/g,"")}.png</text>
+  </svg>`;
+  return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);
 }
 
-function placeholderRadar(name){
-  const svg =
-   `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900">
-      <rect width="900" height="900" fill="#11161E"/>
-      <g stroke="#22304233" stroke-width="1">${
-        Array.from({length:17},(_,i)=>`<line x1="${i*56.25}" y1="0" x2="${i*56.25}" y2="900"/><line x1="0" y1="${i*56.25}" x2="900" y2="${i*56.25}"/>`).join("")
-      }</g>
-      <text x="450" y="430" fill="#8E9AAB" font-family="monospace" font-size="34" text-anchor="middle">${esc(name).toUpperCase()}</text>
-      <text x="450" y="475" fill="#5C6878" font-family="monospace" font-size="17" text-anchor="middle">Ajoute l'image maps/${esc(name).toLowerCase().replace(/\s/g,"")}.png</text>
-    </svg>`;
-  return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);
+/* ---------------- chrome (static i18n) ---------------- */
+function renderChrome(){
+  $("#btn-lang").textContent=LANG==="en"?"FR":"EN";
+  $("#btn-home").textContent=t("back");
+  $("#btn-edit").textContent=state.editMode?t("doneEdit"):t("editor");
+  $("#btn-edit").classList.toggle("btn-amber",state.editMode);
+  $("#home-eyebrow").textContent=t("homeEyebrow");
+  $("#home-title").textContent=t("homeTitle");
+  $("#home-sub").textContent=t("homeSub");
+  $("#lb-txt").textContent=t("localTxt");
+  $("#lb-publish").textContent=t("publishBtn");
+  $("#lb-export").textContent=t("exportBtn");
+  $("#lb-discard").textContent=t("discard");
+  $("#me-big").textContent=LANG==="en"?"No lineups here yet":"Aucun lineup ici pour l'instant";
+  $("#me-sub").textContent=t("briefEmpty");
+  renderLegend();
+  updateLocalbar();
+}
+function renderLegend(){
+  $("#legend").style.display=state.map?"":"none";
+  $("#legend-label").textContent=t("legend");
+  const gren=Object.entries(TYPES).map(([k,ty])=>
+    `<div class="lg-item"><span class="lg-ic" style="color:${ty.color}">${ICONS[k]}</span><span>${ty.label}</span></div>`).join("");
+  const tech=TECH_TOKENS.map(tk=>
+    `<div class="lg-item"><span class="lg-ic">${tk.svg}</span><span>${esc(LANG==="fr"?tk.fr:tk.en)}</span></div>`).join("");
+  $("#legend-body").innerHTML=`
+    <div class="lg-h">${esc(t("legendGren"))}</div>
+    <div class="lg-grid">${gren}</div>
+    <div class="lg-h">${esc(t("legendTech"))}</div>
+    <div class="lg-grid">${tech}</div>`;
 }
 
 /* ---------------- home ---------------- */
 function renderHome(){
-  const grid = $("#map-grid");
-  grid.innerHTML = "";
+  const grid=$("#map-grid"); grid.innerHTML="";
   MAPS.forEach(m=>{
-    const md = state.db.maps[m.id] || {lineups:[],executes:[]};
-    const card = document.createElement("button");
-    card.className = "map-card";
-    card.innerHTML = `
-      <img src="maps/${m.id}.png" alt="" loading="lazy">
-      <div class="map-card-body">
-        <span class="map-card-name">${m.name}</span>
-        <span class="map-card-count"><b>${md.lineups.length}</b> lineup${md.lineups.length>1?"s":""}${md.executes.length?` · ${md.executes.length} exec`:""}</span>
-      </div>`;
-    const img = card.querySelector("img");
-    img.onerror = ()=>{ img.onerror=null; img.src = placeholderRadar(m.name); };
-    card.addEventListener("click", ()=>openMap(m.id));
+    const md=state.db.maps[m.id]||{lineups:[],executes:[]};
+    const n=md.lineups.length;
+    const card=document.createElement("button");
+    card.className="map-card";
+    card.innerHTML=`<img src="maps/${m.id}.png" alt="" loading="lazy">
+      <div class="map-card-body"><span class="map-card-name">${m.name}</span>
+      <span class="map-card-count"><b>${n}</b> ${n===1?t("lineupCnt"):t("lineupsCnt")}${md.executes.length?` · ${md.executes.length} exec`:""}</span></div>`;
+    const img=card.querySelector("img");
+    img.onerror=()=>{img.onerror=null;img.src=placeholderRadar(m.name);};
+    card.addEventListener("click",()=>openMap(m.id));
     grid.appendChild(card);
   });
 }
 
-/* ---------------- viewer rendering ---------------- */
+/* ============================================================
+   VIEWER
+   ============================================================ */
 function renderAll(){
-  document.body.classList.toggle("editmode", state.editMode);
-  $("#btn-edit").textContent = state.editMode ? "✓ Terminer l'édition" : "✎ Éditeur";
-  $("#btn-edit").classList.toggle("btn-amber", state.editMode);
-  renderExecBar();
+  document.body.classList.toggle("editmode",state.editMode);
+  renderChrome();
+  if(!state.map){renderHome();return;}
+  renderRail();
   renderMarkers();
-  renderDrawer();
+  renderPanel();
+  renderMapTools();
 }
 
 function visibleLineups(){
-  const md = mapData();
-  const q = state.filters.q.trim().toLowerCase();
+  const md=mapData();
+  const q=state.filters.q.trim().toLowerCase();
   return md.lineups.filter(l=>{
-    if (!state.filters.types.has(l.type)) return false;
-    if (!state.filters.sides.has(l.side)) return false;
-    if (q){
-      const hay = (l.name+" "+l.description+" "+l.tips.join(" ")).toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
+    if(!state.filters.types.has(l.type))return false;
+    if(!state.filters.sides.has(l.side))return false;
+    if(q){const hay=(l.name+" "+l.technique+" "+l.description+" "+l.tips.join(" ")).toLowerCase();if(!hay.includes(q))return false;}
+    return true;
+  });
+}
+function visibleStrats(){
+  const md=mapData();
+  const q=state.filters.q.trim().toLowerCase();
+  return md.strats.filter(s=>{
+    if(!state.filters.sides.has(s.side))return false;
+    if(q){const hay=(s.name+" "+s.zone+" "+s.description).toLowerCase();if(!hay.includes(q))return false;}
     return true;
   });
 }
 
-function renderExecBar(){
-  const bar = $("#execbar");
-  const md = mapData();
-  bar.innerHTML = "";
-  if (!md.executes.length) return;
-  const lab = document.createElement("span");
-  lab.className = "exec-label"; lab.textContent = "Executes //";
-  bar.appendChild(lab);
-  md.executes.forEach(ex=>{
-    const b = document.createElement("button");
-    b.className = "exec-chip" + (state.activeExec===ex.id ? " on":"");
-    b.textContent = ex.name;
-    b.addEventListener("click", ()=>{
-      state.activeExec = (state.activeExec===ex.id)? null : ex.id;
-      state.selected = null;
-      renderAll();
-    });
-    bar.appendChild(b);
-  });
-  if (state.activeExec){
-    const clr = document.createElement("button");
-    clr.className = "exec-chip";
-    clr.textContent = "✕ Tout afficher";
-    clr.addEventListener("click", ()=>{ state.activeExec=null; renderAll(); });
-    bar.appendChild(clr);
+/* ---------------- left rail ---------------- */
+function renderRail(){
+  const md=mapData();
+  const rail=$("#rail");
+  const typeBtns=Object.entries(TYPES).map(([k,ty])=>
+    `<button class="fico ${state.filters.types.has(k)?"on":""}" data-type="${k}" title="${ty.label}" style="--c:${ty.color}">${ICONS[k]}</button>`).join("");
+  const sideBtns=["T","CT"].map(s=>
+    `<button class="fico side ${state.filters.sides.has(s)?"on":""}" data-side="${s}" title="${s}" style="--c:${s==="T"?"var(--t)":"var(--ct)"}">${s}</button>`).join("");
+
+  let listHtml="";
+  if(state.viewMode==="lineups"){
+    listHtml=`<div class="rail-box"><div class="rail-h">${esc(t("execs"))}${state.activeExec?`<button class="rail-clear" id="exec-showall">${esc(t("showAll"))}</button>`:""}</div>
+      ${md.executes.length? md.executes.map(ex=>`
+        <button class="xcard ${state.activeExec===ex.id?"on":""}" data-exec="${ex.id}">
+          <span class="xtop"><span class="xname">${esc(ex.name)}</span><span class="sidedot ${ex.side}">${ex.side}</span></span>
+          ${ex.description?`<span class="xdesc">${esc(ex.description)}</span>`:""}
+          <span class="xmeta">${ex.items.length} ${esc(t("utils"))}</span>
+        </button>`).join("")
+      : `<div class="rail-empty">${esc(t("noExecs"))}</div>`}</div>`;
+  } else {
+    const groups={};
+    visibleStrats().forEach(s=>{(groups[s.buy]=groups[s.buy]||[]).push(s);});
+    const order=BUYS.filter(b=>groups[b]);
+    listHtml=`<div class="rail-box"><div class="rail-h">${esc(t("strats"))}</div>
+      ${order.length? order.map(b=>`
+        <div class="rail-h" style="margin-top:10px">${esc(t("buyNames")[b])}</div>
+        ${groups[b].map(s=>`
+          <button class="xcard ${state.selectedStrat===s.id?"on":""}" data-strat="${s.id}">
+            <span class="xtop"><span class="xname">${esc(s.name)}</span><span class="sidedot ${s.side}">${s.side}</span></span>
+            ${s.description?`<span class="xdesc">${esc(s.description)}</span>`:""}
+            ${s.zone?`<span class="xmeta">${esc(t("zone"))}: ${esc(s.zone)}</span>`:""}
+          </button>`).join("")}`).join("")
+      : `<div class="rail-empty">${esc(t("noStrats"))}</div>`}</div>`;
   }
+
+  rail.innerHTML=`
+    <div class="modeswitch">
+      <button data-mode="lineups" class="${state.viewMode==="lineups"?"on":""}">${esc(t("modeLineups"))}</button>
+      <button data-mode="strats" class="${state.viewMode==="strats"?"on":""}">${esc(t("modeStrats"))}</button>
+    </div>
+    <div class="rail-box">
+      <div class="rail-h">${esc(t("filters"))}</div>
+      <div class="fgrid">${state.viewMode==="lineups"?typeBtns:""}${sideBtns}</div>
+    </div>
+    ${listHtml}`;
+
+  rail.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click",()=>{
+    state.viewMode=b.dataset.mode;
+    state.openIds=[];state.activeExec=null;state.selectedStrat=null;
+    renderAll();
+  }));
+  rail.querySelectorAll("[data-type]").forEach(b=>b.addEventListener("click",()=>{
+    const k=b.dataset.type;
+    state.filters.types.has(k)?state.filters.types.delete(k):state.filters.types.add(k);
+    renderRail();renderMarkers();
+  }));
+  rail.querySelectorAll("[data-side]").forEach(b=>b.addEventListener("click",()=>{
+    const s=b.dataset.side;
+    state.filters.sides.has(s)?state.filters.sides.delete(s):state.filters.sides.add(s);
+    renderRail();renderMarkers();
+  }));
+  rail.querySelectorAll("[data-exec]").forEach(b=>b.addEventListener("click",()=>{
+    state.activeExec=b.dataset.exec;state.openIds=[];
+    renderAll();openExecView(b.dataset.exec);
+  }));
+  const sa=rail.querySelector("#exec-showall");
+  if(sa) sa.addEventListener("click",(e)=>{e.stopPropagation();state.activeExec=null;renderAll();});
+  rail.querySelectorAll("[data-strat]").forEach(b=>b.addEventListener("click",()=>{
+    state.selectedStrat=(state.selectedStrat===b.dataset.strat)?null:b.dataset.strat;
+    renderAll();
+  }));
 }
 
+/* ---------------- markers ---------------- */
 function renderMarkers(){
-  const md = mapData();
-  const box = $("#markers");
-  const paths = $("#trajpaths");
-  const defs = $("#trajdefs");
-  box.innerHTML = ""; paths.innerHTML = "";
-  defs.innerHTML = Object.entries(TYPES).map(([k,t])=>
-    `<marker id="arr-${k}" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-       <path d="M0 0 L6 3 L0 6 z" fill="${t.color}"/></marker>`).join("");
+  const md=mapData();
+  const box=$("#markers"); const paths=$("#trajpaths"); const defs=$("#trajdefs");
+  box.innerHTML=""; paths.innerHTML="";
+  defs.innerHTML=Object.entries(TYPES).map(([k,ty])=>
+    `<marker id="arr-${k}" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="4.2" markerHeight="4.2" orient="auto-start-reverse"><path d="M0 0 L6 3 L0 6 z" fill="${ty.color}"/></marker>`).join("");
 
-  const vis = visibleLineups();
-  const exec = state.activeExec ? md.executes.find(e=>e.id===state.activeExec) : null;
-  const order = exec ? exec.items : null;
+  $("#map-empty").style.display=(md.lineups.length||state.editMode||state.viewMode==="strats")?"none":"flex";
 
-  $("#map-empty").style.display = md.lineups.length ? "none" : "flex";
+  if(state.viewMode==="strats" && !state.editMode){
+    visibleStrats().forEach(s=>{
+      if(!s.point)return;
+      const z=document.createElement("button");
+      z.className="mk-zone "+s.side+(state.selectedStrat===s.id?" sel":"");
+      z.style.left=s.point.x+"%"; z.style.top=s.point.y+"%";
+      z.textContent=s.zone||s.name.slice(0,6);
+      z.title=s.name;
+      z.addEventListener("click",e=>{e.stopPropagation();
+        state.selectedStrat=(state.selectedStrat===s.id)?null:s.id;renderAll();});
+      box.appendChild(z);
+    });
+    return;
+  }
+  if(state.viewMode==="strats" && state.editMode){
+    // in edit mode strat tab: show all strat points draggable
+    md.strats.forEach(s=>{
+      if(!s.point)return;
+      const z=document.createElement("button");
+      z.className="mk-zone "+s.side+(state.editingStratId===s.id?" sel":"");
+      z.style.left=s.point.x+"%"; z.style.top=s.point.y+"%";
+      z.textContent=s.zone||s.name.slice(0,6); z.title=s.name;
+      z.addEventListener("click",e=>{e.stopPropagation();startEditStrat(s.id);});
+      enableDrag(z,s,"point");
+      box.appendChild(z);
+    });
+    return;
+  }
+
+  const vis=visibleLineups();
+  const exec=state.activeExec?md.executes.find(e=>e.id===state.activeExec):null;
+  const order=exec?exec.items:null;
 
   vis.forEach(l=>{
-    const inExec = order ? order.includes(l.id) : true;
-    const selected = state.selected===l.id;
-    const c = TYPES[l.type].color;
-
-    // landing marker
-    const mk = document.createElement("button");
-    mk.className = "mk" + (selected?" sel":"") + (inExec?"":" dim");
-    mk.style.setProperty("--c", c);
-    mk.style.left = l.land.x+"%";
-    mk.style.top  = l.land.y+"%";
-    mk.title = l.name;
-    mk.innerHTML = `<span class="diamond"></span>${ICONS[l.type]}`;
-    if (order && inExec){
-      const n = document.createElement("span");
-      n.className = "stepnum"; n.textContent = order.indexOf(l.id)+1;
+    const inExec=order?order.includes(l.id):true;
+    const selected=state.openIds.includes(l.id);
+    const c=TYPES[l.type].color;
+    const mk=document.createElement("button");
+    mk.className="mk"+(selected?" sel":"")+(inExec?"":" dim");
+    mk.style.setProperty("--c",c);
+    mk.style.left=l.land.x+"%"; mk.style.top=l.land.y+"%";
+    mk.title=l.name;
+    mk.innerHTML=`<span class="diamond"></span>${ICONS[l.type]}`;
+    if(order&&inExec){
+      const n=document.createElement("span");
+      n.className="stepnum";n.textContent=order.indexOf(l.id)+1;
       mk.appendChild(n);
     }
-    mk.addEventListener("click", (e)=>{
+    mk.addEventListener("click",e=>{
       e.stopPropagation();
-      if (state.editMode){ startEditLineup(l.id); }
-      else { state.selected = selected ? null : l.id; renderAll(); }
+      if(state.editMode){startEditLineup(l.id);}
+      else{
+        if(state.openIds.includes(l.id))state.openIds=state.openIds.filter(x=>x!==l.id);
+        else state.openIds.push(l.id);
+        renderAll();
+      }
     });
-    mk.addEventListener("mouseenter", ()=>drawTraj(l, false));
-    mk.addEventListener("mouseleave", ()=>{ if(state.selected!==l.id) renderSelectedTraj(); });
-    if (state.editMode) enableDrag(mk, l, "land");
+    mk.addEventListener("mouseenter",()=>{
+      renderSelectedTraj();
+      if(!state.openIds.includes(l.id)&&!(state.editMode&&state.editingId===l.id))trajPath(l);
+    });
+    mk.addEventListener("mouseleave",()=>renderSelectedTraj());
+    if(state.editMode)enableDrag(mk,l,"land");
     box.appendChild(mk);
 
-    // throw marker (visible if selected, or edit mode editing this one)
-    if (selected || (state.editMode && state.editingId===l.id)){
-      const tm = document.createElement("div");
-      tm.className = "mk-throw";
-      tm.style.setProperty("--c", c);
-      tm.style.left = l.throw.x+"%";
-      tm.style.top  = l.throw.y+"%";
-      tm.title = "Position de lancer";
-      if (state.editMode) enableDrag(tm, l, "throw");
+    if(selected||(state.editMode&&state.editingId===l.id)){
+      const tm=document.createElement("div");
+      tm.className="mk-throw";
+      tm.style.setProperty("--c",c);
+      tm.style.left=l.throw.x+"%"; tm.style.top=l.throw.y+"%";
+      if(state.editMode)enableDrag(tm,l,"throw");
       box.appendChild(tm);
     }
   });
-
   renderSelectedTraj();
 }
-
 function trajPath(l){
-  const a=l.throw, b=l.land;
-  const mx=(a.x+b.x)/2, my=(a.y+b.y)/2;
-  const dx=b.x-a.x, dy=b.y-a.y;
-  const len=Math.hypot(dx,dy)||1;
-  const off=Math.min(7, len*.18);
-  const cx=mx - dy/len*off, cy=my + dx/len*off;
-  return `M ${a.x} ${a.y} Q ${cx} ${cy} ${b.x} ${b.y}`;
-}
-function drawTraj(l, persistent){
-  const paths = $("#trajpaths");
-  paths.innerHTML = "";
-  const p = document.createElementNS("http://www.w3.org/2000/svg","path");
-  p.setAttribute("d", trajPath(l));
-  p.setAttribute("stroke", TYPES[l.type].color);
-  p.setAttribute("marker-end", `url(#arr-${l.type})`);
-  p.classList.add("animated");
+  const paths=$("#trajpaths");
+  const p=document.createElementNS("http://www.w3.org/2000/svg","path");
+  p.setAttribute("d",`M ${l.throw.x} ${l.throw.y} L ${l.land.x} ${l.land.y}`);
+  p.setAttribute("stroke",TYPES[l.type].color);
+  p.setAttribute("marker-end",`url(#arr-${l.type})`);
   paths.appendChild(p);
-  // throw point hint while hovering (if not already rendered)
-  if (!persistent){
-    const dot = document.createElementNS("http://www.w3.org/2000/svg","circle");
-    dot.setAttribute("cx", l.throw.x); dot.setAttribute("cy", l.throw.y);
-    dot.setAttribute("r", "1.1");
-    dot.setAttribute("fill", TYPES[l.type].color);
-    paths.appendChild(dot);
-  }
 }
 function renderSelectedTraj(){
-  const md = mapData();
-  $("#trajpaths").innerHTML = "";
-  const id = state.editMode ? state.editingId : state.selected;
-  if (!id) return;
-  const l = md.lineups.find(x=>x.id===id);
-  if (l) drawTraj(l, true);
-}
-
-/* drag markers in edit mode */
-function enableDrag(el, lineup, kind){
-  el.addEventListener("pointerdown", (e)=>{
-    if (!state.editMode) return;
-    e.preventDefault(); e.stopPropagation();
-    el.setPointerCapture(e.pointerId);
-    const move = (ev)=>{
-      const pt = mapPoint(ev);
-      lineup[kind].x = pt.x; lineup[kind].y = pt.y;
-      el.style.left = pt.x+"%"; el.style.top = pt.y+"%";
-      renderSelectedTrajLive(lineup);
-    };
-    const up = ()=>{
-      el.removeEventListener("pointermove", move);
-      el.removeEventListener("pointerup", up);
-      save();
-      if (state.editingId===lineup.id) fillCoordInputs(lineup);
-    };
-    el.addEventListener("pointermove", move);
-    el.addEventListener("pointerup", up);
+  $("#trajpaths").innerHTML="";
+  if(state.viewMode!=="lineups")return;
+  const md=mapData();
+  if(state.editMode){
+    const l=md.lineups.find(x=>x.id===state.editingId);
+    if(l)trajPath(l);
+    return;
+  }
+  state.openIds.forEach(id=>{
+    const l=md.lineups.find(x=>x.id===id);
+    if(l)trajPath(l);
   });
 }
-function renderSelectedTrajLive(l){
-  if (state.editingId===l.id || state.selected===l.id) drawTraj(l, true);
+function enableDrag(el,obj,key){
+  el.addEventListener("pointerdown",e=>{
+    if(!state.editMode)return;
+    e.preventDefault();e.stopPropagation();
+    el.setPointerCapture(e.pointerId);
+    const move=ev=>{
+      const p=mapPoint(ev);
+      obj[key]=obj[key]||{};
+      obj[key].x=p.x;obj[key].y=p.y;
+      el.style.left=p.x+"%";el.style.top=p.y+"%";
+      if(key!=="point")renderSelectedTraj();
+    };
+    const up=()=>{el.removeEventListener("pointermove",move);el.removeEventListener("pointerup",up);save();
+      const co=$("#f-coords");
+      if(co&&obj.land&&obj.throw)co.textContent=`${t("impact")} ${obj.land.x}, ${obj.land.y} · ${t("throwLbl")} ${obj.throw.x}, ${obj.throw.y}`;
+    };
+    el.addEventListener("pointermove",move);
+    el.addEventListener("pointerup",up);
+  });
 }
-
-/* map coordinates */
 function mapPoint(ev){
-  const r = $("#mapwrap").getBoundingClientRect();
-  let x = ((ev.clientX - r.left)/r.width)*100;
-  let y = ((ev.clientY - r.top)/r.height)*100;
-  x = Math.max(0, Math.min(100, x));
-  y = Math.max(0, Math.min(100, y));
-  return {x:+x.toFixed(2), y:+y.toFixed(2)};
+  const r=$("#mapwrap").getBoundingClientRect();
+  let x=((ev.clientX-r.left)/r.width)*100, y=((ev.clientY-r.top)/r.height)*100;
+  return {x:+Math.max(0,Math.min(100,x)).toFixed(2),y:+Math.max(0,Math.min(100,y)).toFixed(2)};
 }
 
-/* ---------------- drawer ---------------- */
-function renderDrawer(){
-  const dr = $("#drawer");
-  if (state.editMode){ renderEditor(dr); return; }
+/* ---------------- right panel ---------------- */
+function renderPanel(){
+  const panel=$("#panel");
+  if(state.editMode){renderEditor(panel);return;}
+  const md=mapData();
 
-  const md = mapData();
-  const exec = state.activeExec ? md.executes.find(e=>e.id===state.activeExec) : null;
+  if(state.viewMode==="strats"){
+    const s=state.selectedStrat?md.strats.find(x=>x.id===state.selectedStrat):null;
+    if(s){renderStratDetail(panel,s);return;}
+    panel.innerHTML=`<div class="dr-empty"><div class="big">${esc(t("briefing"))}</div>
+      <p>${esc(md.strats.length?t("briefStrat"):t("noStrats"))}</p></div>`;
+    return;
+  }
 
-  if (state.selected){
-    const l = md.lineups.find(x=>x.id===state.selected);
-    if (!l){ state.selected=null; renderDrawer(); return; }
-    dr.innerHTML = `
-      <div class="dr-pad">
-        <div class="dr-eyebrow"><span>${esc(MAPS.find(m=>m.id===state.map)?.name||state.map)} // ${esc(l.side)}</span>
-          <button class="icon-btn" id="dr-close" title="Fermer">✕</button></div>
-        <h2 class="dr-title">${esc(l.name)}</h2>
-        <div class="badges">
-          <span class="badge type-${l.type}"><span class="dot"></span>${TYPES[l.type].label}</span>
-          <span class="badge side-${l.side}">${l.side==="T"?"Terro":"CT"}</span>
-          <span class="badge tech">${esc(l.technique)}</span>
-        </div>
-        ${l.description ? `<p class="dr-desc">${esc(l.description)}</p>` : ""}
-        ${l.media.length ? `<div class="dr-h">Visuels</div><div class="media-grid">${l.media.map((m,i)=>mediaHTML(m,i)).join("")}</div>` : ""}
-        ${l.tips.length ? `<div class="dr-h">Tips &amp; tricks</div><ul class="tips">${l.tips.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>` : ""}
+  if(state.openIds.length){
+    const open=state.openIds.map(id=>md.lineups.find(x=>x.id===id)).filter(Boolean);
+    if(open.length!==state.openIds.length)state.openIds=open.map(l=>l.id);
+    panel.innerHTML=`
+      <div class="dr-pad" style="display:flex;flex-direction:column;gap:11px">
+        <div class="dr-eyebrow" style="margin-bottom:0"><span>${open.length} ${open.length===1?esc(t("lineupCnt")):esc(t("lineupsCnt"))}</span>
+          <button class="icon-btn" id="dr-closeall" title="${esc(t("close"))}">✕</button></div>
+        ${open.map(l=>lineupCardHTML(l)).join("")}
       </div>`;
-    $("#dr-close").addEventListener("click", ()=>{ state.selected=null; renderAll(); });
-    dr.querySelectorAll(".media-item").forEach((el,i)=>{
-      el.addEventListener("click", ()=>openLightbox(l.media[i]));
+    $("#dr-closeall").addEventListener("click",()=>{state.openIds=[];renderAll();});
+    panel.querySelectorAll(".lcard").forEach(card=>{
+      const id=card.dataset.id;
+      const l=md.lineups.find(x=>x.id===id);
+      card.querySelector(".lcard-close").addEventListener("click",e=>{
+        e.stopPropagation();
+        state.openIds=state.openIds.filter(x=>x!==id);renderAll();
+      });
+      card.querySelectorAll(".media-item").forEach((el,i)=>el.addEventListener("click",()=>openLightbox(l.media,i)));
+      card.addEventListener("dragstart",e=>{
+        e.dataTransfer.setData("text/plain",id);
+        e.dataTransfer.effectAllowed="move";
+        card.classList.add("dragging");
+      });
+      card.addEventListener("dragend",()=>{
+        card.classList.remove("dragging");
+        panel.querySelectorAll(".lcard").forEach(c=>c.classList.remove("dragover"));
+      });
+      card.addEventListener("dragover",e=>{e.preventDefault();e.dataTransfer.dropEffect="move";card.classList.add("dragover");});
+      card.addEventListener("dragleave",()=>card.classList.remove("dragover"));
+      card.addEventListener("drop",e=>{
+        e.preventDefault();card.classList.remove("dragover");
+        const src=e.dataTransfer.getData("text/plain");
+        if(!src||src===id)return;
+        const arr=state.openIds.filter(x=>x!==src);
+        arr.splice(arr.indexOf(id),0,src);
+        state.openIds=arr;
+        renderPanel();
+      });
     });
     return;
   }
 
-  if (exec){
-    dr.innerHTML = `
-      <div class="dr-pad">
-        <div class="dr-eyebrow"><span>Execute // ${esc(exec.side)}</span></div>
-        <h2 class="dr-title">${esc(exec.name)}</h2>
-        ${exec.description? `<p class="dr-desc">${esc(exec.description)}</p>`:""}
-        <div class="dr-h">Ordre des utilitaires</div>
-        <ol class="steps">${
-          exec.items.map((id,i)=>{
-            const l = md.lineups.find(x=>x.id===id);
-            if (!l) return "";
-            return `<li><button data-id="${l.id}">
+  if(state.activeExec){
+    const ex=md.executes.find(e=>e.id===state.activeExec);
+    if(ex){
+      panel.innerHTML=`
+        <div class="dr-pad">
+          <div class="dr-eyebrow"><span>Execute // ${esc(ex.side)}</span>
+            <button class="icon-btn" id="dr-close" title="${esc(t("close"))}">✕</button></div>
+          <h2 class="dr-title">${esc(ex.name)}</h2>
+          ${ex.description?`<p class="dr-desc">${esc(ex.description)}</p>`:""}
+          <div class="dr-h">${ex.items.length} ${esc(t("steps"))}</div>
+          ${ex.items.map((id,i)=>{
+            const l=md.lineups.find(x=>x.id===id);if(!l)return"";
+            return `<button class="linkrow" data-id="${l.id}">
               <span class="n">${i+1}</span>
               <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>
               <span class="nm">${esc(l.name)}</span>
-              <span class="sub">${TYPES[l.type].label}</span>
-            </button></li>`;
-          }).join("")
-        }</ol>
-      </div>`;
-    dr.querySelectorAll(".steps button").forEach(b=>{
-      b.addEventListener("click", ()=>{ state.selected=b.dataset.id; renderAll(); });
-    });
-    return;
+              <span class="sub">${l.technique?techIconsHTML(l.technique,"sm"):esc(TYPES[l.type].label)}</span></button>`;
+          }).join("")}
+          <div class="ed-foot"><button class="btn btn-amber" id="open-briefing">${esc(t("openBriefing"))}</button></div>
+        </div>`;
+      $("#dr-close").addEventListener("click",()=>{state.activeExec=null;renderAll();});
+      $("#open-briefing").addEventListener("click",()=>openExecView(ex.id));
+      panel.querySelectorAll(".linkrow").forEach(b=>b.addEventListener("click",()=>{
+        if(!state.openIds.includes(b.dataset.id))state.openIds.push(b.dataset.id);
+        renderAll();
+      }));
+      return;
+    }
   }
 
-  const md2 = mapData();
-  dr.innerHTML = `
-    <div class="dr-empty">
-      <div class="big">Briefing</div>
-      <p>${md2.lineups.length
-          ? "Clique sur un marqueur de la map pour voir le lineup : visuels, technique de lancer et tips."
-          : "Cette map est vide. Ouvre l'éditeur (en haut à droite) pour créer ton premier lineup."}</p>
-      ${md2.executes.length? "<p style='margin-top:8px'>Astuce : clique sur un <b>execute</b> au-dessus de la map pour afficher uniquement les utilitaires de la strat, dans l'ordre.</p>":""}
-    </div>`;
+  panel.innerHTML=`<div class="dr-empty"><div class="big">${esc(t("briefing"))}</div>
+    <p>${esc(md.lineups.length?t("briefText"):t("briefEmpty"))}</p>
+    ${md.executes.length?`<p style="margin-top:8px">${esc(t("briefExec"))}</p>`:""}</div>`;
 }
 
-function mediaHTML(m, i){
-  const url = esc(m.url);
-  const isVideo = /\.(mp4|webm|mov)(\?.*)?$/i.test(m.url);
-  const inner = isVideo
-    ? `<video src="${url}" muted loop autoplay playsinline></video>`
-    : `<img src="${url}" alt="${esc(m.label||"media")}" loading="lazy">`;
+function lineupCardHTML(l){
+  return `<div class="lcard" draggable="true" data-id="${esc(l.id)}">
+    <div class="lcard-head">
+      <span class="grip" title="Drag">⠿</span>
+      <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>
+      <span class="lcard-name">${esc(l.name)}</span>
+      <span class="sidedot ${l.side}">${l.side}</span>
+      <button class="icon-btn lcard-close" title="${esc(t("close"))}">✕</button>
+    </div>
+    ${l.technique?`<div class="lcard-tech">${techIconsHTML(l.technique)}</div>`:""}
+    ${l.description?`<p class="dr-desc" style="margin-top:8px;font-size:13px">${esc(l.description)}</p>`:""}
+    ${l.media.length?`<div class="media-grid" style="margin-top:10px">${l.media.map(m=>mediaHTML(m)).join("")}</div>`:""}
+    ${l.tips.length?`<ul class="tips" style="margin-top:10px">${l.tips.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+  </div>`;
+}
+
+function renderStratDetail(panel,s){
+  const md=mapData();
+  panel.innerHTML=`
+    <div class="dr-pad">
+      <div class="dr-eyebrow"><span>${esc(t("modeStrats"))} // ${esc(s.side)}</span>
+        <button class="icon-btn" id="dr-close" title="${esc(t("close"))}">✕</button></div>
+      <h2 class="dr-title">${esc(s.name)}</h2>
+      <div class="badges">
+        <span class="badge side-${s.side}">${s.side}</span>
+        <span class="badge">${esc(t("buyNames")[s.buy])}</span>
+        ${s.zone?`<span class="badge tech">${esc(t("zone"))}: ${esc(s.zone)}</span>`:""}
+      </div>
+      ${s.description?`<p class="dr-desc">${esc(s.description)}</p>`:""}
+      ${s.items.length?`<div class="dr-h">${esc(t("linked"))}</div>${
+        s.items.map((it,i)=>{
+          if(it.kind==="exec"){
+            const ex=md.executes.find(x=>x.id===it.id);if(!ex)return"";
+            return `<button class="linkrow" data-exec="${ex.id}">
+              <span class="n">${i+1}</span><span class="ic" style="color:var(--t)">⚙</span>
+              <span class="nm">${esc(ex.name)}</span><span class="sub">EXEC · ${ex.items.length}</span></button>`;
+          }
+          const l=md.lineups.find(x=>x.id===it.id);if(!l)return"";
+          return `<button class="linkrow" data-lineup="${l.id}">
+            <span class="n">${i+1}</span>
+            <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>
+            <span class="nm">${esc(l.name)}</span><span class="sub">${l.technique?techIconsHTML(l.technique,"sm"):esc(TYPES[l.type].label)}</span></button>`;
+        }).join("")}`:""}
+    </div>`;
+  $("#dr-close").addEventListener("click",()=>{state.selectedStrat=null;renderAll();});
+  panel.querySelectorAll("[data-lineup]").forEach(b=>b.addEventListener("click",()=>{
+    state.viewMode="lineups";state.openIds=[b.dataset.lineup];state.activeExec=null;renderAll();
+  }));
+  panel.querySelectorAll("[data-exec]").forEach(b=>b.addEventListener("click",()=>{
+    state.viewMode="lineups";state.activeExec=b.dataset.exec;state.openIds=[];
+    renderAll();openExecView(b.dataset.exec);
+  }));
+}
+
+function mediaHTML(m){
+  const url=esc(m.url);
+  const inner=isVideo(m.url)
+    ?`<video src="${url}" muted loop autoplay playsinline></video>`
+    :`<img src="${url}" alt="${esc(m.label||"media")}" loading="lazy">`;
   return `<button class="media-item" type="button">${inner}${m.label?`<span class="cap">${esc(m.label)}</span>`:""}</button>`;
 }
-function openLightbox(m){
-  const lb = $("#lightbox"), inner = $("#lightbox-inner");
-  const isVideo = /\.(mp4|webm|mov)(\?.*)?$/i.test(m.url);
-  inner.innerHTML = isVideo
-    ? `<video src="${esc(m.url)}" controls autoplay loop playsinline></video>`
-    : `<img src="${esc(m.url)}" alt="">`;
-  lb.classList.add("show");
+
+/* ---------------- execute briefing overlay ---------------- */
+function openExecView(execId){
+  const md=mapData();
+  const ex=md.executes.find(e=>e.id===execId);
+  if(!ex)return;
+  const box=$("#xv-box");
+  box.innerHTML=`
+    <div class="xv-head">
+      <div class="xv-titles">
+        <div class="xv-eyebrow">Execute // ${esc(ex.side)} · ${ex.items.length} ${esc(t("steps"))}</div>
+        <div class="xv-title">${esc(ex.name)}</div>
+        ${ex.description?`<div class="xv-desc">${esc(ex.description)}</div>`:""}
+      </div>
+      <button class="icon-btn" id="xv-close" title="${esc(t("close"))}" style="font-size:16px">✕</button>
+    </div>
+    <div class="xv-steps">${
+      ex.items.map((id,i)=>{
+        const l=md.lineups.find(x=>x.id===id);if(!l)return"";
+        return `<div class="xv-step" style="--c:${TYPES[l.type].color}">
+          <div class="xv-step-head">
+            <span class="xv-num">${i+1}</span>
+            <span class="ic">${ICONS[l.type]}</span>
+            <span class="nm">${esc(l.name)}</span>
+            ${l.technique?`<span class="tech">${techIconsHTML(l.technique)}</span>`:""}
+            <span class="sidedot ${l.side}">${l.side}</span>
+          </div>
+          ${l.media.length?`<div class="xv-media">${l.media.map((m,mi)=>{
+            const inner=isVideo(m.url)?`<video src="${esc(m.url)}" muted loop autoplay playsinline></video>`
+                                      :`<img src="${esc(m.url)}" loading="lazy" alt="">`;
+            return `<button class="xv-m" data-l="${l.id}" data-m="${mi}">${inner}${m.label?`<span class="cap">${esc(m.label)}</span>`:""}</button>`;
+          }).join("")}</div>`:""}
+          ${l.description?`<div class="xv-step-desc">${esc(l.description)}</div>`:""}
+          ${l.tips.length?`<div class="xv-step-desc">${l.tips.map(x=>"▸ "+esc(x)).join("<br>")}</div>`:""}
+        </div>`;
+      }).join("")
+    }</div>`;
+  $("#xv-close").addEventListener("click",closeExecView);
+  box.querySelectorAll(".xv-m").forEach(b=>b.addEventListener("click",()=>{
+    const l=md.lineups.find(x=>x.id===b.dataset.l);
+    if(l)openLightbox(l.media,+b.dataset.m);
+  }));
+  $("#execview").classList.add("show");
 }
-$("#lightbox").addEventListener("click", ()=>{
-  $("#lightbox").classList.remove("show");
-  $("#lightbox-inner").innerHTML = "";
-});
+function closeExecView(){$("#execview").classList.remove("show");}
+$("#execview").addEventListener("click",e=>{if(e.target.id==="execview")closeExecView();});
 
-/* ---------------- editor ---------------- */
-function renderEditor(dr){
-  const md = mapData();
+/* ============================================================
+   EDITOR
+   ============================================================ */
+function startEditLineup(id){
+  state.editMode=true;state.edTab="lineups";
+  state.editingId=id;state.editingExecId=null;state.editingStratId=null;state.placing=null;
+  renderAll();
+}
+function startEditStrat(id){
+  state.editMode=true;state.edTab="strats";
+  state.editingStratId=id;state.editingId=null;state.editingExecId=null;state.placing=null;
+  renderAll();
+}
+function togglePlacing(kind){
+  state.placing=(state.placing===kind)?null:kind;
+  const wrap=$("#mapwrap");
+  wrap.classList.toggle("placing",!!state.placing);
+  $("#placing-hint").textContent=
+    state.placing==="land"?t("placingImpact"):
+    state.placing==="throw"?t("placingThrow"):t("placingPoint");
+  const bl=$("#f-place-land"),bt=$("#f-place-throw"),bp=$("#f-place-point");
+  if(bl)bl.classList.toggle("arming",state.placing==="land");
+  if(bt)bt.classList.toggle("arming",state.placing==="throw");
+  if(bp)bp.classList.toggle("arming",state.placing==="spoint");
+}
 
-  // form for one lineup
-  if (state.editingId){
-    const l = md.lineups.find(x=>x.id===state.editingId);
-    if (!l){ state.editingId=null; renderEditor(dr); return; }
-    dr.innerHTML = `
-      <div class="dr-pad">
-        <div class="dr-eyebrow"><span>Éditeur // lineup</span>
-          <button class="icon-btn" id="ed-back" title="Retour à la liste">←</button></div>
+function renderEditor(panel){
+  const md=mapData();
+  if(state.editingId){renderLineupForm(panel,md);return;}
+  if(state.editingExecId){renderExecForm(panel,md);return;}
+  if(state.editingStratId){renderStratForm(panel,md);return;}
 
-        <label class="f-label">Nom</label>
-        <input id="f-name" value="${esc(l.name)}" placeholder="ex. Smoke CT depuis T spawn">
-
-        <label class="f-label">Type</label>
-        <div class="seg" id="f-type">${Object.entries(TYPES).map(([k,t])=>
-          `<button data-v="${k}" class="${l.type===k?"on":""}">${t.label}</button>`).join("")}</div>
-
-        <label class="f-label">Side</label>
-        <div class="seg" id="f-side">
-          <button data-v="T" class="${l.side==="T"?"on":""}">T</button>
-          <button data-v="CT" class="${l.side==="CT"?"on":""}">CT</button>
-        </div>
-
-        <label class="f-label">Technique de lancer</label>
-        <select id="f-tech">${TECHS.map(t=>`<option ${l.technique===t?"selected":""}>${t}</option>`).join("")}</select>
-
-        <label class="f-label">Position sur la map</label>
-        <div class="place-btns">
-          <button class="btn btn-sm ${state.placing==="land"?"arming":""}" id="f-place-land">◆ Placer l'impact</button>
-          <button class="btn btn-sm ${state.placing==="throw"?"arming":""}" id="f-place-throw">◎ Placer le lancer</button>
-        </div>
-        <div style="font-family:var(--mono);font-size:11px;color:var(--mut);margin-top:6px" id="f-coords">
-          impact ${l.land.x}, ${l.land.y} · lancer ${l.throw.x}, ${l.throw.y}
-        </div>
-        <div style="font-size:12px;color:var(--mut);margin-top:4px">Astuce : tu peux aussi faire glisser les points directement sur la map.</div>
-
-        <label class="f-label">Description</label>
-        <textarea id="f-desc" placeholder="Où se placer, où viser…">${esc(l.description)}</textarea>
-
-        <label class="f-label">Visuels (images, GIFs ou vidéos)</label>
-        <div class="sub-list" id="f-media">${l.media.map((m,i)=>`
-          <div class="sub-row" data-i="${i}">
-            <input class="m-url" value="${esc(m.url)}" placeholder="media/mirage/smoke-ct.gif ou https://…">
-            <input class="m-cap" value="${esc(m.label)}" placeholder="Légende" style="max-width:110px">
-            <button class="icon-btn danger m-del" title="Supprimer">✕</button>
-          </div>`).join("")}</div>
-        <button class="add-line" id="f-media-add">+ Ajouter un visuel</button>
-        <div style="font-size:12px;color:var(--mut)">Mets tes fichiers dans le dossier <b>media/</b> de ton site, ou colle un lien direct (les .gif et .mp4 marchent).</div>
-
-        <label class="f-label">Tips &amp; tricks</label>
-        <div class="sub-list" id="f-tips">${l.tips.map((t,i)=>`
-          <div class="sub-row" data-i="${i}">
-            <input class="t-txt" value="${esc(t)}" placeholder="ex. Jeter dès que la flash part">
-            <button class="icon-btn danger t-del" title="Supprimer">✕</button>
-          </div>`).join("")}</div>
-        <button class="add-line" id="f-tips-add">+ Ajouter un tip</button>
-
-        <div class="ed-foot">
-          <button class="btn btn-amber" id="f-done">✓ Terminé</button>
-          <button class="btn btn-danger" id="f-del">Supprimer</button>
-        </div>
-      </div>`;
-
-    const commit = ()=>{
-      l.name = $("#f-name").value.trim() || "Sans nom";
-      l.technique = $("#f-tech").value;
-      l.description = $("#f-desc").value;
-      l.media = $$("#f-media .sub-row").map(r=>({
-        url: r.querySelector(".m-url").value.trim(),
-        label: r.querySelector(".m-cap").value.trim(),
-      })).filter(m=>m.url);
-      l.tips = $$("#f-tips .sub-row").map(r=>r.querySelector(".t-txt").value.trim()).filter(Boolean);
-      save();
-    };
-
-    $("#ed-back").addEventListener("click", ()=>{ commit(); state.editingId=null; state.placing=null; renderAll(); });
-    $("#f-done").addEventListener("click", ()=>{ commit(); state.editingId=null; state.placing=null; toast("Lineup enregistré"); renderAll(); });
-    $("#f-del").addEventListener("click", ()=>{
-      confirmBox("Supprimer ce lineup ?", `« ${l.name} » sera retiré de la map et de tous les executes.`, ()=>{
-        md.lineups = md.lineups.filter(x=>x.id!==l.id);
-        md.executes.forEach(e=> e.items = e.items.filter(id=>id!==l.id));
-        state.editingId=null; state.placing=null;
-        save(); toast("Lineup supprimé"); renderAll();
-      });
-    });
-    ["#f-name","#f-tech","#f-desc"].forEach(s=> $(s).addEventListener("change", commit));
-    $("#f-type").addEventListener("click",(e)=>{
-      const b=e.target.closest("button"); if(!b) return;
-      l.type=b.dataset.v; commit(); renderAll();
-    });
-    $("#f-side").addEventListener("click",(e)=>{
-      const b=e.target.closest("button"); if(!b) return;
-      l.side=b.dataset.v; commit(); renderAll();
-    });
-    $("#f-place-land").addEventListener("click", ()=>{ togglePlacing("land"); });
-    $("#f-place-throw").addEventListener("click", ()=>{ togglePlacing("throw"); });
-    $("#f-media-add").addEventListener("click", ()=>{ commit(); l.media.push({url:"",label:""}); renderAll(); });
-    $("#f-tips-add").addEventListener("click", ()=>{ commit(); l.tips.push(""); renderAll(); });
-    dr.querySelectorAll(".m-del").forEach(b=> b.addEventListener("click",()=>{
-      const i=+b.closest(".sub-row").dataset.i; commit(); l.media.splice(i,1); save(); renderAll();
-    }));
-    dr.querySelectorAll(".t-del").forEach(b=> b.addEventListener("click",()=>{
-      const i=+b.closest(".sub-row").dataset.i; commit(); l.tips.splice(i,1); save(); renderAll();
-    }));
-    dr.querySelectorAll(".m-url,.m-cap,.t-txt").forEach(inp=> inp.addEventListener("change", commit));
-    return;
-  }
-
-  // form for one execute
-  if (state.editingExecId){
-    const ex = md.executes.find(x=>x.id===state.editingExecId);
-    if (!ex){ state.editingExecId=null; renderEditor(dr); return; }
-    const orderOf = (id)=> ex.items.indexOf(id);
-    dr.innerHTML = `
-      <div class="dr-pad">
-        <div class="dr-eyebrow"><span>Éditeur // execute</span>
-          <button class="icon-btn" id="ed-back" title="Retour">←</button></div>
-
-        <label class="f-label">Nom de l'execute</label>
-        <input id="x-name" value="${esc(ex.name)}" placeholder="ex. Execute B fumée + flashs">
-
-        <label class="f-label">Side</label>
-        <div class="seg" id="x-side">
-          <button data-v="T" class="${ex.side==="T"?"on":""}">T</button>
-          <button data-v="CT" class="${ex.side==="CT"?"on":""}">CT</button>
-        </div>
-
-        <label class="f-label">Description / call</label>
-        <textarea id="x-desc" placeholder="ex. Smoke d'abord, flashs au moment de l'entrée…">${esc(ex.description)}</textarea>
-
-        <label class="f-label">Lineups (coche dans l'ordre d'exécution)</label>
-        <div class="exsel" id="x-items">${
-          md.lineups.length ? md.lineups.map(l=>{
-            const i = orderOf(l.id);
-            return `<label>
-              <input type="checkbox" data-id="${l.id}" ${i>=0?"checked":""}>
-              ${i>=0?`<span class="num">${i+1}</span>`:""}
-              <span class="ic" style="width:13px;height:13px;color:${TYPES[l.type].color};display:inline-flex">${ICONS[l.type]}</span>
-              ${esc(l.name)}
-            </label>`;
-          }).join("") : `<div style="color:var(--mut);font-size:13px">Crée d'abord des lineups, puis reviens ici.</div>`
-        }</div>
-
-        <div class="ed-foot">
-          <button class="btn btn-amber" id="x-done">✓ Terminé</button>
-          <button class="btn btn-danger" id="x-del">Supprimer</button>
-        </div>
-      </div>`;
-
-    const commit = ()=>{
-      ex.name = $("#x-name").value.trim() || "Execute";
-      ex.description = $("#x-desc").value;
-      save();
-    };
-    $("#ed-back").addEventListener("click", ()=>{ commit(); state.editingExecId=null; renderAll(); });
-    $("#x-done").addEventListener("click", ()=>{ commit(); state.editingExecId=null; toast("Execute enregistré"); renderAll(); });
-    $("#x-del").addEventListener("click", ()=>{
-      confirmBox("Supprimer cet execute ?", `« ${ex.name} » sera supprimé (les lineups sont conservés).`, ()=>{
-        md.executes = md.executes.filter(x=>x.id!==ex.id);
-        state.editingExecId=null;
-        save(); toast("Execute supprimé"); renderAll();
-      });
-    });
-    ["#x-name","#x-desc"].forEach(s=> $(s).addEventListener("change", commit));
-    $("#x-side").addEventListener("click",(e)=>{
-      const b=e.target.closest("button"); if(!b) return;
-      ex.side=b.dataset.v; commit(); renderAll();
-    });
-    $("#x-items").addEventListener("change",(e)=>{
-      const cb=e.target.closest("input[type=checkbox]"); if(!cb) return;
-      const id=cb.dataset.id;
-      if (cb.checked){ if(!ex.items.includes(id)) ex.items.push(id); }
-      else ex.items = ex.items.filter(x=>x!==id);
-      commit(); renderAll();
-    });
-    return;
-  }
-
-  // editor lists (lineups / executes)
-  dr.innerHTML = `
+  panel.innerHTML=`
     <div class="ed-tabs">
-      <button class="ed-tab ${state.edTab==="lineups"?"on":""}" data-t="lineups">Lineups (${md.lineups.length})</button>
-      <button class="ed-tab ${state.edTab==="executes"?"on":""}" data-t="executes">Executes (${md.executes.length})</button>
+      <button class="ed-tab ${state.edTab==="lineups"?"on":""}" data-t="lineups">${esc(t("modeLineups"))} (${md.lineups.length})</button>
+      <button class="ed-tab ${state.edTab==="execs"?"on":""}" data-t="execs">${esc(t("execs"))} (${md.executes.length})</button>
+      <button class="ed-tab ${state.edTab==="strats"?"on":""}" data-t="strats">${esc(t("strats"))} (${md.strats.length})</button>
     </div>
     <div class="dr-pad" id="ed-body"></div>`;
-  dr.querySelectorAll(".ed-tab").forEach(t=> t.addEventListener("click", ()=>{
-    state.edTab = t.dataset.t; renderEditor(dr);
+  panel.querySelectorAll(".ed-tab").forEach(tb=>tb.addEventListener("click",()=>{
+    state.edTab=tb.dataset.t;
+    state.viewMode=(tb.dataset.t==="strats")?"strats":"lineups";
+    renderAll();
   }));
 
-  const body = $("#ed-body");
-  if (state.edTab==="lineups"){
-    body.innerHTML = `
-      <button class="btn btn-amber" id="ed-new" style="width:100%;justify-content:center">+ Nouveau lineup</button>
-      <div class="ed-list" id="ed-rows" style="margin-top:12px">${
-        md.lineups.length ? md.lineups.map(l=>`
+  const body=$("#ed-body");
+  const foot=`<div class="ed-foot">
+      <button class="btn btn-sm" id="ed-import">${esc(t("importBtn"))}</button>
+      <button class="btn btn-sm" id="ed-export">${esc(t("exportBtn"))}</button>
+      <button class="btn btn-sm btn-amber" id="ed-publish">${esc(t("publishBtn"))}</button>
+    </div>`;
+
+  if(state.edTab==="lineups"){
+    body.innerHTML=`
+      <button class="btn btn-amber" id="ed-new" style="width:100%;justify-content:center">${esc(t("newLineup"))}</button>
+      <div class="ed-list" style="margin-top:12px">${
+        md.lineups.length?md.lineups.map(l=>`
           <div class="ed-row">
             <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>
             <button class="nm" data-id="${l.id}">${esc(l.name)}</button>
             <span class="sd">${l.side}</span>
-            <button class="icon-btn" data-dup="${l.id}" title="Dupliquer">⧉</button>
-            <button class="icon-btn danger" data-del="${l.id}" title="Supprimer">✕</button>
+            <button class="icon-btn" data-dup="${l.id}" title="${esc(t("duplicate")||"Duplicate")}">⧉</button>
+            <button class="icon-btn danger" data-del="${l.id}" title="${esc(t("del"))}">✕</button>
           </div>`).join("")
-        : `<div style="color:var(--mut);font-size:13px;text-align:center;padding:14px 0">Aucun lineup. Clique sur « + Nouveau lineup », puis place l'impact et le point de lancer sur la map.</div>`
-      }</div>
-      <div class="ed-foot">
-        <button class="btn" id="ed-import">⬆ Importer JSON</button>
-        <button class="btn" id="ed-export">⬇ Exporter data.json</button>
-      </div>`;
-    $("#ed-new").addEventListener("click", ()=>{
-      const l = normLineup({name:"Nouveau lineup", land:{x:50,y:42}, throw:{x:50,y:62}});
-      md.lineups.push(l); save();
-      startEditLineup(l.id);
-      togglePlacing("land");
-      toast("Clique sur la map pour placer l'impact");
+        :`<div class="rail-empty" style="text-align:center;padding:12px 0">${esc(t("emptyLineups"))}</div>`}
+      </div>${foot}`;
+    $("#ed-new").addEventListener("click",()=>{
+      const l=normLineup({name:LANG==="en"?"New lineup":"Nouveau lineup",land:{x:50,y:42},throw:{x:50,y:62}});
+      md.lineups.push(l);save();
+      startEditLineup(l.id);togglePlacing("land");toast(t("tPlaceImpact"));
     });
-    body.querySelectorAll(".nm").forEach(b=> b.addEventListener("click", ()=>startEditLineup(b.dataset.id)));
-    body.querySelectorAll("[data-dup]").forEach(b=> b.addEventListener("click", ()=>{
-      const src = md.lineups.find(x=>x.id===b.dataset.dup); if(!src) return;
-      const cp = JSON.parse(JSON.stringify(src));
-      cp.id = uid(); cp.name = src.name+" (copie)";
-      cp.land.x = Math.min(100, cp.land.x+3); cp.land.y = Math.min(100, cp.land.y+3);
-      md.lineups.push(cp); save(); renderAll();
+    body.querySelectorAll(".nm").forEach(b=>b.addEventListener("click",()=>startEditLineup(b.dataset.id)));
+    body.querySelectorAll("[data-dup]").forEach(b=>b.addEventListener("click",()=>{
+      const src=md.lineups.find(x=>x.id===b.dataset.dup);if(!src)return;
+      const cp=JSON.parse(JSON.stringify(src));
+      cp.id=uid();cp.name=src.name+" (copy)";
+      cp.land.x=Math.min(100,cp.land.x+3);cp.land.y=Math.min(100,cp.land.y+3);
+      md.lineups.push(cp);save();renderAll();
     }));
-    body.querySelectorAll("[data-del]").forEach(b=> b.addEventListener("click", ()=>{
-      const l = md.lineups.find(x=>x.id===b.dataset.del); if(!l) return;
-      confirmBox("Supprimer ce lineup ?", `« ${l.name} » sera retiré de la map et des executes.`, ()=>{
-        md.lineups = md.lineups.filter(x=>x.id!==l.id);
-        md.executes.forEach(e=> e.items = e.items.filter(id=>id!==l.id));
-        save(); toast("Lineup supprimé"); renderAll();
-      });
+    body.querySelectorAll("[data-del]").forEach(b=>b.addEventListener("click",()=>{
+      const l=md.lineups.find(x=>x.id===b.dataset.del);if(!l)return;
+      confirmBox(t("delLineupT"),`« ${l.name} » — ${t("delLineupM")}`,()=>deleteLineup(l.id));
     }));
-    $("#ed-import").addEventListener("click", ()=> $("#file-import").click());
-    $("#ed-export").addEventListener("click", exportJSON);
-  } else {
-    body.innerHTML = `
-      <button class="btn btn-amber" id="ex-new" style="width:100%;justify-content:center">+ Nouvel execute</button>
+  }
+  else if(state.edTab==="execs"){
+    body.innerHTML=`
+      <button class="btn btn-amber" id="ex-new" style="width:100%;justify-content:center">${esc(t("newExec"))}</button>
       <div class="ed-list" style="margin-top:12px">${
-        md.executes.length ? md.executes.map(ex=>`
+        md.executes.length?md.executes.map(ex=>`
           <div class="ed-row">
             <span class="sd" style="color:${ex.side==="T"?"var(--t)":"var(--ct)"}">${ex.side}</span>
             <button class="nm" data-id="${ex.id}">${esc(ex.name)}</button>
-            <span class="sd">${ex.items.length} util.</span>
-            <button class="icon-btn danger" data-del="${ex.id}" title="Supprimer">✕</button>
+            <span class="sd">${ex.items.length}</span>
+            <button class="icon-btn danger" data-del="${ex.id}" title="${esc(t("del"))}">✕</button>
           </div>`).join("")
-        : `<div style="color:var(--mut);font-size:13px;text-align:center;padding:14px 0">Un execute regroupe plusieurs lineups dans un ordre précis (ex. « Execute B » = 2 smokes + 2 flashs).</div>`
-      }</div>`;
-    $("#ex-new").addEventListener("click", ()=>{
-      const ex = normExec({name:"Nouvel execute"});
-      md.executes.push(ex); save();
-      state.editingExecId = ex.id; renderAll();
+        :`<div class="rail-empty" style="text-align:center;padding:12px 0">${esc(t("emptyExecs"))}</div>`}
+      </div>${foot}`;
+    $("#ex-new").addEventListener("click",()=>{
+      const ex=normExec({name:LANG==="en"?"New execute":"Nouvel execute"});
+      md.executes.push(ex);save();
+      state.editingExecId=ex.id;renderAll();
     });
-    body.querySelectorAll(".nm").forEach(b=> b.addEventListener("click", ()=>{
-      state.editingExecId = b.dataset.id; renderAll();
-    }));
-    body.querySelectorAll("[data-del]").forEach(b=> b.addEventListener("click", ()=>{
-      const ex = md.executes.find(x=>x.id===b.dataset.del); if(!ex) return;
-      confirmBox("Supprimer cet execute ?", `« ${ex.name} » sera supprimé.`, ()=>{
-        md.executes = md.executes.filter(x=>x.id!==ex.id);
-        save(); toast("Execute supprimé"); renderAll();
+    body.querySelectorAll(".nm").forEach(b=>b.addEventListener("click",()=>{state.editingExecId=b.dataset.id;renderAll();}));
+    body.querySelectorAll("[data-del]").forEach(b=>b.addEventListener("click",()=>{
+      const ex=md.executes.find(x=>x.id===b.dataset.del);if(!ex)return;
+      confirmBox(t("delExecT"),`« ${ex.name} » — ${t("delExecM")}`,()=>{
+        md.executes=md.executes.filter(x=>x.id!==ex.id);
+        md.strats.forEach(s=>s.items=s.items.filter(it=>!(it.kind==="exec"&&it.id===ex.id)));
+        save();toast(t("tExecDel"));renderAll();
       });
     }));
   }
+  else{
+    body.innerHTML=`
+      <button class="btn btn-amber" id="st-new" style="width:100%;justify-content:center">${esc(t("newStrat"))}</button>
+      <div class="ed-list" style="margin-top:12px">${
+        md.strats.length?md.strats.map(s=>`
+          <div class="ed-row">
+            <span class="sd" style="color:${s.side==="T"?"var(--t)":"var(--ct)"}">${s.side}</span>
+            <button class="nm" data-id="${s.id}">${esc(s.name)}</button>
+            <span class="sd">${esc(t("buyNames")[s.buy])}</span>
+            <button class="icon-btn danger" data-del="${s.id}" title="${esc(t("del"))}">✕</button>
+          </div>`).join("")
+        :`<div class="rail-empty" style="text-align:center;padding:12px 0">${esc(t("emptyStrats"))}</div>`}
+      </div>${foot}`;
+    $("#st-new").addEventListener("click",()=>{
+      const s=normStrat({name:LANG==="en"?"New strategy":"Nouvelle stratégie"});
+      md.strats.push(s);save();
+      startEditStrat(s.id);
+    });
+    body.querySelectorAll(".nm").forEach(b=>b.addEventListener("click",()=>startEditStrat(b.dataset.id)));
+    body.querySelectorAll("[data-del]").forEach(b=>b.addEventListener("click",()=>{
+      const s=md.strats.find(x=>x.id===b.dataset.del);if(!s)return;
+      confirmBox(t("delStratT"),`« ${s.name} » — ${t("delStratM")}`,()=>{
+        md.strats=md.strats.filter(x=>x.id!==s.id);save();toast(t("tStratDel"));renderAll();
+      });
+    }));
+  }
+  const im=$("#ed-import"),exb=$("#ed-export"),pb=$("#ed-publish");
+  if(im)im.addEventListener("click",()=>$("#file-import").click());
+  if(exb)exb.addEventListener("click",exportJSON);
+  if(pb)pb.addEventListener("click",publish);
+}
+function deleteLineup(id){
+  const md=mapData();
+  md.lineups=md.lineups.filter(x=>x.id!==id);
+  md.executes.forEach(e=>e.items=e.items.filter(i=>i!==id));
+  md.strats.forEach(s=>s.items=s.items.filter(it=>!(it.kind==="lineup"&&it.id===id)));
+  state.editingId=null;state.placing=null;
+  save();toast(t("tLineupDel"));renderAll();
 }
 
-function startEditLineup(id){
-  state.editMode = true;
-  state.editingId = id;
-  state.editingExecId = null;
-  state.placing = null;
-  renderAll();
-}
-function togglePlacing(kind){
-  state.placing = (state.placing===kind)? null : kind;
-  const wrap = $("#mapwrap");
-  wrap.classList.toggle("placing", !!state.placing);
-  $("#placing-hint").textContent = state.placing==="land"
-    ? "Clique sur la map : point d'impact ◆"
-    : "Clique sur la map : position de lancer ◎";
-  // refresh button states
-  const bl=$("#f-place-land"), bt=$("#f-place-throw");
-  if (bl) bl.classList.toggle("arming", state.placing==="land");
-  if (bt) bt.classList.toggle("arming", state.placing==="throw");
-}
-function fillCoordInputs(l){
-  const el = $("#f-coords");
-  if (el) el.textContent = `impact ${l.land.x}, ${l.land.y} · lancer ${l.throw.x}, ${l.throw.y}`;
+function renderLineupForm(panel,md){
+  const l=md.lineups.find(x=>x.id===state.editingId);
+  if(!l){state.editingId=null;renderEditor(panel);return;}
+  panel.innerHTML=`
+    <div class="dr-pad">
+      <div class="dr-eyebrow"><span>${esc(t("edLineup"))}</span>
+        <button class="icon-btn" id="ed-back" title="←">←</button></div>
+
+      <label class="f-label" style="margin-top:4px">${esc(t("name"))}</label>
+      <input id="f-name" value="${esc(l.name)}">
+
+      <label class="f-label">${esc(t("type"))}</label>
+      <div class="seg" id="f-type">${Object.entries(TYPES).map(([k,ty])=>`<button data-v="${k}" class="${l.type===k?"on":""}">${ty.label}</button>`).join("")}</div>
+
+      <label class="f-label">${esc(t("side"))}</label>
+      <div class="seg" id="f-side">
+        <button data-v="T" class="${l.side==="T"?"on":""}">T</button>
+        <button data-v="CT" class="${l.side==="CT"?"on":""}">CT</button>
+      </div>
+
+      <label class="f-label">${esc(t("technique"))}</label>
+      <input id="f-tech" value="${esc(l.technique)}" placeholder="Jumpthrow / W + Jumpthrow / Throw…">
+      <div class="tech-preview" id="f-tech-preview">${techIconsHTML(l.technique)}</div>
+
+      <label class="f-label">${esc(t("position"))}</label>
+      <div class="place-btns">
+        <button class="btn btn-sm ${state.placing==="land"?"arming":""}" id="f-place-land">${esc(t("placeImpact"))}</button>
+        <button class="btn btn-sm ${state.placing==="throw"?"arming":""}" id="f-place-throw">${esc(t("placeThrow"))}</button>
+      </div>
+      <div style="font-family:var(--mono);font-size:11px;color:var(--mut);margin-top:6px" id="f-coords">${t("impact")} ${l.land.x}, ${l.land.y} · ${t("throwLbl")} ${l.throw.x}, ${l.throw.y}</div>
+      <div class="f-hint">${esc(t("posHint"))}</div>
+
+      <label class="f-label">${esc(t("desc"))}</label>
+      <textarea id="f-desc">${esc(l.description)}</textarea>
+
+      <label class="f-label">${esc(t("visualsLabel"))}</label>
+      <div class="sub-list" id="f-media">${l.media.map((m,i)=>`
+        <div class="sub-row" data-i="${i}">
+          <input class="m-url" value="${esc(m.url)}" placeholder="media/${esc(state.map)}/file.gif">
+          <input class="m-cap" value="${esc(m.label)}" placeholder="Stand / Aim" style="max-width:100px">
+          <button class="icon-btn danger m-del">✕</button>
+        </div>`).join("")}</div>
+      <button class="add-line" id="f-media-add">${esc(t("addVisual"))}</button>
+      <div class="f-hint">${esc(t("mediaHint"))}</div>
+
+      <label class="f-label">${esc(t("tips"))}</label>
+      <div class="sub-list" id="f-tips">${l.tips.map((x,i)=>`
+        <div class="sub-row" data-i="${i}">
+          <input class="t-txt" value="${esc(x)}">
+          <button class="icon-btn danger t-del">✕</button>
+        </div>`).join("")}</div>
+      <button class="add-line" id="f-tips-add">${esc(t("addTip"))}</button>
+
+      <div class="ed-foot">
+        <button class="btn btn-amber" id="f-done">${esc(t("done"))}</button>
+        <button class="btn btn-danger" id="f-del">${esc(t("del"))}</button>
+      </div>
+    </div>`;
+  const commit=()=>{
+    l.name=$("#f-name").value.trim()||"Unnamed";
+    l.technique=$("#f-tech").value.trim();
+    l.description=$("#f-desc").value;
+    l.media=$$("#f-media .sub-row").map(r=>({url:r.querySelector(".m-url").value.trim(),label:r.querySelector(".m-cap").value.trim()})).filter(m=>m.url);
+    l.tips=$$("#f-tips .sub-row").map(r=>r.querySelector(".t-txt").value.trim()).filter(Boolean);
+    save();
+  };
+  $("#ed-back").addEventListener("click",()=>{commit();state.editingId=null;state.placing=null;$("#mapwrap").classList.remove("placing");renderAll();});
+  $("#f-done").addEventListener("click",()=>{commit();state.editingId=null;state.placing=null;$("#mapwrap").classList.remove("placing");toast(t("tLineupSaved"));renderAll();});
+  $("#f-del").addEventListener("click",()=>confirmBox(t("delLineupT"),`« ${l.name} » — ${t("delLineupM")}`,()=>deleteLineup(l.id)));
+  ["#f-name","#f-tech","#f-desc"].forEach(s=>$(s).addEventListener("change",commit));
+  $("#f-tech").addEventListener("input",e=>{const pv=$("#f-tech-preview");if(pv)pv.innerHTML=techIconsHTML(e.target.value);});
+  $("#f-type").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;l.type=b.dataset.v;commit();renderAll();});
+  $("#f-side").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;l.side=b.dataset.v;commit();renderAll();});
+  $("#f-place-land").addEventListener("click",()=>togglePlacing("land"));
+  $("#f-place-throw").addEventListener("click",()=>togglePlacing("throw"));
+  $("#f-media-add").addEventListener("click",()=>{commit();l.media.push({url:"",label:""});renderAll();});
+  $("#f-tips-add").addEventListener("click",()=>{commit();l.tips.push("");renderAll();});
+  panel.querySelectorAll(".m-del").forEach(b=>b.addEventListener("click",()=>{const i=+b.closest(".sub-row").dataset.i;commit();l.media.splice(i,1);save();renderAll();}));
+  panel.querySelectorAll(".t-del").forEach(b=>b.addEventListener("click",()=>{const i=+b.closest(".sub-row").dataset.i;commit();l.tips.splice(i,1);save();renderAll();}));
+  panel.querySelectorAll(".m-url,.m-cap,.t-txt").forEach(inp=>inp.addEventListener("change",commit));
 }
 
-/* ---------------- global bindings ---------------- */
+function renderExecForm(panel,md){
+  const ex=md.executes.find(x=>x.id===state.editingExecId);
+  if(!ex){state.editingExecId=null;renderEditor(panel);return;}
+  const orderOf=id=>ex.items.indexOf(id);
+  panel.innerHTML=`
+    <div class="dr-pad">
+      <div class="dr-eyebrow"><span>${esc(t("edExec"))}</span><button class="icon-btn" id="ed-back">←</button></div>
+      <label class="f-label" style="margin-top:4px">${esc(t("name"))}</label>
+      <input id="x-name" value="${esc(ex.name)}">
+      <label class="f-label">${esc(t("side"))}</label>
+      <div class="seg" id="x-side">
+        <button data-v="T" class="${ex.side==="T"?"on":""}">T</button>
+        <button data-v="CT" class="${ex.side==="CT"?"on":""}">CT</button>
+      </div>
+      <label class="f-label">${esc(t("desc"))}</label>
+      <textarea id="x-desc">${esc(ex.description)}</textarea>
+      <label class="f-label">${esc(t("selOrder"))}</label>
+      <div class="exsel" id="x-items">${
+        md.lineups.length?md.lineups.map(l=>{
+          const i=orderOf(l.id);
+          return `<label><input type="checkbox" data-id="${l.id}" ${i>=0?"checked":""}>
+            ${i>=0?`<span class="num">${i+1}</span>`:""}
+            <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>${esc(l.name)}</label>`;
+        }).join(""):`<div class="rail-empty">${esc(t("emptyLineups"))}</div>`}
+      </div>
+      <div class="ed-foot">
+        <button class="btn btn-amber" id="x-done">${esc(t("done"))}</button>
+        <button class="btn btn-danger" id="x-del">${esc(t("del"))}</button>
+      </div>
+    </div>`;
+  const commit=()=>{ex.name=$("#x-name").value.trim()||"Execute";ex.description=$("#x-desc").value;save();};
+  $("#ed-back").addEventListener("click",()=>{commit();state.editingExecId=null;renderAll();});
+  $("#x-done").addEventListener("click",()=>{commit();state.editingExecId=null;toast(t("tExecSaved"));renderAll();});
+  $("#x-del").addEventListener("click",()=>confirmBox(t("delExecT"),`« ${ex.name} » — ${t("delExecM")}`,()=>{
+    md.executes=md.executes.filter(x=>x.id!==ex.id);
+    md.strats.forEach(s=>s.items=s.items.filter(it=>!(it.kind==="exec"&&it.id===ex.id)));
+    state.editingExecId=null;save();toast(t("tExecDel"));renderAll();
+  }));
+  ["#x-name","#x-desc"].forEach(s=>$(s).addEventListener("change",commit));
+  $("#x-side").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;ex.side=b.dataset.v;commit();renderAll();});
+  $("#x-items").addEventListener("change",e=>{
+    const cb=e.target.closest("input[type=checkbox]");if(!cb)return;
+    const id=cb.dataset.id;
+    if(cb.checked){if(!ex.items.includes(id))ex.items.push(id);}
+    else ex.items=ex.items.filter(x=>x!==id);
+    commit();renderAll();
+  });
+}
+
+function renderStratForm(panel,md){
+  const s=md.strats.find(x=>x.id===state.editingStratId);
+  if(!s){state.editingStratId=null;renderEditor(panel);return;}
+  const orderOf=(kind,id)=>s.items.findIndex(it=>it.kind===kind&&it.id===id);
+  panel.innerHTML=`
+    <div class="dr-pad">
+      <div class="dr-eyebrow"><span>${esc(t("edStrat"))}</span><button class="icon-btn" id="ed-back">←</button></div>
+      <label class="f-label" style="margin-top:4px">${esc(t("name"))}</label>
+      <input id="s-name" value="${esc(s.name)}">
+      <label class="f-label">${esc(t("side"))}</label>
+      <div class="seg" id="s-side">
+        <button data-v="T" class="${s.side==="T"?"on":""}">T</button>
+        <button data-v="CT" class="${s.side==="CT"?"on":""}">CT</button>
+      </div>
+      <label class="f-label">${esc(t("buy"))}</label>
+      <div class="seg" id="s-buy">${BUYS.map(b=>`<button data-v="${b}" class="${s.buy===b?"on":""}">${esc(t("buyNames")[b])}</button>`).join("")}</div>
+      <div class="f-row" style="margin-top:2px">
+        <div>
+          <label class="f-label">${esc(t("zoneLabel"))}</label>
+          <input id="s-zone" value="${esc(s.zone)}" placeholder="${esc(t("zonePh"))}">
+        </div>
+      </div>
+      <label class="f-label">${esc(t("position"))}</label>
+      <div class="place-btns">
+        <button class="btn btn-sm ${state.placing==="spoint"?"arming":""}" id="f-place-point">${esc(t("placePoint"))}</button>
+      </div>
+      <label class="f-label">${esc(t("desc"))}</label>
+      <textarea id="s-desc" rows="5">${esc(s.description)}</textarea>
+      <label class="f-label">${esc(t("selOrderStrat"))}</label>
+      <div class="exsel" id="s-items">${
+        md.executes.map(ex=>{
+          const i=orderOf("exec",ex.id);
+          return `<label><input type="checkbox" data-kind="exec" data-id="${ex.id}" ${i>=0?"checked":""}>
+            ${i>=0?`<span class="num">${i+1}</span>`:""}
+            <span class="ic" style="color:var(--t)">⚙</span>${esc(ex.name)} <span class="sd" style="font-family:var(--mono);font-size:10px;color:var(--mut)">EXEC</span></label>`;
+        }).join("")}
+        ${md.lineups.map(l=>{
+          const i=orderOf("lineup",l.id);
+          return `<label><input type="checkbox" data-kind="lineup" data-id="${l.id}" ${i>=0?"checked":""}>
+            ${i>=0?`<span class="num">${i+1}</span>`:""}
+            <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>${esc(l.name)}</label>`;
+        }).join("")}
+      </div>
+      <div class="ed-foot">
+        <button class="btn btn-amber" id="s-done">${esc(t("done"))}</button>
+        <button class="btn btn-danger" id="s-del">${esc(t("del"))}</button>
+      </div>
+    </div>`;
+  const commit=()=>{s.name=$("#s-name").value.trim()||"Strategy";s.zone=$("#s-zone").value.trim();s.description=$("#s-desc").value;save();};
+  $("#ed-back").addEventListener("click",()=>{commit();state.editingStratId=null;state.placing=null;$("#mapwrap").classList.remove("placing");renderAll();});
+  $("#s-done").addEventListener("click",()=>{commit();state.editingStratId=null;state.placing=null;$("#mapwrap").classList.remove("placing");toast(t("tStratSaved"));renderAll();});
+  $("#s-del").addEventListener("click",()=>confirmBox(t("delStratT"),`« ${s.name} » — ${t("delStratM")}`,()=>{
+    md.strats=md.strats.filter(x=>x.id!==s.id);
+    state.editingStratId=null;save();toast(t("tStratDel"));renderAll();
+  }));
+  ["#s-name","#s-zone","#s-desc"].forEach(sel=>$(sel).addEventListener("change",commit));
+  $("#s-side").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;s.side=b.dataset.v;commit();renderAll();});
+  $("#s-buy").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;s.buy=b.dataset.v;commit();renderAll();});
+  $("#f-place-point").addEventListener("click",()=>togglePlacing("spoint"));
+  $("#s-items").addEventListener("change",e=>{
+    const cb=e.target.closest("input[type=checkbox]");if(!cb)return;
+    const kind=cb.dataset.kind,id=cb.dataset.id;
+    if(cb.checked){if(orderOf(kind,id)<0)s.items.push({kind,id});}
+    else s.items=s.items.filter(it=>!(it.kind===kind&&it.id===id));
+    commit();renderAll();
+  });
+}
+
+/* ============================================================
+   DRAWING LAYER
+   ============================================================ */
+const canvas=$("#drawcanvas");
+const ctx=canvas.getContext("2d");
+function resizeCanvas(){
+  const wrap=$("#mapwrap");
+  const r=wrap.getBoundingClientRect();
+  if(!r.width)return;
+  const dpr=window.devicePixelRatio||1;
+  canvas.width=Math.round(r.width*dpr);
+  canvas.height=Math.round(r.height*dpr);
+  redrawStrokes();
+}
+new ResizeObserver(resizeCanvas).observe($("#mapwrap"));
+function redrawStrokes(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.lineCap="round";ctx.lineJoin="round";
+  ctx.strokeStyle="rgba(255,62,52,.95)";
+  ctx.lineWidth=Math.max(3,canvas.width/300);
+  ctx.shadowColor="rgba(0,0,0,.7)";ctx.shadowBlur=2;
+  const W=canvas.width,H=canvas.height;
+  for(const st of state.strokes){
+    if(st.length<2)continue;
+    ctx.beginPath();
+    ctx.moveTo(st[0].x/100*W,st[0].y/100*H);
+    for(let i=1;i<st.length;i++)ctx.lineTo(st[i].x/100*W,st[i].y/100*H);
+    ctx.stroke();
+  }
+}
+canvas.addEventListener("pointerdown",e=>{
+  if(!state.drawMode)return;
+  e.preventDefault();
+  canvas.setPointerCapture(e.pointerId);
+  state.curStroke=[mapPoint(e)];
+  state.strokes.push(state.curStroke);
+});
+canvas.addEventListener("pointermove",e=>{
+  if(!state.drawMode||!state.curStroke)return;
+  state.curStroke.push(mapPoint(e));
+  redrawStrokes();
+});
+canvas.addEventListener("pointerup",()=>{state.curStroke=null;});
+canvas.addEventListener("pointercancel",()=>{state.curStroke=null;});
+
+function renderMapTools(){
+  const box=$("#maptools");
+  box.innerHTML=`
+    <button class="mt-btn ${state.drawMode?"on":""}" id="mt-draw" title="${esc(t("drawTip"))}">${esc(t("draw"))}</button>
+    <button class="mt-btn" id="mt-undo" title="${esc(t("undoTip"))}">${esc(t("undo"))}</button>
+    <button class="mt-btn" id="mt-clear" title="${esc(t("clearTip"))}">${esc(t("clear"))}</button>`;
+  $("#mt-draw").addEventListener("click",()=>{
+    state.drawMode=!state.drawMode;
+    $("#mapwrap").classList.toggle("drawing",state.drawMode);
+    renderMapTools();
+  });
+  $("#mt-undo").addEventListener("click",()=>{state.strokes.pop();redrawStrokes();});
+  $("#mt-clear").addEventListener("click",()=>{state.strokes=[];redrawStrokes();});
+}
+
+/* ============================================================
+   LIGHTBOX — gallery with media controls
+   ============================================================ */
+let lbState={kind:null,el:null,frozen:false,canvas:null};
+let lbGal={items:[],idx:0};
+let lbWheelLock=0;
+function fmtTime(s){if(!Number.isFinite(s))return"0:00";const m=Math.floor(s/60),x=Math.floor(s%60);return m+":"+String(x).padStart(2,"0");}
+function openLightbox(items,idx=0){
+  if(!items)return;
+  if(!Array.isArray(items))items=[items];
+  items=items.filter(m=>m&&m.url);
+  if(!items.length)return;
+  lbGal={items,idx:Math.max(0,Math.min(idx,items.length-1))};
+  renderLightbox();
+  $("#lightbox").classList.add("show");
+}
+function renderLightbox(){
+  const m=lbGal.items[lbGal.idx];
+  const media=$("#lb-media"),bar=$("#lb-bar"),play=$("#lb-play"),seek=$("#lb-seek"),time=$("#lb-time");
+  media.innerHTML="";lbState={kind:null,el:null,frozen:false,canvas:null};
+  if(isVideo(m.url)){
+    const v=document.createElement("video");
+    v.src=m.url;v.loop=true;v.playsInline=true;v.autoplay=true;
+    media.appendChild(v);
+    lbState={kind:"video",el:v};
+    bar.classList.remove("hidden");seek.style.display="";time.style.display="";
+    play.textContent="❚❚";
+    v.addEventListener("loadedmetadata",()=>{time.textContent=`0:00 / ${fmtTime(v.duration)}`;});
+    v.addEventListener("timeupdate",()=>{
+      if(v.duration){seek.value=Math.round(v.currentTime/v.duration*1000);
+        time.textContent=`${fmtTime(v.currentTime)} / ${fmtTime(v.duration)}`;}
+    });
+  }else{
+    const img=document.createElement("img");
+    img.src=m.url;img.alt=m.label||"";
+    media.appendChild(img);
+    if(isGif(m.url)){
+      lbState={kind:"gif",el:img};
+      bar.classList.remove("hidden");
+      seek.style.display="none";time.style.display="none";
+      play.textContent="❚❚";
+    }else{
+      bar.classList.add("hidden");
+    }
+  }
+  const multi=lbGal.items.length>1;
+  $("#lb-prev").style.display=multi?"":"none";
+  $("#lb-next").style.display=multi?"":"none";
+  const cap=$("#lb-cap");
+  const parts=[];
+  if(m.label)parts.push(m.label);
+  if(multi)parts.push(`${lbGal.idx+1} / ${lbGal.items.length}`);
+  cap.textContent=parts.join("  ·  ");
+  cap.style.display=parts.length?"":"none";
+}
+function lbStep(d){
+  if(lbGal.items.length<2)return;
+  const v=$("#lb-media video");if(v)v.pause();
+  lbGal.idx=(lbGal.idx+d+lbGal.items.length)%lbGal.items.length;
+  renderLightbox();
+}
+function closeLightbox(){
+  const v=$("#lb-media video");if(v)v.pause();
+  $("#lightbox").classList.remove("show");
+  $("#lb-media").innerHTML="";
+}
+$("#lb-close").addEventListener("click",closeLightbox);
+$("#lb-prev").addEventListener("click",e=>{e.stopPropagation();lbStep(-1);});
+$("#lb-next").addEventListener("click",e=>{e.stopPropagation();lbStep(1);});
+$("#lightbox").addEventListener("click",e=>{if(e.target.id==="lightbox"||e.target.id==="lb-media")closeLightbox();});
+$("#lightbox").addEventListener("wheel",e=>{
+  e.preventDefault();
+  const now=Date.now();
+  if(now-lbWheelLock<260)return;
+  lbWheelLock=now;
+  lbStep(e.deltaY>0?1:-1);
+},{passive:false});
+$("#lb-play").addEventListener("click",()=>{
+  const play=$("#lb-play");
+  if(lbState.kind==="video"){
+    const v=lbState.el;
+    if(v.paused){v.play();play.textContent="❚❚";}else{v.pause();play.textContent="▶";}
+  }else if(lbState.kind==="gif"){
+    const img=lbState.el;
+    if(!lbState.frozen){
+      const c=document.createElement("canvas");
+      c.width=img.naturalWidth;c.height=img.naturalHeight;
+      try{c.getContext("2d").drawImage(img,0,0);}catch(e){}
+      c.style.maxWidth="96vw";c.style.maxHeight="82vh";c.style.borderRadius="8px";
+      img.style.display="none";
+      img.parentNode.appendChild(c);
+      lbState.canvas=c;lbState.frozen=true;play.textContent="▶";
+    }else{
+      if(lbState.canvas)lbState.canvas.remove();
+      lbState.el.style.display="";
+      lbState.frozen=false;play.textContent="❚❚";
+    }
+  }
+});
+$("#lb-seek").addEventListener("input",e=>{
+  if(lbState.kind==="video"&&lbState.el.duration){
+    lbState.el.currentTime=(+e.target.value/1000)*lbState.el.duration;
+  }
+});
+
+/* ============================================================
+   GLOBAL BINDINGS
+   ============================================================ */
 function bindGlobal(){
-  $("#brand").addEventListener("click", ()=>showHome());
-  $("#btn-home").addEventListener("click", ()=>showHome());
-  $("#btn-edit").addEventListener("click", ()=>{
-    state.editMode = !state.editMode;
-    state.placing = null; state.editingId=null; state.editingExecId=null;
+  $("#brand").addEventListener("click",()=>showHome());
+  $("#legend-toggle").addEventListener("click",()=>{
+    const lg=$("#legend");const open=lg.classList.toggle("open");
+    $("#legend-toggle").setAttribute("aria-expanded",open?"true":"false");
+  });
+  $("#btn-home").addEventListener("click",()=>showHome());
+  $("#btn-lang").addEventListener("click",()=>{
+    LANG=LANG==="en"?"fr":"en";
+    localStorage.setItem("cs2_lang",LANG);
+    renderChrome();
+    if(state.map)renderAll();else renderHome();
+  });
+  $("#btn-edit").addEventListener("click",()=>{
+    state.editMode=!state.editMode;
+    state.placing=null;state.editingId=null;state.editingExecId=null;state.editingStratId=null;
     $("#mapwrap").classList.remove("placing");
-    if (!state.editMode) state.selected = null;
+    if(!state.editMode)state.openIds=[];
+    state.edTab=state.viewMode==="strats"?"strats":"lineups";
     renderAll();
   });
-
-  $("#lb-export").addEventListener("click", exportJSON);
-  $("#lb-discard").addEventListener("click", ()=>{
-    confirmBox("Abandonner les modifications locales ?",
-      "Tes brouillons enregistrés sur ce navigateur seront effacés et le site rechargera la version publiée (data.json).",
-      ()=>{ localStorage.removeItem(STORE_KEY); location.reload(); });
+  $("#lb-publish").addEventListener("click",publish);
+  $("#lb-export").addEventListener("click",exportJSON);
+  $("#lb-discard").addEventListener("click",()=>{
+    confirmBox(t("discardT"),t("discardM"),()=>{
+      localStorage.removeItem(STORE_KEY);localStorage.removeItem(SNAP_KEY);location.reload();
+    });
+  });
+  $("#file-import").addEventListener("change",e=>{
+    if(e.target.files[0])importJSON(e.target.files[0]);
+    e.target.value="";
   });
 
-  $("#file-import").addEventListener("change", (e)=>{
-    if (e.target.files[0]) importJSON(e.target.files[0]);
-    e.target.value = "";
+  const wrap=$("#mapwrap");
+  wrap.addEventListener("mousemove",e=>{
+    const p=mapPoint(e);
+    $("#coordbox").textContent=`x:${p.x} y:${p.y}`;
   });
-
-  // filters
-  $("#pills-type").addEventListener("click",(e)=>{
-    const b=e.target.closest(".pill"); if(!b) return;
-    const t=b.dataset.type;
-    if (state.filters.types.has(t)) state.filters.types.delete(t); else state.filters.types.add(t);
-    b.classList.toggle("on");
-    renderMarkers();
-  });
-  $("#pills-side").addEventListener("click",(e)=>{
-    const b=e.target.closest(".pill"); if(!b) return;
-    const s=b.dataset.side;
-    if (state.filters.sides.has(s)) state.filters.sides.delete(s); else state.filters.sides.add(s);
-    b.classList.toggle("on");
-    renderMarkers();
-  });
-  $("#search").addEventListener("input",(e)=>{
-    state.filters.q = e.target.value;
-    renderMarkers();
-  });
-
-  // map interactions
-  const wrap = $("#mapwrap");
-  wrap.addEventListener("mousemove",(e)=>{
-    const p = mapPoint(e);
-    $("#coordbox").textContent = `x:${p.x} y:${p.y}`;
-  });
-  wrap.addEventListener("click",(e)=>{
-    if (state.editMode && state.placing && state.editingId){
-      const md = mapData();
-      const l = md.lineups.find(x=>x.id===state.editingId);
-      if (!l) return;
-      const p = mapPoint(e);
-      if (state.placing==="land"){ l.land = p; togglePlacing("throw"); toast("Impact placé — clique pour la position de lancer"); }
-      else { l.throw = p; togglePlacing(null); state.placing=null; wrap.classList.remove("placing"); toast("Position de lancer placée"); }
-      save(); renderAll();
+  wrap.addEventListener("click",e=>{
+    if(state.drawMode)return;
+    if(state.editMode&&state.placing){
+      const md=mapData();const p=mapPoint(e);
+      if(state.placing==="spoint"&&state.editingStratId){
+        const s=md.strats.find(x=>x.id===state.editingStratId);
+        if(s){s.point=p;togglePlacing(null);state.placing=null;wrap.classList.remove("placing");save();toast(t("tZonePlaced"));renderAll();}
+        return;
+      }
+      if(state.editingId){
+        const l=md.lineups.find(x=>x.id===state.editingId);
+        if(!l)return;
+        if(state.placing==="land"){l.land=p;togglePlacing("throw");toast(t("tImpact"));}
+        else{l.throw=p;togglePlacing(null);state.placing=null;wrap.classList.remove("placing");toast(t("tThrow"));}
+        save();renderAll();
+      }
       return;
     }
-    // click on empty map = deselect
-    if (!state.editMode && state.selected){ state.selected=null; renderAll(); }
+    if(!state.editMode){
+      if(state.openIds.length){state.openIds=[];renderAll();}
+      else if(state.selectedStrat){state.selectedStrat=null;renderAll();}
+    }
   });
 
-  document.addEventListener("keydown",(e)=>{
-    if (e.key==="Escape"){
-      if ($("#lightbox").classList.contains("show")){ $("#lightbox").classList.remove("show"); $("#lightbox-inner").innerHTML=""; return; }
-      if ($("#modal").classList.contains("show")){ closeModal(); return; }
-      if (state.placing){ state.placing=null; $("#mapwrap").classList.remove("placing"); renderAll(); return; }
-      if (state.selected){ state.selected=null; renderAll(); }
+  document.addEventListener("keydown",e=>{
+    if($("#lightbox").classList.contains("show")){
+      if(e.key==="Escape"){closeLightbox();return;}
+      if(e.key==="ArrowLeft"){lbStep(-1);return;}
+      if(e.key==="ArrowRight"){lbStep(1);return;}
+      return;
+    }
+    if(e.key==="Escape"){
+      if($("#execview").classList.contains("show")){closeExecView();return;}
+      if($("#modal").classList.contains("show")){closeModal();return;}
+      if(state.drawMode){state.drawMode=false;$("#mapwrap").classList.remove("drawing");renderMapTools();return;}
+      if(state.placing){state.placing=null;$("#mapwrap").classList.remove("placing");renderAll();return;}
+      if(state.openIds.length||state.selectedStrat){state.openIds=[];state.selectedStrat=null;renderAll();}
     }
   });
 }
 
 /* ---------------- modal & toast ---------------- */
-let modalCb = null;
-function confirmBox(title, msg, onYes){
-  $("#modal-title").textContent = title;
-  $("#modal-msg").textContent = msg;
-  const acts = $("#modal-acts");
-  acts.innerHTML = "";
-  const no = document.createElement("button");
-  no.className="btn"; no.textContent="Annuler";
-  no.addEventListener("click", closeModal);
-  const yes = document.createElement("button");
-  yes.className="btn btn-danger"; yes.textContent="Supprimer";
-  yes.addEventListener("click", ()=>{ closeModal(); onYes(); });
-  acts.append(no, yes);
+function showModal({title,html,buttons}){
+  $("#modal-title").textContent=title;
+  $("#modal-body").innerHTML=html;
+  const acts=$("#modal-acts");acts.innerHTML="";
+  (buttons||[]).forEach(b=>{
+    const el=document.createElement("button");
+    el.className=b.cls||"btn";el.textContent=b.label;
+    el.addEventListener("click",async()=>{closeModal();if(b.onClick)await b.onClick();});
+    acts.appendChild(el);
+  });
   $("#modal").classList.add("show");
 }
-function closeModal(){ $("#modal").classList.remove("show"); }
-$("#modal .back").addEventListener("click", closeModal);
+function confirmBox(title,msg,onYes){
+  showModal({title,html:esc(msg),buttons:[
+    {label:t("cancel"),cls:"btn"},
+    {label:t("del"),cls:"btn btn-danger",onClick:onYes},
+  ]});
+}
+function closeModal(){$("#modal").classList.remove("show");}
+document.querySelector("#modal .back").addEventListener("click",closeModal);
 
-let toastTimer = null;
+let toastTimer=null;
 function toast(msg){
-  const t = $("#toast");
-  t.textContent = msg;
-  t.classList.add("show");
+  const el=$("#toast");
+  el.textContent=msg;el.classList.add("show");
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>t.classList.remove("show"), 2600);
+  toastTimer=setTimeout(()=>el.classList.remove("show"),2800);
 }
 </script>
 </body>
