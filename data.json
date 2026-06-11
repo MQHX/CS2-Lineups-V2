@@ -1,0 +1,45 @@
+{
+  "version": 2,
+  "maps": {
+    "mirage": {
+      "lineups": [
+        {
+          "id": "demo-smoke-ct",
+          "name": "Smoke CT depuis T spawn (exemple)",
+          "type": "smoke",
+          "side": "T",
+          "technique": "Jumpthrow",
+          "description": "Exemple de lineup — supprime-le depuis l'éditeur quand tu ajoutes les tiens.\nPlace-toi au coin du spawn T, vise l'antenne au-dessus des appartements.",
+          "land": { "x": 63, "y": 32 },
+          "throw": { "x": 47, "y": 78 },
+          "media": [],
+          "tips": [
+            "Bind jumpthrow conseillé pour être régulier",
+            "Tu peux mettre un GIF ici : media/mirage/smoke-ct.gif"
+          ]
+        },
+        {
+          "id": "demo-flash-a",
+          "name": "Flash entrée A (exemple)",
+          "type": "flash",
+          "side": "T",
+          "technique": "Clic gauche",
+          "description": "Deuxième exemple pour voir le rendu d'un execute. Supprime-le aussi.",
+          "land": { "x": 70, "y": 45 },
+          "throw": { "x": 55, "y": 60 },
+          "media": [],
+          "tips": []
+        }
+      ],
+      "executes": [
+        {
+          "id": "demo-exec-a",
+          "name": "Execute A (exemple)",
+          "side": "T",
+          "description": "Smoke CT d'abord, flash au moment de l'entrée des rampes.",
+          "items": ["demo-smoke-ct", "demo-flash-a"]
+        }
+      ]
+    }
+  }
+}
