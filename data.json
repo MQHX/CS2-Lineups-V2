@@ -1294,20 +1294,47 @@
             }
           ],
           "tips": []
+        },
+        {
+          "id": "bb8606ea-e6a1-444b-80fb-8c3d5bba76b2",
+          "name": "Banana",
+          "type": "he",
+          "side": "T",
+          "technique": "Left and right click + Throw",
+          "description": "",
+          "land": {
+            "x": 43.79,
+            "y": 50.4
+          },
+          "throw": {
+            "x": 55.64,
+            "y": 35.2
+          },
+          "media": [
+            {
+              "url": "media/inferno/banana-7xl93.mp4",
+              "label": ""
+            }
+          ],
+          "tips": []
         }
       ],
       "executes": [
         {
           "id": "B_exec",
-          "name": "B execute",
+          "name": "B execute (w/smoke)",
           "side": "T",
           "description": "",
-          "media": [],
+          "media": [
+            {
+              "url": "media/inferno/exec-b-execute-w-smoke-7v7hq.mp4",
+              "label": ""
+            }
+          ],
           "tips": [],
           "items": [
             "ct_smoke_1",
-            "coffin_smoke",
-            "coffin_molly"
+            "coffin_smoke"
           ]
         },
         {
@@ -1315,7 +1342,12 @@
           "name": "A split",
           "side": "T",
           "description": "",
-          "media": [],
+          "media": [
+            {
+              "url": "media/inferno/exec-a-split-7vu7y.mp4",
+              "label": ""
+            }
+          ],
           "tips": [],
           "items": [
             "library_smoke",
@@ -1327,7 +1359,12 @@
           "name": "A apps rush",
           "side": "T",
           "description": "",
-          "media": [],
+          "media": [
+            {
+              "url": "media/inferno/exec-a-apps-rush-7w2cm.mp4",
+              "label": ""
+            }
+          ],
           "tips": [],
           "items": [
             "moto_2",
@@ -1355,6 +1392,23 @@
           "items": [
             "A_retake_smoke",
             "A_retake_molly"
+          ]
+        },
+        {
+          "id": "850b0f28-a7f9-4b2b-a494-9abd07347706",
+          "name": "B execute (w/molly)",
+          "side": "T",
+          "description": "",
+          "media": [
+            {
+              "url": "media/inferno/exec-b-execute-w-molly-7virz.mp4",
+              "label": ""
+            }
+          ],
+          "tips": [],
+          "items": [
+            "ct_smoke_1",
+            "coffin_molly"
           ]
         }
       ],
