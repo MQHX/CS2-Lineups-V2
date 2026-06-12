@@ -72,7 +72,10 @@ header{height:54px;display:flex;align-items:center;gap:14px;padding:0 18px;borde
 .map-grid{margin-top:34px;display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
 .map-card{position:relative;border:1px solid var(--line);border-radius:var(--r);background:var(--bg1);overflow:hidden;text-align:left;transition:border-color .15s,transform .15s}
 .map-card:hover{border-color:var(--t);transform:translateY(-2px)}
-.map-card img{width:100%;aspect-ratio:16/10;object-fit:cover;opacity:.92}
+.map-card-thumb{width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at center,rgba(240,163,60,.06),transparent 70%),var(--bg0);position:relative;overflow:hidden}
+.map-card-thumb img{max-width:74%;max-height:78%;object-fit:contain;opacity:.95;transition:transform .25s,opacity .15s;filter:drop-shadow(0 4px 14px rgba(0,0,0,.6))}
+.map-card:hover .map-card-thumb img{transform:scale(1.05);opacity:1}
+.map-card-thumb.is-radar img{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:cover;opacity:.92;filter:none}
 .map-card-body{padding:12px 14px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line-soft)}
 .map-card-name{font-family:var(--disp);font-weight:600;font-size:15px;letter-spacing:.1em;text-transform:uppercase}
 .map-card-count{font-family:var(--mono);font-size:12px;color:var(--mut)}
@@ -95,6 +98,7 @@ header{height:54px;display:flex;align-items:center;gap:14px;padding:0 18px;borde
 .modeswitch button.on{background:var(--bg3);color:var(--ink);box-shadow:inset 0 -2px 0 var(--t)}
 
 .fgrid{display:flex;gap:6px;flex-wrap:wrap}
+.fgrid-sides{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line-soft)}
 .fico{width:36px;height:36px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:#5C6878;transition:all .12s;position:relative}
 .fico svg{width:17px;height:17px}
 .fico.on{color:var(--c);border-color:color-mix(in srgb,var(--c) 55%,transparent);background:color-mix(in srgb,var(--c) 9%,transparent)}
@@ -1066,11 +1070,16 @@ function renderHome(){
     const n=md.lineups.length;
     const card=document.createElement("button");
     card.className="map-card";
-    card.innerHTML=`<img src="maps/${m.id}.png" alt="" loading="lazy">
+    card.innerHTML=`<div class="map-card-thumb"><img src="logos/${m.id}.webp" alt="${esc(m.name)}" loading="lazy"></div>
       <div class="map-card-body"><span class="map-card-name">${m.name}</span>
       <span class="map-card-count"><b>${n}</b> ${n===1?t("lineupCnt"):t("lineupsCnt")}${md.executes.length?` · ${md.executes.length} exec`:""}</span></div>`;
     const img=card.querySelector("img");
-    img.onerror=()=>{img.onerror=null;img.src=placeholderRadar(m.name);};
+    // Logo missing → fall back to the radar png, then to a placeholder
+    let fellBack=false;
+    img.onerror=()=>{
+      if(!fellBack){fellBack=true;img.src=`maps/${m.id}.png`;img.parentElement.classList.add("is-radar");}
+      else{img.onerror=null;img.src=placeholderRadar(m.name);}
+    };
     card.addEventListener("click",()=>openMap(m.id));
     grid.appendChild(card);
   });
@@ -1151,7 +1160,8 @@ function renderRail(){
     </div>
     <div class="rail-box">
       <div class="rail-h">${esc(t("filters"))}</div>
-      <div class="fgrid">${state.viewMode==="lineups"?typeBtns:""}${sideBtns}</div>
+      <div class="fgrid">${state.viewMode==="lineups"?typeBtns:""}</div>
+      <div class="fgrid fgrid-sides">${sideBtns}</div>
     </div>
     ${listHtml}`;
 
