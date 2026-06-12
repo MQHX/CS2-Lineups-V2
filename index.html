@@ -81,7 +81,7 @@ header{height:54px;display:flex;align-items:center;gap:14px;padding:0 18px;borde
 
 /* ============================================================ VIEWER LAYOUT */
 #viewer{display:none}
-.stage{display:grid;grid-template-columns:236px minmax(0,1fr) 430px;gap:18px;align-items:start;padding:14px 18px 60px}
+.stage{display:grid;grid-template-columns:236px minmax(440px,720px) minmax(440px,1fr);gap:14px;align-items:start;padding:14px 18px 60px}
 
 /* ---- left rail ---- */
 .rail{position:sticky;top:68px;display:flex;flex-direction:column;gap:14px;max-height:calc(100vh - 90px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:#39455A transparent;padding-right:2px}
@@ -249,6 +249,13 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .media-item{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--bg0);cursor:zoom-in;padding:0;width:100%}
 .media-item img,.media-item video{width:100%;display:block}
 .media-item .cap{font-size:12px;color:var(--mut);padding:7px 10px;border-top:1px solid var(--line-soft);text-align:left;font-family:var(--mono)}
+
+/* Variant tabs in lineup card */
+.varbadge{position:absolute;top:-6px;right:-6px;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--t);color:#1A1206;font-family:var(--mono);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1;border:1.5px solid var(--bg0)}
+.var-tabs{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0 0;padding:6px;background:var(--bg0);border:1px solid var(--line-soft);border-radius:7px}
+.var-tab{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;padding:5px 11px;border-radius:5px;background:transparent;color:var(--mut);border:1px solid transparent;cursor:pointer;text-transform:uppercase;white-space:nowrap}
+.var-tab:hover{color:var(--ink);background:var(--bg2)}
+.var-tab.on{background:var(--t);color:#1A1206;border-color:var(--t)}
 
 /* Execute player in right panel */
 .exec-player{margin-top:14px;border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line)}
@@ -618,6 +625,9 @@ en:{
   uploadBtn:"⤴ Upload file",uploading:"Uploading…",uploadOk:"Uploaded",uploadFail:"Upload failed: ",
   uploadHint:"Upload .png .jpg .gif .mp4 .webm — goes straight to GitHub. Configure Publish first.",
   videoLabel:"Execute video (mp4 / gif / png)",videoHint:"One video showing the whole execute. Use Upload above, or paste a URL.",
+  target:"Target",targetPh:"e.g. Banana smoke",
+  variantLbl:"Variant",variantPh:"e.g. From CT spawn",
+  variantHint:"Lineups with the same Target share one map marker but show as variants (tabs).",
   noVideo:"No video yet — open the editor to add one.",
   watchExec:"▶ Watch the execute",replace:"Replace",
   buyNames:{pistol:"Pistol",eco:"Eco",semi:"Semi-buy",full:"Full-buy",solo:"Solo",other:"Other"},
@@ -693,6 +703,9 @@ fr:{
   uploadBtn:"⤴ Importer un fichier",uploading:"Envoi en cours…",uploadOk:"Importé",uploadFail:"Échec de l'envoi : ",
   uploadHint:"Importe .png .jpg .gif .mp4 .webm — direct sur GitHub. Configure d'abord la publication.",
   videoLabel:"Vidéo de l'execute (mp4 / gif / png)",videoHint:"Une vidéo qui montre tout l'execute. Utilise Importer ci-dessus, ou colle une URL.",
+  target:"Cible",targetPh:"ex: Smoke banane",
+  variantLbl:"Variante",variantPh:"ex: Depuis CT spawn",
+  variantHint:"Les lineups avec la même Cible partagent un marqueur sur la map et apparaissent en variantes (onglets).",
   noVideo:"Pas encore de vidéo — ouvre l'éditeur pour en ajouter une.",
   watchExec:"▶ Voir l'execute",replace:"Remplacer",
   buyNames:{pistol:"Pistol",eco:"Eco",semi:"Semi-buy",full:"Full-buy",solo:"Solo",other:"Autre"},
@@ -736,6 +749,8 @@ function normLineup(l){
     id:l.id||uid(), name:l.name||"Unnamed",
     type:TYPES[l.type]?l.type:"smoke", side:(l.side==="CT")?"CT":"T",
     technique:l.technique||"", description:l.description||"",
+    target:typeof l.target==="string"?l.target.trim():"",
+    variant:typeof l.variant==="string"?l.variant.trim():"",
     land:{x:num(l.land?.x,50),y:num(l.land?.y,50)},
     throw:{x:num(l.throw?.x,50),y:num(l.throw?.y,60)},
     media:Array.isArray(l.media)?l.media.filter(m=>m&&m.url).map(m=>({url:m.url,label:m.label||""})):[],
@@ -1203,35 +1218,62 @@ function renderMarkers(){
   const exec=state.activeExec?md.executes.find(e=>e.id===state.activeExec):null;
   const order=exec?exec.items:null;
 
+  // Group lineups by target field (variants share a marker)
+  const groups=new Map();
+  const groupKey=l=>l.target?l.target.toLowerCase():l.id;
   vis.forEach(l=>{
-    const inExec=order?order.includes(l.id):true;
-    // When an exec is active, hide non-exec markers entirely
-    if(order&&!inExec)return;
-    const selected=state.openIds.includes(l.id);
+    const k=groupKey(l);
+    if(!groups.has(k))groups.set(k,[]);
+    groups.get(k).push(l);
+  });
+
+  groups.forEach(variants=>{
+    // When an exec is active, only show groups that include a variant in the exec
+    let activeVariant=variants[0];
+    if(order){
+      const inExecV=variants.find(v=>order.includes(v.id));
+      if(!inExecV)return;
+      activeVariant=inExecV;
+    }else if(state.editMode&&state.editingId){
+      const editing=variants.find(v=>v.id===state.editingId);
+      if(editing)activeVariant=editing;
+    }else{
+      const opened=variants.find(v=>state.openIds.includes(v.id));
+      if(opened)activeVariant=opened;
+    }
+    const l=activeVariant;
+    const selected=variants.some(v=>state.openIds.includes(v.id));
     const c=TYPES[l.type].color;
     const mk=document.createElement("button");
     mk.className="mk"+(selected?" sel":"");
     mk.style.setProperty("--c",c);
     mk.style.left=l.land.x+"%"; mk.style.top=l.land.y+"%";
-    mk.title=l.name;
+    mk.title=l.name+(variants.length>1?` (${variants.length} variantes)`:"");
     mk.innerHTML=`<span class="diamond"></span>${ICONS[l.type]}`;
-    if(order&&inExec){
+    if(variants.length>1&&!order){
+      const v=document.createElement("span");
+      v.className="varbadge";v.textContent=variants.length;
+      mk.appendChild(v);
+    }
+    if(order){
       const n=document.createElement("span");
       n.className="stepnum";n.textContent=order.indexOf(l.id)+1;
       mk.appendChild(n);
     }
     mk.addEventListener("click",e=>{
       e.stopPropagation();
-      if(state.editMode){startEditLineup(l.id);}
-      else{
-        if(state.openIds.includes(l.id))state.openIds=state.openIds.filter(x=>x!==l.id);
-        else state.openIds.push(l.id);
-        renderAll();
+      if(state.editMode){startEditLineup(l.id);return;}
+      // Toggle the active variant for the group
+      const openedV=variants.find(v=>state.openIds.includes(v.id));
+      if(openedV){
+        state.openIds=state.openIds.filter(x=>x!==openedV.id);
+      }else{
+        state.openIds.push(l.id);
       }
+      renderAll();
     });
     mk.addEventListener("mouseenter",()=>{
-      renderSelectedTraj();
-      if(!state.openIds.includes(l.id)&&!(state.editMode&&state.editingId===l.id))trajPath(l);
+      // No hover trajectory — trajectories only shown for opened lineups
     });
     mk.addEventListener("mouseleave",()=>renderSelectedTraj());
     if(state.editMode)enableDrag(mk,l,"land");
@@ -1328,6 +1370,15 @@ function renderPanel(){
         state.openIds=state.openIds.filter(x=>x!==id);renderAll();
       });
       card.querySelectorAll(".media-item").forEach((el,i)=>el.addEventListener("click",()=>openLightbox(l.media,i)));
+      card.querySelectorAll(".var-tab").forEach(tab=>tab.addEventListener("click",e=>{
+        e.stopPropagation();
+        const vid=tab.dataset.var;
+        if(vid===id)return; // already showing
+        // Replace the current openId with the chosen variant
+        const idx=state.openIds.indexOf(id);
+        if(idx>=0)state.openIds[idx]=vid;else state.openIds.push(vid);
+        renderAll();
+      }));
       card.addEventListener("dragstart",e=>{
         e.dataTransfer.setData("text/plain",id);
         e.dataTransfer.effectAllowed="move";
@@ -1356,7 +1407,6 @@ function renderPanel(){
     const ex=md.executes.find(e=>e.id===state.activeExec);
     if(ex){
       const hasMedia=ex.media&&ex.media.length;
-      const mainM=hasMedia?ex.media[0]:null;
       panel.innerHTML=`
         <div class="dr-pad">
           <div class="dr-eyebrow"><span>Execute // ${esc(ex.side)} · ${ex.items.length} ${esc(t("steps"))}</span>
@@ -1365,13 +1415,7 @@ function renderPanel(){
           <div class="badges">
             <span class="badge side-${ex.side}">${ex.side}</span>
           </div>
-          ${hasMedia?`
-            <div class="exec-player">
-              ${isVideo(mainM.url)
-                ?`<video src="${esc(mainM.url)}" data-src="${esc(mainM.url)}" controls autoplay loop muted playsinline></video>`
-                :`<img src="${esc(mainM.url)}" data-src="${esc(mainM.url)}" alt="${esc(mainM.label||"")}" id="x-zoom">`}
-            </div>
-          `:`<div class="exec-novideo">${esc(t("noVideo"))}</div>`}
+          ${hasMedia?`<div class="media-grid" style="margin-top:14px">${ex.media.map(m=>mediaHTML(m)).join("")}</div>`:`<div class="exec-novideo">${esc(t("noVideo"))}</div>`}
           ${ex.description?`<p class="dr-desc">${esc(ex.description)}</p>`:""}
           ${ex.tips&&ex.tips.length?`<div class="dr-h">${esc(t("tips"))}</div><ul class="tips">${ex.tips.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
           ${ex.items.length?`<div class="dr-h">${esc(t("steps"))}</div>`:""}
@@ -1385,7 +1429,7 @@ function renderPanel(){
           }).join("")}
         </div>`;
       $("#dr-close").addEventListener("click",()=>{state.activeExec=null;renderAll();});
-      const zimg=$("#x-zoom");if(zimg)zimg.addEventListener("click",()=>openLightbox(ex.media,0));
+      panel.querySelectorAll(".media-item").forEach((el,i)=>el.addEventListener("click",()=>openLightbox(ex.media,i)));
       panel.querySelectorAll(".linkrow").forEach(b=>b.addEventListener("click",()=>{
         if(!state.openIds.includes(b.dataset.id))state.openIds.push(b.dataset.id);
         renderAll();
@@ -1400,6 +1444,13 @@ function renderPanel(){
 }
 
 function lineupCardHTML(l){
+  // Find sibling variants (same target, this map)
+  const md=mapData();
+  const siblings=l.target?md.lineups.filter(x=>x.target&&x.target.toLowerCase()===l.target.toLowerCase()):[l];
+  const hasVariants=siblings.length>1;
+  const tabsHTML=hasVariants?`<div class="var-tabs">${
+    siblings.map(v=>`<button class="var-tab ${v.id===l.id?"on":""}" data-var="${esc(v.id)}">${esc(v.variant||v.id.slice(0,5))}</button>`).join("")
+  }</div>`:"";
   return `<div class="lcard" draggable="true" data-id="${esc(l.id)}">
     <div class="lcard-head">
       <span class="grip" title="Drag">⠿</span>
@@ -1408,6 +1459,7 @@ function lineupCardHTML(l){
       <span class="sidedot ${l.side}">${l.side}</span>
       <button class="icon-btn lcard-close" title="${esc(t("close"))}">✕</button>
     </div>
+    ${tabsHTML}
     ${l.technique?`<div class="lcard-tech">${techIconsHTML(l.technique)}</div>`:""}
     ${l.description?`<p class="dr-desc" style="margin-top:8px;font-size:13px">${esc(l.description)}</p>`:""}
     ${l.media.length?`<div class="media-grid" style="margin-top:10px">${l.media.map(m=>mediaHTML(m)).join("")}</div>`:""}
@@ -1679,6 +1731,19 @@ function renderLineupForm(panel,md){
       <label class="f-label" style="margin-top:4px">${esc(t("name"))}</label>
       <input id="f-name" value="${esc(l.name)}">
 
+      <div class="f-row" style="margin-top:2px">
+        <div>
+          <label class="f-label">${esc(t("target"))}</label>
+          <input id="f-target" value="${esc(l.target)}" placeholder="${esc(t("targetPh"))}" list="target-suggest">
+          <datalist id="target-suggest">${[...new Set(mapData().lineups.map(x=>x.target).filter(Boolean))].map(v=>`<option value="${esc(v)}">`).join("")}</datalist>
+        </div>
+        <div>
+          <label class="f-label">${esc(t("variantLbl"))}</label>
+          <input id="f-variant" value="${esc(l.variant)}" placeholder="${esc(t("variantPh"))}">
+        </div>
+      </div>
+      <div class="f-hint" style="margin-top:-2px">${esc(t("variantHint"))}</div>
+
       <label class="f-label">${esc(t("type"))}</label>
       <div class="seg" id="f-type">${Object.entries(TYPES).map(([k,ty])=>`<button data-v="${k}" class="${l.type===k?"on":""}">${ty.label}</button>`).join("")}</div>
 
@@ -1726,6 +1791,8 @@ function renderLineupForm(panel,md){
     </div>`;
   const commit=()=>{
     l.name=$("#f-name").value.trim()||"Unnamed";
+    l.target=$("#f-target").value.trim();
+    l.variant=$("#f-variant").value.trim();
     l.technique=$("#f-tech").value.trim();
     l.description=$("#f-desc").value;
     l.media=$$("#f-media .sub-row").map(r=>({url:r.querySelector(".m-url").value.trim(),label:r.querySelector(".m-cap").value.trim()})).filter(m=>m.url);
@@ -1735,7 +1802,7 @@ function renderLineupForm(panel,md){
   $("#ed-back").addEventListener("click",()=>{commit();state.editingId=null;state.placing=null;$("#mapwrap").classList.remove("placing");renderAll();});
   $("#f-done").addEventListener("click",()=>{commit();state.editingId=null;state.placing=null;$("#mapwrap").classList.remove("placing");toast(t("tLineupSaved"));renderAll();});
   $("#f-del").addEventListener("click",()=>confirmBox(t("delLineupT"),`« ${l.name} » — ${t("delLineupM")}`,()=>deleteLineup(l.id)));
-  ["#f-name","#f-tech","#f-desc"].forEach(s=>$(s).addEventListener("change",commit));
+  ["#f-name","#f-target","#f-variant","#f-tech","#f-desc"].forEach(s=>$(s).addEventListener("change",commit));
   $("#f-tech").addEventListener("input",e=>{const pv=$("#f-tech-preview");if(pv)pv.innerHTML=techIconsHTML(e.target.value);});
   $("#f-type").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;l.type=b.dataset.v;commit();renderAll();});
   $("#f-side").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;l.side=b.dataset.v;commit();renderAll();});
