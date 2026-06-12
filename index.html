@@ -779,7 +779,22 @@ function mapData(){
   }catch(e){}
   try{
     const raw=localStorage.getItem(STORE_KEY);
-    if(raw){state.db=migrate(JSON.parse(raw));state.usingLocal=true;}
+    if(raw){
+      const localDb=migrate(JSON.parse(raw));
+      // Count total lineups in each source
+      let localN=0, fileN=0;
+      for(const m of Object.values(localDb.maps)) localN+=m.lineups.length;
+      for(const m of Object.values(state.db.maps))  fileN+=m.lineups.length;
+      if(localN>=fileN){
+        // localStorage is up-to-date or has user edits on top → use it
+        state.db=localDb; state.usingLocal=true;
+      } else {
+        // localStorage is stale (old demo data) → discard silently
+        localStorage.removeItem(STORE_KEY);
+        localStorage.removeItem(SNAP_KEY);
+        console.info("[cs2] Stale localStorage cleared — using data.json ("+fileN+" lineups)");
+      }
+    }
   }catch(e){console.warn("invalid local data",e);}
   bindGlobal();
   renderChrome();
