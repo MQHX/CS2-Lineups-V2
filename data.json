@@ -673,7 +673,12 @@
           "name": "A execute (from Ramp)",
           "side": "T",
           "description": "",
-          "media": [],
+          "media": [
+            {
+              "url": "media/mirage/exec-a-execute-from-ramp-g5ib2.mp4",
+              "label": ""
+            }
+          ],
           "tips": [],
           "items": [
             "stairs_smoke_2",
@@ -686,11 +691,16 @@
           "name": "A execute (from T-Roof)",
           "side": "T",
           "description": "",
-          "media": [],
+          "media": [
+            {
+              "url": "media/mirage/exec-a-execute-from-t-roof-g5pxt.mp4",
+              "label": ""
+            }
+          ],
           "tips": [],
           "items": [
-            "stairs_smoke",
             "jungle_smoke",
+            "stairs_smoke",
             "sandwich_molly"
           ]
         },
@@ -699,7 +709,12 @@
           "name": "B execute",
           "side": "T",
           "description": "",
-          "media": [],
+          "media": [
+            {
+              "url": "media/mirage/exec-b-execute-g6rdw.mp4",
+              "label": ""
+            }
+          ],
           "tips": [],
           "items": [
             "b_window",
@@ -1646,13 +1661,13 @@
         },
         {
           "id": "bank_smoke",
-          "name": "Bank (Banana)",
+          "name": "Bank",
           "type": "smoke",
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Bank",
+          "variant": "From banana",
           "land": {
             "x": 44.3,
             "y": 10.8
@@ -1675,13 +1690,13 @@
         },
         {
           "id": "bank_smoke_2",
-          "name": "Bank (Long)",
+          "name": "Bank",
           "type": "smoke",
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Bank",
+          "variant": "From long",
           "land": {
             "x": 44.3,
             "y": 10.8
@@ -1733,13 +1748,13 @@
         },
         {
           "id": "heaven_smoke",
-          "name": "Heaven (Short)",
+          "name": "Heaven",
           "type": "smoke",
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Heaven",
+          "variant": "From short",
           "land": {
             "x": 57.8,
             "y": 22.4
@@ -1762,13 +1777,13 @@
         },
         {
           "id": "heaven_smoke_2",
-          "name": "Heaven (T-Spawn)",
+          "name": "Heaven",
           "type": "smoke",
           "side": "T",
           "technique": "Running (until shadow disappears) + Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Heaven",
+          "variant": "From T-Spawn",
           "land": {
             "x": 57.8,
             "y": 22.4
@@ -1820,13 +1835,13 @@
         },
         {
           "id": "monster_smoke_from_banana",
-          "name": "Monster (Banana)",
+          "name": "Monster",
           "type": "smoke",
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Monster",
+          "variant": "From banana",
           "land": {
             "x": 80.9,
             "y": 44.6
@@ -1849,13 +1864,13 @@
         },
         {
           "id": "monster_smoke_from_ct",
-          "name": "Monster (CT Spawn)",
+          "name": "Monster",
           "type": "smoke",
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Monster",
+          "variant": "From CT-Spawn",
           "land": {
             "x": 80.9,
             "y": 44.6
@@ -1936,13 +1951,13 @@
         },
         {
           "id": "short_molly",
-          "name": "Short (B site)",
+          "name": "Short",
           "type": "molotov",
           "side": "CT",
           "technique": "Left and Right click + Running",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Short",
+          "variant": "From B-Site",
           "land": {
             "x": 68,
             "y": 51
@@ -1965,13 +1980,13 @@
         },
         {
           "id": "short_molly_from_banana",
-          "name": "Short (Banana)",
+          "name": "Short",
           "type": "molotov",
           "side": "CT",
           "technique": "Walk + Throw",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Short",
+          "variant": "From banana",
           "land": {
             "x": 68,
             "y": 51
@@ -2052,13 +2067,13 @@
         },
         {
           "id": "trash_smoke",
-          "name": "Trash (Banana)",
+          "name": "Trash",
           "type": "smoke",
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Trash",
+          "variant": "From banana",
           "land": {
             "x": 53.9,
             "y": 13.8
@@ -2081,13 +2096,13 @@
         },
         {
           "id": "trash_smoke_2",
-          "name": "Trash (Long)",
+          "name": "Trash",
           "type": "smoke",
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Trash",
+          "variant": "From long",
           "land": {
             "x": 53.9,
             "y": 13.8
@@ -2110,13 +2125,13 @@
         },
         {
           "id": "truck_molly",
-          "name": "Truck (Banana)",
+          "name": "Truck",
           "type": "molotov",
           "side": "T",
           "technique": "W Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Truck",
+          "variant": "From banana",
           "land": {
             "x": 53.5,
             "y": 21.4
@@ -2139,13 +2154,13 @@
         },
         {
           "id": "truck_molly_2",
-          "name": "Truck (Long)",
+          "name": "Truck",
           "type": "molotov",
           "side": "T",
           "technique": "Walk + Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Truck",
+          "variant": "From long",
           "land": {
             "x": 53.5,
             "y": 21.4
@@ -2173,7 +2188,12 @@
           "name": "A Execute (banana)",
           "side": "T",
           "description": "",
-          "media": [],
+          "media": [
+            {
+              "url": "media/overpass/exec-a-execute-banana-g4d9w.mp4",
+              "label": ""
+            }
+          ],
           "tips": [],
           "items": [
             "bank_smoke",
@@ -2186,7 +2206,12 @@
           "name": "A Execute (long)",
           "side": "T",
           "description": "",
-          "media": [],
+          "media": [
+            {
+              "url": "media/overpass/exec-a-execute-long-g4po4.mp4",
+              "label": ""
+            }
+          ],
           "tips": [],
           "items": [
             "bank_smoke_2",
@@ -2199,7 +2224,12 @@
           "name": "B Execute (short)",
           "side": "T",
           "description": "",
-          "media": [],
+          "media": [
+            {
+              "url": "media/overpass/exec-b-execute-short-g4yss.mp4",
+              "label": ""
+            }
+          ],
           "tips": [],
           "items": [
             "heaven_smoke",
