@@ -494,7 +494,6 @@ const ICONS={
   molotov:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.8c1.3 3.6-3.4 5.4-3.4 9.2a3.4 3.4 0 0 0 6.8 0c0-1.3-.6-2.4-1.2-3.3 2.6 1.1 4.6 3.3 4.6 6.4A6.8 6.8 0 0 1 12 22.3a6.8 6.8 0 0 1-6.8-6.7C5.2 9.9 10.4 7.5 12 1.8z"/></svg>`,
   he:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l1.9 4.7L18 3.5l-1.2 4.3L21.5 9l-3.6 3 3.6 3-4.7 1.2L18 20.5l-4.1-2.2L12 23l-1.9-4.7L6 20.5l1.2-4.3L2.5 15l3.6-3-3.6-3 4.7-1.2L6 3.5l4.1 2.2L12 1z"/></svg>`,
 };
-const BUYS=["pistol","eco","semi","full","solo","other"];
 
 /* ---------------- throw-technique tokens → icons ----------------
    A technique string like "Left and right click + W + Jumpthrow"
@@ -593,7 +592,7 @@ en:{
   close:"Close",cancel:"Cancel",del:"Delete",
   newLineup:"+ New lineup",newExec:"+ New execute",newStrat:"+ New strategy",
   edLineup:"Editor // lineup",edExec:"Editor // execute",edStrat:"Editor // strategy",
-  name:"Name",type:"Type",side:"Side",buy:"Round type",technique:"Throw technique",
+  name:"Name",type:"Type",side:"Side",technique:"Throw technique",
   position:"Position on the map",
   placeImpact:"◆ Place impact",placeThrow:"＋ Place throw",placePoint:"◎ Place zone on map",
   posHint:"Tip: you can also drag the points directly on the map.",
@@ -649,7 +648,6 @@ en:{
   variantHint:"Lineups with the same Target share one map marker but show as variants (tabs).",
   noVideo:"No video yet — open the editor to add one.",
   watchExec:"▶ Watch the execute",replace:"Replace",
-  buyNames:{pistol:"Pistol",eco:"Eco",semi:"Semi-buy",full:"Full-buy",solo:"Solo",other:"Other"},
 },
 fr:{
   back:"← Maps",editor:"✎ Éditeur",doneEdit:"✓ Terminer l'édition",
@@ -672,7 +670,7 @@ fr:{
   close:"Fermer",cancel:"Annuler",del:"Supprimer",
   newLineup:"+ Nouveau lineup",newExec:"+ Nouvel execute",newStrat:"+ Nouvelle stratégie",
   edLineup:"Éditeur // lineup",edExec:"Éditeur // execute",edStrat:"Éditeur // stratégie",
-  name:"Nom",type:"Type",side:"Side",buy:"Type de round",technique:"Technique de lancer",
+  name:"Nom",type:"Type",side:"Side",technique:"Technique de lancer",
   position:"Position sur la map",
   placeImpact:"◆ Placer l'impact",placeThrow:"＋ Placer le lancer",placePoint:"◎ Placer la zone",
   posHint:"Astuce : tu peux aussi faire glisser les points directement sur la map.",
@@ -728,7 +726,6 @@ fr:{
   variantHint:"Les lineups avec la même Cible partagent un marqueur sur la map et apparaissent en variantes (onglets).",
   noVideo:"Pas encore de vidéo — ouvre l'éditeur pour en ajouter une.",
   watchExec:"▶ Voir l'execute",replace:"Remplacer",
-  buyNames:{pistol:"Pistol",eco:"Eco",semi:"Semi-buy",full:"Full-buy",solo:"Solo",other:"Autre"},
 },
 };
 let LANG=localStorage.getItem("cs2_lang")||"en";
@@ -786,7 +783,7 @@ function normExec(e){
 }
 function normStrat(s){
   return {id:s.id||uid(),name:s.name||"Strategy",side:(s.side==="CT")?"CT":"T",
-    buy:BUYS.includes(s.buy)?s.buy:"full", zone:s.zone||"",
+    zone:s.zone||"",
     point:(s.point&&Number.isFinite(+s.point.x))?{x:num(s.point.x,50),y:num(s.point.y,50)}:null,
     description:s.description||"",
     media:Array.isArray(s.media)?s.media.filter(m=>m&&m.url).map(m=>({url:m.url,label:m.label||""})):[],
@@ -1142,12 +1139,12 @@ function renderRail(){
       : `<div class="rail-empty">${esc(t("noExecs"))}</div>`}</div>`;
   } else {
     const groups={};
-    visibleStrats().forEach(s=>{(groups[s.buy]=groups[s.buy]||[]).push(s);});
-    const order=BUYS.filter(b=>groups[b]);
+    visibleStrats().forEach(s=>{const z=s.zone||"—";(groups[z]=groups[z]||[]).push(s);});
+    const order=Object.keys(groups).sort((a,b)=>a.localeCompare(b,undefined,{sensitivity:"base"}));
     listHtml=`<div class="rail-box"><div class="rail-h">${esc(t("strats"))}</div>
-      ${order.length? order.map(b=>`
-        <div class="rail-h" style="margin-top:10px">${esc(t("buyNames")[b])}</div>
-        ${groups[b].map(s=>`
+      ${order.length? order.map(z=>`
+        <div class="rail-h" style="margin-top:10px">${esc(z)}</div>
+        ${groups[z].map(s=>`
           <button class="xcard ${state.selectedStrat===s.id?"on":""}" data-strat="${s.id}">
             <span class="xtop"><span class="xname">${esc(s.name)}</span><span class="sidedot ${s.side}">${s.side}</span></span>
             ${s.description?`<span class="xdesc">${esc(s.description)}</span>`:""}
@@ -1520,8 +1517,7 @@ function renderStratDetail(panel,s){
       <h2 class="dr-title">${esc(s.name)}</h2>
       <div class="badges">
         <span class="badge side-${s.side}">${s.side}</span>
-        <span class="badge">${esc(t("buyNames")[s.buy])}</span>
-        ${s.zone?`<span class="badge tech">${esc(t("zone"))}: ${esc(s.zone)}</span>`:""}
+        ${s.zone?`<span class="badge tech">${esc(s.zone)}</span>`:""}
       </div>
       ${s.description?`<p class="dr-desc">${esc(s.description)}</p>`:""}
       ${s.media&&s.media.length?`<div class="media-grid" style="margin-top:10px" id="strat-media">${s.media.map(m=>mediaHTML(m)).join("")}</div>`:""}
@@ -1828,7 +1824,7 @@ function renderEditor(panel){
             <span class="grip" title="Drag to reorder">⠿</span>
             <span class="sd" style="color:${s.side==="T"?"var(--t)":"var(--ct)"}">${s.side}</span>
             <button class="nm" data-id="${s.id}">${esc(s.name)}</button>
-            <span class="sd">${esc(t("buyNames")[s.buy])}</span>
+            <span class="sd">${esc(s.zone||"—")}</span>
             <button class="icon-btn danger" data-del="${s.id}" title="${esc(t("del"))}">✕</button>
           </div>`).join("")
         :`<div class="rail-empty" style="text-align:center;padding:12px 0">${esc(t("emptyStrats"))}</div>`}
@@ -2056,14 +2052,8 @@ function renderStratForm(panel,md){
         <button data-v="T" class="${s.side==="T"?"on":""}">T</button>
         <button data-v="CT" class="${s.side==="CT"?"on":""}">CT</button>
       </div>
-      <label class="f-label">${esc(t("buy"))}</label>
-      <div class="seg" id="s-buy">${BUYS.map(b=>`<button data-v="${b}" class="${s.buy===b?"on":""}">${esc(t("buyNames")[b])}</button>`).join("")}</div>
-      <div class="f-row" style="margin-top:2px">
-        <div>
-          <label class="f-label">${esc(t("zoneLabel"))}</label>
-          <input id="s-zone" value="${esc(s.zone)}" placeholder="${esc(t("zonePh"))}">
-        </div>
-      </div>
+      <label class="f-label">${esc(t("zoneLabel"))}</label>
+      <input id="s-zone" value="${esc(s.zone)}" placeholder="${esc(t("zonePh"))}">
       <label class="f-label">${esc(t("position"))}</label>
       <div class="place-btns">
         <button class="btn btn-sm ${state.placing==="spoint"?"arming":""}" id="f-place-point">${esc(t("placePoint"))}</button>
@@ -2123,7 +2113,6 @@ function renderStratForm(panel,md){
   }));
   ["#s-name","#s-zone","#s-desc"].forEach(sel=>$(sel).addEventListener("change",commit));
   $("#s-side").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;s.side=b.dataset.v;commit();renderAll();});
-  $("#s-buy").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;s.buy=b.dataset.v;commit();renderAll();});
   $("#f-place-point").addEventListener("click",()=>togglePlacing("spoint"));
   $("#s-media-add").addEventListener("click",()=>{commit();s.media.push({url:"",label:""});renderAll();});
   $("#s-upload").addEventListener("click",()=>{commit();pickAndUploadMedia(s,"strat-"+slugify(s.name||"s"),null,()=>renderAll());});
