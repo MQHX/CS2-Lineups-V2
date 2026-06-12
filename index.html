@@ -68,7 +68,7 @@ header{height:54px;display:flex;align-items:center;gap:14px;padding:0 18px;borde
 #home{max-width:1060px;margin:0 auto;padding:46px 22px 80px}
 .home-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--t);margin-bottom:10px}
 .home-title{font-family:var(--disp);font-weight:700;font-size:clamp(26px,4vw,38px);letter-spacing:.04em;text-transform:uppercase;line-height:1.1}
-.home-sub{color:var(--mut);margin-top:10px;max-width:560px}
+.home-sub{color:var(--mut);margin-top:4px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:lowercase}
 .map-grid{margin-top:34px;display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
 .map-card{position:relative;border:1px solid var(--line);border-radius:var(--r);background:var(--bg1);overflow:hidden;text-align:left;transition:border-color .15s,transform .15s}
 .map-card:hover{border-color:var(--t);transform:translateY(-2px)}
@@ -76,8 +76,8 @@ header{height:54px;display:flex;align-items:center;gap:14px;padding:0 18px;borde
 .map-card-thumb img{max-width:74%;max-height:78%;object-fit:contain;opacity:.95;transition:transform .25s,opacity .15s;filter:drop-shadow(0 4px 14px rgba(0,0,0,.6))}
 .map-card:hover .map-card-thumb img{transform:scale(1.05);opacity:1}
 .map-card-thumb.is-radar img{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:cover;opacity:.92;filter:none}
-.map-card-body{padding:12px 14px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line-soft)}
-.map-card-name{font-family:var(--disp);font-weight:600;font-size:15px;letter-spacing:.1em;text-transform:uppercase}
+.map-card-body{padding:11px 14px;display:flex;align-items:center;justify-content:center;border-top:1px solid var(--line-soft)}
+.map-card-name{font-family:var(--disp);font-weight:600;font-size:14.5px;letter-spacing:.14em;text-transform:uppercase}
 .map-card-count{font-family:var(--mono);font-size:12px;color:var(--mut)}
 .map-card-count b{color:var(--ink);font-weight:500}
 @media (prefers-reduced-motion:reduce){.map-card{transition:none}}
@@ -290,8 +290,18 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .tips li::before{content:"▸";color:var(--t);flex:0 0 auto}
 .dr-empty{color:var(--mut);padding:26px 18px;text-align:center}
 .dr-empty .big{font-family:var(--disp);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:6px}
-.linkrow{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:var(--bg2);border:1px solid var(--line-soft);border-radius:8px;padding:9px 11px;transition:border-color .12s}
+.linkrow{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:var(--bg2);border:1px solid var(--line-soft);border-radius:8px;padding:9px 11px;transition:border-color .12s,background .12s}
 .linkrow + .linkrow{margin-top:7px}
+.linkrow.on{border-color:var(--t);background:rgba(240,163,60,.06)}
+.linkrow .chev{margin-left:auto;font-size:11px;color:var(--mut);font-family:var(--mono)}
+.linkrow.on .chev{color:var(--t)}
+.linkrow.nested{cursor:default;opacity:.85;padding:6px 9px;margin-top:5px;background:transparent;border-color:var(--line-soft)}
+.linkrow.nested .n{background:var(--bg2);color:var(--mut)}
+.strat-inline{margin:6px 0 10px;padding:10px 11px 12px;background:var(--bg0);border-left:2px solid var(--t);border-radius:0 6px 6px 0;display:flex;flex-direction:column;gap:8px}
+.strat-inline:empty{display:none}
+.strat-inline .media-grid{margin-top:0}
+.strat-inline .tips{margin:0}
+.strat-steps{display:flex;flex-direction:column;gap:0}
 .linkrow:hover{border-color:#46556B}
 .linkrow .n{font-family:var(--mono);font-size:11px;flex:0 0 22px;height:22px;display:flex;align-items:center;justify-content:center;background:var(--t);color:#1A1206;border-radius:50%}
 .linkrow .ic{width:14px;height:14px;flex:0 0 auto;display:flex}
@@ -395,9 +405,8 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 </div>
 
 <main id="home">
-  <div class="home-eyebrow" id="home-eyebrow"></div>
-  <h1 class="home-title" id="home-title"></h1>
-  <p class="home-sub" id="home-sub"></p>
+  <h1 class="home-title" id="home-title">CS2 Playbook</h1>
+  <p class="home-sub" id="home-sub">made by max</p>
   <div class="map-grid" id="map-grid"></div>
 </main>
 
@@ -791,6 +800,7 @@ const state={
   viewMode:"lineups",            // lineups | strats
   editMode:false, edTab:"lineups",
   openIds:[], activeExec:null, selectedStrat:null,
+  stratExpand:new Set(),
   editingId:null, editingExecId:null, editingStratId:null,
   filters:{types:new Set(Object.keys(TYPES)),sides:new Set(["T","CT"]),q:""},
   placing:null,                  // land | throw | spoint
@@ -1008,7 +1018,7 @@ function openMap(id,push=true){
   requestAnimationFrame(resizeCanvas);
 }
 function resetSelections(){
-  state.openIds=[];state.activeExec=null;state.selectedStrat=null;
+  state.openIds=[];state.activeExec=null;state.selectedStrat=null;state.stratExpand=new Set();
   state.placing=null;state.editingId=null;state.editingExecId=null;state.editingStratId=null;
 }
 function placeholderRadar(name){
@@ -1027,9 +1037,6 @@ function renderChrome(){
   $("#btn-home").textContent=t("back");
   $("#btn-edit").textContent=state.editMode?t("doneEdit"):t("editor");
   $("#btn-edit").classList.toggle("btn-amber",state.editMode);
-  $("#home-eyebrow").textContent=t("homeEyebrow");
-  $("#home-title").textContent=t("homeTitle");
-  $("#home-sub").textContent=t("homeSub");
   $("#lb-txt").textContent=t("localTxt");
   $("#lb-publish").textContent=t("publishBtn");
   $("#lb-export").textContent=t("exportBtn");
@@ -1066,15 +1073,11 @@ function renderLegend(){
 function renderHome(){
   const grid=$("#map-grid"); grid.innerHTML="";
   MAPS.forEach(m=>{
-    const md=state.db.maps[m.id]||{lineups:[],executes:[]};
-    const n=md.lineups.length;
     const card=document.createElement("button");
     card.className="map-card";
     card.innerHTML=`<div class="map-card-thumb"><img src="logos/${m.id}.webp" alt="${esc(m.name)}" loading="lazy"></div>
-      <div class="map-card-body"><span class="map-card-name">${m.name}</span>
-      <span class="map-card-count"><b>${n}</b> ${n===1?t("lineupCnt"):t("lineupsCnt")}${md.executes.length?` · ${md.executes.length} exec`:""}</span></div>`;
+      <div class="map-card-body"><span class="map-card-name">${m.name}</span></div>`;
     const img=card.querySelector("img");
-    // Logo missing → fall back to the radar png, then to a placeholder
     let fellBack=false;
     img.onerror=()=>{
       if(!fellBack){fellBack=true;img.src=`maps/${m.id}.png`;img.parentElement.classList.add("is-radar");}
@@ -1167,7 +1170,7 @@ function renderRail(){
 
   rail.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click",()=>{
     state.viewMode=b.dataset.mode;
-    state.openIds=[];state.activeExec=null;state.selectedStrat=null;
+    state.openIds=[];state.activeExec=null;state.selectedStrat=null;state.stratExpand=new Set();
     renderAll();
   }));
   rail.querySelectorAll("[data-type]").forEach(b=>b.addEventListener("click",()=>{
@@ -1187,7 +1190,7 @@ function renderRail(){
   const sa=rail.querySelector("#exec-showall");
   if(sa) sa.addEventListener("click",(e)=>{e.stopPropagation();state.activeExec=null;renderAll();});
   rail.querySelectorAll("[data-strat]").forEach(b=>b.addEventListener("click",()=>{
-    state.selectedStrat=(state.selectedStrat===b.dataset.strat)?null:b.dataset.strat;
+    state.selectedStrat=(state.selectedStrat===b.dataset.strat)?null:b.dataset.strat;state.stratExpand=new Set();
     renderAll();
   }));
 }
@@ -1211,7 +1214,7 @@ function renderMarkers(){
       z.textContent=s.zone||s.name.slice(0,6);
       z.title=s.name;
       z.addEventListener("click",e=>{e.stopPropagation();
-        state.selectedStrat=(state.selectedStrat===s.id)?null:s.id;renderAll();});
+        state.selectedStrat=(state.selectedStrat===s.id)?null:s.id;state.stratExpand=new Set();renderAll();});
       box.appendChild(z);
     });
     return;
@@ -1497,29 +1500,70 @@ function renderStratDetail(panel,s){
         ${s.zone?`<span class="badge tech">${esc(t("zone"))}: ${esc(s.zone)}</span>`:""}
       </div>
       ${s.description?`<p class="dr-desc">${esc(s.description)}</p>`:""}
+      ${s.media&&s.media.length?`<div class="media-grid" style="margin-top:10px" id="strat-media">${s.media.map(m=>mediaHTML(m)).join("")}</div>`:""}
+      ${s.tips&&s.tips.length?`<ul class="tips" style="margin-top:10px">${s.tips.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
       ${s.items.length?`<div class="dr-h">${esc(t("linked"))}</div>${
         s.items.map((it,i)=>{
+          const expanded=state.stratExpand.has(it.id);
           if(it.kind==="exec"){
             const ex=md.executes.find(x=>x.id===it.id);if(!ex)return"";
-            return `<button class="linkrow" data-exec="${ex.id}">
+            return `<button class="linkrow ${expanded?"on":""}" data-toggle="${ex.id}" data-kind="exec">
               <span class="n">${i+1}</span><span class="ic" style="color:var(--t)">⚙</span>
-              <span class="nm">${esc(ex.name)}</span><span class="sub">EXEC · ${ex.items.length}</span></button>`;
+              <span class="nm">${esc(ex.name)}</span><span class="sub">EXEC · ${ex.items.length}</span>
+              <span class="chev">${expanded?"▾":"▸"}</span></button>
+              ${expanded?renderExecInline(ex,md):""}`;
           }
           const l=md.lineups.find(x=>x.id===it.id);if(!l)return"";
-          return `<button class="linkrow" data-lineup="${l.id}">
+          return `<button class="linkrow ${expanded?"on":""}" data-toggle="${l.id}" data-kind="lineup">
             <span class="n">${i+1}</span>
             <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>
-            <span class="nm">${esc(l.name)}</span><span class="sub">${l.technique?techIconsHTML(l.technique,"sm"):esc(TYPES[l.type].label)}</span></button>`;
+            <span class="nm">${esc(l.name)}</span><span class="sub">${l.technique?techIconsHTML(l.technique,"sm"):esc(TYPES[l.type].label)}</span>
+            <span class="chev">${expanded?"▾":"▸"}</span></button>
+            ${expanded?renderLineupInline(l):""}`;
         }).join("")}`:""}
     </div>`;
-  $("#dr-close").addEventListener("click",()=>{state.selectedStrat=null;renderAll();});
-  panel.querySelectorAll("[data-lineup]").forEach(b=>b.addEventListener("click",()=>{
-    state.viewMode="lineups";state.openIds=[b.dataset.lineup];state.activeExec=null;renderAll();
-  }));
-  panel.querySelectorAll("[data-exec]").forEach(b=>b.addEventListener("click",()=>{
-    state.viewMode="lineups";state.activeExec=b.dataset.exec;state.openIds=[];
+  $("#dr-close").addEventListener("click",()=>{state.selectedStrat=null;state.stratExpand=new Set();renderAll();});
+  // Toggle expand on linkrow click
+  panel.querySelectorAll("[data-toggle]").forEach(b=>b.addEventListener("click",()=>{
+    const id=b.dataset.toggle;
+    if(state.stratExpand.has(id))state.stratExpand.delete(id);else state.stratExpand.add(id);
     renderAll();
   }));
+  // Wire media clicks inside the inline expanded sections (open lightbox without leaving the strat view)
+  s.items.forEach(it=>{
+    if(!state.stratExpand.has(it.id))return;
+    const wrap=panel.querySelector(`.strat-inline[data-for="${it.id}"]`);
+    if(!wrap)return;
+    let mediaArr=[];
+    if(it.kind==="exec"){const ex=md.executes.find(x=>x.id===it.id);if(ex)mediaArr=ex.media||[];}
+    else{const l=md.lineups.find(x=>x.id===it.id);if(l)mediaArr=l.media||[];}
+    wrap.querySelectorAll(".media-item").forEach((el,i)=>el.addEventListener("click",e=>{e.stopPropagation();openLightbox(mediaArr,i);}));
+  });
+  // Strategy's own media (if any)
+  const sm=$("#strat-media");
+  if(sm){sm.querySelectorAll(".media-item").forEach((el,i)=>el.addEventListener("click",()=>openLightbox(s.media||[],i)));}
+}
+
+function renderLineupInline(l){
+  return `<div class="strat-inline" data-for="${esc(l.id)}">
+    ${l.description?`<p class="dr-desc" style="font-size:13px;margin-top:0">${esc(l.description)}</p>`:""}
+    ${l.media.length?`<div class="media-grid">${l.media.map(m=>mediaHTML(m)).join("")}</div>`:""}
+    ${l.tips.length?`<ul class="tips">${l.tips.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+  </div>`;
+}
+
+function renderExecInline(ex,md){
+  return `<div class="strat-inline" data-for="${esc(ex.id)}">
+    ${ex.media&&ex.media.length?`<div class="media-grid">${ex.media.map(m=>mediaHTML(m)).join("")}</div>`:""}
+    ${ex.description?`<p class="dr-desc" style="font-size:13px;margin-top:0">${esc(ex.description)}</p>`:""}
+    ${ex.tips&&ex.tips.length?`<ul class="tips">${ex.tips.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+    ${ex.items.length?`<div class="strat-steps">${ex.items.map((id,i)=>{
+      const l=md.lineups.find(x=>x.id===id);if(!l)return"";
+      return `<div class="linkrow nested"><span class="n">${i+1}</span>
+        <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>
+        <span class="nm">${esc(l.name)}</span></div>`;
+    }).join("")}</div>`:""}
+  </div>`;
 }
 
 function mediaHTML(m){
@@ -2313,7 +2357,7 @@ function bindGlobal(){
     }
     if(!state.editMode){
       if(state.openIds.length){state.openIds=[];renderAll();}
-      else if(state.selectedStrat){state.selectedStrat=null;renderAll();}
+      else if(state.selectedStrat){state.selectedStrat=null;state.stratExpand=new Set();renderAll();}
     }
   });
 
@@ -2328,7 +2372,7 @@ function bindGlobal(){
       if($("#modal").classList.contains("show")){closeModal();return;}
       if(state.drawMode){state.drawMode=false;$("#mapwrap").classList.remove("drawing");renderMapTools();return;}
       if(state.placing){state.placing=null;$("#mapwrap").classList.remove("placing");renderAll();return;}
-      if(state.openIds.length||state.selectedStrat){state.openIds=[];state.selectedStrat=null;renderAll();}
+      if(state.openIds.length||state.selectedStrat){state.openIds=[];state.selectedStrat=null;state.stratExpand=new Set();renderAll();}
     }
   });
 }
