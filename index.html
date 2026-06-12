@@ -81,7 +81,7 @@ header{height:54px;display:flex;align-items:center;gap:14px;padding:0 18px;borde
 
 /* ============================================================ VIEWER LAYOUT */
 #viewer{display:none}
-.stage{display:grid;grid-template-columns:236px minmax(440px,720px) minmax(440px,1fr);gap:14px;align-items:start;padding:14px 18px 60px}
+.stage{display:grid;grid-template-columns:236px minmax(440px,1fr) clamp(380px,30vw,540px);gap:14px;align-items:start;padding:14px 18px 60px}
 
 /* ---- left rail ---- */
 .rail{position:sticky;top:68px;display:flex;flex-direction:column;gap:14px;max-height:calc(100vh - 90px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:#39455A transparent;padding-right:2px}
@@ -129,7 +129,8 @@ header{height:54px;display:flex;align-items:center;gap:14px;padding:0 18px;borde
 .mapwrap.placing{cursor:crosshair}
 .mapwrap.drawing{cursor:crosshair}
 svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:4}
-.traj path{fill:none;stroke-width:.5;stroke-dasharray:1.4 1.4;opacity:1}
+.traj path{fill:none;stroke-width:.5;stroke-dasharray:1.4 1.4;opacity:1;animation:trajDash 1.4s linear infinite}
+@keyframes trajDash{from{stroke-dashoffset:0}to{stroke-dashoffset:-5.6}}
 #drawcanvas{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
 .mapwrap.drawing #drawcanvas{pointer-events:auto;z-index:20}
 
@@ -147,11 +148,11 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .mk .stepnum{position:absolute;top:-7px;right:-7px;min-width:16px;height:16px;padding:0 4px;display:flex;align-items:center;justify-content:center;
   font-family:var(--mono);font-size:10px;font-weight:500;background:var(--t);color:#1A1206;border-radius:99px}
 /* throw cross */
-.mk-throw{position:absolute;transform:translate(-50%,-50%);width:18px;height:18px;z-index:5;pointer-events:none;
+.mk-throw{position:absolute;transform:translate(-50%,-50%);width:12px;height:12px;z-index:5;pointer-events:none;
   filter:drop-shadow(0 0 2px rgba(0,0,0,.9))}
 .mk-throw::before,.mk-throw::after{content:"";position:absolute;background:var(--c);left:50%;top:50%}
-.mk-throw::before{width:2px;height:18px;transform:translate(-50%,-50%)}
-.mk-throw::after{width:18px;height:2px;transform:translate(-50%,-50%)}
+.mk-throw::before{width:1.6px;height:12px;transform:translate(-50%,-50%)}
+.mk-throw::after{width:12px;height:1.6px;transform:translate(-50%,-50%)}
 .editmode .mk-throw{pointer-events:auto;cursor:grab}
 .editmode .mk{cursor:grab}
 /* strategy zone marker */
@@ -298,7 +299,11 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .ed-tab{flex:1;padding:11px 4px;font-family:var(--disp);font-weight:600;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);border-bottom:2px solid transparent}
 .ed-tab.on{color:var(--ink);border-bottom-color:var(--t)}
 .ed-list{display:flex;flex-direction:column;gap:6px}
-.ed-row{display:flex;align-items:center;gap:9px;background:var(--bg2);border:1px solid var(--line-soft);border-radius:8px;padding:8px 10px}
+.ed-row{display:flex;align-items:center;gap:9px;background:var(--bg2);border:1px solid var(--line-soft);border-radius:8px;padding:8px 10px;transition:transform .15s,border-color .15s}
+.ed-row.dragging{opacity:.45}
+.ed-row.drag-over{border-color:var(--t);background:rgba(240,163,60,.08);transform:translateY(-1px)}
+.ed-row .grip{flex:0 0 14px;color:var(--mut);cursor:grab;user-select:none;font-size:12px;line-height:1}
+.ed-row .grip:active{cursor:grabbing}
 .ed-row .ic{width:14px;height:14px;flex:0 0 auto;display:flex}
 .ed-row .nm{flex:1;min-width:0;text-align:left;font-weight:500;font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;background:none;border:none;color:var(--ink);padding:0}
 .ed-row .sd{font-family:var(--mono);font-size:10.5px;color:var(--mut)}
@@ -626,6 +631,7 @@ en:{
   uploadHint:"Upload .png .jpg .gif .mp4 .webm — goes straight to GitHub. Configure Publish first.",
   videoLabel:"Execute video (mp4 / gif / png)",videoHint:"One video showing the whole execute. Use Upload above, or paste a URL.",
   target:"Target",targetPh:"e.g. Banana smoke",
+  sortAZ:"A → Z",sortedAZ:"Sorted alphabetically",
   variantLbl:"Variant",variantPh:"e.g. From CT spawn",
   variantHint:"Lineups with the same Target share one map marker but show as variants (tabs).",
   noVideo:"No video yet — open the editor to add one.",
@@ -704,6 +710,7 @@ fr:{
   uploadHint:"Importe .png .jpg .gif .mp4 .webm — direct sur GitHub. Configure d'abord la publication.",
   videoLabel:"Vidéo de l'execute (mp4 / gif / png)",videoHint:"Une vidéo qui montre tout l'execute. Utilise Importer ci-dessus, ou colle une URL.",
   target:"Cible",targetPh:"ex: Smoke banane",
+  sortAZ:"A → Z",sortedAZ:"Trié alphabétiquement",
   variantLbl:"Variante",variantPh:"ex: Depuis CT spawn",
   variantHint:"Les lineups avec la même Cible partagent un marqueur sur la map et apparaissent en variantes (onglets).",
   noVideo:"Pas encore de vidéo — ouvre l'éditeur pour en ajouter une.",
@@ -1571,6 +1578,39 @@ function pickAndUploadMedia(obj,prefix,replaceIdx,onDone){
 /* ============================================================
    EDITOR
    ============================================================ */
+/* Wire drag-and-drop reordering on a list of .ed-row elements. arr is the underlying array (md.lineups, md.executes, md.strats). */
+function wireListDragSort(listEl,arr){
+  let srcIdx=null;
+  listEl.querySelectorAll(".ed-row").forEach((row,idx)=>{
+    row.setAttribute("draggable","true");
+    row.dataset.idx=idx;
+    row.addEventListener("dragstart",e=>{
+      srcIdx=idx;
+      e.dataTransfer.effectAllowed="move";
+      e.dataTransfer.setData("text/plain",String(idx));
+      row.classList.add("dragging");
+    });
+    row.addEventListener("dragend",()=>{
+      listEl.querySelectorAll(".ed-row").forEach(r=>r.classList.remove("dragging","drag-over"));
+    });
+    row.addEventListener("dragover",e=>{
+      e.preventDefault();
+      e.dataTransfer.dropEffect="move";
+      listEl.querySelectorAll(".ed-row").forEach(r=>r.classList.remove("drag-over"));
+      row.classList.add("drag-over");
+    });
+    row.addEventListener("drop",e=>{
+      e.preventDefault();
+      row.classList.remove("drag-over");
+      const tgt=+row.dataset.idx;
+      if(srcIdx==null||srcIdx===tgt)return;
+      const [item]=arr.splice(srcIdx,1);
+      arr.splice(tgt,0,item);
+      save();renderAll();
+    });
+  });
+}
+
 function startEditLineup(id){
   state.editMode=true;state.edTab="lineups";
   state.editingId=id;state.editingExecId=null;state.editingStratId=null;state.placing=null;
@@ -1622,12 +1662,16 @@ function renderEditor(panel){
 
   if(state.edTab==="lineups"){
     body.innerHTML=`
-      <button class="btn btn-amber" id="ed-new" style="width:100%;justify-content:center">${esc(t("newLineup"))}</button>
-      <div class="ed-list" style="margin-top:12px">${
+      <div style="display:flex;gap:6px">
+        <button class="btn btn-amber" id="ed-new" style="flex:1;justify-content:center">${esc(t("newLineup"))}</button>
+        ${md.lineups.length>1?`<button class="btn btn-sm" id="ed-sort" title="${esc(t("sortedAZ"))}">${esc(t("sortAZ"))}</button>`:""}
+      </div>
+      <div class="ed-list" id="ed-list-lu" style="margin-top:12px">${
         md.lineups.length?md.lineups.map(l=>`
           <div class="ed-row">
+            <span class="grip" title="Drag to reorder">⠿</span>
             <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>
-            <button class="nm" data-id="${l.id}">${esc(l.name)}</button>
+            <button class="nm" data-id="${l.id}">${esc(l.name)}${l.variant?` <span class="sd">· ${esc(l.variant)}</span>`:""}</button>
             <span class="sd">${l.side}</span>
             <button class="icon-btn" data-dup="${l.id}" title="${esc(t("duplicate")||"Duplicate")}">⧉</button>
             <button class="icon-btn danger" data-del="${l.id}" title="${esc(t("del"))}">✕</button>
@@ -1638,6 +1682,10 @@ function renderEditor(panel){
       const l=normLineup({name:LANG==="en"?"New lineup":"Nouveau lineup",land:{x:50,y:42},throw:{x:50,y:62}});
       md.lineups.push(l);save();
       startEditLineup(l.id);togglePlacing("land");toast(t("tPlaceImpact"));
+    });
+    const sb=$("#ed-sort");if(sb)sb.addEventListener("click",()=>{
+      md.lineups.sort((a,b)=>(a.name||"").localeCompare(b.name||"",undefined,{sensitivity:"base"}));
+      save();toast(t("sortedAZ"));renderAll();
     });
     body.querySelectorAll(".nm").forEach(b=>b.addEventListener("click",()=>startEditLineup(b.dataset.id)));
     body.querySelectorAll("[data-dup]").forEach(b=>b.addEventListener("click",()=>{
@@ -1651,13 +1699,18 @@ function renderEditor(panel){
       const l=md.lineups.find(x=>x.id===b.dataset.del);if(!l)return;
       confirmBox(t("delLineupT"),`« ${l.name} » — ${t("delLineupM")}`,()=>deleteLineup(l.id));
     }));
+    wireListDragSort($("#ed-list-lu"),md.lineups);
   }
   else if(state.edTab==="execs"){
     body.innerHTML=`
-      <button class="btn btn-amber" id="ex-new" style="width:100%;justify-content:center">${esc(t("newExec"))}</button>
-      <div class="ed-list" style="margin-top:12px">${
+      <div style="display:flex;gap:6px">
+        <button class="btn btn-amber" id="ex-new" style="flex:1;justify-content:center">${esc(t("newExec"))}</button>
+        ${md.executes.length>1?`<button class="btn btn-sm" id="ex-sort" title="${esc(t("sortedAZ"))}">${esc(t("sortAZ"))}</button>`:""}
+      </div>
+      <div class="ed-list" id="ed-list-ex" style="margin-top:12px">${
         md.executes.length?md.executes.map(ex=>`
           <div class="ed-row">
+            <span class="grip" title="Drag to reorder">⠿</span>
             <span class="sd" style="color:${ex.side==="T"?"var(--t)":"var(--ct)"}">${ex.side}</span>
             <button class="nm" data-id="${ex.id}">${esc(ex.name)}</button>
             <span class="sd">${ex.items.length}</span>
@@ -1670,6 +1723,10 @@ function renderEditor(panel){
       md.executes.push(ex);save();
       state.editingExecId=ex.id;renderAll();
     });
+    const sb=$("#ex-sort");if(sb)sb.addEventListener("click",()=>{
+      md.executes.sort((a,b)=>(a.name||"").localeCompare(b.name||"",undefined,{sensitivity:"base"}));
+      save();toast(t("sortedAZ"));renderAll();
+    });
     body.querySelectorAll(".nm").forEach(b=>b.addEventListener("click",()=>{state.editingExecId=b.dataset.id;renderAll();}));
     body.querySelectorAll("[data-del]").forEach(b=>b.addEventListener("click",()=>{
       const ex=md.executes.find(x=>x.id===b.dataset.del);if(!ex)return;
@@ -1679,13 +1736,18 @@ function renderEditor(panel){
         save();toast(t("tExecDel"));renderAll();
       });
     }));
+    wireListDragSort($("#ed-list-ex"),md.executes);
   }
   else{
     body.innerHTML=`
-      <button class="btn btn-amber" id="st-new" style="width:100%;justify-content:center">${esc(t("newStrat"))}</button>
-      <div class="ed-list" style="margin-top:12px">${
+      <div style="display:flex;gap:6px">
+        <button class="btn btn-amber" id="st-new" style="flex:1;justify-content:center">${esc(t("newStrat"))}</button>
+        ${md.strats.length>1?`<button class="btn btn-sm" id="st-sort" title="${esc(t("sortedAZ"))}">${esc(t("sortAZ"))}</button>`:""}
+      </div>
+      <div class="ed-list" id="ed-list-st" style="margin-top:12px">${
         md.strats.length?md.strats.map(s=>`
           <div class="ed-row">
+            <span class="grip" title="Drag to reorder">⠿</span>
             <span class="sd" style="color:${s.side==="T"?"var(--t)":"var(--ct)"}">${s.side}</span>
             <button class="nm" data-id="${s.id}">${esc(s.name)}</button>
             <span class="sd">${esc(t("buyNames")[s.buy])}</span>
@@ -1698,6 +1760,10 @@ function renderEditor(panel){
       md.strats.push(s);save();
       startEditStrat(s.id);
     });
+    const sb=$("#st-sort");if(sb)sb.addEventListener("click",()=>{
+      md.strats.sort((a,b)=>(a.name||"").localeCompare(b.name||"",undefined,{sensitivity:"base"}));
+      save();toast(t("sortedAZ"));renderAll();
+    });
     body.querySelectorAll(".nm").forEach(b=>b.addEventListener("click",()=>startEditStrat(b.dataset.id)));
     body.querySelectorAll("[data-del]").forEach(b=>b.addEventListener("click",()=>{
       const s=md.strats.find(x=>x.id===b.dataset.del);if(!s)return;
@@ -1705,6 +1771,7 @@ function renderEditor(panel){
         md.strats=md.strats.filter(x=>x.id!==s.id);save();toast(t("tStratDel"));renderAll();
       });
     }));
+    wireListDragSort($("#ed-list-st"),md.strats);
   }
   const im=$("#ed-import"),exb=$("#ed-export"),pb=$("#ed-publish");
   if(im)im.addEventListener("click",()=>$("#file-import").click());
