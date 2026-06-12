@@ -20,7 +20,7 @@
           },
           "media": [
             {
-              "url": "media/mirage/window_insta.png",
+              "url": "media/mirage/window_insta.webp",
               "label": "Stand"
             }
           ],
@@ -43,7 +43,7 @@
           },
           "media": [
             {
-              "url": "media/mirage/t_smokes.png",
+              "url": "media/mirage/t_smokes.webp",
               "label": "Stand"
             },
             {
@@ -70,11 +70,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/t_smokes.png",
+              "url": "media/mirage/t_smokes.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/connector.png",
+              "url": "media/mirage/connector.webp",
               "label": "Aim"
             }
           ],
@@ -97,11 +97,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/t_smokes.png",
+              "url": "media/mirage/t_smokes.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/short.png",
+              "url": "media/mirage/short.webp",
               "label": "Aim"
             }
           ],
@@ -124,11 +124,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/top_con.png",
+              "url": "media/mirage/top_con.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/top_con_2.png",
+              "url": "media/mirage/top_con_2.webp",
               "label": "Aim"
             }
           ],
@@ -151,11 +151,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/ct_1.png",
+              "url": "media/mirage/ct_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/ct_2.png",
+              "url": "media/mirage/ct_2.webp",
               "label": "Aim"
             }
           ],
@@ -178,11 +178,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/ct_3.png",
+              "url": "media/mirage/ct_3.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/ct_4.png",
+              "url": "media/mirage/ct_4.webp",
               "label": "Aim"
             }
           ],
@@ -205,11 +205,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/stairs_1.png",
+              "url": "media/mirage/stairs_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/stairs_2.png",
+              "url": "media/mirage/stairs_2.webp",
               "label": "Aim"
             }
           ],
@@ -232,11 +232,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/stairs_1.png",
+              "url": "media/mirage/stairs_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/jungle_2.png",
+              "url": "media/mirage/jungle_2.webp",
               "label": "Aim"
             }
           ],
@@ -259,11 +259,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/stairs_1.png",
+              "url": "media/mirage/stairs_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/sandwich.png",
+              "url": "media/mirage/sandwich.webp",
               "label": "Aim"
             }
           ],
@@ -286,11 +286,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/ramp.png",
+              "url": "media/mirage/ramp.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/stairs_3.png",
+              "url": "media/mirage/stairs_3.webp",
               "label": "Aim"
             }
           ],
@@ -313,11 +313,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/jungle_3.png",
+              "url": "media/mirage/jungle_3.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/jungle_4.png",
+              "url": "media/mirage/jungle_4.webp",
               "label": "Aim"
             }
           ],
@@ -340,11 +340,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/palace_smoke_1.png",
+              "url": "media/mirage/palace_smoke_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/palace_smoke_2.png",
+              "url": "media/mirage/palace_smoke_2.webp",
               "label": "Aim"
             }
           ],
@@ -367,11 +367,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/palace_molly_1.png",
+              "url": "media/mirage/palace_molly_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/palace_molly_2.png",
+              "url": "media/mirage/palace_molly_2.webp",
               "label": "Aim"
             }
           ],
@@ -394,11 +394,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/rusha.png",
+              "url": "media/mirage/rusha.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/stairs_4.png",
+              "url": "media/mirage/stairs_4.webp",
               "label": "Aim"
             }
           ],
@@ -421,11 +421,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/rusha.png",
+              "url": "media/mirage/rusha.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/jungle_5.png",
+              "url": "media/mirage/jungle_5.webp",
               "label": "Aim"
             }
           ],
@@ -448,11 +448,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/b_exec.png",
+              "url": "media/mirage/b_exec.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/market.png",
+              "url": "media/mirage/market.webp",
               "label": "Aim"
             }
           ],
@@ -475,11 +475,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/b_exec.png",
+              "url": "media/mirage/b_exec.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/short_2.png",
+              "url": "media/mirage/short_2.webp",
               "label": "Aim"
             }
           ],
@@ -502,11 +502,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/b_exec.png",
+              "url": "media/mirage/b_exec.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/door.png",
+              "url": "media/mirage/door.webp",
               "label": "Aim"
             }
           ],
@@ -529,11 +529,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/b_site.png",
+              "url": "media/mirage/b_site.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/b_site_2.png",
+              "url": "media/mirage/b_site_2.webp",
               "label": "Aim"
             }
           ],
@@ -556,11 +556,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/palace_smoke_3.png",
+              "url": "media/mirage/palace_smoke_3.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/palace_smoke_4.png",
+              "url": "media/mirage/palace_smoke_4.webp",
               "label": "Aim"
             }
           ],
@@ -583,11 +583,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/b_molly_1.png",
+              "url": "media/mirage/b_molly_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/b_molly_2.png",
+              "url": "media/mirage/b_molly_2.webp",
               "label": "Aim"
             }
           ],
@@ -610,11 +610,11 @@
           },
           "media": [
             {
-              "url": "media/mirage/mid_pop_1.png",
+              "url": "media/mirage/mid_pop_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/mirage/mid_pop_2.png",
+              "url": "media/mirage/mid_pop_2.webp",
               "label": "Aim"
             }
           ],
@@ -699,7 +699,7 @@
               "label": "Stand"
             },
             {
-              "url": "media/inferno/b_pop_2.png",
+              "url": "media/inferno/b_pop_2.webp",
               "label": "Aim"
             }
           ],
@@ -722,11 +722,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/b_pop_3.png",
+              "url": "media/inferno/b_pop_3.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/b_pop_4.png",
+              "url": "media/inferno/b_pop_4.webp",
               "label": "Aim"
             }
           ],
@@ -749,11 +749,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/ct_1.png",
+              "url": "media/inferno/ct_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/ct_2.png",
+              "url": "media/inferno/ct_2.webp",
               "label": "Aim"
             }
           ],
@@ -776,11 +776,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/ct_1.png",
+              "url": "media/inferno/ct_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/coffin_1.png",
+              "url": "media/inferno/coffin_1.webp",
               "label": "Aim"
             }
           ],
@@ -803,11 +803,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/ct_1.png",
+              "url": "media/inferno/ct_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/coffin_2.png",
+              "url": "media/inferno/coffin_2.webp",
               "label": "Aim"
             }
           ],
@@ -830,11 +830,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/dark_1.png",
+              "url": "media/inferno/dark_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/dark_2.png",
+              "url": "media/inferno/dark_2.webp",
               "label": "Aim"
             }
           ],
@@ -857,11 +857,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/banana_1.png",
+              "url": "media/inferno/banana_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/banana_2.png",
+              "url": "media/inferno/banana_2.webp",
               "label": "Aim"
             }
           ],
@@ -884,11 +884,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/banana_1.png",
+              "url": "media/inferno/banana_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/banana_3.png",
+              "url": "media/inferno/banana_3.webp",
               "label": "Aim"
             }
           ],
@@ -911,11 +911,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/quad_1.png",
+              "url": "media/inferno/quad_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/quad_2.png",
+              "url": "media/inferno/quad_2.webp",
               "label": "Aim"
             }
           ],
@@ -938,11 +938,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/quad_1.png",
+              "url": "media/inferno/quad_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/sandwich_1.png",
+              "url": "media/inferno/sandwich_1.webp",
               "label": "Aim"
             }
           ],
@@ -965,11 +965,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/lamp_1.png",
+              "url": "media/inferno/lamp_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/lamp_2.png",
+              "url": "media/inferno/lamp_2.webp",
               "label": "Aim"
             }
           ],
@@ -992,11 +992,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/moto_1.png",
+              "url": "media/inferno/moto_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/moto_2.png",
+              "url": "media/inferno/moto_2.webp",
               "label": "Aim"
             }
           ],
@@ -1019,11 +1019,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/split_1.png",
+              "url": "media/inferno/split_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/split_2.png",
+              "url": "media/inferno/split_2.webp",
               "label": "Aim"
             }
           ],
@@ -1046,11 +1046,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/split_1.png",
+              "url": "media/inferno/split_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/split_3.png",
+              "url": "media/inferno/split_3.webp",
               "label": "Aim"
             }
           ],
@@ -1073,7 +1073,7 @@
           },
           "media": [
             {
-              "url": "media/inferno/insta_1.png",
+              "url": "media/inferno/insta_1.webp",
               "label": "Stand"
             }
           ],
@@ -1096,11 +1096,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/banana_4.png",
+              "url": "media/inferno/banana_4.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/banana_5.png",
+              "url": "media/inferno/banana_5.webp",
               "label": "Aim"
             }
           ],
@@ -1123,11 +1123,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/banana_4.png",
+              "url": "media/inferno/banana_4.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/banana_6.png",
+              "url": "media/inferno/banana_6.webp",
               "label": "Aim"
             }
           ],
@@ -1150,11 +1150,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/banana_7.png",
+              "url": "media/inferno/banana_7.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/banana_8.png",
+              "url": "media/inferno/banana_8.webp",
               "label": "Aim"
             }
           ],
@@ -1177,11 +1177,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/banana_9.png",
+              "url": "media/inferno/banana_9.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/banana_10.png",
+              "url": "media/inferno/banana_10.webp",
               "label": "Aim"
             }
           ],
@@ -1204,11 +1204,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/a_1.png",
+              "url": "media/inferno/a_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/a_2.png",
+              "url": "media/inferno/a_2.webp",
               "label": "Aim"
             }
           ],
@@ -1231,11 +1231,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/a_1.png",
+              "url": "media/inferno/a_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/a_3.png",
+              "url": "media/inferno/a_3.webp",
               "label": "Aim"
             }
           ],
@@ -1258,11 +1258,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/moto_3.png",
+              "url": "media/inferno/moto_3.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/moto_4.png",
+              "url": "media/inferno/moto_4.webp",
               "label": "Aim"
             }
           ],
@@ -1285,11 +1285,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/moto_3.png",
+              "url": "media/inferno/moto_3.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/short.png",
+              "url": "media/inferno/short.webp",
               "label": "Aim"
             }
           ],
@@ -1327,12 +1327,7 @@
           "name": "A apps rush",
           "side": "T",
           "description": "",
-          "media": [
-            {
-              "url": "media/inferno/exec-a-apps-rush-5ja7c.mp4",
-              "label": ""
-            }
-          ],
+          "media": [],
           "tips": [],
           "items": [
             "moto_2",
@@ -1385,11 +1380,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/monster_from_ct_smoke_1.png",
+              "url": "media/overpass/monster_from_ct_smoke_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/monster_from_ct_smoke_2.png",
+              "url": "media/overpass/monster_from_ct_smoke_2.webp",
               "label": "Aim"
             }
           ],
@@ -1412,11 +1407,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/monster_molly_1.png",
+              "url": "media/overpass/monster_molly_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/monster_molly_2.png",
+              "url": "media/overpass/monster_molly_2.webp",
               "label": "Aim"
             }
           ],
@@ -1439,11 +1434,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/monster_from_ct_smoke_1.png",
+              "url": "media/overpass/monster_from_ct_smoke_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/short_from_ct_smoke_2.png",
+              "url": "media/overpass/short_from_ct_smoke_2.webp",
               "label": "Aim"
             }
           ],
@@ -1466,11 +1461,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/BSite_hold_smoke_1.png",
+              "url": "media/overpass/BSite_hold_smoke_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/BSite_hold_smoke_2.png",
+              "url": "media/overpass/BSite_hold_smoke_2.webp",
               "label": "Aim"
             }
           ],
@@ -1493,11 +1488,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/short_molly_1.png",
+              "url": "media/overpass/short_molly_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/short_molly_2.png",
+              "url": "media/overpass/short_molly_2.webp",
               "label": "Aim"
             }
           ],
@@ -1520,11 +1515,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/a_exec.png",
+              "url": "media/overpass/a_exec.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/bank_smoke.png",
+              "url": "media/overpass/bank_smoke.webp",
               "label": "Aim"
             }
           ],
@@ -1547,11 +1542,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/a_exec.png",
+              "url": "media/overpass/a_exec.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/trash_smoke.png",
+              "url": "media/overpass/trash_smoke.webp",
               "label": "Aim"
             }
           ],
@@ -1574,11 +1569,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/a_exec.png",
+              "url": "media/overpass/a_exec.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/truck_molly.png",
+              "url": "media/overpass/truck_molly.webp",
               "label": "Aim"
             }
           ],
@@ -1601,11 +1596,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/a_flash.png",
+              "url": "media/overpass/a_flash.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/a_flash_1.png",
+              "url": "media/overpass/a_flash_1.webp",
               "label": "Aim"
             }
           ],
@@ -1628,11 +1623,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/a_flash.png",
+              "url": "media/overpass/a_flash.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/a_flash_2.png",
+              "url": "media/overpass/a_flash_2.webp",
               "label": "Aim"
             }
           ],
@@ -1655,11 +1650,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/a_exec_2.png",
+              "url": "media/overpass/a_exec_2.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/trash_smoke_2.png",
+              "url": "media/overpass/trash_smoke_2.webp",
               "label": "Aim"
             }
           ],
@@ -1682,11 +1677,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/a_exec_2.png",
+              "url": "media/overpass/a_exec_2.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/bank_smoke_2.png",
+              "url": "media/overpass/bank_smoke_2.webp",
               "label": "Aim"
             }
           ],
@@ -1709,11 +1704,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/a_exec_2.png",
+              "url": "media/overpass/a_exec_2.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/truck_molly_2.png",
+              "url": "media/overpass/truck_molly_2.webp",
               "label": "Aim"
             }
           ],
@@ -1736,11 +1731,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/b_exec.png",
+              "url": "media/overpass/b_exec.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/heaven_smoke.png",
+              "url": "media/overpass/heaven_smoke.webp",
               "label": "Aim"
             }
           ],
@@ -1763,11 +1758,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/b_exec.png",
+              "url": "media/overpass/b_exec.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/toxic_molly.png",
+              "url": "media/overpass/toxic_molly.webp",
               "label": "Aim"
             }
           ],
@@ -1790,11 +1785,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/b_exec.png",
+              "url": "media/overpass/b_exec.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/abc_smoke.png",
+              "url": "media/overpass/abc_smoke.webp",
               "label": "Aim"
             }
           ],
@@ -1817,11 +1812,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/toilet_smoke_1.png",
+              "url": "media/overpass/toilet_smoke_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/toilet_smoke_2.png",
+              "url": "media/overpass/toilet_smoke_2.webp",
               "label": "Aim"
             }
           ],
@@ -1844,11 +1839,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/b_flash.png",
+              "url": "media/overpass/b_flash.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/b_flash_1.png",
+              "url": "media/overpass/b_flash_1.webp",
               "label": "Aim"
             }
           ],
@@ -1871,11 +1866,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/b_flash.png",
+              "url": "media/overpass/b_flash.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/b_flash_2.png",
+              "url": "media/overpass/b_flash_2.webp",
               "label": "Aim"
             }
           ],
@@ -1898,11 +1893,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/fountain_smoke.png",
+              "url": "media/overpass/fountain_smoke.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/fountain_smoke_2.png",
+              "url": "media/overpass/fountain_smoke_2.webp",
               "label": "Aim"
             }
           ],
@@ -1925,11 +1920,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/playground_molly.png",
+              "url": "media/overpass/playground_molly.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/playground_molly_2.png",
+              "url": "media/overpass/playground_molly_2.webp",
               "label": "Aim"
             }
           ],
@@ -1952,11 +1947,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/monsters_smoke_1.png",
+              "url": "media/overpass/monsters_smoke_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/monsters_smoke_2.png",
+              "url": "media/overpass/monsters_smoke_2.webp",
               "label": "Aim"
             }
           ],
@@ -1979,11 +1974,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/short_molly_3.png",
+              "url": "media/overpass/short_molly_3.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/short_molly_4.png",
+              "url": "media/overpass/short_molly_4.webp",
               "label": "Aim"
             }
           ],
@@ -2006,11 +2001,11 @@
           },
           "media": [
             {
-              "url": "media/overpass/heaven_smoke_3.png",
+              "url": "media/overpass/heaven_smoke_3.webp",
               "label": "Stand"
             },
             {
-              "url": "media/overpass/heaven_smoke_4.png",
+              "url": "media/overpass/heaven_smoke_4.webp",
               "label": "Aim"
             }
           ],
@@ -2080,11 +2075,11 @@
           },
           "media": [
             {
-              "url": "media/nuke/wide_1.png",
+              "url": "media/nuke/wide_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/nuke/wide_2.png",
+              "url": "media/nuke/wide_2.webp",
               "label": "Aim"
             }
           ],
@@ -2107,11 +2102,11 @@
           },
           "media": [
             {
-              "url": "media/nuke/wide_1.png",
+              "url": "media/nuke/wide_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/nuke/wide_3.png",
+              "url": "media/nuke/wide_3.webp",
               "label": "Aim"
             }
           ],
@@ -2134,11 +2129,11 @@
           },
           "media": [
             {
-              "url": "media/nuke/outside_1.png",
+              "url": "media/nuke/outside_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/nuke/outside_2.png",
+              "url": "media/nuke/outside_2.webp",
               "label": "Aim"
             }
           ],
@@ -2161,11 +2156,11 @@
           },
           "media": [
             {
-              "url": "media/nuke/outside_1.png",
+              "url": "media/nuke/outside_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/nuke/outside_2.png",
+              "url": "media/nuke/outside_2.webp",
               "label": "Aim"
             }
           ],
@@ -2188,11 +2183,11 @@
           },
           "media": [
             {
-              "url": "media/nuke/main_1.png",
+              "url": "media/nuke/main_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/nuke/main_2.png",
+              "url": "media/nuke/main_2.webp",
               "label": "Aim"
             }
           ],
@@ -2215,11 +2210,11 @@
           },
           "media": [
             {
-              "url": "media/nuke/squeaky_1.png",
+              "url": "media/nuke/squeaky_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/nuke/squeaky_2.png",
+              "url": "media/nuke/squeaky_2.webp",
               "label": "Aim"
             }
           ],
@@ -2242,11 +2237,11 @@
           },
           "media": [
             {
-              "url": "media/nuke/a_1.png",
+              "url": "media/nuke/a_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/nuke/a_3.png",
+              "url": "media/nuke/a_3.webp",
               "label": "Aim"
             }
           ],
@@ -2269,11 +2264,11 @@
           },
           "media": [
             {
-              "url": "media/nuke/a_1.png",
+              "url": "media/nuke/a_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/nuke/a_2.png",
+              "url": "media/nuke/a_2.webp",
               "label": "Aim"
             }
           ],
@@ -2340,11 +2335,11 @@
           },
           "media": [
             {
-              "url": "media/ancient/mid_flash_1.png",
+              "url": "media/ancient/mid_flash_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/ancient/mid_flash_2.png",
+              "url": "media/ancient/mid_flash_2.webp",
               "label": "Aim"
             }
           ],
@@ -2367,11 +2362,11 @@
           },
           "media": [
             {
-              "url": "media/ancient/a_exec.png",
+              "url": "media/ancient/a_exec.webp",
               "label": "Stand"
             },
             {
-              "url": "media/ancient/a_ct.png",
+              "url": "media/ancient/a_ct.webp",
               "label": "Aim"
             }
           ],
@@ -2394,11 +2389,11 @@
           },
           "media": [
             {
-              "url": "media/ancient/a_exec.png",
+              "url": "media/ancient/a_exec.webp",
               "label": "Stand"
             },
             {
-              "url": "media/ancient/a_donut.png",
+              "url": "media/ancient/a_donut.webp",
               "label": "Aim"
             }
           ],
@@ -2421,11 +2416,11 @@
           },
           "media": [
             {
-              "url": "media/ancient/b_exec.png",
+              "url": "media/ancient/b_exec.webp",
               "label": "Stand"
             },
             {
-              "url": "media/ancient/b_long.png",
+              "url": "media/ancient/b_long.webp",
               "label": "Aim"
             }
           ],
@@ -2448,11 +2443,11 @@
           },
           "media": [
             {
-              "url": "media/ancient/b_exec.png",
+              "url": "media/ancient/b_exec.webp",
               "label": "Stand"
             },
             {
-              "url": "media/ancient/b_short.png",
+              "url": "media/ancient/b_short.webp",
               "label": "Aim"
             }
           ],
@@ -2475,11 +2470,11 @@
           },
           "media": [
             {
-              "url": "media/ancient/b_exec.png",
+              "url": "media/ancient/b_exec.webp",
               "label": "Stand"
             },
             {
-              "url": "media/ancient/b_ninja.png",
+              "url": "media/ancient/b_ninja.webp",
               "label": "Aim"
             }
           ],
@@ -2502,11 +2497,11 @@
           },
           "media": [
             {
-              "url": "media/ancient/b_retake.png",
+              "url": "media/ancient/b_retake.webp",
               "label": "Stand"
             },
             {
-              "url": "media/ancient/b_ramp.png",
+              "url": "media/ancient/b_ramp.webp",
               "label": "Aim"
             }
           ],
@@ -2529,11 +2524,11 @@
           },
           "media": [
             {
-              "url": "media/ancient/b_retake.png",
+              "url": "media/ancient/b_retake.webp",
               "label": "Stand"
             },
             {
-              "url": "media/ancient/b_site.png",
+              "url": "media/ancient/b_site.webp",
               "label": "Aim"
             }
           ],
@@ -2556,11 +2551,11 @@
           },
           "media": [
             {
-              "url": "media/ancient/cheetah_1.png",
+              "url": "media/ancient/cheetah_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/ancient/cheetah_2.png",
+              "url": "media/ancient/cheetah_2.webp",
               "label": "Aim"
             }
           ],
@@ -2583,11 +2578,11 @@
           },
           "media": [
             {
-              "url": "media/ancient/lane_1.png",
+              "url": "media/ancient/lane_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/ancient/lane_2.png",
+              "url": "media/ancient/lane_2.webp",
               "label": "Aim"
             }
           ],
@@ -2610,7 +2605,7 @@
           },
           "media": [
             {
-              "url": "media/ancient/insta_elbow.png",
+              "url": "media/ancient/insta_elbow.webp",
               "label": "Stand"
             }
           ],
@@ -2684,11 +2679,11 @@
           },
           "media": [
             {
-              "url": "media/dust2/xbox_1.png",
+              "url": "media/dust2/xbox_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/dust2/xbox_2.png",
+              "url": "media/dust2/xbox_2.webp",
               "label": "Aim"
             }
           ],
@@ -2711,11 +2706,11 @@
           },
           "media": [
             {
-              "url": "media/dust2/door_1.png",
+              "url": "media/dust2/door_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/dust2/door_2.png",
+              "url": "media/dust2/door_2.webp",
               "label": "Aim"
             }
           ],
@@ -2738,11 +2733,11 @@
           },
           "media": [
             {
-              "url": "media/dust2/door_3.png",
+              "url": "media/dust2/door_3.webp",
               "label": "Stand"
             },
             {
-              "url": "media/dust2/door_4.png",
+              "url": "media/dust2/door_4.webp",
               "label": "Aim"
             }
           ],
@@ -2765,11 +2760,11 @@
           },
           "media": [
             {
-              "url": "media/dust2/mid_combo_1.png",
+              "url": "media/dust2/mid_combo_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/dust2/mid_combo_3.png",
+              "url": "media/dust2/mid_combo_3.webp",
               "label": "Aim"
             }
           ],
@@ -2792,11 +2787,11 @@
           },
           "media": [
             {
-              "url": "media/dust2/mid_combo_1.png",
+              "url": "media/dust2/mid_combo_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/dust2/mid_combo_2.png",
+              "url": "media/dust2/mid_combo_2.webp",
               "label": "Aim"
             }
           ],
@@ -2819,11 +2814,11 @@
           },
           "media": [
             {
-              "url": "media/dust2/mid_combo_1.png",
+              "url": "media/dust2/mid_combo_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/dust2/mid_combo_4.png",
+              "url": "media/dust2/mid_combo_4.webp",
               "label": "Aim"
             }
           ],
@@ -2846,11 +2841,11 @@
           },
           "media": [
             {
-              "url": "media/dust2/b_split_1.png",
+              "url": "media/dust2/b_split_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/dust2/b_split_2.png",
+              "url": "media/dust2/b_split_2.webp",
               "label": "Aim"
             }
           ],
@@ -2873,11 +2868,11 @@
           },
           "media": [
             {
-              "url": "media/dust2/long_1.png",
+              "url": "media/dust2/long_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/dust2/long_2.png",
+              "url": "media/dust2/long_2.webp",
               "label": "Aim"
             }
           ],
@@ -2900,11 +2895,11 @@
           },
           "media": [
             {
-              "url": "media/dust2/cross_1.png",
+              "url": "media/dust2/cross_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/dust2/cross_2.png",
+              "url": "media/dust2/cross_2.webp",
               "label": "Aim"
             }
           ],
@@ -2927,11 +2922,11 @@
           },
           "media": [
             {
-              "url": "media/dust2/ldoor_1.png",
+              "url": "media/dust2/ldoor_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/dust2/ldoor_2.png",
+              "url": "media/dust2/ldoor_2.webp",
               "label": "Aim"
             }
           ],
@@ -2954,11 +2949,11 @@
           },
           "media": [
             {
-              "url": "media/dust2/short_1.png",
+              "url": "media/dust2/short_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/dust2/short_2.png",
+              "url": "media/dust2/short_2.webp",
               "label": "Aim"
             }
           ],
@@ -2981,11 +2976,11 @@
           },
           "media": [
             {
-              "url": "media/dust2/short_1.png",
+              "url": "media/dust2/short_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/dust2/short_3.png",
+              "url": "media/dust2/short_3.webp",
               "label": "Aim"
             }
           ],
@@ -3008,11 +3003,11 @@
           },
           "media": [
             {
-              "url": "media/dust2/b_exec_1.png",
+              "url": "media/dust2/b_exec_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/dust2/b_exec_2.png",
+              "url": "media/dust2/b_exec_2.webp",
               "label": "Aim"
             }
           ],
@@ -3035,11 +3030,11 @@
           },
           "media": [
             {
-              "url": "media/dust2/b_exec_1.png",
+              "url": "media/dust2/b_exec_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/dust2/b_exec_3.png",
+              "url": "media/dust2/b_exec_3.webp",
               "label": "Aim"
             }
           ],
@@ -3107,7 +3102,7 @@
           },
           "media": [
             {
-              "url": "media/train/insta_camera.png",
+              "url": "media/train/insta_camera.webp",
               "label": "Stand"
             }
           ],
@@ -3130,7 +3125,7 @@
           },
           "media": [
             {
-              "url": "media/train/insta_sandwich.png",
+              "url": "media/train/insta_sandwich.webp",
               "label": "Stand"
             }
           ],
@@ -3153,7 +3148,7 @@
           },
           "media": [
             {
-              "url": "media/train/insta_connector.png",
+              "url": "media/train/insta_connector.webp",
               "label": "Stand"
             }
           ],
@@ -3176,11 +3171,11 @@
           },
           "media": [
             {
-              "url": "media/train/main_1.png",
+              "url": "media/train/main_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/train/main_2.png",
+              "url": "media/train/main_2.webp",
               "label": "Aim"
             }
           ],
@@ -3203,11 +3198,11 @@
           },
           "media": [
             {
-              "url": "media/train/main_3.png",
+              "url": "media/train/main_3.webp",
               "label": "Stand"
             },
             {
-              "url": "media/train/main_4.png",
+              "url": "media/train/main_4.webp",
               "label": "Aim"
             }
           ],
@@ -3230,11 +3225,11 @@
           },
           "media": [
             {
-              "url": "media/train/main_pop_1.png",
+              "url": "media/train/main_pop_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/train/main_pop_2.png",
+              "url": "media/train/main_pop_2.webp",
               "label": "Aim"
             }
           ],
@@ -3257,11 +3252,11 @@
           },
           "media": [
             {
-              "url": "media/train/main_pop_1.png",
+              "url": "media/train/main_pop_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/train/main_pop_3.png",
+              "url": "media/train/main_pop_3.webp",
               "label": "Aim"
             }
           ],
@@ -3284,11 +3279,11 @@
           },
           "media": [
             {
-              "url": "media/train/con_molly_1.png",
+              "url": "media/train/con_molly_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/train/con_molly_2.png",
+              "url": "media/train/con_molly_2.webp",
               "label": "Aim"
             }
           ],
@@ -3311,11 +3306,11 @@
           },
           "media": [
             {
-              "url": "media/train/con_molly_1.png",
+              "url": "media/train/con_molly_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/train/b_pop.png",
+              "url": "media/train/b_pop.webp",
               "label": "Aim"
             }
           ],
@@ -3338,11 +3333,11 @@
           },
           "media": [
             {
-              "url": "media/train/b_smoke_1.png",
+              "url": "media/train/b_smoke_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/train/b_smoke_2.png",
+              "url": "media/train/b_smoke_2.webp",
               "label": "Aim"
             }
           ],
@@ -3365,11 +3360,11 @@
           },
           "media": [
             {
-              "url": "media/train/camera_1.png",
+              "url": "media/train/camera_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/train/camera_2.png",
+              "url": "media/train/camera_2.webp",
               "label": "Aim"
             }
           ],
@@ -3392,44 +3387,15 @@
           },
           "media": [
             {
-              "url": "media/train/camera_1.png",
+              "url": "media/train/camera_1.webp",
               "label": "Stand"
             },
             {
-              "url": "media/train/connector_0.png",
+              "url": "media/train/connector_0.webp",
               "label": "Aim"
             }
           ],
           "tips": []
-        },
-        {
-          "id": "de5286a7-4d1d-4998-88fd-cdd73426caa4",
-          "name": "test",
-          "type": "smoke",
-          "side": "T",
-          "technique": "Jumpthrow",
-          "description": "oui c'est ça",
-          "land": {
-            "x": 77.86,
-            "y": 40.31
-          },
-          "throw": {
-            "x": 74.72,
-            "y": 15.8
-          },
-          "media": [
-            {
-              "url": "media/train/test.mp4",
-              "label": "Stand"
-            },
-            {
-              "url": "media/train/test.mp4",
-              "label": "Aim"
-            }
-          ],
-          "tips": [
-            "test tip"
-          ]
         }
       ],
       "executes": [
