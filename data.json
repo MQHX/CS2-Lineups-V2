@@ -627,6 +627,8 @@
           "name": "A execute (from T-Roof)",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "stairs_smoke",
             "jungle_smoke",
@@ -638,6 +640,8 @@
           "name": "A execute (from Ramp)",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "stairs_smoke_2",
             "jungle_smoke_2",
@@ -649,6 +653,8 @@
           "name": "B execute",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "b_window",
             "b_short",
@@ -660,6 +666,8 @@
           "name": "Insta window",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "window_insta"
           ]
@@ -1238,7 +1246,7 @@
           "name": "Moto (Second mid)",
           "type": "smoke",
           "side": "T",
-          "technique": "Throw",
+          "technique": "Jumpthrow",
           "description": "",
           "land": {
             "x": 87.5,
@@ -1294,6 +1302,8 @@
           "name": "B execute",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "ct_smoke_1",
             "coffin_smoke",
@@ -1305,6 +1315,8 @@
           "name": "A split",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "library_smoke",
             "arche_smoke"
@@ -1315,6 +1327,13 @@
           "name": "A apps rush",
           "side": "T",
           "description": "",
+          "media": [
+            {
+              "url": "media/inferno/exec-a-apps-rush-5ja7c.mp4",
+              "label": ""
+            }
+          ],
+          "tips": [],
           "items": [
             "moto_2",
             "short_2"
@@ -1325,6 +1344,8 @@
           "name": "Mid insta",
           "side": "CT",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "mid_insta_smoke"
           ]
@@ -1334,6 +1355,8 @@
           "name": "A retake",
           "side": "CT",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "A_retake_smoke",
             "A_retake_molly"
@@ -2000,6 +2023,8 @@
           "name": "A Execute (banana)",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "bank_smoke",
             "trash_smoke",
@@ -2011,6 +2036,8 @@
           "name": "A Execute (long)",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "bank_smoke_2",
             "trash_smoke_2",
@@ -2022,6 +2049,8 @@
           "name": "B Execute (short)",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "heaven_smoke",
             "abc_smoke",
@@ -2257,6 +2286,8 @@
           "name": "Outside (wide)",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "outside_wide_1",
             "outside_wide_2"
@@ -2267,6 +2298,8 @@
           "name": "Outside",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "outside_1",
             "outside_2"
@@ -2277,6 +2310,8 @@
           "name": "A exec",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "a_molly",
             "a_flash"
@@ -2588,6 +2623,8 @@
           "name": "A execute",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "ct_from_main",
             "donut_from_main"
@@ -2598,6 +2635,8 @@
           "name": "B execute",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "long",
             "short",
@@ -2609,6 +2648,8 @@
           "name": "B retake",
           "side": "CT",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "ramp_smoke",
             "site_molly"
@@ -3011,6 +3052,8 @@
           "name": "Mid push",
           "side": "CT",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "top_mid",
             "suicide",
@@ -3022,6 +3065,8 @@
           "name": "Short push",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "short_smoke_1",
             "short_smoke_2"
@@ -3032,6 +3077,8 @@
           "name": "B exec",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "b_exec_1",
             "b_exec_2"
@@ -3391,6 +3438,8 @@
           "name": "Camera/Sandwich/Connector Instas",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "insta_camera",
             "insta_sandwich",
@@ -3402,6 +3451,8 @@
           "name": "B execute",
           "side": "T",
           "description": "",
+          "media": [],
+          "tips": [],
           "items": [
             "b_smoke",
             "b_pop",
