@@ -1188,33 +1188,6 @@
           "tips": []
         },
         {
-          "id": "A_retake_smoke",
-          "name": "A retake",
-          "type": "smoke",
-          "side": "CT",
-          "technique": "Left and right click + Jumpthrow",
-          "description": "",
-          "land": {
-            "x": 87.4,
-            "y": 72.6
-          },
-          "throw": {
-            "x": 80.3,
-            "y": 53.4
-          },
-          "media": [
-            {
-              "url": "media/inferno/a_1.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/inferno/a_2.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
           "id": "A_retake_molly",
           "name": "A retake",
           "type": "molotov",
@@ -1380,18 +1353,6 @@
           "tips": [],
           "items": [
             "mid_insta_smoke"
-          ]
-        },
-        {
-          "id": "A_retake",
-          "name": "A retake",
-          "side": "CT",
-          "description": "",
-          "media": [],
-          "tips": [],
-          "items": [
-            "A_retake_smoke",
-            "A_retake_molly"
           ]
         },
         {
