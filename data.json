@@ -784,13 +784,13 @@
         },
         {
           "id": "b_pop_1",
-          "name": "B site (Barrels)",
+          "name": "B site",
           "type": "flash",
           "side": "T",
           "technique": "W + Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "B_site",
+          "variant": "From barrels",
           "land": {
             "x": 58.9,
             "y": 27.7
@@ -801,11 +801,11 @@
           },
           "media": [
             {
-              "url": "media/inferno/b_pop_1.webp",
+              "url": "media/inferno/b-site-eorh0.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/b_pop_2.webp",
+              "url": "media/inferno/b-site-epeyv.webp",
               "label": "Aim"
             }
           ],
@@ -813,13 +813,13 @@
         },
         {
           "id": "b_pop_2",
-          "name": "B site (Wall)",
+          "name": "B site",
           "type": "flash",
           "side": "T",
           "technique": "Left and right click + Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "B_site",
+          "variant": "From wall",
           "land": {
             "x": 58.9,
             "y": 27.7
