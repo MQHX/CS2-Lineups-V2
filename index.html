@@ -216,18 +216,15 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 
 /* throw-technique icon chips */
 .tk-row{display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap}
-.tk{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;
+.tk{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:7px;
   border:1px solid var(--line);background:var(--bg0);color:var(--ink)}
-.tk svg{width:15px;height:15px}
-.tk-sm .tk{width:19px;height:19px;border-radius:5px}
-.tk-sm .tk svg{width:12px;height:12px}
+.tk svg{width:20px;height:20px}
+.tk-sm .tk{width:22px;height:22px;border-radius:5px}
+.tk-sm .tk svg{width:15px;height:15px}
 .tk-note{font-family:var(--mono);font-size:10.5px;color:var(--mut);margin-left:2px}
 .tk-sm .tk-note{display:none}
-.tech-preview{margin-top:8px;min-height:24px}
+.tech-preview{margin-top:8px;min-height:28px}
 .tech-preview:empty{display:none}
-.xv-step-head .tech{background:none;border:none;padding:0}
-.xv-step-head .tech .tk{width:26px;height:26px}
-.xv-step-head .tech .tk svg{width:16px;height:16px}
 
 /* legend (bottom-right) */
 .legend{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
@@ -252,6 +249,23 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .media-item{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--bg0);cursor:zoom-in;padding:0;width:100%}
 .media-item img,.media-item video{width:100%;display:block}
 .media-item .cap{font-size:12px;color:var(--mut);padding:7px 10px;border-top:1px solid var(--line-soft);text-align:left;font-family:var(--mono)}
+
+/* Execute player in right panel */
+.exec-player{margin-top:14px;border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--line)}
+.exec-player video,.exec-player img{width:100%;display:block;max-height:430px;object-fit:contain;background:#000}
+.exec-player img{cursor:zoom-in}
+.exec-novideo{margin-top:14px;padding:24px 14px;border:1px dashed var(--line);border-radius:10px;text-align:center;color:var(--mut);font-size:13px}
+
+/* Editor media row layout */
+.media-toolbar{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.m-row{display:flex !important;align-items:center;gap:8px;padding:8px;background:var(--bg2);border:1px solid var(--line-soft);border-radius:8px}
+.m-thumb{width:48px;height:48px;flex:0 0 48px;border-radius:6px;overflow:hidden;background:var(--bg0);border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.m-thumb img,.m-thumb video{width:100%;height:100%;object-fit:cover}
+.m-thumb-ph{color:var(--mut);font-family:var(--mono);font-size:18px}
+.m-fields{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.m-fields input{width:100%;padding:5px 8px;font-size:12.5px}
+.m-acts{display:flex;flex-direction:column;gap:4px;flex:0 0 auto}
+.m-acts .icon-btn{width:24px;height:24px;font-size:12px}
 .media-item.media-err{cursor:default;border-color:rgba(255,92,92,.4);background:rgba(255,92,92,.05);min-height:120px}
 .media-item.media-err img,.media-item.media-err video{display:none}
 .media-item.media-err .cap{display:none}
@@ -259,8 +273,6 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .media-err-msg .ic{font-size:22px;color:var(--danger);line-height:1}
 .media-err-msg .path{font-family:var(--mono);font-size:11.5px;color:var(--danger);word-break:break-all;line-height:1.45;max-width:100%}
 .media-err-msg .hint{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--mut)}
-.xv-m.media-err{min-height:140px;background:rgba(255,92,92,.06)}
-.xv-m.media-err img,.xv-m.media-err video{display:none}
 .tips{list-style:none;display:flex;flex-direction:column;gap:8px}
 .tips li{display:flex;gap:9px;color:#C2CBD8;font-size:13.5px;background:var(--bg2);border:1px solid var(--line-soft);border-radius:7px;padding:9px 11px}
 .tips li::before{content:"▸";color:var(--t);flex:0 0 auto}
@@ -312,27 +324,6 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .exsel .ic{width:13px;height:13px;display:inline-flex}
 
 /* ============================================================ EXEC OVERLAY */
-#execview{position:fixed;inset:0;z-index:90;display:none;background:rgba(5,7,10,.82);backdrop-filter:blur(4px);overflow-y:auto;padding:30px 18px 60px}
-#execview.show{display:block}
-.xv-box{max-width:880px;margin:0 auto;background:var(--bg1);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.xv-head{padding:22px 24px 18px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;gap:14px}
-.xv-head .xv-titles{flex:1;min-width:0}
-.xv-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
-.xv-title{font-family:var(--disp);font-weight:700;font-size:24px;letter-spacing:.03em;text-transform:uppercase;line-height:1.15}
-.xv-desc{color:#C2CBD8;margin-top:8px;white-space:pre-wrap}
-.xv-steps{padding:18px 24px 26px;display:flex;flex-direction:column;gap:14px}
-.xv-step{border:1px solid var(--line-soft);border-radius:10px;background:var(--bg2);overflow:hidden}
-.xv-step-head{display:flex;align-items:center;gap:12px;padding:12px 14px}
-.xv-num{font-family:var(--mono);font-size:13px;flex:0 0 28px;height:28px;display:flex;align-items:center;justify-content:center;background:var(--t);color:#1A1206;border-radius:50%}
-.xv-step-head .ic{width:16px;height:16px;display:flex;color:var(--c)}
-.xv-step-head .nm{font-family:var(--disp);font-weight:600;font-size:15px;letter-spacing:.03em;text-transform:uppercase;flex:1;min-width:0}
-.xv-step-head .tech{font-family:var(--mono);font-size:11.5px;color:var(--ink);background:var(--bg0);border:1px solid var(--line);padding:3px 9px;border-radius:5px;white-space:nowrap}
-.xv-media{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line-soft)}
-.xv-m{position:relative;background:var(--bg0);cursor:zoom-in;padding:0;text-align:left}
-.xv-m img,.xv-m video{width:100%;height:230px;object-fit:cover;display:block}
-.xv-m .cap{position:absolute;left:8px;bottom:8px;font-family:var(--mono);font-size:10.5px;color:var(--ink);background:rgba(10,13,18,.8);padding:2px 8px;border-radius:4px}
-.xv-step-desc{padding:10px 14px;color:#C2CBD8;font-size:13.5px;white-space:pre-wrap;border-top:1px solid var(--line-soft)}
-.xv-step-foot{padding:8px 14px;border-top:1px solid var(--line-soft)}
 
 /* ============================================================ MODAL / LIGHTBOX / TOAST */
 .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
@@ -422,7 +413,7 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
   </div>
 </main>
 
-<div id="execview"><div class="xv-box" id="xv-box"></div></div>
+
 
 <div class="modal" id="modal">
   <div class="back" data-close="1"></div>
@@ -485,36 +476,36 @@ const BUYS=["pistol","eco","semi","full","solo","other"];
    is split on "+" and each part matched to a token below. Anything
    in (parentheses) is kept as a small text note. */
 const TECH_TOKENS=[
-  // id, test(lowercased part), icon svg (16x16), label-en, label-fr
+  // Order matters: matched in this order, ids stripped from text as parser walks.
   {id:"lr",   test:p=>/left and right|both click|left ?\+ ?right/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M8 .8V2.5"/><rect x="3" y="2.5" width="10" height="12" rx="5"/><path d="M8 2.5v6M3 8.5h10"/><path d="M8 2.5A5.5 5.5 0 0 0 3 8L8 8Z" fill="currentColor" stroke="none"/><path d="M8 2.5A5.5 5.5 0 0 1 13 8L8 8Z" fill="currentColor" stroke="none"/></svg>`,
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3"/><path d="M5 11a7 7 0 0 1 14 0v6a7 7 0 0 1-14 0z"/><path d="M12 5v6"/><path d="M5 11h14"/><path d="M12 5A7 7 0 0 0 5 11h7z" fill="currentColor" stroke="none"/><path d="M12 5A7 7 0 0 1 19 11h-7z" fill="currentColor" stroke="none"/></svg>`,
     en:"Left + right click",fr:"Clic gauche + droit"},
   {id:"right", test:p=>/right click|rightclick/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M8 .8V2.5"/><rect x="3" y="2.5" width="10" height="12" rx="5"/><path d="M8 2.5v6M3 8.5h10"/><path d="M8 2.5A5.5 5.5 0 0 1 13 8L8 8Z" fill="currentColor" stroke="none"/></svg>`,
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3"/><path d="M5 11a7 7 0 0 1 14 0v6a7 7 0 0 1-14 0z"/><path d="M12 5v6"/><path d="M5 11h14"/><path d="M12 5A7 7 0 0 1 19 11h-7z" fill="currentColor" stroke="none"/></svg>`,
     en:"Right click",fr:"Clic droit"},
   {id:"left",  test:p=>/left click|leftclick/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M8 .8V2.5"/><rect x="3" y="2.5" width="10" height="12" rx="5"/><path d="M8 2.5v6M3 8.5h10"/><path d="M8 2.5A5.5 5.5 0 0 0 3 8L8 8Z" fill="currentColor" stroke="none"/></svg>`,
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3"/><path d="M5 11a7 7 0 0 1 14 0v6a7 7 0 0 1-14 0z"/><path d="M12 5v6"/><path d="M5 11h14"/><path d="M12 5A7 7 0 0 0 5 11h7z" fill="currentColor" stroke="none"/></svg>`,
     en:"Left click",fr:"Clic gauche"},
   {id:"jump",  test:p=>/jump ?throw|jumpthrow/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="3" r="1.9" fill="currentColor" stroke="none"/><path d="M8 13V6.5"/><path d="M4.5 9.5L8 6L11.5 9.5"/></svg>`,
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3.2" fill="currentColor" stroke="none"/><path d="M12 21V9.5"/><path d="M6 14l6-5.5 6 5.5"/></svg>`,
     en:"Jumpthrow",fr:"Jumpthrow"},
   {id:"run",   test:p=>/running|^run\b|run /.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="2.8" r="1.4" fill="currentColor" stroke="none"/><path d="M10.5 4.3l-2.5 4"/><path d="M10.5 5.8l3-1.8"/><path d="M10.5 6.4l-3 .6"/><path d="M8 8.3l-3 2.7"/><path d="M8 8.3l3 3.7"/><path d="M1.5 6h2.5" opacity=".55"/><path d="M.5 8.5h3.2" opacity=".55"/><path d="M1 11h2.4" opacity=".55"/></svg>`,
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="15.5" cy="4.5" r="2.2" fill="currentColor" stroke="none"/><path d="M15.5 7l-3 5"/><path d="M15.5 8.5l3.5-2"/><path d="M15.5 9.5l-3 .5"/><path d="M12.5 12l-4 4"/><path d="M12.5 12l4 6"/><path d="M2 8h4" opacity=".55"/><path d="M1 12h5" opacity=".55"/><path d="M2 16h4" opacity=".55"/></svg>`,
     en:"Run",fr:"Courir"},
   {id:"walk",  test:p=>/\bwalk\b/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="2.8" r="1.4" fill="currentColor" stroke="none"/><path d="M9 4.3v4"/><path d="M9 5L6.3 6.1"/><path d="M9 5l2.2 1.4"/><path d="M9 8.3L6.7 13"/><path d="M9 8.3L11.4 13"/></svg>`,
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4.5" r="2.2" fill="currentColor" stroke="none"/><path d="M13 7v6"/><path d="M13 8.5L9.5 10"/><path d="M13 8.5l3 2"/><path d="M13 13l-3 7"/><path d="M13 13l3.5 7"/></svg>`,
     en:"Walk",fr:"Marcher"},
   {id:"w",     test:p=>/^w$|\bw\b|forward|move forward/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><rect x="2" y="2.5" width="12" height="11" rx="2"/><path d="M4.5 5.5L6 11L8 6.8L10 11L11.5 5.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>`,
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="3.5"/><path d="M5.5 8l2.5 8.5L12 9l4 7.5L18.5 8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
     en:"Hold W",fr:"Touche W"},
   {id:"crouch",test:p=>/crouch|duck/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="4.5" r="1.4" fill="currentColor" stroke="none"/><path d="M6.5 6v2.8"/><path d="M6.5 7.2l3 1"/><path d="M6.5 8.8L4.5 11l2 2"/><path d="M6.5 8.8L9.5 10.8l-1.7 2.2"/><path d="M2.5 13.5h11" opacity=".45"/></svg>`,
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7.5" r="2.2" fill="currentColor" stroke="none"/><path d="M9 9.5l1 4"/><path d="M10 11.5l5 1"/><path d="M10 13.5l-3 4 3 3"/><path d="M10 13.5l4.5 3-2 4"/><path d="M2.5 20.5h19" opacity=".5"/></svg>`,
     en:"Crouch",fr:"Accroupir"},
   {id:"shift", test:p=>/shift/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M8 2L13.5 7.5h-3v5h-5v-5h-3z"/></svg>`,
-    en:"Shift (silent)",fr:"Shift (silencieux)"},
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3l8.5 8.5h-4.5V20h-8v-8.5H3.5z"/></svg>`,
+    en:"Shift",fr:"Shift"},
   {id:"throw", test:p=>/throw|stand/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="3" cy="3.8" r="1.4" fill="currentColor" stroke="none"/><path d="M3 5.2v4"/><path d="M3 6.5l2.8.5"/><path d="M3 9.2L1.6 13"/><path d="M3 9.2L4.6 13"/><path d="M5.8 6.5Q10 1.5 14 7" stroke-dasharray="1.3 1.3"/><path d="M12.5 5.5L14 7l-.6 1.7"/></svg>`,
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="4" cy="17" r="2.6" fill="currentColor" stroke="none"/><path d="M6 14.5Q13 3 21 9.5" stroke-dasharray="2 2"/><path d="M19 6.5L21 9.5L17.8 10.5"/></svg>`,
     en:"Throw",fr:"Lancer"},
 ];
 const STRIP_RE={
@@ -624,6 +615,11 @@ en:{
   pubOk:"Published! Live in ~1 minute.",pubErr:"Publish failed: ",
   step:"Step",
   legend:"Legend",legendGren:"Grenades",legendTech:"Throw technique",
+  uploadBtn:"⤴ Upload file",uploading:"Uploading…",uploadOk:"Uploaded",uploadFail:"Upload failed: ",
+  uploadHint:"Upload .png .jpg .gif .mp4 .webm — goes straight to GitHub. Configure Publish first.",
+  videoLabel:"Execute video (mp4 / gif / png)",videoHint:"One video showing the whole execute. Use Upload above, or paste a URL.",
+  noVideo:"No video yet — open the editor to add one.",
+  watchExec:"▶ Watch the execute",replace:"Replace",
   buyNames:{pistol:"Pistol",eco:"Eco",semi:"Semi-buy",full:"Full-buy",solo:"Solo",other:"Other"},
 },
 fr:{
@@ -694,6 +690,11 @@ fr:{
   pubOk:"Publié ! En ligne dans ~1 minute.",pubErr:"Échec de la publication : ",
   step:"Étape",
   legend:"Légende",legendGren:"Grenades",legendTech:"Technique de lancer",
+  uploadBtn:"⤴ Importer un fichier",uploading:"Envoi en cours…",uploadOk:"Importé",uploadFail:"Échec de l'envoi : ",
+  uploadHint:"Importe .png .jpg .gif .mp4 .webm — direct sur GitHub. Configure d'abord la publication.",
+  videoLabel:"Vidéo de l'execute (mp4 / gif / png)",videoHint:"Une vidéo qui montre tout l'execute. Utilise Importer ci-dessus, ou colle une URL.",
+  noVideo:"Pas encore de vidéo — ouvre l'éditeur pour en ajouter une.",
+  watchExec:"▶ Voir l'execute",replace:"Remplacer",
   buyNames:{pistol:"Pistol",eco:"Eco",semi:"Semi-buy",full:"Full-buy",solo:"Solo",other:"Autre"},
 },
 };
@@ -743,13 +744,18 @@ function normLineup(l){
 }
 function normExec(e){
   return {id:e.id||uid(),name:e.name||"Execute",side:(e.side==="CT")?"CT":"T",
-    description:e.description||"",items:Array.isArray(e.items)?e.items:[]};
+    description:e.description||"",
+    media:Array.isArray(e.media)?e.media.filter(m=>m&&m.url).map(m=>({url:m.url,label:m.label||""})):[],
+    tips:Array.isArray(e.tips)?e.tips.filter(Boolean):[],
+    items:Array.isArray(e.items)?e.items:[]};
 }
 function normStrat(s){
   return {id:s.id||uid(),name:s.name||"Strategy",side:(s.side==="CT")?"CT":"T",
     buy:BUYS.includes(s.buy)?s.buy:"full", zone:s.zone||"",
     point:(s.point&&Number.isFinite(+s.point.x))?{x:num(s.point.x,50),y:num(s.point.y,50)}:null,
     description:s.description||"",
+    media:Array.isArray(s.media)?s.media.filter(m=>m&&m.url).map(m=>({url:m.url,label:m.label||""})):[],
+    tips:Array.isArray(s.tips)?s.tips.filter(Boolean):[],
     items:Array.isArray(s.items)?s.items.filter(i=>i&&i.id&&(i.kind==="lineup"||i.kind==="exec")):[]};
 }
 
@@ -866,6 +872,40 @@ function convertOldLineup(l){
 
 /* GitHub publish */
 function ghCfg(){try{return JSON.parse(localStorage.getItem(GH_KEY)||"null")}catch(e){return null}}
+function slugify(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,40);}
+function extOf(file){const m=(file.name||"").match(/\.([a-z0-9]+)$/i);return m?m[1].toLowerCase():"bin";}
+function fileToBase64(file){
+  return new Promise((res,rej)=>{
+    const r=new FileReader();
+    r.onload=()=>{const s=r.result||"";res(String(s).split(",")[1]||"");};
+    r.onerror=rej;
+    r.readAsDataURL(file);
+  });
+}
+function buildMediaPath(mapId,prefix,file){
+  const ext=extOf(file);
+  const slug=slugify(prefix)||"media";
+  const stamp=Date.now().toString(36).slice(-5);
+  return `media/${mapId}/${slug}-${stamp}.${ext}`;
+}
+async function uploadFileToGitHub(file,targetPath){
+  const cfg=ghCfg();
+  if(!cfg||!cfg.token||!cfg.owner||!cfg.repo){
+    throw new Error(LANG==="fr"?"Configure d'abord la publication (token GitHub)":"Configure Publish first (GitHub token)");
+  }
+  const maxBytes=24*1024*1024; // GitHub Contents API limit is ~25MB after base64 inflation
+  if(file.size>maxBytes) throw new Error((LANG==="fr"?"Fichier trop lourd (max 24 Mo) : ":"File too large (max 24 MB): ")+(file.size/1024/1024).toFixed(1)+" MB");
+  const base64=await fileToBase64(file);
+  const url=`https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${targetPath}`;
+  const headers={"Authorization":`Bearer ${cfg.token}`,"Accept":"application/vnd.github+json"};
+  let sha=null;
+  try{const g=await fetch(`${url}?ref=${encodeURIComponent(cfg.branch)}`,{headers,cache:"no-store"});if(g.ok)sha=(await g.json()).sha;}catch(e){}
+  const body={message:`Upload ${targetPath}`,content:base64,branch:cfg.branch};
+  if(sha) body.sha=sha;
+  const r=await fetch(url,{method:"PUT",headers,body:JSON.stringify(body)});
+  if(!r.ok){const err=await r.json().catch(()=>({}));throw new Error(err.message||("HTTP "+r.status));}
+  return targetPath;
+}
 function openPublishModal(){
   const c=ghCfg()||{owner:"",repo:"",branch:"main",token:""};
   showModal({
@@ -1110,7 +1150,7 @@ function renderRail(){
   }));
   rail.querySelectorAll("[data-exec]").forEach(b=>b.addEventListener("click",()=>{
     state.activeExec=b.dataset.exec;state.openIds=[];
-    renderAll();openExecView(b.dataset.exec);
+    renderAll();
   }));
   const sa=rail.querySelector("#exec-showall");
   if(sa) sa.addEventListener("click",(e)=>{e.stopPropagation();state.activeExec=null;renderAll();});
@@ -1165,10 +1205,12 @@ function renderMarkers(){
 
   vis.forEach(l=>{
     const inExec=order?order.includes(l.id):true;
+    // When an exec is active, hide non-exec markers entirely
+    if(order&&!inExec)return;
     const selected=state.openIds.includes(l.id);
     const c=TYPES[l.type].color;
     const mk=document.createElement("button");
-    mk.className="mk"+(selected?" sel":"")+(inExec?"":" dim");
+    mk.className="mk"+(selected?" sel":"");
     mk.style.setProperty("--c",c);
     mk.style.left=l.land.x+"%"; mk.style.top=l.land.y+"%";
     mk.title=l.name;
@@ -1313,13 +1355,26 @@ function renderPanel(){
   if(state.activeExec){
     const ex=md.executes.find(e=>e.id===state.activeExec);
     if(ex){
+      const hasMedia=ex.media&&ex.media.length;
+      const mainM=hasMedia?ex.media[0]:null;
       panel.innerHTML=`
         <div class="dr-pad">
-          <div class="dr-eyebrow"><span>Execute // ${esc(ex.side)}</span>
+          <div class="dr-eyebrow"><span>Execute // ${esc(ex.side)} · ${ex.items.length} ${esc(t("steps"))}</span>
             <button class="icon-btn" id="dr-close" title="${esc(t("close"))}">✕</button></div>
           <h2 class="dr-title">${esc(ex.name)}</h2>
+          <div class="badges">
+            <span class="badge side-${ex.side}">${ex.side}</span>
+          </div>
+          ${hasMedia?`
+            <div class="exec-player">
+              ${isVideo(mainM.url)
+                ?`<video src="${esc(mainM.url)}" data-src="${esc(mainM.url)}" controls autoplay loop muted playsinline></video>`
+                :`<img src="${esc(mainM.url)}" data-src="${esc(mainM.url)}" alt="${esc(mainM.label||"")}" id="x-zoom">`}
+            </div>
+          `:`<div class="exec-novideo">${esc(t("noVideo"))}</div>`}
           ${ex.description?`<p class="dr-desc">${esc(ex.description)}</p>`:""}
-          <div class="dr-h">${ex.items.length} ${esc(t("steps"))}</div>
+          ${ex.tips&&ex.tips.length?`<div class="dr-h">${esc(t("tips"))}</div><ul class="tips">${ex.tips.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+          ${ex.items.length?`<div class="dr-h">${esc(t("steps"))}</div>`:""}
           ${ex.items.map((id,i)=>{
             const l=md.lineups.find(x=>x.id===id);if(!l)return"";
             return `<button class="linkrow" data-id="${l.id}">
@@ -1328,10 +1383,9 @@ function renderPanel(){
               <span class="nm">${esc(l.name)}</span>
               <span class="sub">${l.technique?techIconsHTML(l.technique,"sm"):esc(TYPES[l.type].label)}</span></button>`;
           }).join("")}
-          <div class="ed-foot"><button class="btn btn-amber" id="open-briefing">${esc(t("openBriefing"))}</button></div>
         </div>`;
       $("#dr-close").addEventListener("click",()=>{state.activeExec=null;renderAll();});
-      $("#open-briefing").addEventListener("click",()=>openExecView(ex.id));
+      const zimg=$("#x-zoom");if(zimg)zimg.addEventListener("click",()=>openLightbox(ex.media,0));
       panel.querySelectorAll(".linkrow").forEach(b=>b.addEventListener("click",()=>{
         if(!state.openIds.includes(b.dataset.id))state.openIds.push(b.dataset.id);
         renderAll();
@@ -1395,7 +1449,7 @@ function renderStratDetail(panel,s){
   }));
   panel.querySelectorAll("[data-exec]").forEach(b=>b.addEventListener("click",()=>{
     state.viewMode="lineups";state.activeExec=b.dataset.exec;state.openIds=[];
-    renderAll();openExecView(b.dataset.exec);
+    renderAll();
   }));
 }
 
@@ -1407,51 +1461,60 @@ function mediaHTML(m){
   return `<button class="media-item" type="button">${inner}${m.label?`<span class="cap">${esc(m.label)}</span>`:""}</button>`;
 }
 
-/* ---------------- execute briefing overlay ---------------- */
-function openExecView(execId){
-  const md=mapData();
-  const ex=md.executes.find(e=>e.id===execId);
-  if(!ex)return;
-  const box=$("#xv-box");
-  box.innerHTML=`
-    <div class="xv-head">
-      <div class="xv-titles">
-        <div class="xv-eyebrow">Execute // ${esc(ex.side)} · ${ex.items.length} ${esc(t("steps"))}</div>
-        <div class="xv-title">${esc(ex.name)}</div>
-        ${ex.description?`<div class="xv-desc">${esc(ex.description)}</div>`:""}
-      </div>
-      <button class="icon-btn" id="xv-close" title="${esc(t("close"))}" style="font-size:16px">✕</button>
+/* Editor: small media row with preview + URL + label + replace + delete */
+function mediaRowHTML(m,i){
+  const url=esc(m.url);
+  let preview="";
+  if(m.url){
+    preview=isVideo(m.url)
+      ?`<video src="${url}" data-src="${url}" muted playsinline></video>`
+      :`<img src="${url}" data-src="${url}" alt="" loading="lazy">`;
+  }else{
+    preview=`<span class="m-thumb-ph">?</span>`;
+  }
+  return `<div class="sub-row m-row" data-i="${i}">
+    <div class="m-thumb">${preview}</div>
+    <div class="m-fields">
+      <input class="m-url" value="${url}" placeholder="media/${esc(state.map)}/file.png">
+      <input class="m-cap" value="${esc(m.label)}" placeholder="Label">
     </div>
-    <div class="xv-steps">${
-      ex.items.map((id,i)=>{
-        const l=md.lineups.find(x=>x.id===id);if(!l)return"";
-        return `<div class="xv-step" style="--c:${TYPES[l.type].color}">
-          <div class="xv-step-head">
-            <span class="xv-num">${i+1}</span>
-            <span class="ic">${ICONS[l.type]}</span>
-            <span class="nm">${esc(l.name)}</span>
-            ${l.technique?`<span class="tech">${techIconsHTML(l.technique)}</span>`:""}
-            <span class="sidedot ${l.side}">${l.side}</span>
-          </div>
-          ${l.media.length?`<div class="xv-media">${l.media.map((m,mi)=>{
-            const inner=isVideo(m.url)?`<video src="${esc(m.url)}" data-src="${esc(m.url)}" muted loop autoplay playsinline></video>`
-                                      :`<img src="${esc(m.url)}" data-src="${esc(m.url)}" loading="lazy" alt="">`;
-            return `<button class="xv-m" data-l="${l.id}" data-m="${mi}">${inner}${m.label?`<span class="cap">${esc(m.label)}</span>`:""}</button>`;
-          }).join("")}</div>`:""}
-          ${l.description?`<div class="xv-step-desc">${esc(l.description)}</div>`:""}
-          ${l.tips.length?`<div class="xv-step-desc">${l.tips.map(x=>"▸ "+esc(x)).join("<br>")}</div>`:""}
-        </div>`;
-      }).join("")
-    }</div>`;
-  $("#xv-close").addEventListener("click",closeExecView);
-  box.querySelectorAll(".xv-m").forEach(b=>b.addEventListener("click",()=>{
-    const l=md.lineups.find(x=>x.id===b.dataset.l);
-    if(l)openLightbox(l.media,+b.dataset.m);
-  }));
-  $("#execview").classList.add("show");
+    <div class="m-acts">
+      <button class="icon-btn m-replace" type="button" title="${esc(t("replace"))}">↻</button>
+      <button class="icon-btn danger m-del" type="button" title="${esc(t("del"))}">✕</button>
+    </div>
+  </div>`;
 }
-function closeExecView(){$("#execview").classList.remove("show");}
-$("#execview").addEventListener("click",e=>{if(e.target.id==="execview")closeExecView();});
+
+/* Upload helper: open file picker, upload to GitHub, attach to obj.media */
+function pickAndUploadMedia(obj,prefix,replaceIdx,onDone){
+  const inp=document.createElement("input");
+  inp.type="file";
+  inp.accept="image/png,image/jpeg,image/gif,image/webp,video/mp4,video/webm";
+  inp.onchange=async e=>{
+    const file=e.target.files&&e.target.files[0];
+    if(!file)return;
+    const path=buildMediaPath(state.map,prefix,file);
+    toast(t("uploading"));
+    try{
+      await uploadFileToGitHub(file,path);
+      if(replaceIdx!=null&&replaceIdx>=0){
+        const old=obj.media[replaceIdx]||{label:""};
+        obj.media[replaceIdx]={url:path,label:old.label||""};
+      }else{
+        obj.media.push({url:path,label:""});
+      }
+      save();
+      toast(t("uploadOk"));
+      if(onDone)onDone();
+    }catch(err){
+      console.error("upload",err);
+      toast(t("uploadFail")+(err.message||err));
+    }
+  };
+  inp.click();
+}
+
+/* execute view rendered inline in renderDrawer() via state.activeExec */
 
 /* ============================================================
    EDITOR
@@ -1641,14 +1704,12 @@ function renderLineupForm(panel,md){
       <textarea id="f-desc">${esc(l.description)}</textarea>
 
       <label class="f-label">${esc(t("visualsLabel"))}</label>
-      <div class="sub-list" id="f-media">${l.media.map((m,i)=>`
-        <div class="sub-row" data-i="${i}">
-          <input class="m-url" value="${esc(m.url)}" placeholder="media/${esc(state.map)}/file.gif">
-          <input class="m-cap" value="${esc(m.label)}" placeholder="Stand / Aim" style="max-width:100px">
-          <button class="icon-btn danger m-del">✕</button>
-        </div>`).join("")}</div>
-      <button class="add-line" id="f-media-add">${esc(t("addVisual"))}</button>
-      <div class="f-hint">${esc(t("mediaHint"))}</div>
+      <div class="media-toolbar">
+        <button class="btn btn-sm btn-amber" id="f-upload" type="button">${esc(t("uploadBtn"))}</button>
+        <button class="btn btn-sm" id="f-media-add" type="button">${esc(t("addVisual"))}</button>
+      </div>
+      <div class="sub-list" id="f-media">${l.media.map((m,i)=>mediaRowHTML(m,i)).join("")}</div>
+      <div class="f-hint">${esc(t("uploadHint"))}</div>
 
       <label class="f-label">${esc(t("tips"))}</label>
       <div class="sub-list" id="f-tips">${l.tips.map((x,i)=>`
@@ -1681,8 +1742,10 @@ function renderLineupForm(panel,md){
   $("#f-place-land").addEventListener("click",()=>togglePlacing("land"));
   $("#f-place-throw").addEventListener("click",()=>togglePlacing("throw"));
   $("#f-media-add").addEventListener("click",()=>{commit();l.media.push({url:"",label:""});renderAll();});
+  $("#f-upload").addEventListener("click",()=>{commit();pickAndUploadMedia(l,slugify(l.name||"lineup"),null,()=>renderAll());});
   $("#f-tips-add").addEventListener("click",()=>{commit();l.tips.push("");renderAll();});
   panel.querySelectorAll(".m-del").forEach(b=>b.addEventListener("click",()=>{const i=+b.closest(".sub-row").dataset.i;commit();l.media.splice(i,1);save();renderAll();}));
+  panel.querySelectorAll(".m-replace").forEach(b=>b.addEventListener("click",()=>{const i=+b.closest(".sub-row").dataset.i;commit();pickAndUploadMedia(l,slugify(l.name||"lineup"),i,()=>renderAll());}));
   panel.querySelectorAll(".t-del").forEach(b=>b.addEventListener("click",()=>{const i=+b.closest(".sub-row").dataset.i;commit();l.tips.splice(i,1);save();renderAll();}));
   panel.querySelectorAll(".m-url,.m-cap,.t-txt").forEach(inp=>inp.addEventListener("change",commit));
 }
@@ -1703,6 +1766,23 @@ function renderExecForm(panel,md){
       </div>
       <label class="f-label">${esc(t("desc"))}</label>
       <textarea id="x-desc">${esc(ex.description)}</textarea>
+
+      <label class="f-label">${esc(t("videoLabel"))}</label>
+      <div class="media-toolbar">
+        <button class="btn btn-sm btn-amber" id="x-upload" type="button">${esc(t("uploadBtn"))}</button>
+        <button class="btn btn-sm" id="x-media-add" type="button">${esc(t("addVisual"))}</button>
+      </div>
+      <div class="sub-list" id="x-media">${ex.media.map((m,i)=>mediaRowHTML(m,i)).join("")}</div>
+      <div class="f-hint">${esc(t("videoHint"))}</div>
+
+      <label class="f-label">${esc(t("tips"))}</label>
+      <div class="sub-list" id="x-tips">${ex.tips.map((x,i)=>`
+        <div class="sub-row" data-i="${i}">
+          <input class="t-txt" value="${esc(x)}">
+          <button class="icon-btn danger t-del" type="button">✕</button>
+        </div>`).join("")}</div>
+      <button class="add-line" id="x-tips-add" type="button">${esc(t("addTip"))}</button>
+
       <label class="f-label">${esc(t("selOrder"))}</label>
       <div class="exsel" id="x-items">${
         md.lineups.length?md.lineups.map(l=>{
@@ -1712,12 +1792,19 @@ function renderExecForm(panel,md){
             <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>${esc(l.name)}</label>`;
         }).join(""):`<div class="rail-empty">${esc(t("emptyLineups"))}</div>`}
       </div>
+
       <div class="ed-foot">
         <button class="btn btn-amber" id="x-done">${esc(t("done"))}</button>
         <button class="btn btn-danger" id="x-del">${esc(t("del"))}</button>
       </div>
     </div>`;
-  const commit=()=>{ex.name=$("#x-name").value.trim()||"Execute";ex.description=$("#x-desc").value;save();};
+  const commit=()=>{
+    ex.name=$("#x-name").value.trim()||"Execute";
+    ex.description=$("#x-desc").value;
+    ex.media=$$("#x-media .sub-row").map(r=>({url:r.querySelector(".m-url").value.trim(),label:r.querySelector(".m-cap").value.trim()})).filter(m=>m.url);
+    ex.tips=$$("#x-tips .sub-row").map(r=>r.querySelector(".t-txt").value.trim()).filter(Boolean);
+    save();
+  };
   $("#ed-back").addEventListener("click",()=>{commit();state.editingExecId=null;renderAll();});
   $("#x-done").addEventListener("click",()=>{commit();state.editingExecId=null;toast(t("tExecSaved"));renderAll();});
   $("#x-del").addEventListener("click",()=>confirmBox(t("delExecT"),`« ${ex.name} » — ${t("delExecM")}`,()=>{
@@ -1727,6 +1814,13 @@ function renderExecForm(panel,md){
   }));
   ["#x-name","#x-desc"].forEach(s=>$(s).addEventListener("change",commit));
   $("#x-side").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;ex.side=b.dataset.v;commit();renderAll();});
+  $("#x-media-add").addEventListener("click",()=>{commit();ex.media.push({url:"",label:""});renderAll();});
+  $("#x-upload").addEventListener("click",()=>{commit();pickAndUploadMedia(ex,"exec-"+slugify(ex.name||"x"),null,()=>renderAll());});
+  $("#x-tips-add").addEventListener("click",()=>{commit();ex.tips.push("");renderAll();});
+  panel.querySelectorAll("#x-media .m-del").forEach(b=>b.addEventListener("click",()=>{const i=+b.closest(".sub-row").dataset.i;commit();ex.media.splice(i,1);save();renderAll();}));
+  panel.querySelectorAll("#x-media .m-replace").forEach(b=>b.addEventListener("click",()=>{const i=+b.closest(".sub-row").dataset.i;commit();pickAndUploadMedia(ex,"exec-"+slugify(ex.name||"x"),i,()=>renderAll());}));
+  panel.querySelectorAll("#x-tips .t-del").forEach(b=>b.addEventListener("click",()=>{const i=+b.closest(".sub-row").dataset.i;commit();ex.tips.splice(i,1);save();renderAll();}));
+  panel.querySelectorAll(".m-url,.m-cap,.t-txt").forEach(inp=>inp.addEventListener("change",commit));
   $("#x-items").addEventListener("change",e=>{
     const cb=e.target.closest("input[type=checkbox]");if(!cb)return;
     const id=cb.dataset.id;
@@ -1764,6 +1858,23 @@ function renderStratForm(panel,md){
       </div>
       <label class="f-label">${esc(t("desc"))}</label>
       <textarea id="s-desc" rows="5">${esc(s.description)}</textarea>
+
+      <label class="f-label">${esc(t("videoLabel"))}</label>
+      <div class="media-toolbar">
+        <button class="btn btn-sm btn-amber" id="s-upload" type="button">${esc(t("uploadBtn"))}</button>
+        <button class="btn btn-sm" id="s-media-add" type="button">${esc(t("addVisual"))}</button>
+      </div>
+      <div class="sub-list" id="s-media">${s.media.map((m,i)=>mediaRowHTML(m,i)).join("")}</div>
+      <div class="f-hint">${esc(t("videoHint"))}</div>
+
+      <label class="f-label">${esc(t("tips"))}</label>
+      <div class="sub-list" id="s-tips">${s.tips.map((x,i)=>`
+        <div class="sub-row" data-i="${i}">
+          <input class="t-txt" value="${esc(x)}">
+          <button class="icon-btn danger t-del" type="button">✕</button>
+        </div>`).join("")}</div>
+      <button class="add-line" id="s-tips-add" type="button">${esc(t("addTip"))}</button>
+
       <label class="f-label">${esc(t("selOrderStrat"))}</label>
       <div class="exsel" id="s-items">${
         md.executes.map(ex=>{
@@ -1784,7 +1895,14 @@ function renderStratForm(panel,md){
         <button class="btn btn-danger" id="s-del">${esc(t("del"))}</button>
       </div>
     </div>`;
-  const commit=()=>{s.name=$("#s-name").value.trim()||"Strategy";s.zone=$("#s-zone").value.trim();s.description=$("#s-desc").value;save();};
+  const commit=()=>{
+    s.name=$("#s-name").value.trim()||"Strategy";
+    s.zone=$("#s-zone").value.trim();
+    s.description=$("#s-desc").value;
+    s.media=$$("#s-media .sub-row").map(r=>({url:r.querySelector(".m-url").value.trim(),label:r.querySelector(".m-cap").value.trim()})).filter(m=>m.url);
+    s.tips=$$("#s-tips .sub-row").map(r=>r.querySelector(".t-txt").value.trim()).filter(Boolean);
+    save();
+  };
   $("#ed-back").addEventListener("click",()=>{commit();state.editingStratId=null;state.placing=null;$("#mapwrap").classList.remove("placing");renderAll();});
   $("#s-done").addEventListener("click",()=>{commit();state.editingStratId=null;state.placing=null;$("#mapwrap").classList.remove("placing");toast(t("tStratSaved"));renderAll();});
   $("#s-del").addEventListener("click",()=>confirmBox(t("delStratT"),`« ${s.name} » — ${t("delStratM")}`,()=>{
@@ -1795,6 +1913,13 @@ function renderStratForm(panel,md){
   $("#s-side").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;s.side=b.dataset.v;commit();renderAll();});
   $("#s-buy").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;s.buy=b.dataset.v;commit();renderAll();});
   $("#f-place-point").addEventListener("click",()=>togglePlacing("spoint"));
+  $("#s-media-add").addEventListener("click",()=>{commit();s.media.push({url:"",label:""});renderAll();});
+  $("#s-upload").addEventListener("click",()=>{commit();pickAndUploadMedia(s,"strat-"+slugify(s.name||"s"),null,()=>renderAll());});
+  $("#s-tips-add").addEventListener("click",()=>{commit();s.tips.push("");renderAll();});
+  panel.querySelectorAll("#s-media .m-del").forEach(b=>b.addEventListener("click",()=>{const i=+b.closest(".sub-row").dataset.i;commit();s.media.splice(i,1);save();renderAll();}));
+  panel.querySelectorAll("#s-media .m-replace").forEach(b=>b.addEventListener("click",()=>{const i=+b.closest(".sub-row").dataset.i;commit();pickAndUploadMedia(s,"strat-"+slugify(s.name||"s"),i,()=>renderAll());}));
+  panel.querySelectorAll("#s-tips .t-del").forEach(b=>b.addEventListener("click",()=>{const i=+b.closest(".sub-row").dataset.i;commit();s.tips.splice(i,1);save();renderAll();}));
+  panel.querySelectorAll(".m-url,.m-cap,.t-txt").forEach(inp=>inp.addEventListener("change",commit));
   $("#s-items").addEventListener("change",e=>{
     const cb=e.target.closest("input[type=checkbox]");if(!cb)return;
     const kind=cb.dataset.kind,id=cb.dataset.id;
@@ -1978,7 +2103,7 @@ function bindGlobal(){
   document.addEventListener("error",e=>{
     const el=e.target;
     if(!el||(el.tagName!=="IMG"&&el.tagName!=="VIDEO"))return;
-    const wrap=el.closest(".media-item,.xv-m");
+    const wrap=el.closest(".media-item");
     if(!wrap||wrap.classList.contains("media-err"))return;
     wrap.classList.add("media-err");
     const path=el.getAttribute("data-src")||el.getAttribute("src")||"";
@@ -2056,7 +2181,6 @@ function bindGlobal(){
       return;
     }
     if(e.key==="Escape"){
-      if($("#execview").classList.contains("show")){closeExecView();return;}
       if($("#modal").classList.contains("show")){closeModal();return;}
       if(state.drawMode){state.drawMode=false;$("#mapwrap").classList.remove("drawing");renderMapTools();return;}
       if(state.placing){state.placing=null;$("#mapwrap").classList.remove("placing");renderAll();return;}
