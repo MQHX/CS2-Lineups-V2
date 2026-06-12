@@ -3003,13 +3003,13 @@
         },
         {
           "id": "door_mid_2",
-          "name": "Door (Suicide)",
+          "name": "Door",
           "type": "smoke",
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Door",
+          "variant": "From Suicide",
           "land": {
             "x": 44.7,
             "y": 35.2
@@ -3032,13 +3032,13 @@
         },
         {
           "id": "door_mid",
-          "name": "Door (T Spawn)",
+          "name": "Door",
           "type": "smoke",
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Door",
+          "variant": "From T-Spawn",
           "land": {
             "x": 44.7,
             "y": 35.2
@@ -3367,13 +3367,13 @@
         },
         {
           "id": "insta_camera",
-          "name": "Camera (Insta)",
+          "name": "Camera",
           "type": "smoke",
           "side": "T",
           "technique": "",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Camera",
+          "variant": "Insta",
           "land": {
             "x": 70.3,
             "y": 46
@@ -3392,13 +3392,13 @@
         },
         {
           "id": "camera_smoke",
-          "name": "Camera (T-Spawn)",
+          "name": "Camera",
           "type": "smoke",
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Camera",
+          "variant": "From T-Spawn",
           "land": {
             "x": 70.3,
             "y": 46
@@ -3450,13 +3450,13 @@
         },
         {
           "id": "insta_connector",
-          "name": "Connector (Insta)",
+          "name": "Connector",
           "type": "smoke",
           "side": "T",
           "technique": "",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Connector",
+          "variant": "Insta",
           "land": {
             "x": 59.9,
             "y": 58
@@ -3475,13 +3475,13 @@
         },
         {
           "id": "con_smoke",
-          "name": "Connector (T-Spawn)",
+          "name": "Connector",
           "type": "smoke",
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Connector",
+          "variant": "From T-Spawn",
           "land": {
             "x": 59.9,
             "y": 58
