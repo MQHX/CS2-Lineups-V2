@@ -10,9 +10,20 @@
           "side": "T",
           "technique": "W + Jumpthrow",
           "description": "",
-          "land": { "x": 38.1, "y": 41 },
-          "throw": { "x": 84.6, "y": 32.8 },
-          "media": [ { "url": "media/mirage/window_insta.png", "label": "Stand" } ],
+          "land": {
+            "x": 38.1,
+            "y": 41
+          },
+          "throw": {
+            "x": 84.6,
+            "y": 32.8
+          },
+          "media": [
+            {
+              "url": "media/mirage/window_insta.png",
+              "label": "Stand"
+            }
+          ],
           "tips": []
         },
         {
@@ -22,9 +33,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 61.7, "y": 37.5 },
-          "throw": { "x": 88.5, "y": 29.5 },
-          "media": [ { "url": "media/mirage/t_smokes.png", "label": "Stand" }, { "url": "media/mirage/cross.png", "label": "Aim" } ],
+          "land": {
+            "x": 61.7,
+            "y": 37.5
+          },
+          "throw": {
+            "x": 88.5,
+            "y": 29.5
+          },
+          "media": [
+            {
+              "url": "media/mirage/t_smokes.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/cross.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -34,9 +60,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 49.8, "y": 46 },
-          "throw": { "x": 88.5, "y": 29.5 },
-          "media": [ { "url": "media/mirage/t_smokes.png", "label": "Stand" }, { "url": "media/mirage/connector.png", "label": "Aim" } ],
+          "land": {
+            "x": 49.8,
+            "y": 46
+          },
+          "throw": {
+            "x": 88.5,
+            "y": 29.5
+          },
+          "media": [
+            {
+              "url": "media/mirage/t_smokes.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/connector.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -46,9 +87,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 44.6, "y": 33.5 },
-          "throw": { "x": 88.5, "y": 29.5 },
-          "media": [ { "url": "media/mirage/t_smokes.png", "label": "Stand" }, { "url": "media/mirage/short.png", "label": "Aim" } ],
+          "land": {
+            "x": 44.6,
+            "y": 33.5
+          },
+          "throw": {
+            "x": 88.5,
+            "y": 29.5
+          },
+          "media": [
+            {
+              "url": "media/mirage/t_smokes.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/short.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -58,9 +114,24 @@
           "side": "T",
           "technique": "W + Jumpthrow",
           "description": "",
-          "land": { "x": 49.7, "y": 54 },
-          "throw": { "x": 88.5, "y": 37.7 },
-          "media": [ { "url": "media/mirage/top_con.png", "label": "Stand" }, { "url": "media/mirage/top_con_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 49.7,
+            "y": 54
+          },
+          "throw": {
+            "x": 88.5,
+            "y": 37.7
+          },
+          "media": [
+            {
+              "url": "media/mirage/top_con.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/top_con_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -70,9 +141,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 43.6, "y": 74.6 },
-          "throw": { "x": 68.6, "y": 42.2 },
-          "media": [ { "url": "media/mirage/ct_1.png", "label": "Stand" }, { "url": "media/mirage/ct_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 43.6,
+            "y": 74.6
+          },
+          "throw": {
+            "x": 68.6,
+            "y": 42.2
+          },
+          "media": [
+            {
+              "url": "media/mirage/ct_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/ct_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -82,9 +168,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 43.6, "y": 74.6 },
-          "throw": { "x": 81.7, "y": 49.2 },
-          "media": [ { "url": "media/mirage/ct_3.png", "label": "Stand" }, { "url": "media/mirage/ct_4.png", "label": "Aim" } ],
+          "land": {
+            "x": 43.6,
+            "y": 74.6
+          },
+          "throw": {
+            "x": 81.7,
+            "y": 49.2
+          },
+          "media": [
+            {
+              "url": "media/mirage/ct_3.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/ct_4.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -94,9 +195,24 @@
           "side": "T",
           "technique": "Left and Right click + Jumpthrow",
           "description": "",
-          "land": { "x": 52.9, "y": 59.3 },
-          "throw": { "x": 77.4, "y": 54 },
-          "media": [ { "url": "media/mirage/stairs_1.png", "label": "Stand" }, { "url": "media/mirage/stairs_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 52.9,
+            "y": 59.3
+          },
+          "throw": {
+            "x": 77.4,
+            "y": 54
+          },
+          "media": [
+            {
+              "url": "media/mirage/stairs_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/stairs_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -106,9 +222,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 48.6, "y": 59.3 },
-          "throw": { "x": 77.4, "y": 54 },
-          "media": [ { "url": "media/mirage/stairs_1.png", "label": "Stand" }, { "url": "media/mirage/jungle_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 48.6,
+            "y": 59.3
+          },
+          "throw": {
+            "x": 77.4,
+            "y": 54
+          },
+          "media": [
+            {
+              "url": "media/mirage/stairs_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/jungle_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -118,9 +249,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 56.4, "y": 60 },
-          "throw": { "x": 77.4, "y": 54 },
-          "media": [ { "url": "media/mirage/stairs_1.png", "label": "Stand" }, { "url": "media/mirage/sandwich.png", "label": "Aim" } ],
+          "land": {
+            "x": 56.4,
+            "y": 60
+          },
+          "throw": {
+            "x": 77.4,
+            "y": 54
+          },
+          "media": [
+            {
+              "url": "media/mirage/stairs_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/sandwich.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -130,9 +276,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 52.9, "y": 59.3 },
-          "throw": { "x": 77.3, "y": 49.7 },
-          "media": [ { "url": "media/mirage/ramp.png", "label": "Stand" }, { "url": "media/mirage/stairs_3.png", "label": "Aim" } ],
+          "land": {
+            "x": 52.9,
+            "y": 59.3
+          },
+          "throw": {
+            "x": 77.3,
+            "y": 49.7
+          },
+          "media": [
+            {
+              "url": "media/mirage/ramp.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/stairs_3.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -142,9 +303,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 48.6, "y": 59.3 },
-          "throw": { "x": 81.3, "y": 49.5 },
-          "media": [ { "url": "media/mirage/jungle_3.png", "label": "Stand" }, { "url": "media/mirage/jungle_4.png", "label": "Aim" } ],
+          "land": {
+            "x": 48.6,
+            "y": 59.3
+          },
+          "throw": {
+            "x": 81.3,
+            "y": 49.5
+          },
+          "media": [
+            {
+              "url": "media/mirage/jungle_3.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/jungle_4.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -154,9 +330,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 61.3, "y": 68.6 },
-          "throw": { "x": 69.2, "y": 70.1 },
-          "media": [ { "url": "media/mirage/palace_smoke_1.png", "label": "Stand" }, { "url": "media/mirage/palace_smoke_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 61.3,
+            "y": 68.6
+          },
+          "throw": {
+            "x": 69.2,
+            "y": 70.1
+          },
+          "media": [
+            {
+              "url": "media/mirage/palace_smoke_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/palace_smoke_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -166,9 +357,24 @@
           "side": "T",
           "technique": "Running (until light) + Throw",
           "description": "",
-          "land": { "x": 63.7, "y": 67.5 },
-          "throw": { "x": 72.4, "y": 71.8 },
-          "media": [ { "url": "media/mirage/palace_molly_1.png", "label": "Stand" }, { "url": "media/mirage/palace_molly_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 63.7,
+            "y": 67.5
+          },
+          "throw": {
+            "x": 72.4,
+            "y": 71.8
+          },
+          "media": [
+            {
+              "url": "media/mirage/palace_molly_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/palace_molly_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -178,9 +384,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 52.9, "y": 59.3 },
-          "throw": { "x": 88.5, "y": 33.8 },
-          "media": [ { "url": "media/mirage/rusha.png", "label": "Stand" }, { "url": "media/mirage/stairs_4.png", "label": "Aim" } ],
+          "land": {
+            "x": 52.9,
+            "y": 59.3
+          },
+          "throw": {
+            "x": 88.5,
+            "y": 33.8
+          },
+          "media": [
+            {
+              "url": "media/mirage/rusha.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/stairs_4.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -190,9 +411,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 48.6, "y": 59.3 },
-          "throw": { "x": 88.5, "y": 33.8 },
-          "media": [ { "url": "media/mirage/rusha.png", "label": "Stand" }, { "url": "media/mirage/jungle_5.png", "label": "Aim" } ],
+          "land": {
+            "x": 48.6,
+            "y": 59.3
+          },
+          "throw": {
+            "x": 88.5,
+            "y": 33.8
+          },
+          "media": [
+            {
+              "url": "media/mirage/rusha.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/jungle_5.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -202,9 +438,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 25, "y": 35.7 },
-          "throw": { "x": 58.2, "y": 13.4 },
-          "media": [ { "url": "media/mirage/b_exec.png", "label": "Stand" }, { "url": "media/mirage/market.png", "label": "Aim" } ],
+          "land": {
+            "x": 25,
+            "y": 35.7
+          },
+          "throw": {
+            "x": 58.2,
+            "y": 13.4
+          },
+          "media": [
+            {
+              "url": "media/mirage/b_exec.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/market.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -214,9 +465,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 38.9, "y": 25.5 },
-          "throw": { "x": 58.2, "y": 13.4 },
-          "media": [ { "url": "media/mirage/b_exec.png", "label": "Stand" }, { "url": "media/mirage/short_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 38.9,
+            "y": 25.5
+          },
+          "throw": {
+            "x": 58.2,
+            "y": 13.4
+          },
+          "media": [
+            {
+              "url": "media/mirage/b_exec.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/short_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -226,9 +492,24 @@
           "side": "T",
           "technique": "W + Jumpthrow",
           "description": "",
-          "land": { "x": 17.4, "y": 35.5 },
-          "throw": { "x": 58.2, "y": 13.4 },
-          "media": [ { "url": "media/mirage/b_exec.png", "label": "Stand" }, { "url": "media/mirage/door.png", "label": "Aim" } ],
+          "land": {
+            "x": 17.4,
+            "y": 35.5
+          },
+          "throw": {
+            "x": 58.2,
+            "y": 13.4
+          },
+          "media": [
+            {
+              "url": "media/mirage/b_exec.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/door.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -238,9 +519,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 21.8, "y": 25 },
-          "throw": { "x": 58.2, "y": 13.4 },
-          "media": [ { "url": "media/mirage/b_site.png", "label": "Stand" }, { "url": "media/mirage/b_site_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 21.8,
+            "y": 25
+          },
+          "throw": {
+            "x": 58.2,
+            "y": 13.4
+          },
+          "media": [
+            {
+              "url": "media/mirage/b_site.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/b_site_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -250,9 +546,24 @@
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 63, "y": 73.3 },
-          "throw": { "x": 29.4, "y": 43.8 },
-          "media": [ { "url": "media/mirage/palace_smoke_3.png", "label": "Stand" }, { "url": "media/mirage/palace_smoke_4.png", "label": "Aim" } ],
+          "land": {
+            "x": 63,
+            "y": 73.3
+          },
+          "throw": {
+            "x": 29.4,
+            "y": 43.8
+          },
+          "media": [
+            {
+              "url": "media/mirage/palace_smoke_3.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/palace_smoke_4.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -262,9 +573,24 @@
           "side": "CT",
           "technique": "Running + Throw",
           "description": "",
-          "land": { "x": 24.2, "y": 23.6 },
-          "throw": { "x": 28.2, "y": 41 },
-          "media": [ { "url": "media/mirage/b_molly_1.png", "label": "Stand" }, { "url": "media/mirage/b_molly_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 24.2,
+            "y": 23.6
+          },
+          "throw": {
+            "x": 28.2,
+            "y": 41
+          },
+          "media": [
+            {
+              "url": "media/mirage/b_molly_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/b_molly_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -274,9 +600,24 @@
           "side": "T",
           "technique": "W + Jumpthrow",
           "description": "",
-          "land": { "x": 55.4, "y": 36.4 },
-          "throw": { "x": 70.2, "y": 17.4 },
-          "media": [ { "url": "media/mirage/mid_pop_1.png", "label": "Stand" }, { "url": "media/mirage/mid_pop_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 55.4,
+            "y": 36.4
+          },
+          "throw": {
+            "x": 70.2,
+            "y": 17.4
+          },
+          "media": [
+            {
+              "url": "media/mirage/mid_pop_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/mid_pop_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         }
       ],
@@ -286,28 +627,42 @@
           "name": "A execute (from T-Roof)",
           "side": "T",
           "description": "",
-          "items": [ "stairs_smoke", "jungle_smoke", "sandwich_molly" ]
+          "items": [
+            "stairs_smoke",
+            "jungle_smoke",
+            "sandwich_molly"
+          ]
         },
         {
           "id": "a_execute_2",
           "name": "A execute (from Ramp)",
           "side": "T",
           "description": "",
-          "items": [ "stairs_smoke_2", "jungle_smoke_2", "ticket_smoke_2" ]
+          "items": [
+            "stairs_smoke_2",
+            "jungle_smoke_2",
+            "ticket_smoke_2"
+          ]
         },
         {
           "id": "b_exec",
           "name": "B execute",
           "side": "T",
           "description": "",
-          "items": [ "b_window", "b_short", "b_door" ]
+          "items": [
+            "b_window",
+            "b_short",
+            "b_door"
+          ]
         },
         {
           "id": "window_insta_2",
           "name": "Insta window",
           "side": "T",
           "description": "",
-          "items": [ "window_insta" ]
+          "items": [
+            "window_insta"
+          ]
         }
       ],
       "strats": [],
@@ -322,9 +677,24 @@
           "side": "T",
           "technique": "W + Jumpthrow",
           "description": "",
-          "land": { "x": 58.9, "y": 27.7 },
-          "throw": { "x": 43.7, "y": 46.4 },
-          "media": [ { "url": "media/inferno/b_pop_1.png", "label": "Stand" }, { "url": "media/inferno/b_pop_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 58.9,
+            "y": 27.7
+          },
+          "throw": {
+            "x": 43.7,
+            "y": 46.4
+          },
+          "media": [
+            {
+              "url": "media/inferno/b_pop_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/b_pop_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -334,9 +704,24 @@
           "side": "T",
           "technique": "Left and right click + Jumpthrow",
           "description": "",
-          "land": { "x": 58.9, "y": 27.7 },
-          "throw": { "x": 50.7, "y": 41 },
-          "media": [ { "url": "media/inferno/b_pop_3.png", "label": "Stand" }, { "url": "media/inferno/b_pop_4.png", "label": "Aim" } ],
+          "land": {
+            "x": 58.9,
+            "y": 27.7
+          },
+          "throw": {
+            "x": 50.7,
+            "y": 41
+          },
+          "media": [
+            {
+              "url": "media/inferno/b_pop_3.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/b_pop_4.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -346,9 +731,24 @@
           "side": "T",
           "technique": "Left and right click + W + Jumpthrow",
           "description": "",
-          "land": { "x": 61, "y": 23.3 },
-          "throw": { "x": 49, "y": 44.3 },
-          "media": [ { "url": "media/inferno/ct_1.png", "label": "Stand" }, { "url": "media/inferno/ct_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 61,
+            "y": 23.3
+          },
+          "throw": {
+            "x": 49,
+            "y": 44.3
+          },
+          "media": [
+            {
+              "url": "media/inferno/ct_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/ct_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -358,9 +758,24 @@
           "side": "T",
           "technique": "Shift + Jumpthrow (KEEP POSITION FROM EXEC)",
           "description": "",
-          "land": { "x": 50.8, "y": 11.6 },
-          "throw": { "x": 49, "y": 44.3 },
-          "media": [ { "url": "media/inferno/ct_1.png", "label": "Stand" }, { "url": "media/inferno/coffin_1.png", "label": "Aim" } ],
+          "land": {
+            "x": 50.8,
+            "y": 11.6
+          },
+          "throw": {
+            "x": 49,
+            "y": 44.3
+          },
+          "media": [
+            {
+              "url": "media/inferno/ct_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/coffin_1.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -370,9 +785,24 @@
           "side": "T",
           "technique": "W + Jumpthrow (THIS OR COFFIN SMOKE)",
           "description": "",
-          "land": { "x": 50.8, "y": 13.8 },
-          "throw": { "x": 49, "y": 44.3 },
-          "media": [ { "url": "media/inferno/ct_1.png", "label": "Stand" }, { "url": "media/inferno/coffin_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 50.8,
+            "y": 13.8
+          },
+          "throw": {
+            "x": 49,
+            "y": 44.3
+          },
+          "media": [
+            {
+              "url": "media/inferno/ct_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/coffin_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -382,9 +812,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 42.5, "y": 15.1 },
-          "throw": { "x": 50.4, "y": 41.7 },
-          "media": [ { "url": "media/inferno/dark_1.png", "label": "Stand" }, { "url": "media/inferno/dark_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 42.5,
+            "y": 15.1
+          },
+          "throw": {
+            "x": 50.4,
+            "y": 41.7
+          },
+          "media": [
+            {
+              "url": "media/inferno/dark_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/dark_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -394,9 +839,24 @@
           "side": "T",
           "technique": "Left and right click + Jumpthrow",
           "description": "",
-          "land": { "x": 43, "y": 54.5 },
-          "throw": { "x": 32.9, "y": 62.9 },
-          "media": [ { "url": "media/inferno/banana_1.png", "label": "Stand" }, { "url": "media/inferno/banana_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 43,
+            "y": 54.5
+          },
+          "throw": {
+            "x": 32.9,
+            "y": 62.9
+          },
+          "media": [
+            {
+              "url": "media/inferno/banana_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/banana_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -406,9 +866,24 @@
           "side": "T",
           "technique": "W + Jumpthrow",
           "description": "",
-          "land": { "x": 61, "y": 23.3 },
-          "throw": { "x": 32.9, "y": 62.9 },
-          "media": [ { "url": "media/inferno/banana_1.png", "label": "Stand" }, { "url": "media/inferno/banana_3.png", "label": "Aim" } ],
+          "land": {
+            "x": 61,
+            "y": 23.3
+          },
+          "throw": {
+            "x": 32.9,
+            "y": 62.9
+          },
+          "media": [
+            {
+              "url": "media/inferno/banana_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/banana_3.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -418,9 +893,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 42.1, "y": 25.2 },
-          "throw": { "x": 50.6, "y": 37.7 },
-          "media": [ { "url": "media/inferno/quad_1.png", "label": "Stand" }, { "url": "media/inferno/quad_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 42.1,
+            "y": 25.2
+          },
+          "throw": {
+            "x": 50.6,
+            "y": 37.7
+          },
+          "media": [
+            {
+              "url": "media/inferno/quad_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/quad_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -430,9 +920,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 50.7, "y": 27.9 },
-          "throw": { "x": 50.6, "y": 37.7 },
-          "media": [ { "url": "media/inferno/quad_1.png", "label": "Stand" }, { "url": "media/inferno/sandwich_1.png", "label": "Aim" } ],
+          "land": {
+            "x": 50.7,
+            "y": 27.9
+          },
+          "throw": {
+            "x": 50.6,
+            "y": 37.7
+          },
+          "media": [
+            {
+              "url": "media/inferno/quad_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/sandwich_1.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -442,9 +947,24 @@
           "side": "T",
           "technique": "Running (until lamp stick) + Jumpthrow",
           "description": "",
-          "land": { "x": 70.2, "y": 76.2 },
-          "throw": { "x": 57.4, "y": 73.8 },
-          "media": [ { "url": "media/inferno/lamp_1.png", "label": "Stand" }, { "url": "media/inferno/lamp_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 70.2,
+            "y": 76.2
+          },
+          "throw": {
+            "x": 57.4,
+            "y": 73.8
+          },
+          "media": [
+            {
+              "url": "media/inferno/lamp_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/lamp_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -454,9 +974,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 87.5, "y": 61.9 },
-          "throw": { "x": 48.5, "y": 68.4 },
-          "media": [ { "url": "media/inferno/moto_1.png", "label": "Stand" }, { "url": "media/inferno/moto_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 87.5,
+            "y": 61.9
+          },
+          "throw": {
+            "x": 48.5,
+            "y": 68.4
+          },
+          "media": [
+            {
+              "url": "media/inferno/moto_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/moto_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -466,9 +1001,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 92, "y": 55.4 },
-          "throw": { "x": 45.9, "y": 69 },
-          "media": [ { "url": "media/inferno/split_1.png", "label": "Stand" }, { "url": "media/inferno/split_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 92,
+            "y": 55.4
+          },
+          "throw": {
+            "x": 45.9,
+            "y": 69
+          },
+          "media": [
+            {
+              "url": "media/inferno/split_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/split_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -478,9 +1028,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 77.8, "y": 51.4 },
-          "throw": { "x": 45.9, "y": 69 },
-          "media": [ { "url": "media/inferno/split_1.png", "label": "Stand" }, { "url": "media/inferno/split_3.png", "label": "Aim" } ],
+          "land": {
+            "x": 77.8,
+            "y": 51.4
+          },
+          "throw": {
+            "x": 45.9,
+            "y": 69
+          },
+          "media": [
+            {
+              "url": "media/inferno/split_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/split_3.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -490,9 +1055,20 @@
           "side": "CT",
           "technique": "",
           "description": "",
-          "land": { "x": 49.8, "y": 66.6 },
-          "throw": { "x": 89.3, "y": 36.1 },
-          "media": [ { "url": "media/inferno/insta_1.png", "label": "Stand" } ],
+          "land": {
+            "x": 49.8,
+            "y": 66.6
+          },
+          "throw": {
+            "x": 89.3,
+            "y": 36.1
+          },
+          "media": [
+            {
+              "url": "media/inferno/insta_1.png",
+              "label": "Stand"
+            }
+          ],
           "tips": []
         },
         {
@@ -502,9 +1078,24 @@
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 43.9, "y": 57.2 },
-          "throw": { "x": 83.2, "y": 39.4 },
-          "media": [ { "url": "media/inferno/banana_4.png", "label": "Stand" }, { "url": "media/inferno/banana_5.png", "label": "Aim" } ],
+          "land": {
+            "x": 43.9,
+            "y": 57.2
+          },
+          "throw": {
+            "x": 83.2,
+            "y": 39.4
+          },
+          "media": [
+            {
+              "url": "media/inferno/banana_4.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/banana_5.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -514,9 +1105,24 @@
           "side": "CT",
           "technique": "W + Jumpthrow",
           "description": "",
-          "land": { "x": 43.1, "y": 61.2 },
-          "throw": { "x": 83.2, "y": 39.4 },
-          "media": [ { "url": "media/inferno/banana_4.png", "label": "Stand" }, { "url": "media/inferno/banana_6.png", "label": "Aim" } ],
+          "land": {
+            "x": 43.1,
+            "y": 61.2
+          },
+          "throw": {
+            "x": 83.2,
+            "y": 39.4
+          },
+          "media": [
+            {
+              "url": "media/inferno/banana_4.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/banana_6.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -526,9 +1132,24 @@
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 47.8, "y": 42 },
-          "throw": { "x": 92.8, "y": 29.1 },
-          "media": [ { "url": "media/inferno/banana_7.png", "label": "Stand" }, { "url": "media/inferno/banana_8.png", "label": "Aim" } ],
+          "land": {
+            "x": 47.8,
+            "y": 42
+          },
+          "throw": {
+            "x": 92.8,
+            "y": 29.1
+          },
+          "media": [
+            {
+              "url": "media/inferno/banana_7.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/banana_8.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -538,9 +1159,24 @@
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 57, "y": 31 },
-          "throw": { "x": 89.5, "y": 65.3 },
-          "media": [ { "url": "media/inferno/banana_9.png", "label": "Stand" }, { "url": "media/inferno/banana_10.png", "label": "Aim" } ],
+          "land": {
+            "x": 57,
+            "y": 31
+          },
+          "throw": {
+            "x": 89.5,
+            "y": 65.3
+          },
+          "media": [
+            {
+              "url": "media/inferno/banana_9.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/banana_10.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -550,9 +1186,24 @@
           "side": "CT",
           "technique": "Left and right click + Jumpthrow",
           "description": "",
-          "land": { "x": 87.4, "y": 72.6 },
-          "throw": { "x": 80.3, "y": 53.4 },
-          "media": [ { "url": "media/inferno/a_1.png", "label": "Stand" }, { "url": "media/inferno/a_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 87.4,
+            "y": 72.6
+          },
+          "throw": {
+            "x": 80.3,
+            "y": 53.4
+          },
+          "media": [
+            {
+              "url": "media/inferno/a_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/a_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -562,9 +1213,24 @@
           "side": "CT",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 83.1, "y": 73.7 },
-          "throw": { "x": 80.3, "y": 53.4 },
-          "media": [ { "url": "media/inferno/a_1.png", "label": "Stand" }, { "url": "media/inferno/a_3.png", "label": "Aim" } ],
+          "land": {
+            "x": 83.1,
+            "y": 73.7
+          },
+          "throw": {
+            "x": 80.3,
+            "y": 53.4
+          },
+          "media": [
+            {
+              "url": "media/inferno/a_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/a_3.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -574,9 +1240,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 87.5, "y": 61.9 },
-          "throw": { "x": 52.9, "y": 83.1 },
-          "media": [ { "url": "media/inferno/moto_3.png", "label": "Stand" }, { "url": "media/inferno/moto_4.png", "label": "Aim" } ],
+          "land": {
+            "x": 87.5,
+            "y": 61.9
+          },
+          "throw": {
+            "x": 52.9,
+            "y": 83.1
+          },
+          "media": [
+            {
+              "url": "media/inferno/moto_3.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/moto_4.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -586,9 +1267,24 @@
           "side": "T",
           "technique": "Left and right click + Jumpthrow",
           "description": "",
-          "land": { "x": 77.3, "y": 77.6 },
-          "throw": { "x": 52.9, "y": 83.1 },
-          "media": [ { "url": "media/inferno/moto_3.png", "label": "Stand" }, { "url": "media/inferno/short.png", "label": "Aim" } ],
+          "land": {
+            "x": 77.3,
+            "y": 77.6
+          },
+          "throw": {
+            "x": 52.9,
+            "y": 83.1
+          },
+          "media": [
+            {
+              "url": "media/inferno/moto_3.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/short.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         }
       ],
@@ -598,35 +1294,50 @@
           "name": "B execute",
           "side": "T",
           "description": "",
-          "items": [ "ct_smoke_1", "coffin_smoke", "coffin_molly" ]
+          "items": [
+            "ct_smoke_1",
+            "coffin_smoke",
+            "coffin_molly"
+          ]
         },
         {
           "id": "A_split",
           "name": "A split",
           "side": "T",
           "description": "",
-          "items": [ "library_smoke", "arche_smoke" ]
+          "items": [
+            "library_smoke",
+            "arche_smoke"
+          ]
         },
         {
           "id": "A_rush",
           "name": "A apps rush",
           "side": "T",
           "description": "",
-          "items": [ "moto_2", "short_2" ]
+          "items": [
+            "moto_2",
+            "short_2"
+          ]
         },
         {
           "id": "mid_insta",
           "name": "Mid insta",
           "side": "CT",
           "description": "",
-          "items": [ "mid_insta_smoke" ]
+          "items": [
+            "mid_insta_smoke"
+          ]
         },
         {
           "id": "A_retake",
           "name": "A retake",
           "side": "CT",
           "description": "",
-          "items": [ "A_retake_smoke", "A_retake_molly" ]
+          "items": [
+            "A_retake_smoke",
+            "A_retake_molly"
+          ]
         }
       ],
       "strats": [],
@@ -641,9 +1352,24 @@
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 80.9, "y": 44.6 },
-          "throw": { "x": 50.9, "y": 13.8 },
-          "media": [ { "url": "media/overpass/monster_from_ct_smoke_1.png", "label": "Stand" }, { "url": "media/overpass/monster_from_ct_smoke_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 80.9,
+            "y": 44.6
+          },
+          "throw": {
+            "x": 50.9,
+            "y": 13.8
+          },
+          "media": [
+            {
+              "url": "media/overpass/monster_from_ct_smoke_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/monster_from_ct_smoke_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -653,9 +1379,24 @@
           "side": "CT",
           "technique": "Running + Throw",
           "description": "",
-          "land": { "x": 80.9, "y": 39.7 },
-          "throw": { "x": 70.9, "y": 26.5 },
-          "media": [ { "url": "media/overpass/monster_molly_1.png", "label": "Stand" }, { "url": "media/overpass/monster_molly_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 80.9,
+            "y": 39.7
+          },
+          "throw": {
+            "x": 70.9,
+            "y": 26.5
+          },
+          "media": [
+            {
+              "url": "media/overpass/monster_molly_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/monster_molly_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -665,9 +1406,24 @@
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 70, "y": 51 },
-          "throw": { "x": 50.9, "y": 13.8 },
-          "media": [ { "url": "media/overpass/monster_from_ct_smoke_1.png", "label": "Stand" }, { "url": "media/overpass/short_from_ct_smoke_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 70,
+            "y": 51
+          },
+          "throw": {
+            "x": 50.9,
+            "y": 13.8
+          },
+          "media": [
+            {
+              "url": "media/overpass/monster_from_ct_smoke_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/short_from_ct_smoke_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -677,9 +1433,24 @@
           "side": "CT",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 75.1, "y": 28.3 },
-          "throw": { "x": 75.8, "y": 23.2 },
-          "media": [ { "url": "media/overpass/BSite_hold_smoke_1.png", "label": "Stand" }, { "url": "media/overpass/BSite_hold_smoke_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 75.1,
+            "y": 28.3
+          },
+          "throw": {
+            "x": 75.8,
+            "y": 23.2
+          },
+          "media": [
+            {
+              "url": "media/overpass/BSite_hold_smoke_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/BSite_hold_smoke_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -689,9 +1460,24 @@
           "side": "CT",
           "technique": "Left and Right click + Running",
           "description": "",
-          "land": { "x": 68, "y": 51 },
-          "throw": { "x": 53.5, "y": 29.9 },
-          "media": [ { "url": "media/overpass/short_molly_1.png", "label": "Stand" }, { "url": "media/overpass/short_molly_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 68,
+            "y": 51
+          },
+          "throw": {
+            "x": 53.5,
+            "y": 29.9
+          },
+          "media": [
+            {
+              "url": "media/overpass/short_molly_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/short_molly_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -701,9 +1487,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 44.3, "y": 10.8 },
-          "throw": { "x": 46.5, "y": 48.4 },
-          "media": [ { "url": "media/overpass/a_exec.png", "label": "Stand" }, { "url": "media/overpass/bank_smoke.png", "label": "Aim" } ],
+          "land": {
+            "x": 44.3,
+            "y": 10.8
+          },
+          "throw": {
+            "x": 46.5,
+            "y": 48.4
+          },
+          "media": [
+            {
+              "url": "media/overpass/a_exec.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/bank_smoke.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -713,9 +1514,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 53.9, "y": 13.8 },
-          "throw": { "x": 46.5, "y": 48.4 },
-          "media": [ { "url": "media/overpass/a_exec.png", "label": "Stand" }, { "url": "media/overpass/trash_smoke.png", "label": "Aim" } ],
+          "land": {
+            "x": 53.9,
+            "y": 13.8
+          },
+          "throw": {
+            "x": 46.5,
+            "y": 48.4
+          },
+          "media": [
+            {
+              "url": "media/overpass/a_exec.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/trash_smoke.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -725,9 +1541,24 @@
           "side": "T",
           "technique": "W Jumpthrow",
           "description": "",
-          "land": { "x": 53.5, "y": 21.4 },
-          "throw": { "x": 46.5, "y": 48.4 },
-          "media": [ { "url": "media/overpass/a_exec.png", "label": "Stand" }, { "url": "media/overpass/truck_molly.png", "label": "Aim" } ],
+          "land": {
+            "x": 53.5,
+            "y": 21.4
+          },
+          "throw": {
+            "x": 46.5,
+            "y": 48.4
+          },
+          "media": [
+            {
+              "url": "media/overpass/a_exec.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/truck_molly.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -737,9 +1568,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 49, "y": 23.5 },
-          "throw": { "x": 47.8, "y": 44.4 },
-          "media": [ { "url": "media/overpass/a_flash.png", "label": "Stand" }, { "url": "media/overpass/a_flash_1.png", "label": "Aim" } ],
+          "land": {
+            "x": 49,
+            "y": 23.5
+          },
+          "throw": {
+            "x": 47.8,
+            "y": 44.4
+          },
+          "media": [
+            {
+              "url": "media/overpass/a_flash.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/a_flash_1.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -749,9 +1595,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 51, "y": 24.7 },
-          "throw": { "x": 47.8, "y": 44.4 },
-          "media": [ { "url": "media/overpass/a_flash.png", "label": "Stand" }, { "url": "media/overpass/a_flash_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 51,
+            "y": 24.7
+          },
+          "throw": {
+            "x": 47.8,
+            "y": 44.4
+          },
+          "media": [
+            {
+              "url": "media/overpass/a_flash.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/a_flash_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -761,9 +1622,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 53.9, "y": 13.8 },
-          "throw": { "x": 24.8, "y": 33.1 },
-          "media": [ { "url": "media/overpass/a_exec_2.png", "label": "Stand" }, { "url": "media/overpass/trash_smoke_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 53.9,
+            "y": 13.8
+          },
+          "throw": {
+            "x": 24.8,
+            "y": 33.1
+          },
+          "media": [
+            {
+              "url": "media/overpass/a_exec_2.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/trash_smoke_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -773,9 +1649,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 44.3, "y": 10.8 },
-          "throw": { "x": 24.8, "y": 33.1 },
-          "media": [ { "url": "media/overpass/a_exec_2.png", "label": "Stand" }, { "url": "media/overpass/bank_smoke_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 44.3,
+            "y": 10.8
+          },
+          "throw": {
+            "x": 24.8,
+            "y": 33.1
+          },
+          "media": [
+            {
+              "url": "media/overpass/a_exec_2.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/bank_smoke_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -785,9 +1676,24 @@
           "side": "T",
           "technique": "Walk + Jumpthrow",
           "description": "",
-          "land": { "x": 53.5, "y": 21.4 },
-          "throw": { "x": 24.8, "y": 33.1 },
-          "media": [ { "url": "media/overpass/a_exec_2.png", "label": "Stand" }, { "url": "media/overpass/truck_molly_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 53.5,
+            "y": 21.4
+          },
+          "throw": {
+            "x": 24.8,
+            "y": 33.1
+          },
+          "media": [
+            {
+              "url": "media/overpass/a_exec_2.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/truck_molly_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -797,9 +1703,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 57.8, "y": 22.4 },
-          "throw": { "x": 61.3, "y": 44.5 },
-          "media": [ { "url": "media/overpass/b_exec.png", "label": "Stand" }, { "url": "media/overpass/heaven_smoke.png", "label": "Aim" } ],
+          "land": {
+            "x": 57.8,
+            "y": 22.4
+          },
+          "throw": {
+            "x": 61.3,
+            "y": 44.5
+          },
+          "media": [
+            {
+              "url": "media/overpass/b_exec.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/heaven_smoke.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -809,9 +1730,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 75, "y": 24.1 },
-          "throw": { "x": 61.3, "y": 44.5 },
-          "media": [ { "url": "media/overpass/b_exec.png", "label": "Stand" }, { "url": "media/overpass/toxic_molly.png", "label": "Aim" } ],
+          "land": {
+            "x": 75,
+            "y": 24.1
+          },
+          "throw": {
+            "x": 61.3,
+            "y": 44.5
+          },
+          "media": [
+            {
+              "url": "media/overpass/b_exec.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/toxic_molly.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -821,9 +1757,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 57.5, "y": 35.6 },
-          "throw": { "x": 61.3, "y": 44.5 },
-          "media": [ { "url": "media/overpass/b_exec.png", "label": "Stand" }, { "url": "media/overpass/abc_smoke.png", "label": "Aim" } ],
+          "land": {
+            "x": 57.5,
+            "y": 35.6
+          },
+          "throw": {
+            "x": 61.3,
+            "y": 44.5
+          },
+          "media": [
+            {
+              "url": "media/overpass/b_exec.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/abc_smoke.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -833,9 +1784,24 @@
           "side": "T",
           "technique": "Crouch + Jumpthrow",
           "description": "",
-          "land": { "x": 40.3, "y": 50.2 },
-          "throw": { "x": 74.5, "y": 78 },
-          "media": [ { "url": "media/overpass/toilet_smoke_1.png", "label": "Stand" }, { "url": "media/overpass/toilet_smoke_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 40.3,
+            "y": 50.2
+          },
+          "throw": {
+            "x": 74.5,
+            "y": 78
+          },
+          "media": [
+            {
+              "url": "media/overpass/toilet_smoke_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/toilet_smoke_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -845,9 +1811,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 84, "y": 35.4 },
-          "throw": { "x": 85.6, "y": 52.2 },
-          "media": [ { "url": "media/overpass/b_flash.png", "label": "Stand" }, { "url": "media/overpass/b_flash_1.png", "label": "Aim" } ],
+          "land": {
+            "x": 84,
+            "y": 35.4
+          },
+          "throw": {
+            "x": 85.6,
+            "y": 52.2
+          },
+          "media": [
+            {
+              "url": "media/overpass/b_flash.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/b_flash_1.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -857,9 +1838,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 76.1, "y": 36 },
-          "throw": { "x": 85.6, "y": 52.2 },
-          "media": [ { "url": "media/overpass/b_flash.png", "label": "Stand" }, { "url": "media/overpass/b_flash_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 76.1,
+            "y": 36
+          },
+          "throw": {
+            "x": 85.6,
+            "y": 52.2
+          },
+          "media": [
+            {
+              "url": "media/overpass/b_flash.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/b_flash_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -869,9 +1865,24 @@
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 55, "y": 74.9 },
-          "throw": { "x": 45.5, "y": 28.7 },
-          "media": [ { "url": "media/overpass/fountain_smoke.png", "label": "Stand" }, { "url": "media/overpass/fountain_smoke_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 55,
+            "y": 74.9
+          },
+          "throw": {
+            "x": 45.5,
+            "y": 28.7
+          },
+          "media": [
+            {
+              "url": "media/overpass/fountain_smoke.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/fountain_smoke_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -881,9 +1892,24 @@
           "side": "CT",
           "technique": "Running (until second divider) + Jumpthrow",
           "description": "",
-          "land": { "x": 50.9, "y": 81.3 },
-          "throw": { "x": 49, "y": 44.2 },
-          "media": [ { "url": "media/overpass/playground_molly.png", "label": "Stand" }, { "url": "media/overpass/playground_molly_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 50.9,
+            "y": 81.3
+          },
+          "throw": {
+            "x": 49,
+            "y": 44.2
+          },
+          "media": [
+            {
+              "url": "media/overpass/playground_molly.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/playground_molly_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -893,9 +1919,24 @@
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 80.9, "y": 44.6 },
-          "throw": { "x": 46, "y": 29.7 },
-          "media": [ { "url": "media/overpass/monsters_smoke_1.png", "label": "Stand" }, { "url": "media/overpass/monsters_smoke_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 80.9,
+            "y": 44.6
+          },
+          "throw": {
+            "x": 46,
+            "y": 29.7
+          },
+          "media": [
+            {
+              "url": "media/overpass/monsters_smoke_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/monsters_smoke_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -905,9 +1946,24 @@
           "side": "CT",
           "technique": "Walk + Throw",
           "description": "",
-          "land": { "x": 68, "y": 51 },
-          "throw": { "x": 47.1, "y": 30.6 },
-          "media": [ { "url": "media/overpass/short_molly_3.png", "label": "Stand" }, { "url": "media/overpass/short_molly_4.png", "label": "Aim" } ],
+          "land": {
+            "x": 68,
+            "y": 51
+          },
+          "throw": {
+            "x": 47.1,
+            "y": 30.6
+          },
+          "media": [
+            {
+              "url": "media/overpass/short_molly_3.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/short_molly_4.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -917,9 +1973,24 @@
           "side": "T",
           "technique": "Running (until shadow disappears) + Jumpthrow",
           "description": "",
-          "land": { "x": 57.8, "y": 22.4 },
-          "throw": { "x": 78.5, "y": 67.4 },
-          "media": [ { "url": "media/overpass/heaven_smoke_3.png", "label": "Stand" }, { "url": "media/overpass/heaven_smoke_4.png", "label": "Aim" } ],
+          "land": {
+            "x": 57.8,
+            "y": 22.4
+          },
+          "throw": {
+            "x": 78.5,
+            "y": 67.4
+          },
+          "media": [
+            {
+              "url": "media/overpass/heaven_smoke_3.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/heaven_smoke_4.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         }
       ],
@@ -929,21 +2000,33 @@
           "name": "A Execute (banana)",
           "side": "T",
           "description": "",
-          "items": [ "bank_smoke", "trash_smoke", "truck_molly" ]
+          "items": [
+            "bank_smoke",
+            "trash_smoke",
+            "truck_molly"
+          ]
         },
         {
           "id": "A_exec_long",
           "name": "A Execute (long)",
           "side": "T",
           "description": "",
-          "items": [ "bank_smoke_2", "trash_smoke_2", "truck_molly_2" ]
+          "items": [
+            "bank_smoke_2",
+            "trash_smoke_2",
+            "truck_molly_2"
+          ]
         },
         {
           "id": "B_exec_short",
           "name": "B Execute (short)",
           "side": "T",
           "description": "",
-          "items": [ "heaven_smoke", "abc_smoke", "toxic_molly" ]
+          "items": [
+            "heaven_smoke",
+            "abc_smoke",
+            "toxic_molly"
+          ]
         }
       ],
       "strats": [],
@@ -958,9 +2041,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 59.7, "y": 65.1 },
-          "throw": { "x": 28.2, "y": 53.7 },
-          "media": [ { "url": "media/nuke/wide_1.png", "label": "Stand" }, { "url": "media/nuke/wide_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 59.7,
+            "y": 65.1
+          },
+          "throw": {
+            "x": 28.2,
+            "y": 53.7
+          },
+          "media": [
+            {
+              "url": "media/nuke/wide_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/nuke/wide_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -970,9 +2068,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 62.1, "y": 66.9 },
-          "throw": { "x": 28.2, "y": 53.7 },
-          "media": [ { "url": "media/nuke/wide_1.png", "label": "Stand" }, { "url": "media/nuke/wide_3.png", "label": "Aim" } ],
+          "land": {
+            "x": 62.1,
+            "y": 66.9
+          },
+          "throw": {
+            "x": 28.2,
+            "y": 53.7
+          },
+          "media": [
+            {
+              "url": "media/nuke/wide_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/nuke/wide_3.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -982,9 +2095,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 58.7, "y": 70 },
-          "throw": { "x": 29.2, "y": 55.2 },
-          "media": [ { "url": "media/nuke/outside_1.png", "label": "Stand" }, { "url": "media/nuke/outside_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 58.7,
+            "y": 70
+          },
+          "throw": {
+            "x": 29.2,
+            "y": 55.2
+          },
+          "media": [
+            {
+              "url": "media/nuke/outside_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/nuke/outside_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -994,9 +2122,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 61.7, "y": 70 },
-          "throw": { "x": 29.2, "y": 55.2 },
-          "media": [ { "url": "media/nuke/outside_1.png", "label": "Stand" }, { "url": "media/nuke/outside_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 61.7,
+            "y": 70
+          },
+          "throw": {
+            "x": 29.2,
+            "y": 55.2
+          },
+          "media": [
+            {
+              "url": "media/nuke/outside_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/nuke/outside_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1006,9 +2149,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 57.8, "y": 61.6 },
-          "throw": { "x": 24.5, "y": 56.8 },
-          "media": [ { "url": "media/nuke/main_1.png", "label": "Stand" }, { "url": "media/nuke/main_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 57.8,
+            "y": 61.6
+          },
+          "throw": {
+            "x": 24.5,
+            "y": 56.8
+          },
+          "media": [
+            {
+              "url": "media/nuke/main_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/nuke/main_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1018,9 +2176,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 52.9, "y": 57.2 },
-          "throw": { "x": 34.6, "y": 52.1 },
-          "media": [ { "url": "media/nuke/squeaky_1.png", "label": "Stand" }, { "url": "media/nuke/squeaky_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 52.9,
+            "y": 57.2
+          },
+          "throw": {
+            "x": 34.6,
+            "y": 52.1
+          },
+          "media": [
+            {
+              "url": "media/nuke/squeaky_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/nuke/squeaky_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1030,9 +2203,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 55.8, "y": 47.3 },
-          "throw": { "x": 46.2, "y": 50 },
-          "media": [ { "url": "media/nuke/a_1.png", "label": "Stand" }, { "url": "media/nuke/a_3.png", "label": "Aim" } ],
+          "land": {
+            "x": 55.8,
+            "y": 47.3
+          },
+          "throw": {
+            "x": 46.2,
+            "y": 50
+          },
+          "media": [
+            {
+              "url": "media/nuke/a_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/nuke/a_3.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1042,9 +2230,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 53.4, "y": 46.3 },
-          "throw": { "x": 46.2, "y": 50 },
-          "media": [ { "url": "media/nuke/a_1.png", "label": "Stand" }, { "url": "media/nuke/a_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 53.4,
+            "y": 46.3
+          },
+          "throw": {
+            "x": 46.2,
+            "y": 50
+          },
+          "media": [
+            {
+              "url": "media/nuke/a_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/nuke/a_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         }
       ],
@@ -1054,21 +2257,30 @@
           "name": "Outside (wide)",
           "side": "T",
           "description": "",
-          "items": [ "outside_wide_1", "outside_wide_2" ]
+          "items": [
+            "outside_wide_1",
+            "outside_wide_2"
+          ]
         },
         {
           "id": "outside",
           "name": "Outside",
           "side": "T",
           "description": "",
-          "items": [ "outside_1", "outside_2" ]
+          "items": [
+            "outside_1",
+            "outside_2"
+          ]
         },
         {
           "id": "a_exec",
           "name": "A exec",
           "side": "T",
           "description": "",
-          "items": [ "a_molly", "a_flash" ]
+          "items": [
+            "a_molly",
+            "a_flash"
+          ]
         }
       ],
       "strats": [],
@@ -1083,9 +2295,24 @@
           "side": "T",
           "technique": "W + Jumpthrow",
           "description": "",
-          "land": { "x": 44, "y": 57 },
-          "throw": { "x": 43.1, "y": 82.7 },
-          "media": [ { "url": "media/ancient/mid_flash_1.png", "label": "Stand" }, { "url": "media/ancient/mid_flash_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 44,
+            "y": 57
+          },
+          "throw": {
+            "x": 43.1,
+            "y": 82.7
+          },
+          "media": [
+            {
+              "url": "media/ancient/mid_flash_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/ancient/mid_flash_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1095,9 +2322,24 @@
           "side": "T",
           "technique": "Crouch + Jumpthrow",
           "description": "",
-          "land": { "x": 37.8, "y": 18.8 },
-          "throw": { "x": 16, "y": 59.7 },
-          "media": [ { "url": "media/ancient/a_exec.png", "label": "Stand" }, { "url": "media/ancient/a_ct.png", "label": "Aim" } ],
+          "land": {
+            "x": 37.8,
+            "y": 18.8
+          },
+          "throw": {
+            "x": 16,
+            "y": 59.7
+          },
+          "media": [
+            {
+              "url": "media/ancient/a_exec.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/ancient/a_ct.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1107,9 +2349,24 @@
           "side": "T",
           "technique": "W + Jumpthrow",
           "description": "",
-          "land": { "x": 30.9, "y": 31.7 },
-          "throw": { "x": 16, "y": 59.7 },
-          "media": [ { "url": "media/ancient/a_exec.png", "label": "Stand" }, { "url": "media/ancient/a_donut.png", "label": "Aim" } ],
+          "land": {
+            "x": 30.9,
+            "y": 31.7
+          },
+          "throw": {
+            "x": 16,
+            "y": 59.7
+          },
+          "media": [
+            {
+              "url": "media/ancient/a_exec.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/ancient/a_donut.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1119,9 +2376,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 81.9, "y": 33.8 },
-          "throw": { "x": 81.7, "y": 69.9 },
-          "media": [ { "url": "media/ancient/b_exec.png", "label": "Stand" }, { "url": "media/ancient/b_long.png", "label": "Aim" } ],
+          "land": {
+            "x": 81.9,
+            "y": 33.8
+          },
+          "throw": {
+            "x": 81.7,
+            "y": 69.9
+          },
+          "media": [
+            {
+              "url": "media/ancient/b_exec.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/ancient/b_long.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1131,9 +2403,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 71.3, "y": 32 },
-          "throw": { "x": 81.7, "y": 69.9 },
-          "media": [ { "url": "media/ancient/b_exec.png", "label": "Stand" }, { "url": "media/ancient/b_short.png", "label": "Aim" } ],
+          "land": {
+            "x": 71.3,
+            "y": 32
+          },
+          "throw": {
+            "x": 81.7,
+            "y": 69.9
+          },
+          "media": [
+            {
+              "url": "media/ancient/b_exec.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/ancient/b_short.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1143,9 +2430,24 @@
           "side": "T",
           "technique": "W + Jumpthrow",
           "description": "",
-          "land": { "x": 71.2, "y": 44.5 },
-          "throw": { "x": 81.7, "y": 69.9 },
-          "media": [ { "url": "media/ancient/b_exec.png", "label": "Stand" }, { "url": "media/ancient/b_ninja.png", "label": "Aim" } ],
+          "land": {
+            "x": 71.2,
+            "y": 44.5
+          },
+          "throw": {
+            "x": 81.7,
+            "y": 69.9
+          },
+          "media": [
+            {
+              "url": "media/ancient/b_exec.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/ancient/b_ninja.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1155,9 +2457,24 @@
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 81.9, "y": 44.9 },
-          "throw": { "x": 76.8, "y": 20.9 },
-          "media": [ { "url": "media/ancient/b_retake.png", "label": "Stand" }, { "url": "media/ancient/b_ramp.png", "label": "Aim" } ],
+          "land": {
+            "x": 81.9,
+            "y": 44.9
+          },
+          "throw": {
+            "x": 76.8,
+            "y": 20.9
+          },
+          "media": [
+            {
+              "url": "media/ancient/b_retake.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/ancient/b_ramp.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1167,9 +2484,24 @@
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 71.7, "y": 41 },
-          "throw": { "x": 76.8, "y": 20.9 },
-          "media": [ { "url": "media/ancient/b_retake.png", "label": "Stand" }, { "url": "media/ancient/b_site.png", "label": "Aim" } ],
+          "land": {
+            "x": 71.7,
+            "y": 41
+          },
+          "throw": {
+            "x": 76.8,
+            "y": 20.9
+          },
+          "media": [
+            {
+              "url": "media/ancient/b_retake.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/ancient/b_site.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1179,9 +2511,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 61.2, "y": 53.7 },
-          "throw": { "x": 44.1, "y": 88 },
-          "media": [ { "url": "media/ancient/cheetah_1.png", "label": "Stand" }, { "url": "media/ancient/cheetah_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 61.2,
+            "y": 53.7
+          },
+          "throw": {
+            "x": 44.1,
+            "y": 88
+          },
+          "media": [
+            {
+              "url": "media/ancient/cheetah_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/ancient/cheetah_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1191,9 +2538,24 @@
           "side": "T",
           "technique": "Running (until 3/4 of left side wall) + Left and right click Jumpthrow",
           "description": "",
-          "land": { "x": 70.9, "y": 56 },
-          "throw": { "x": 70.7, "y": 30.2 },
-          "media": [ { "url": "media/ancient/lane_1.png", "label": "Stand" }, { "url": "media/ancient/lane_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 70.9,
+            "y": 56
+          },
+          "throw": {
+            "x": 70.7,
+            "y": 30.2
+          },
+          "media": [
+            {
+              "url": "media/ancient/lane_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/ancient/lane_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1203,9 +2565,20 @@
           "side": "CT",
           "technique": "",
           "description": "",
-          "land": { "x": 36.2, "y": 56.3 },
-          "throw": { "x": 48.5, "y": 13.5 },
-          "media": [ { "url": "media/ancient/insta_elbow.png", "label": "Stand" } ],
+          "land": {
+            "x": 36.2,
+            "y": 56.3
+          },
+          "throw": {
+            "x": 48.5,
+            "y": 13.5
+          },
+          "media": [
+            {
+              "url": "media/ancient/insta_elbow.png",
+              "label": "Stand"
+            }
+          ],
           "tips": []
         }
       ],
@@ -1215,21 +2588,31 @@
           "name": "A execute",
           "side": "T",
           "description": "",
-          "items": [ "ct_from_main", "donut_from_main" ]
+          "items": [
+            "ct_from_main",
+            "donut_from_main"
+          ]
         },
         {
           "id": "b_exec",
           "name": "B execute",
           "side": "T",
           "description": "",
-          "items": [ "long", "short", "ninja_molly" ]
+          "items": [
+            "long",
+            "short",
+            "ninja_molly"
+          ]
         },
         {
           "id": "b_retake",
           "name": "B retake",
           "side": "CT",
           "description": "",
-          "items": [ "ramp_smoke", "site_molly" ]
+          "items": [
+            "ramp_smoke",
+            "site_molly"
+          ]
         }
       ],
       "strats": [],
@@ -1250,9 +2633,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 47.3, "y": 39.9 },
-          "throw": { "x": 47.5, "y": 97.7 },
-          "media": [ { "url": "media/dust2/xbox_1.png", "label": "Stand" }, { "url": "media/dust2/xbox_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 47.3,
+            "y": 39.9
+          },
+          "throw": {
+            "x": 47.5,
+            "y": 97.7
+          },
+          "media": [
+            {
+              "url": "media/dust2/xbox_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/xbox_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1262,9 +2660,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 44.7, "y": 35.2 },
-          "throw": { "x": 44.2, "y": 86.8 },
-          "media": [ { "url": "media/dust2/door_1.png", "label": "Stand" }, { "url": "media/dust2/door_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 44.7,
+            "y": 35.2
+          },
+          "throw": {
+            "x": 44.2,
+            "y": 86.8
+          },
+          "media": [
+            {
+              "url": "media/dust2/door_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/door_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1274,9 +2687,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 44.7, "y": 35.2 },
-          "throw": { "x": 43.1, "y": 76.8 },
-          "media": [ { "url": "media/dust2/door_3.png", "label": "Stand" }, { "url": "media/dust2/door_4.png", "label": "Aim" } ],
+          "land": {
+            "x": 44.7,
+            "y": 35.2
+          },
+          "throw": {
+            "x": 43.1,
+            "y": 76.8
+          },
+          "media": [
+            {
+              "url": "media/dust2/door_3.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/door_4.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1286,9 +2714,24 @@
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 44, "y": 70.5 },
-          "throw": { "x": 47, "y": 20.6 },
-          "media": [ { "url": "media/dust2/mid_combo_1.png", "label": "Stand" }, { "url": "media/dust2/mid_combo_3.png", "label": "Aim" } ],
+          "land": {
+            "x": 44,
+            "y": 70.5
+          },
+          "throw": {
+            "x": 47,
+            "y": 20.6
+          },
+          "media": [
+            {
+              "url": "media/dust2/mid_combo_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/mid_combo_3.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1298,9 +2741,24 @@
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 53.4, "y": 63.1 },
-          "throw": { "x": 47, "y": 20.6 },
-          "media": [ { "url": "media/dust2/mid_combo_1.png", "label": "Stand" }, { "url": "media/dust2/mid_combo_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 53.4,
+            "y": 63.1
+          },
+          "throw": {
+            "x": 47,
+            "y": 20.6
+          },
+          "media": [
+            {
+              "url": "media/dust2/mid_combo_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/mid_combo_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1310,9 +2768,24 @@
           "side": "CT",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 47, "y": 36.9 },
-          "throw": { "x": 47, "y": 20.6 },
-          "media": [ { "url": "media/dust2/mid_combo_1.png", "label": "Stand" }, { "url": "media/dust2/mid_combo_4.png", "label": "Aim" } ],
+          "land": {
+            "x": 47,
+            "y": 36.9
+          },
+          "throw": {
+            "x": 47,
+            "y": 20.6
+          },
+          "media": [
+            {
+              "url": "media/dust2/mid_combo_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/mid_combo_4.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1322,9 +2795,24 @@
           "side": "T",
           "technique": "Crouch + Jumpthrow",
           "description": "",
-          "land": { "x": 50.4, "y": 24 },
-          "throw": { "x": 47.9, "y": 41.5 },
-          "media": [ { "url": "media/dust2/b_split_1.png", "label": "Stand" }, { "url": "media/dust2/b_split_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 50.4,
+            "y": 24
+          },
+          "throw": {
+            "x": 47.9,
+            "y": 41.5
+          },
+          "media": [
+            {
+              "url": "media/dust2/b_split_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/b_split_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1334,9 +2822,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 85.3, "y": 43.5 },
-          "throw": { "x": 42.8, "y": 86.7 },
-          "media": [ { "url": "media/dust2/long_1.png", "label": "Stand" }, { "url": "media/dust2/long_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 85.3,
+            "y": 43.5
+          },
+          "throw": {
+            "x": 42.8,
+            "y": 86.7
+          },
+          "media": [
+            {
+              "url": "media/dust2/long_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/long_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1346,9 +2849,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 80.7, "y": 23.2 },
-          "throw": { "x": 73.9, "y": 47.8 },
-          "media": [ { "url": "media/dust2/cross_1.png", "label": "Stand" }, { "url": "media/dust2/cross_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 80.7,
+            "y": 23.2
+          },
+          "throw": {
+            "x": 73.9,
+            "y": 47.8
+          },
+          "media": [
+            {
+              "url": "media/dust2/cross_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/cross_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1358,9 +2876,24 @@
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 67.5, "y": 56.3 },
-          "throw": { "x": 76.3, "y": 18.3 },
-          "media": [ { "url": "media/dust2/ldoor_1.png", "label": "Stand" }, { "url": "media/dust2/ldoor_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 67.5,
+            "y": 56.3
+          },
+          "throw": {
+            "x": 76.3,
+            "y": 18.3
+          },
+          "media": [
+            {
+              "url": "media/dust2/ldoor_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/ldoor_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1370,9 +2903,24 @@
           "side": "T",
           "technique": "Crouch + Throw",
           "description": "",
-          "land": { "x": 66, "y": 25.1 },
-          "throw": { "x": 63.1, "y": 34.1 },
-          "media": [ { "url": "media/dust2/short_1.png", "label": "Stand" }, { "url": "media/dust2/short_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 66,
+            "y": 25.1
+          },
+          "throw": {
+            "x": 63.1,
+            "y": 34.1
+          },
+          "media": [
+            {
+              "url": "media/dust2/short_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/short_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1382,9 +2930,24 @@
           "side": "T",
           "technique": "Left and right click + Throw",
           "description": "",
-          "land": { "x": 66.4, "y": 18.7 },
-          "throw": { "x": 63.1, "y": 34.1 },
-          "media": [ { "url": "media/dust2/short_1.png", "label": "Stand" }, { "url": "media/dust2/short_3.png", "label": "Aim" } ],
+          "land": {
+            "x": 66.4,
+            "y": 18.7
+          },
+          "throw": {
+            "x": 63.1,
+            "y": 34.1
+          },
+          "media": [
+            {
+              "url": "media/dust2/short_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/short_3.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1394,9 +2957,24 @@
           "side": "T",
           "technique": "Crouch + Jumpthrow",
           "description": "",
-          "land": { "x": 24.8, "y": 22.3 },
-          "throw": { "x": 24.3, "y": 60.8 },
-          "media": [ { "url": "media/dust2/b_exec_1.png", "label": "Stand" }, { "url": "media/dust2/b_exec_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 24.8,
+            "y": 22.3
+          },
+          "throw": {
+            "x": 24.3,
+            "y": 60.8
+          },
+          "media": [
+            {
+              "url": "media/dust2/b_exec_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/b_exec_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1406,9 +2984,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 27.3, "y": 12 },
-          "throw": { "x": 24.3, "y": 60.8 },
-          "media": [ { "url": "media/dust2/b_exec_1.png", "label": "Stand" }, { "url": "media/dust2/b_exec_3.png", "label": "Aim" } ],
+          "land": {
+            "x": 27.3,
+            "y": 12
+          },
+          "throw": {
+            "x": 24.3,
+            "y": 60.8
+          },
+          "media": [
+            {
+              "url": "media/dust2/b_exec_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/b_exec_3.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         }
       ],
@@ -1418,21 +3011,31 @@
           "name": "Mid push",
           "side": "CT",
           "description": "",
-          "items": [ "top_mid", "suicide", "mid_pop" ]
+          "items": [
+            "top_mid",
+            "suicide",
+            "mid_pop"
+          ]
         },
         {
           "id": "short_push",
           "name": "Short push",
           "side": "T",
           "description": "",
-          "items": [ "short_smoke_1", "short_smoke_2" ]
+          "items": [
+            "short_smoke_1",
+            "short_smoke_2"
+          ]
         },
         {
           "id": "B_exec",
           "name": "B exec",
           "side": "T",
           "description": "",
-          "items": [ "b_exec_1", "b_exec_2" ]
+          "items": [
+            "b_exec_1",
+            "b_exec_2"
+          ]
         }
       ],
       "strats": [],
@@ -1447,9 +3050,20 @@
           "side": "T",
           "technique": "",
           "description": "",
-          "land": { "x": 70.3, "y": 46 },
-          "throw": { "x": 24.7, "y": 20.9 },
-          "media": [ { "url": "media/train/insta_camera.png", "label": "Stand" } ],
+          "land": {
+            "x": 70.3,
+            "y": 46
+          },
+          "throw": {
+            "x": 24.7,
+            "y": 20.9
+          },
+          "media": [
+            {
+              "url": "media/train/insta_camera.png",
+              "label": "Stand"
+            }
+          ],
           "tips": []
         },
         {
@@ -1459,9 +3073,20 @@
           "side": "T",
           "technique": "",
           "description": "",
-          "land": { "x": 58.2, "y": 41.5 },
-          "throw": { "x": 24.7, "y": 20.9 },
-          "media": [ { "url": "media/train/insta_sandwich.png", "label": "Stand" } ],
+          "land": {
+            "x": 58.2,
+            "y": 41.5
+          },
+          "throw": {
+            "x": 24.7,
+            "y": 20.9
+          },
+          "media": [
+            {
+              "url": "media/train/insta_sandwich.png",
+              "label": "Stand"
+            }
+          ],
           "tips": []
         },
         {
@@ -1471,9 +3096,20 @@
           "side": "T",
           "technique": "",
           "description": "",
-          "land": { "x": 59.9, "y": 58 },
-          "throw": { "x": 24.7, "y": 20.9 },
-          "media": [ { "url": "media/train/insta_connector.png", "label": "Stand" } ],
+          "land": {
+            "x": 59.9,
+            "y": 58
+          },
+          "throw": {
+            "x": 24.7,
+            "y": 20.9
+          },
+          "media": [
+            {
+              "url": "media/train/insta_connector.png",
+              "label": "Stand"
+            }
+          ],
           "tips": []
         },
         {
@@ -1483,9 +3119,24 @@
           "side": "CT",
           "technique": "Running + Throw",
           "description": "",
-          "land": { "x": 37.4, "y": 39.1 },
-          "throw": { "x": 59.3, "y": 56.6 },
-          "media": [ { "url": "media/train/main_1.png", "label": "Stand" }, { "url": "media/train/main_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 37.4,
+            "y": 39.1
+          },
+          "throw": {
+            "x": 59.3,
+            "y": 56.6
+          },
+          "media": [
+            {
+              "url": "media/train/main_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/train/main_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1495,9 +3146,24 @@
           "side": "CT",
           "technique": "Running + Left and right click throw",
           "description": "",
-          "land": { "x": 42.5, "y": 40.1 },
-          "throw": { "x": 60.8, "y": 60.5 },
-          "media": [ { "url": "media/train/main_3.png", "label": "Stand" }, { "url": "media/train/main_4.png", "label": "Aim" } ],
+          "land": {
+            "x": 42.5,
+            "y": 40.1
+          },
+          "throw": {
+            "x": 60.8,
+            "y": 60.5
+          },
+          "media": [
+            {
+              "url": "media/train/main_3.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/train/main_4.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1507,9 +3173,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 44.7, "y": 36.9 },
-          "throw": { "x": 41.8, "y": 16.6 },
-          "media": [ { "url": "media/train/main_pop_1.png", "label": "Stand" }, { "url": "media/train/main_pop_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 44.7,
+            "y": 36.9
+          },
+          "throw": {
+            "x": 41.8,
+            "y": 16.6
+          },
+          "media": [
+            {
+              "url": "media/train/main_pop_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/train/main_pop_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1519,9 +3200,24 @@
           "side": "T",
           "technique": "W + Jumpthrow",
           "description": "",
-          "land": { "x": 44.1, "y": 43.3 },
-          "throw": { "x": 41.8, "y": 16.6 },
-          "media": [ { "url": "media/train/main_pop_1.png", "label": "Stand" }, { "url": "media/train/main_pop_3.png", "label": "Aim" } ],
+          "land": {
+            "x": 44.1,
+            "y": 43.3
+          },
+          "throw": {
+            "x": 41.8,
+            "y": 16.6
+          },
+          "media": [
+            {
+              "url": "media/train/main_pop_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/train/main_pop_3.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1531,9 +3227,24 @@
           "side": "T",
           "technique": "Running + Throw",
           "description": "",
-          "land": { "x": 68, "y": 67.2 },
-          "throw": { "x": 30, "y": 72 },
-          "media": [ { "url": "media/train/con_molly_1.png", "label": "Stand" }, { "url": "media/train/con_molly_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 68,
+            "y": 67.2
+          },
+          "throw": {
+            "x": 30,
+            "y": 72
+          },
+          "media": [
+            {
+              "url": "media/train/con_molly_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/train/con_molly_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1543,9 +3254,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 46.7, "y": 67.1 },
-          "throw": { "x": 30, "y": 72 },
-          "media": [ { "url": "media/train/con_molly_1.png", "label": "Stand" }, { "url": "media/train/b_pop.png", "label": "Aim" } ],
+          "land": {
+            "x": 46.7,
+            "y": 67.1
+          },
+          "throw": {
+            "x": 30,
+            "y": 72
+          },
+          "media": [
+            {
+              "url": "media/train/con_molly_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/train/b_pop.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1555,9 +3281,24 @@
           "side": "T",
           "technique": "Throw",
           "description": "",
-          "land": { "x": 53, "y": 68.2 },
-          "throw": { "x": 30.8, "y": 65.3 },
-          "media": [ { "url": "media/train/b_smoke_1.png", "label": "Stand" }, { "url": "media/train/b_smoke_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 53,
+            "y": 68.2
+          },
+          "throw": {
+            "x": 30.8,
+            "y": 65.3
+          },
+          "media": [
+            {
+              "url": "media/train/b_smoke_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/train/b_smoke_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1567,9 +3308,24 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 70.3, "y": 46 },
-          "throw": { "x": 22.9, "y": 18.6 },
-          "media": [ { "url": "media/train/camera_1.png", "label": "Stand" }, { "url": "media/train/camera_2.png", "label": "Aim" } ],
+          "land": {
+            "x": 70.3,
+            "y": 46
+          },
+          "throw": {
+            "x": 22.9,
+            "y": 18.6
+          },
+          "media": [
+            {
+              "url": "media/train/camera_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/train/camera_2.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
         },
         {
@@ -1579,10 +3335,54 @@
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "land": { "x": 59.9, "y": 58 },
-          "throw": { "x": 22.9, "y": 18.6 },
-          "media": [ { "url": "media/train/camera_1.png", "label": "Stand" }, { "url": "media/train/connector_0.png", "label": "Aim" } ],
+          "land": {
+            "x": 59.9,
+            "y": 58
+          },
+          "throw": {
+            "x": 22.9,
+            "y": 18.6
+          },
+          "media": [
+            {
+              "url": "media/train/camera_1.png",
+              "label": "Stand"
+            },
+            {
+              "url": "media/train/connector_0.png",
+              "label": "Aim"
+            }
+          ],
           "tips": []
+        },
+        {
+          "id": "de5286a7-4d1d-4998-88fd-cdd73426caa4",
+          "name": "test",
+          "type": "smoke",
+          "side": "T",
+          "technique": "Jumpthrow",
+          "description": "oui c'est ça",
+          "land": {
+            "x": 77.86,
+            "y": 40.31
+          },
+          "throw": {
+            "x": 74.72,
+            "y": 15.8
+          },
+          "media": [
+            {
+              "url": "media/train/test.mp4",
+              "label": "Stand"
+            },
+            {
+              "url": "media/train/test.mp4",
+              "label": "Aim"
+            }
+          ],
+          "tips": [
+            "test tip"
+          ]
         }
       ],
       "executes": [
@@ -1591,14 +3391,22 @@
           "name": "Camera/Sandwich/Connector Instas",
           "side": "T",
           "description": "",
-          "items": [ "insta_camera", "insta_sandwich", "insta_connector" ]
+          "items": [
+            "insta_camera",
+            "insta_sandwich",
+            "insta_connector"
+          ]
         },
         {
           "id": "b_exec",
           "name": "B execute",
           "side": "T",
           "description": "",
-          "items": [ "b_smoke", "b_pop", "con_molly" ]
+          "items": [
+            "b_smoke",
+            "b_pop",
+            "con_molly"
+          ]
         }
       ],
       "strats": [],
