@@ -129,7 +129,7 @@ header{height:54px;display:flex;align-items:center;gap:14px;padding:0 18px;borde
 .mapwrap.placing{cursor:crosshair}
 .mapwrap.drawing{cursor:crosshair}
 svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:4}
-.traj path{fill:none;stroke-width:.32;stroke-dasharray:1.1 1.1;opacity:.95}
+.traj path{fill:none;stroke-width:.5;stroke-dasharray:1.4 1.4;opacity:1}
 #drawcanvas{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
 .mapwrap.drawing #drawcanvas{pointer-events:auto;z-index:20}
 
@@ -143,7 +143,7 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .mk:hover svg,.mk.sel svg{color:#0A0D12}
 .mk.sel{z-index:8}
 .mk.sel .diamond{box-shadow:0 0 0 3px rgba(233,238,245,.18),0 0 14px -2px var(--c)}
-.mk.dim{opacity:.13;pointer-events:none}
+.mk.dim{opacity:.42;pointer-events:none}
 .mk .stepnum{position:absolute;top:-7px;right:-7px;min-width:16px;height:16px;padding:0 4px;display:flex;align-items:center;justify-content:center;
   font-family:var(--mono);font-size:10px;font-weight:500;background:var(--t);color:#1A1206;border-radius:99px}
 /* throw cross */
@@ -252,6 +252,15 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .media-item{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--bg0);cursor:zoom-in;padding:0;width:100%}
 .media-item img,.media-item video{width:100%;display:block}
 .media-item .cap{font-size:12px;color:var(--mut);padding:7px 10px;border-top:1px solid var(--line-soft);text-align:left;font-family:var(--mono)}
+.media-item.media-err{cursor:default;border-color:rgba(255,92,92,.4);background:rgba(255,92,92,.05);min-height:120px}
+.media-item.media-err img,.media-item.media-err video{display:none}
+.media-item.media-err .cap{display:none}
+.media-err-msg{padding:18px 14px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.media-err-msg .ic{font-size:22px;color:var(--danger);line-height:1}
+.media-err-msg .path{font-family:var(--mono);font-size:11.5px;color:var(--danger);word-break:break-all;line-height:1.45;max-width:100%}
+.media-err-msg .hint{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--mut)}
+.xv-m.media-err{min-height:140px;background:rgba(255,92,92,.06)}
+.xv-m.media-err img,.xv-m.media-err video{display:none}
 .tips{list-style:none;display:flex;flex-direction:column;gap:8px}
 .tips li{display:flex;gap:9px;color:#C2CBD8;font-size:13.5px;background:var(--bg2);border:1px solid var(--line-soft);border-radius:7px;padding:9px 11px}
 .tips li::before{content:"▸";color:var(--t);flex:0 0 auto}
@@ -476,37 +485,37 @@ const BUYS=["pistol","eco","semi","full","solo","other"];
    is split on "+" and each part matched to a token below. Anything
    in (parentheses) is kept as a small text note. */
 const TECH_TOKENS=[
-  // id, test(lowercased part), icon svg (16x16 viewBox), label-en, label-fr
+  // id, test(lowercased part), icon svg (16x16), label-en, label-fr
   {id:"lr",   test:p=>/left and right|both click|left ?\+ ?right/.test(p),
-    svg:`<svg viewBox="0 0 16 16"><rect x="3.5" y="1.5" width="9" height="13" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 2v5" stroke="currentColor" stroke-width="1.3"/><path d="M3.6 4.2A4.5 4.5 0 0 1 8 1.7V7H3.6z" fill="currentColor"/><path d="M12.4 4.2A4.5 4.5 0 0 0 8 1.7V7h4.4z" fill="currentColor"/></svg>`,
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M8 .8V2.5"/><rect x="3" y="2.5" width="10" height="12" rx="5"/><path d="M8 2.5v6M3 8.5h10"/><path d="M8 2.5A5.5 5.5 0 0 0 3 8L8 8Z" fill="currentColor" stroke="none"/><path d="M8 2.5A5.5 5.5 0 0 1 13 8L8 8Z" fill="currentColor" stroke="none"/></svg>`,
     en:"Left + right click",fr:"Clic gauche + droit"},
   {id:"right", test:p=>/right click|rightclick/.test(p),
-    svg:`<svg viewBox="0 0 16 16"><rect x="3.5" y="1.5" width="9" height="13" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 2v5" stroke="currentColor" stroke-width="1.3"/><path d="M12.4 4.2A4.5 4.5 0 0 0 8 1.7V7h4.4z" fill="currentColor"/></svg>`,
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M8 .8V2.5"/><rect x="3" y="2.5" width="10" height="12" rx="5"/><path d="M8 2.5v6M3 8.5h10"/><path d="M8 2.5A5.5 5.5 0 0 1 13 8L8 8Z" fill="currentColor" stroke="none"/></svg>`,
     en:"Right click",fr:"Clic droit"},
   {id:"left",  test:p=>/left click|leftclick/.test(p),
-    svg:`<svg viewBox="0 0 16 16"><rect x="3.5" y="1.5" width="9" height="13" rx="4.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 2v5" stroke="currentColor" stroke-width="1.3"/><path d="M3.6 4.2A4.5 4.5 0 0 1 8 1.7V7H3.6z" fill="currentColor"/></svg>`,
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M8 .8V2.5"/><rect x="3" y="2.5" width="10" height="12" rx="5"/><path d="M8 2.5v6M3 8.5h10"/><path d="M8 2.5A5.5 5.5 0 0 0 3 8L8 8Z" fill="currentColor" stroke="none"/></svg>`,
     en:"Left click",fr:"Clic gauche"},
   {id:"jump",  test:p=>/jump ?throw|jumpthrow/.test(p),
-    svg:`<svg viewBox="0 0 16 16"><path d="M8 13V4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M4.7 7.2 8 3.7l3.3 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 14h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>`,
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="3" r="1.9" fill="currentColor" stroke="none"/><path d="M8 13V6.5"/><path d="M4.5 9.5L8 6L11.5 9.5"/></svg>`,
     en:"Jumpthrow",fr:"Jumpthrow"},
   {id:"run",   test:p=>/running|^run\b|run /.test(p),
-    svg:`<svg viewBox="0 0 16 16"><circle cx="9.5" cy="3" r="1.5" fill="currentColor"/><path d="M9.5 5.2 6.5 7l1.8 1.4-.8 4M8.3 8.4l2.9 1 .8 2.4M8 7.2l3.3-.6M6.2 11.7 4 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="2.8" r="1.4" fill="currentColor" stroke="none"/><path d="M10.5 4.3l-2.5 4"/><path d="M10.5 5.8l3-1.8"/><path d="M10.5 6.4l-3 .6"/><path d="M8 8.3l-3 2.7"/><path d="M8 8.3l3 3.7"/><path d="M1.5 6h2.5" opacity=".55"/><path d="M.5 8.5h3.2" opacity=".55"/><path d="M1 11h2.4" opacity=".55"/></svg>`,
     en:"Run",fr:"Courir"},
   {id:"walk",  test:p=>/\bwalk\b/.test(p),
-    svg:`<svg viewBox="0 0 16 16"><circle cx="8.5" cy="3" r="1.5" fill="currentColor"/><path d="M8.5 5.2 7 8l-1.2 4M8.5 5.2 10 8.3 11.8 10M7 8l2.2.6M7 8 6 12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="2.8" r="1.4" fill="currentColor" stroke="none"/><path d="M9 4.3v4"/><path d="M9 5L6.3 6.1"/><path d="M9 5l2.2 1.4"/><path d="M9 8.3L6.7 13"/><path d="M9 8.3L11.4 13"/></svg>`,
     en:"Walk",fr:"Marcher"},
   {id:"w",     test:p=>/^w$|\bw\b|forward|move forward/.test(p),
-    svg:`<svg viewBox="0 0 16 16"><rect x="2.5" y="2.5" width="11" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M5 6.2 6.4 11 8 7.4 9.6 11 11 6.2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-    en:"Hold W (forward)",fr:"Maintenir W (avancer)"},
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><rect x="2" y="2.5" width="12" height="11" rx="2"/><path d="M4.5 5.5L6 11L8 6.8L10 11L11.5 5.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>`,
+    en:"Hold W",fr:"Touche W"},
   {id:"crouch",test:p=>/crouch|duck/.test(p),
-    svg:`<svg viewBox="0 0 16 16"><circle cx="8" cy="3" r="1.5" fill="currentColor"/><path d="M8 4.6v3.2M5.4 11.4 8 7.8l2.6 3.6M5 11.4h6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 13.2h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>`,
-    en:"Crouch",fr:"S'accroupir"},
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="4.5" r="1.4" fill="currentColor" stroke="none"/><path d="M6.5 6v2.8"/><path d="M6.5 7.2l3 1"/><path d="M6.5 8.8L4.5 11l2 2"/><path d="M6.5 8.8L9.5 10.8l-1.7 2.2"/><path d="M2.5 13.5h11" opacity=".45"/></svg>`,
+    en:"Crouch",fr:"Accroupir"},
   {id:"shift", test:p=>/shift/.test(p),
-    svg:`<svg viewBox="0 0 16 16"><path d="M8 2.2 13 8h-2.6v5.4H5.6V8H3z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>`,
-    en:"Shift (slow walk)",fr:"Shift (marche lente)"},
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M8 2L13.5 7.5h-3v5h-5v-5h-3z"/></svg>`,
+    en:"Shift (silent)",fr:"Shift (silencieux)"},
   {id:"throw", test:p=>/throw|stand/.test(p),
-    svg:`<svg viewBox="0 0 16 16"><circle cx="11" cy="4.5" r="1.4" fill="currentColor"/><path d="M11 6v3M8.5 7 11 6.2 13 7.6M11 9l-1.4 2.4M11 9l1.6 2.2M5.5 5.5 3 8l2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-    en:"Throw (standing)",fr:"Lancer (debout)"},
+    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="3" cy="3.8" r="1.4" fill="currentColor" stroke="none"/><path d="M3 5.2v4"/><path d="M3 6.5l2.8.5"/><path d="M3 9.2L1.6 13"/><path d="M3 9.2L4.6 13"/><path d="M5.8 6.5Q10 1.5 14 7" stroke-dasharray="1.3 1.3"/><path d="M12.5 5.5L14 7l-.6 1.7"/></svg>`,
+    en:"Throw",fr:"Lancer"},
 ];
 const STRIP_RE={
   lr:/left and right click|both click|left ?\+ ?right/,
@@ -534,10 +543,15 @@ function parseTech(str){
   return {tokens,note};
 }
 function techIconsHTML(str,size="md"){
-  const {tokens,note}=parseTech(str);
-  if(!tokens.length&&!note) return "";
-  const chips=tokens.map(tk=>`<span class="tk" title="${esc(LANG==="fr"?tk.fr:tk.en)}" aria-label="${esc(LANG==="fr"?tk.fr:tk.en)}">${tk.svg}</span>`).join("");
-  return `<span class="tk-row ${size==="sm"?"tk-sm":""}">${chips}${note?`<span class="tk-note">${esc(note)}</span>`:""}</span>`;
+  try{
+    const {tokens,note}=parseTech(str);
+    if(!tokens.length&&!note) return "";
+    const chips=tokens.map(tk=>{
+      const lbl=esc(LANG==="fr"?tk.fr:tk.en);
+      return `<span class="tk" title="${lbl}" aria-label="${lbl}">${tk.svg}</span>`;
+    }).join("");
+    return `<span class="tk-row ${size==="sm"?"tk-sm":""}">${chips}${note?`<span class="tk-note">${esc(note)}</span>`:""}</span>`;
+  }catch(e){return `<span class="tk-note">${esc(str)}</span>`;}
 }
 
 /* ---------------- i18n ---------------- */
@@ -945,17 +959,26 @@ function renderChrome(){
   updateLocalbar();
 }
 function renderLegend(){
-  $("#legend").style.display=state.map?"":"none";
-  $("#legend-label").textContent=t("legend");
+  try{
+  const lgEl=$("#legend");
+  if(!lgEl)return;
+  lgEl.style.display=state.map?"":"none";
+  const lbEl=$("#legend-label");
+  if(lbEl)lbEl.textContent=t("legend");
+  const bodyEl=$("#legend-body");
+  if(!bodyEl)return;
   const gren=Object.entries(TYPES).map(([k,ty])=>
-    `<div class="lg-item"><span class="lg-ic" style="color:${ty.color}">${ICONS[k]}</span><span>${ty.label}</span></div>`).join("");
-  const tech=TECH_TOKENS.map(tk=>
-    `<div class="lg-item"><span class="lg-ic">${tk.svg}</span><span>${esc(LANG==="fr"?tk.fr:tk.en)}</span></div>`).join("");
-  $("#legend-body").innerHTML=`
+    `<div class="lg-item"><span class="lg-ic" style="color:${ty.color}">${ICONS[k]}</span><span>${esc(LANG==="fr"?ty.label:ty.label)}</span></div>`).join("");
+  const tech=TECH_TOKENS.map(tk=>{
+    const lbl=esc(LANG==="fr"?tk.fr:tk.en);
+    return `<div class="lg-item"><span class="lg-ic">${tk.svg}</span><span>${lbl}</span></div>`;
+  }).join("");
+  bodyEl.innerHTML=`
     <div class="lg-h">${esc(t("legendGren"))}</div>
     <div class="lg-grid">${gren}</div>
     <div class="lg-h">${esc(t("legendTech"))}</div>
     <div class="lg-grid">${tech}</div>`;
+  }catch(err){console.warn("[legend] render failed:",err);}
 }
 
 /* ---------------- home ---------------- */
@@ -1364,8 +1387,8 @@ function renderStratDetail(panel,s){
 function mediaHTML(m){
   const url=esc(m.url);
   const inner=isVideo(m.url)
-    ?`<video src="${url}" muted loop autoplay playsinline></video>`
-    :`<img src="${url}" alt="${esc(m.label||"media")}" loading="lazy">`;
+    ?`<video src="${url}" data-src="${url}" muted loop autoplay playsinline></video>`
+    :`<img src="${url}" data-src="${url}" alt="${esc(m.label||"media")}" loading="lazy">`;
   return `<button class="media-item" type="button">${inner}${m.label?`<span class="cap">${esc(m.label)}</span>`:""}</button>`;
 }
 
@@ -1396,8 +1419,8 @@ function openExecView(execId){
             <span class="sidedot ${l.side}">${l.side}</span>
           </div>
           ${l.media.length?`<div class="xv-media">${l.media.map((m,mi)=>{
-            const inner=isVideo(m.url)?`<video src="${esc(m.url)}" muted loop autoplay playsinline></video>`
-                                      :`<img src="${esc(m.url)}" loading="lazy" alt="">`;
+            const inner=isVideo(m.url)?`<video src="${esc(m.url)}" data-src="${esc(m.url)}" muted loop autoplay playsinline></video>`
+                                      :`<img src="${esc(m.url)}" data-src="${esc(m.url)}" loading="lazy" alt="">`;
             return `<button class="xv-m" data-l="${l.id}" data-m="${mi}">${inner}${m.label?`<span class="cap">${esc(m.label)}</span>`:""}</button>`;
           }).join("")}</div>`:""}
           ${l.description?`<div class="xv-step-desc">${esc(l.description)}</div>`:""}
@@ -1936,6 +1959,20 @@ $("#lb-seek").addEventListener("input",e=>{
    ============================================================ */
 function bindGlobal(){
   $("#brand").addEventListener("click",()=>showHome());
+  // Catch failed media loads (images & videos) and show the failing path
+  document.addEventListener("error",e=>{
+    const el=e.target;
+    if(!el||(el.tagName!=="IMG"&&el.tagName!=="VIDEO"))return;
+    const wrap=el.closest(".media-item,.xv-m");
+    if(!wrap||wrap.classList.contains("media-err"))return;
+    wrap.classList.add("media-err");
+    const path=el.getAttribute("data-src")||el.getAttribute("src")||"";
+    console.warn("[cs2-lineups] media not found:",path);
+    const msg=document.createElement("div");
+    msg.className="media-err-msg";
+    msg.innerHTML=`<span class="ic">⚠</span><span class="path">${esc(path)}</span><span class="hint">404 — ${LANG==="fr"?"fichier introuvable":"file not found"}</span>`;
+    wrap.appendChild(msg);
+  },true);
   $("#legend-toggle").addEventListener("click",()=>{
     const lg=$("#legend");const open=lg.classList.toggle("open");
     $("#legend-toggle").setAttribute("aria-expanded",open?"true":"false");
