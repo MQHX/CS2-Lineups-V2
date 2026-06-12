@@ -1206,15 +1206,39 @@ function renderMarkers(){
   $("#map-empty").style.display=(md.lineups.length||state.editMode||state.viewMode==="strats")?"none":"flex";
 
   if(state.viewMode==="strats" && !state.editMode){
+    // Group strats by zone label (case-insensitive) to share a single map marker
+    const zoneGroups=new Map();
     visibleStrats().forEach(s=>{
       if(!s.point)return;
+      const key=s.zone?s.zone.trim().toLowerCase():s.id;
+      if(!zoneGroups.has(key))zoneGroups.set(key,{strats:[],point:s.point,zone:s.zone||s.name.slice(0,6),side:s.side});
+      zoneGroups.get(key).strats.push(s);
+    });
+    zoneGroups.forEach(g=>{
+      const isSel=g.strats.some(s=>state.selectedStrat===s.id);
       const z=document.createElement("button");
-      z.className="mk-zone "+s.side+(state.selectedStrat===s.id?" sel":"");
-      z.style.left=s.point.x+"%"; z.style.top=s.point.y+"%";
-      z.textContent=s.zone||s.name.slice(0,6);
-      z.title=s.name;
+      z.className="mk-zone "+g.side+(isSel?" sel":"");
+      z.style.left=g.point.x+"%"; z.style.top=g.point.y+"%";
+      z.textContent=g.zone;
+      z.title=g.strats.map(s=>s.name).join(" / ");
+      if(g.strats.length>1){
+        const badge=document.createElement("span");
+        badge.className="varbadge";badge.textContent=g.strats.length;
+        z.appendChild(badge);
+      }
       z.addEventListener("click",e=>{e.stopPropagation();
-        state.selectedStrat=(state.selectedStrat===s.id)?null:s.id;state.stratExpand=new Set();renderAll();});
+        if(g.strats.length===1){
+          const s=g.strats[0];
+          state.selectedStrat=(state.selectedStrat===s.id)?null:s.id;
+          state.stratExpand=new Set();renderAll();
+        }else{
+          // Cycle through strats in the zone group, or deselect
+          const curIdx=g.strats.findIndex(s=>state.selectedStrat===s.id);
+          if(curIdx>=0 && curIdx===g.strats.length-1){state.selectedStrat=null;}
+          else{state.selectedStrat=g.strats[(curIdx+1)%g.strats.length].id;}
+          state.stratExpand=new Set();renderAll();
+        }
+      });
       box.appendChild(z);
     });
     return;
