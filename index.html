@@ -93,6 +93,7 @@ header{height:54px;display:flex;align-items:center;gap:14px;padding:0 18px;borde
 .rail::-webkit-scrollbar{width:7px}
 .rail::-webkit-scrollbar-thumb{background:#39455A;border-radius:4px}
 .rail-h{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.rail-zone{font-family:var(--disp);font-size:18px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:14px 0 6px;padding-left:2px}
 .rail-box{border:1px solid var(--line);border-radius:var(--r);background:var(--bg1);padding:12px}
 
 .modeswitch{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
@@ -407,6 +408,7 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 
 /* When lightbox is open, collapse cards in the right panel to just headers */
 body.lb-open .lcard-body{display:none}
+body.lb-open .exec-player video,body.lb-open .exec-player img{display:none}
 body.lb-open .lcard{cursor:pointer}
 body.lb-open .lcard:hover{border-color:var(--t)}
 body.lb-open .lcard.lb-active{border-color:var(--t);background:rgba(240,163,60,.08)}
@@ -1261,12 +1263,11 @@ function renderRail(){
     const order=Object.keys(groups).sort((a,b)=>a.localeCompare(b,undefined,{sensitivity:"base"}));
     listHtml=`<div class="rail-box"><div class="rail-h">${esc(t("strats"))}</div>
       ${order.length? order.map(z=>`
-        <div class="rail-h" style="margin-top:10px">${esc(z)}</div>
+        <div class="rail-zone">${esc(z)}</div>
         ${groups[z].map(s=>`
           <button class="xcard ${state.selectedStrat===s.id?"on":""}" data-strat="${s.id}">
             <span class="xtop"><span class="xname">${esc(s.name)}</span><span class="sidedot ${s.side}">${s.side}</span></span>
             ${s.description?`<span class="xdesc">${esc(s.description)}</span>`:""}
-            ${s.zone?`<span class="xmeta">${esc(t("zone"))}: ${esc(s.zone)}</span>`:""}
           </button>`).join("")}`).join("")
       : `<div class="rail-empty">${esc(t("noStrats"))}</div>`}</div>`;
   }
@@ -1466,6 +1467,7 @@ function renderMarkers(){
     if(l.cluster)mk.dataset.cluster=l.cluster.toLowerCase();
     mk.dataset.type=l.type;
     mk.dataset.lid=l.id;
+    mk.dataset.vcount=String(variants.length);
     mk.title=l.name+(variants.length>1?` (${variants.length} variantes)`:"");
     mk.innerHTML=`<span class="diamond"></span>${ICONS[l.type]}`;
     if(variants.length>1&&!order){
@@ -1567,7 +1569,7 @@ function renderMarkers(){
     g.idxs.push(i);
     const t=mk.dataset.type||"smoke";
     g.types.set(t,(g.types.get(t)||0)+1);
-    g.items.push({id:mk.dataset.lid,type:t,name:mk.title.split(" (")[0]});
+    g.items.push({id:mk.dataset.lid,type:t,name:mk.title.split(" (")[0],vcount:+(mk.dataset.vcount||1)});
   });
   byCluster.forEach(g=>{
     if(g.idxs.length<2)return;
@@ -1580,7 +1582,7 @@ function renderMarkers(){
     const typeArr=[...g.types.keys()];
     const segs=typeArr.map(t=>`<div class="cseg" style="background:${TYPES[t]?TYPES[t].color:"#888"}"></div>`).join("");
     const icons=typeArr.map(t=>ICONS[t]||"").join("");
-    const total=g.idxs.length;
+    const total=g.items.reduce((s,it)=>s+it.vcount,0);
     el.innerHTML=`<div class="cdiamond">${segs}</div><div class="cicons">${icons}</div><span class="cbadge">${total}</span>`;
     el.addEventListener("click",e=>{
       e.stopPropagation();
@@ -1589,10 +1591,28 @@ function renderMarkers(){
       const popup=document.createElement("div");
       popup.className="cluster-popup";
       popup.style.left=x+"%";popup.style.top=(y+2)+"%";
-      popup.innerHTML=g.items.map(it=>`
+      // Build popup with all individual lineups (expand variants)
+      const popupItems=[];
+      g.items.forEach(it=>{
+        // Find all variants for this target group
+        const l=md.lineups.find(x=>x.id===it.id);
+        if(l&&l.target){
+          const tk=l.target.toLowerCase();
+          const siblings=md.lineups.filter(x=>x.target&&x.target.toLowerCase()===tk);
+          siblings.forEach(v=>{if(!popupItems.find(p=>p.id===v.id))popupItems.push({id:v.id,type:v.type,name:v.name,variant:v.variant});});
+        }else if(l){
+          if(!popupItems.find(p=>p.id===l.id))popupItems.push({id:l.id,type:l.type,name:l.name,variant:l.variant});
+        }
+        // Check instas too
+        const n=(md.instas||[]).find(x=>x.id===it.id);
+        if(n){
+          if(!popupItems.find(p=>p.id===n.id))popupItems.push({id:n.id,type:"smoke",name:n.name,variant:n.variant});
+        }
+      });
+      popup.innerHTML=popupItems.map(it=>`
         <button class="cp-row" data-id="${esc(it.id)}">
           <span class="ic" style="color:${TYPES[it.type]?TYPES[it.type].color:"#888"}">${ICONS[it.type]||""}</span>
-          <span class="nm">${esc(it.name)}</span>
+          <span class="nm">${esc(it.name)}${it.variant?` <span style="color:var(--mut);font-size:11px">· ${esc(it.variant)}</span>`:""}</span>
         </button>`).join("");
       popup.querySelectorAll(".cp-row").forEach(r=>r.addEventListener("click",ev=>{
         ev.stopPropagation();
@@ -2127,9 +2147,9 @@ function renderEditor(panel){
         md.lineups.length?md.lineups.map(l=>`
           <div class="ed-row">
             <span class="grip" title="Drag to reorder">⠿</span>
+            <span class="sd" style="color:${l.side==="T"?"var(--t)":"var(--ct)"}">${l.side}</span>
             <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>
             <button class="nm" data-id="${l.id}">${esc(l.name)}${l.variant?` <span class="sd">· ${esc(l.variant)}</span>`:""}</button>
-            <span class="sd">${l.side}</span>
             <button class="icon-btn" data-dup="${l.id}" title="${esc(t("duplicate")||"Duplicate")}">⧉</button>
             <button class="icon-btn danger" data-del="${l.id}" title="${esc(t("del"))}">✕</button>
           </div>`).join("")
@@ -2609,21 +2629,38 @@ function renderStratForm(panel,md){
           const i=orderOf("exec",ex.id);
           return `<label><input type="checkbox" data-kind="exec" data-id="${ex.id}" ${i>=0?"checked":""}>
             ${i>=0?`<span class="num">${i+1}</span>`:""}
-            <span class="ic" style="color:var(--t)">⚙</span>${esc(ex.name)} <span class="sd" style="font-family:var(--mono);font-size:10px;color:var(--mut)">EXEC</span></label>`;
+            <span class="ic" style="color:var(--t)">⚙</span>${esc(ex.name)} <span class="sd" style="font-family:var(--mono);font-size:10px;color:var(--mut)">EXEC</span>
+            <span class="sidedot ${ex.side}" style="margin-left:auto;flex:0 0 auto">${ex.side}</span></label>`;
         }).join("")}
         ${md.lineups.map(l=>{
           const i=orderOf("lineup",l.id);
+          const varLbl=l.variant?` · ${esc(l.variant)}`:"";
           return `<label><input type="checkbox" data-kind="lineup" data-id="${l.id}" ${i>=0?"checked":""}>
             ${i>=0?`<span class="num">${i+1}</span>`:""}
-            <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>${esc(l.name)}</label>`;
+            <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>${esc(l.name)}<span style="color:var(--mut);font-size:11px">${varLbl}</span>
+            <span class="sidedot ${l.side}" style="margin-left:auto;flex:0 0 auto">${l.side}</span></label>`;
         }).join("")}
       </div>
       <button class="add-line" id="s-add-heading" type="button">+ Section title</button>
-      ${s.items.filter(it=>it.kind==="heading").length?`<div class="sub-list" id="s-headings">${
-        s.items.map((it,i)=>it.kind==="heading"?`<div class="sub-row" data-i="${i}">
-          <input class="h-txt" value="${esc(it.label||"")}" placeholder="Section title…">
-          <button class="icon-btn danger h-del" type="button">✕</button>
-        </div>`:"").join("")}</div>`:""}
+      ${s.items.length?`<div class="ed-list" id="s-ordered" style="margin-top:8px">${
+        s.items.map((it,i)=>{
+          if(it.kind==="heading")return `<div class="ed-row" draggable="true" data-si="${i}" data-kind="heading">
+            <span class="grip">⠿</span>
+            <input class="h-txt" value="${esc(it.label||"")}" placeholder="Section title…" style="flex:1;font-size:12px;background:transparent;border:none;color:var(--t);font-weight:600;letter-spacing:.06em;text-transform:uppercase">
+            <button class="icon-btn danger si-del" data-si="${i}">✕</button></div>`;
+          if(it.kind==="exec"){const ex=md.executes.find(x=>x.id===it.id);
+            return ex?`<div class="ed-row" draggable="true" data-si="${i}" data-kind="exec">
+              <span class="grip">⠿</span><span class="ic" style="color:var(--t)">⚙</span>
+              <span class="nm" style="flex:1">${esc(ex.name)}</span>
+              <span class="sd">EXEC</span>
+              <button class="icon-btn danger si-del" data-si="${i}">✕</button></div>`:"";}
+          const l=md.lineups.find(x=>x.id===it.id);
+          return l?`<div class="ed-row" draggable="true" data-si="${i}" data-kind="lineup">
+            <span class="grip">⠿</span>
+            <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>
+            <span class="nm" style="flex:1">${esc(l.name)}${l.variant?` <span style="color:var(--mut);font-size:11px">· ${esc(l.variant)}</span>`:""}</span>
+            <button class="icon-btn danger si-del" data-si="${i}">✕</button></div>`:"";
+        }).join("")}</div>`:""}
       <div class="ed-foot">
         <button class="btn btn-amber" id="s-done">${esc(t("done"))}</button>
         <button class="btn btn-danger" id="s-del">${esc(t("del"))}</button>
@@ -2663,15 +2700,19 @@ function renderStratForm(panel,md){
   $("#s-add-heading").addEventListener("click",()=>{
     s.items.push({kind:"heading",label:""});save();renderAll();
   });
-  panel.querySelectorAll("#s-headings .h-txt").forEach(inp=>inp.addEventListener("change",()=>{
-    const i=+inp.closest(".sub-row").dataset.i;
-    if(s.items[i]&&s.items[i].kind==="heading")s.items[i].label=inp.value.trim();
-    save();
-  }));
-  panel.querySelectorAll("#s-headings .h-del").forEach(b=>b.addEventListener("click",()=>{
-    const i=+b.closest(".sub-row").dataset.i;
-    s.items.splice(i,1);save();renderAll();
-  }));
+  // Ordered items: drag reorder + delete + heading edit
+  const orderedList=$("#s-ordered");
+  if(orderedList){
+    wireListDragSort(orderedList,s.items);
+    orderedList.querySelectorAll(".si-del").forEach(b=>b.addEventListener("click",()=>{
+      const i=+b.dataset.si;s.items.splice(i,1);save();renderAll();
+    }));
+    orderedList.querySelectorAll(".h-txt").forEach(inp=>inp.addEventListener("change",()=>{
+      const i=+inp.closest("[data-si]").dataset.si;
+      if(s.items[i]&&s.items[i].kind==="heading")s.items[i].label=inp.value.trim();
+      save();
+    }));
+  }
 }
 
 /* ============================================================
