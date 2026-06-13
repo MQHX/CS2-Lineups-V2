@@ -2546,7 +2546,7 @@
           "name": "CT",
           "type": "smoke",
           "side": "T",
-          "technique": "Crouch + Jumpthrow",
+          "technique": "Jumpthrow",
           "description": "",
           "target": "",
           "variant": "",
@@ -2564,7 +2564,7 @@
               "label": "Stand"
             },
             {
-              "url": "media/ancient/a_ct.webp",
+              "url": "media/ancient/ct-bfq7a.webp",
               "label": "Aim"
             }
           ],
@@ -2595,31 +2595,6 @@
             {
               "url": "media/ancient/a_donut.webp",
               "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "insta_elbow",
-          "name": "Elbow",
-          "type": "smoke",
-          "side": "CT",
-          "technique": "",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "land": {
-            "x": 36.2,
-            "y": 56.3
-          },
-          "throw": {
-            "x": 48.5,
-            "y": 13.5
-          },
-          "media": [
-            {
-              "url": "media/ancient/insta_elbow.webp",
-              "label": "Stand"
             }
           ],
           "tips": []
@@ -2826,6 +2801,33 @@
             }
           ],
           "tips": []
+        },
+        {
+          "id": "0192a400-da34-4561-9ea4-243d0f1f6550",
+          "name": "Cave",
+          "type": "molotov",
+          "side": "T",
+          "technique": "Running + Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "land": {
+            "x": 66.3,
+            "y": 46.31
+          },
+          "throw": {
+            "x": 78.38,
+            "y": 58.68
+          },
+          "media": [
+            {
+              "url": "media/ancient/cave-b2r62.mp4",
+              "label": ""
+            }
+          ],
+          "tips": [
+            "You need to throw it BEFORE hitting the wall"
+          ]
         }
       ],
       "executes": [
@@ -2834,7 +2836,12 @@
           "name": "A execute",
           "side": "T",
           "description": "",
-          "media": [],
+          "media": [
+            {
+              "url": "media/ancient/exec-a-execute-bepee.mp4",
+              "label": ""
+            }
+          ],
           "tips": [],
           "items": [
             "ct_from_main",
@@ -2846,7 +2853,12 @@
           "name": "B execute",
           "side": "T",
           "description": "",
-          "media": [],
+          "media": [
+            {
+              "url": "media/ancient/exec-b-execute-b3ouy.mp4",
+              "label": ""
+            }
+          ],
           "tips": [],
           "items": [
             "long",
@@ -2875,15 +2887,15 @@
           "side": "CT",
           "description": "",
           "image": "media/ancient/insta-elbow-kwpve.webp",
-          "target": "",
-          "variant": "",
+          "target": "Elbow",
+          "variant": "Insta",
           "land": {
-            "x": 50,
-            "y": 50
+            "x": 39.47,
+            "y": 55.12
           },
           "throw": {
-            "x": 50,
-            "y": 60
+            "x": 49.63,
+            "y": 14.76
           }
         }
       ],
