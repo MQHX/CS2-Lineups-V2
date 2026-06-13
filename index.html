@@ -146,16 +146,22 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .has-open .mk:not(.sel){opacity:.35;transform:translate(-50%,-50%) scale(.85)}
 .has-open .mk:not(.sel):hover{opacity:.75;transform:translate(-50%,-50%) scale(1)}
 /* Cluster marker: single fused diamond */
-.mk-cluster{position:absolute;transform:translate(-50%,-50%);z-index:6;width:30px;height:30px;cursor:pointer;transition:opacity .15s,transform .15s}
-.mk-cluster .cdiamond{position:absolute;inset:0;width:30px;height:30px;transform:rotate(45deg);border-radius:4px;overflow:hidden;display:flex;border:1.5px solid rgba(255,255,255,.25)}
+.mk-cluster{position:absolute;transform:translate(-50%,-50%);z-index:6;width:28px;height:28px;cursor:pointer;transition:opacity .15s,transform .15s}
+.mk-cluster .cdiamond{position:absolute;inset:1px;width:26px;height:26px;transform:rotate(45deg);border-radius:3.5px;overflow:hidden;display:flex;border:1.5px solid rgba(255,255,255,.3)}
 .mk-cluster .cseg{flex:1;height:100%}
-.mk-cluster .cicons{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:1px;z-index:1}
-.mk-cluster .cicons svg{width:11px;height:11px}
-.mk-cluster .cbadge{position:absolute;top:-6px;right:-6px;min-width:15px;height:15px;padding:0 3px;border-radius:8px;background:var(--t);color:#1A1206;font-family:var(--mono);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;z-index:2;border:1.5px solid var(--bg0)}
+.mk-cluster .cicons{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:0;z-index:1;pointer-events:none}
+.mk-cluster .cicons svg{width:12px;height:12px;filter:drop-shadow(0 0 2px rgba(0,0,0,.8))}
+.mk-cluster .cbadge{position:absolute;top:-5px;right:-5px;min-width:14px;height:14px;padding:0 3px;border-radius:7px;background:var(--t);color:#1A1206;font-family:var(--mono);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;z-index:2;border:1.5px solid var(--bg0)}
 .mk-cluster.sel{z-index:8}
-.mk-cluster.sel .cdiamond{border-color:rgba(255,255,255,.6);box-shadow:0 0 0 3px rgba(233,238,245,.18),0 0 14px -2px rgba(255,255,255,.3)}
+.mk-cluster.sel .cdiamond{border-color:rgba(255,255,255,.7);box-shadow:0 0 0 3px rgba(233,238,245,.2),0 0 12px -2px rgba(255,255,255,.3)}
 .has-open .mk-cluster:not(.sel){opacity:.35;transform:translate(-50%,-50%) scale(.85)}
 .has-open .mk-cluster:not(.sel):hover{opacity:.75;transform:translate(-50%,-50%) scale(1)}
+/* Cluster chooser popup */
+.cluster-popup{position:absolute;transform:translate(-50%,4px);z-index:30;background:var(--bg1);border:1px solid var(--line);border-radius:8px;padding:4px;display:flex;flex-direction:column;gap:3px;min-width:160px;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+.cluster-popup .cp-row{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:13px;font-family:var(--body);color:var(--ink);border:none;background:none;text-align:left;width:100%}
+.cluster-popup .cp-row:hover{background:var(--bg2)}
+.cluster-popup .cp-row .ic{width:13px;height:13px;display:inline-flex;flex:0 0 auto}
+.cluster-popup .cp-row .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mk .diamond{position:absolute;inset:3px;transform:rotate(45deg);background:rgba(10,13,18,.88);border:1.6px solid var(--c);border-radius:3px;
   box-shadow:0 0 0 1px rgba(0,0,0,.55),0 0 9px -2px var(--c)}
 .mk svg{position:relative;width:13px;height:13px;color:var(--c)}
@@ -325,6 +331,7 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .strat-inline .media-grid{margin-top:0}
 .strat-inline .tips{margin:0}
 .strat-steps{display:flex;flex-direction:column;gap:0}
+.strat-heading{font-family:var(--disp);font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--t);margin:12px 0 4px;padding-left:2px}
 .linkrow:hover{border-color:#46556B}
 .linkrow .n{font-family:var(--mono);font-size:11px;flex:0 0 22px;height:22px;display:flex;align-items:center;justify-content:center;background:var(--t);color:#1A1206;border-radius:50%}
 .linkrow .ic{width:14px;height:14px;flex:0 0 auto;display:flex}
@@ -876,7 +883,7 @@ function normStrat(s){
     description:s.description||"",
     media:Array.isArray(s.media)?s.media.filter(m=>m&&m.url).map(m=>({url:m.url,label:m.label||""})):[],
     tips:Array.isArray(s.tips)?s.tips.filter(Boolean):[],
-    items:Array.isArray(s.items)?s.items.filter(i=>i&&i.id&&(i.kind==="lineup"||i.kind==="exec")):[]};
+    items:Array.isArray(s.items)?s.items.filter(i=>i&&((i.id&&(i.kind==="lineup"||i.kind==="exec"))||(i.kind==="heading"&&i.label))):[]};
 }
 function normInsta(n){
   return {id:n.id||uid(),name:n.name||"Insta",side:(n.side==="CT")?"CT":"T",
@@ -1320,7 +1327,7 @@ function renderMarkers(){
   $("#map-empty").style.display=(md.lineups.length||state.editMode||state.viewMode==="strats")?"none":"flex";
 
   if(state.viewMode==="strats" && !state.editMode){
-    // Group strats by zone label (case-insensitive) to share a single map marker
+    // Group strats by zone label
     const zoneGroups=new Map();
     visibleStrats().forEach(s=>{
       if(!s.point)return;
@@ -1346,7 +1353,6 @@ function renderMarkers(){
           state.selectedStrat=(state.selectedStrat===s.id)?null:s.id;
           state.stratExpand=new Set();renderAll();
         }else{
-          // Cycle through strats in the zone group, or deselect
           const curIdx=g.strats.findIndex(s=>state.selectedStrat===s.id);
           if(curIdx>=0 && curIdx===g.strats.length-1){state.selectedStrat=null;}
           else{state.selectedStrat=g.strats[(curIdx+1)%g.strats.length].id;}
@@ -1355,6 +1361,47 @@ function renderMarkers(){
       });
       box.appendChild(z);
     });
+    // Show linked lineups/execs as dimmed markers on the map
+    if(state.selectedStrat){
+      const strat=md.strats.find(s=>s.id===state.selectedStrat);
+      if(strat){
+        const linkedIds=new Set();
+        strat.items.forEach(it=>{
+          if(it.kind==="lineup")linkedIds.add(it.id);
+          if(it.kind==="exec"){
+            const ex=md.executes.find(e=>e.id===it.id);
+            if(ex)ex.items.forEach(id=>linkedIds.add(id));
+          }
+        });
+        linkedIds.forEach(id=>{
+          const l=md.lineups.find(x=>x.id===id);
+          if(!l)return;
+          const isSel=state.stratExpand.has(id);
+          const c=TYPES[l.type].color;
+          const mk=document.createElement("button");
+          mk.className="mk"+(isSel?" sel":"");
+          mk.style.setProperty("--c",c);
+          mk.style.left=l.land.x+"%";mk.style.top=l.land.y+"%";
+          mk.style.opacity=isSel?"1":".45";
+          mk.title=l.name;
+          mk.innerHTML=`<span class="diamond"></span>${ICONS[l.type]}`;
+          mk.addEventListener("click",e=>{
+            e.stopPropagation();
+            if(state.stratExpand.has(id))state.stratExpand.delete(id);
+            else state.stratExpand.add(id);
+            renderAll();
+          });
+          box.appendChild(mk);
+          if(isSel){
+            trajPath(l);
+            const tm=document.createElement("div");
+            tm.className="mk-throw";tm.style.setProperty("--c",c);
+            tm.style.left=l.throw.x+"%";tm.style.top=l.throw.y+"%";
+            box.appendChild(tm);
+          }
+        });
+      }
+    }
     return;
   }
   if(state.viewMode==="strats" && state.editMode){
@@ -1438,14 +1485,35 @@ function renderMarkers(){
         else startEditLineup(l.id);
         return;
       }
-      // Toggle the active variant for the group
-      const openedV=variants.find(v=>state.openIds.includes(v.id));
-      if(openedV){
-        state.openIds=state.openIds.filter(x=>x!==openedV.id);
+      if(variants.length>1){
+        // Show chooser popup for variants
+        box.querySelectorAll(".cluster-popup").forEach(p=>p.remove());
+        const popup=document.createElement("div");
+        popup.className="cluster-popup";
+        popup.style.left=l.land.x+"%";popup.style.top=(l.land.y+2)+"%";
+        popup.innerHTML=variants.map(v=>{
+          const isOpen=state.openIds.includes(v.id);
+          return `<button class="cp-row ${isOpen?"on":""}" data-id="${esc(v.id)}">
+            <span class="ic" style="color:${TYPES[v.type]?TYPES[v.type].color:"#888"}">${ICONS[v.type]||""}</span>
+            <span class="nm">${esc(v.variant||v.name)}</span>
+          </button>`;
+        }).join("");
+        popup.querySelectorAll(".cp-row").forEach(r=>r.addEventListener("click",ev=>{
+          ev.stopPropagation();
+          const id=r.dataset.id;
+          if(state.openIds.includes(id))state.openIds=state.openIds.filter(x=>x!==id);
+          else state.openIds.push(id);
+          popup.remove();renderAll();
+        }));
+        const closeP=ev=>{if(!popup.contains(ev.target)&&!mk.contains(ev.target)){popup.remove();document.removeEventListener("click",closeP);}};
+        setTimeout(()=>document.addEventListener("click",closeP),0);
+        box.appendChild(popup);
       }else{
-        state.openIds.push(l.id);
+        const openedV=variants.find(v=>state.openIds.includes(v.id));
+        if(openedV)state.openIds=state.openIds.filter(x=>x!==openedV.id);
+        else state.openIds.push(l.id);
+        renderAll();
       }
-      renderAll();
     });
     mk.addEventListener("mouseenter",()=>{
       // No hover trajectory — trajectories only shown for opened lineups
@@ -1494,40 +1562,70 @@ function renderMarkers(){
   mks.forEach((mk,i)=>{
     const c=mk.dataset.cluster;
     if(!c)return;
-    if(!byCluster.has(c))byCluster.set(c,{idxs:[],types:new Map()});
+    if(!byCluster.has(c))byCluster.set(c,{idxs:[],types:new Map(),items:[]});
     const g=byCluster.get(c);
     g.idxs.push(i);
     const t=mk.dataset.type||"smoke";
     g.types.set(t,(g.types.get(t)||0)+1);
+    g.items.push({id:mk.dataset.lid,type:t,name:mk.title.split(" (")[0]});
   });
   byCluster.forEach(g=>{
     if(g.idxs.length<2)return;
     const first=mks[g.idxs[0]];
     const x=parseFloat(first.style.left),y=parseFloat(first.style.top);
     const anySel=g.idxs.some(idx=>mks[idx].classList.contains("sel"));
-    // Build fused diamond
     const el=document.createElement("div");
     el.className="mk-cluster"+(anySel?" sel":"");
     el.style.left=x+"%";el.style.top=y+"%";
-    // Color segments
     const typeArr=[...g.types.keys()];
     const segs=typeArr.map(t=>`<div class="cseg" style="background:${TYPES[t]?TYPES[t].color:"#888"}"></div>`).join("");
-    // Mini icons (one per type, in original order)
     const icons=typeArr.map(t=>ICONS[t]||"").join("");
-    // Total count
     const total=g.idxs.length;
-    el.innerHTML=`<div class="cdiamond">${segs}</div><div class="cicons">${icons}</div>${total>1?`<span class="cbadge">${total}</span>`:""}`;
-    // Click: toggle all items in this cluster open/closed
+    el.innerHTML=`<div class="cdiamond">${segs}</div><div class="cicons">${icons}</div><span class="cbadge">${total}</span>`;
     el.addEventListener("click",e=>{
       e.stopPropagation();
       if(state.editMode)return;
-      const ids=g.idxs.map(i=>mks[i].dataset.lid).filter(Boolean);
-      const allOpen=ids.every(id=>state.openIds.includes(id));
-      if(allOpen){state.openIds=state.openIds.filter(x=>!ids.includes(x));}
-      else{ids.forEach(id=>{if(!state.openIds.includes(id))state.openIds.push(id);});}
-      renderAll();
+      box.querySelectorAll(".cluster-popup").forEach(p=>p.remove());
+      const popup=document.createElement("div");
+      popup.className="cluster-popup";
+      popup.style.left=x+"%";popup.style.top=(y+2)+"%";
+      popup.innerHTML=g.items.map(it=>`
+        <button class="cp-row" data-id="${esc(it.id)}">
+          <span class="ic" style="color:${TYPES[it.type]?TYPES[it.type].color:"#888"}">${ICONS[it.type]||""}</span>
+          <span class="nm">${esc(it.name)}</span>
+        </button>`).join("");
+      popup.querySelectorAll(".cp-row").forEach(r=>r.addEventListener("click",ev=>{
+        ev.stopPropagation();
+        const id=r.dataset.id;
+        if(state.openIds.includes(id))state.openIds=state.openIds.filter(x=>x!==id);
+        else state.openIds.push(id);
+        popup.remove();
+        renderAll();
+      }));
+      const closePopup=ev=>{if(!popup.contains(ev.target)&&!el.contains(ev.target)){popup.remove();document.removeEventListener("click",closePopup);}};
+      setTimeout(()=>document.addEventListener("click",closePopup),0);
+      box.appendChild(popup);
     });
-    // Remove original markers from the DOM
+    if(state.editMode){
+      el.style.cursor="grab";
+      el.addEventListener("pointerdown",e=>{
+        e.preventDefault();
+        const wrap=$("#mapwrap"),rect=wrap.getBoundingClientRect();
+        const move=ev=>{
+          const px=Math.max(0,Math.min(100,((ev.clientX-rect.left)/rect.width)*100));
+          const py=Math.max(0,Math.min(100,((ev.clientY-rect.top)/rect.height)*100));
+          const p={x:+px.toFixed(2),y:+py.toFixed(2)};
+          g.items.forEach(it=>{
+            const l=md.lineups.find(x=>x.id===it.id)||(md.instas||[]).find(x=>x.id===it.id);
+            if(l)l.land={...p};
+          });
+          save();renderAll();
+        };
+        const up=()=>{document.removeEventListener("pointermove",move);document.removeEventListener("pointerup",up);};
+        document.addEventListener("pointermove",move);
+        document.addEventListener("pointerup",up);
+      });
+    }
     g.idxs.forEach(idx=>{mks[idx].remove();});
     box.appendChild(el);
   });
@@ -1803,6 +1901,9 @@ function renderStratDetail(panel,s){
       ${s.tips&&s.tips.length?`<ul class="tips" style="margin-top:10px">${s.tips.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
       ${s.items.length?`<div class="dr-h">${esc(t("linked"))}</div>${
         s.items.map((it,i)=>{
+          if(it.kind==="heading"){
+            return `<div class="strat-heading">${esc(it.label)}</div>`;
+          }
           const expanded=state.stratExpand.has(it.id);
           if(it.kind==="exec"){
             const ex=md.executes.find(x=>x.id===it.id);if(!ex)return"";
@@ -2040,7 +2141,7 @@ function renderEditor(panel){
       startEditLineup(l.id);togglePlacing("land");toast(t("tPlaceImpact"));
     });
     const sb=$("#ed-sort");if(sb)sb.addEventListener("click",()=>{
-      md.lineups.sort((a,b)=>(a.name||"").localeCompare(b.name||"",undefined,{sensitivity:"base"}));
+      md.lineups.sort((a,b)=>(a.side==="CT"?0:1)-(b.side==="CT"?0:1)||(a.name||"").localeCompare(b.name||"",undefined,{sensitivity:"base"}));
       save();toast(t("sortedAZ"));renderAll();
     });
     body.querySelectorAll(".nm").forEach(b=>b.addEventListener("click",()=>startEditLineup(b.dataset.id)));
@@ -2080,7 +2181,7 @@ function renderEditor(panel){
       state.editingExecId=ex.id;renderAll();
     });
     const sb=$("#ex-sort");if(sb)sb.addEventListener("click",()=>{
-      md.executes.sort((a,b)=>(a.name||"").localeCompare(b.name||"",undefined,{sensitivity:"base"}));
+      md.executes.sort((a,b)=>(a.side==="CT"?0:1)-(b.side==="CT"?0:1)||(a.name||"").localeCompare(b.name||"",undefined,{sensitivity:"base"}));
       save();toast(t("sortedAZ"));renderAll();
     });
     body.querySelectorAll(".nm").forEach(b=>b.addEventListener("click",()=>{state.editingExecId=b.dataset.id;renderAll();}));
@@ -2117,7 +2218,7 @@ function renderEditor(panel){
       startEditStrat(s.id);
     });
     const sb=$("#st-sort");if(sb)sb.addEventListener("click",()=>{
-      md.strats.sort((a,b)=>(a.name||"").localeCompare(b.name||"",undefined,{sensitivity:"base"}));
+      md.strats.sort((a,b)=>(a.side==="CT"?0:1)-(b.side==="CT"?0:1)||(a.name||"").localeCompare(b.name||"",undefined,{sensitivity:"base"}));
       save();toast(t("sortedAZ"));renderAll();
     });
     body.querySelectorAll(".nm").forEach(b=>b.addEventListener("click",()=>startEditStrat(b.dataset.id)));
@@ -2152,7 +2253,7 @@ function renderEditor(panel){
       state.editingInstaId=n.id;renderAll();
     });
     const sb=$("#in-sort");if(sb)sb.addEventListener("click",()=>{
-      md.instas.sort((a,b)=>(a.name||"").localeCompare(b.name||"",undefined,{sensitivity:"base"}));
+      md.instas.sort((a,b)=>(a.side==="CT"?0:1)-(b.side==="CT"?0:1)||(a.name||"").localeCompare(b.name||"",undefined,{sensitivity:"base"}));
       save();toast(t("sortedAZ"));renderAll();
     });
     body.querySelectorAll(".nm").forEach(b=>b.addEventListener("click",()=>{state.editingInstaId=b.dataset.id;renderAll();}));
@@ -2517,6 +2618,12 @@ function renderStratForm(panel,md){
             <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>${esc(l.name)}</label>`;
         }).join("")}
       </div>
+      <button class="add-line" id="s-add-heading" type="button">+ Section title</button>
+      ${s.items.filter(it=>it.kind==="heading").length?`<div class="sub-list" id="s-headings">${
+        s.items.map((it,i)=>it.kind==="heading"?`<div class="sub-row" data-i="${i}">
+          <input class="h-txt" value="${esc(it.label||"")}" placeholder="Section title…">
+          <button class="icon-btn danger h-del" type="button">✕</button>
+        </div>`:"").join("")}</div>`:""}
       <div class="ed-foot">
         <button class="btn btn-amber" id="s-done">${esc(t("done"))}</button>
         <button class="btn btn-danger" id="s-del">${esc(t("del"))}</button>
@@ -2553,6 +2660,18 @@ function renderStratForm(panel,md){
     else s.items=s.items.filter(it=>!(it.kind===kind&&it.id===id));
     commit();renderAll();
   });
+  $("#s-add-heading").addEventListener("click",()=>{
+    s.items.push({kind:"heading",label:""});save();renderAll();
+  });
+  panel.querySelectorAll("#s-headings .h-txt").forEach(inp=>inp.addEventListener("change",()=>{
+    const i=+inp.closest(".sub-row").dataset.i;
+    if(s.items[i]&&s.items[i].kind==="heading")s.items[i].label=inp.value.trim();
+    save();
+  }));
+  panel.querySelectorAll("#s-headings .h-del").forEach(b=>b.addEventListener("click",()=>{
+    const i=+b.closest(".sub-row").dataset.i;
+    s.items.splice(i,1);save();renderAll();
+  }));
 }
 
 /* ============================================================
