@@ -141,7 +141,18 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .mapwrap.drawing #drawcanvas{pointer-events:auto;z-index:20}
 
 /* markers */
-.mk{position:absolute;transform:translate(-50%,-50%);width:25px;height:25px;z-index:6;display:flex;align-items:center;justify-content:center;transition:opacity .15s}
+.mk{position:absolute;transform:translate(-50%,-50%);width:25px;height:25px;z-index:6;display:flex;align-items:center;justify-content:center;transition:opacity .15s,transform .15s}
+/* When lineups are open, dim everything else */
+.has-open .mk:not(.sel){opacity:.35;transform:translate(-50%,-50%) scale(.85)}
+.has-open .mk:not(.sel):hover{opacity:.75;transform:translate(-50%,-50%) scale(1)}
+/* Stacked marker (multiple utils at same spot) */
+.mk-stack{position:absolute;transform:translate(-50%,-50%);z-index:6;display:flex;gap:0;transition:opacity .15s}
+.mk-stack .mk{position:relative;transform:none;width:22px;height:22px}
+.mk-stack .mk:not(:first-child){margin-left:-7px}
+.mk-stack .mk .diamond{width:20px;height:20px}
+.has-open .mk-stack:not(.sel-stack){opacity:.35}
+.has-open .mk-stack:not(.sel-stack):hover{opacity:.75}
+.mk-stack.sel-stack{z-index:8}
 .mk .diamond{position:absolute;inset:3px;transform:rotate(45deg);background:rgba(10,13,18,.88);border:1.6px solid var(--c);border-radius:3px;
   box-shadow:0 0 0 1px rgba(0,0,0,.55),0 0 9px -2px var(--c)}
 .mk svg{position:relative;width:13px;height:13px;color:var(--c)}
@@ -368,8 +379,13 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .modal .box h3{font-family:var(--disp);font-size:16px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
 .modal .box .mbody{color:var(--mut);margin-bottom:16px;font-size:13.5px}
 .modal .acts{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
-#lightbox{position:fixed;inset:0;z-index:120;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(5,7,10,.94);padding:22px;gap:12px}
+#lightbox{position:fixed;top:0;left:0;right:0;bottom:0;z-index:120;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(5,7,10,.92);padding:22px;gap:12px}
 #lightbox.show{display:flex}
+@media(min-width:1100px){#lightbox.show{right:clamp(380px,30vw,540px)}}
+#lb-info{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);background:rgba(10,13,18,.85);border:1px solid var(--line);border-radius:10px;padding:10px 16px;display:flex;flex-direction:column;align-items:center;gap:6px;max-width:90%;pointer-events:none;z-index:122}
+#lb-info:empty{display:none}
+#lb-info .lb-name{font-family:var(--disp);font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+#lb-info .lb-tech{display:flex;gap:4px;align-items:center}
 #lb-media{display:flex;align-items:center;justify-content:center;min-height:0;flex:0 1 auto;max-width:96vw}
 #lb-media img,#lb-media video,#lb-media canvas{max-width:96vw;max-height:82vh;border-radius:8px;display:block}
 #lb-bar{display:flex;align-items:center;gap:12px;background:var(--bg1);border:1px solid var(--line);border-radius:99px;padding:8px 16px;max-width:96vw}
@@ -463,6 +479,7 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
   <button class="lb-nav" id="lb-prev">‹</button>
   <button class="lb-nav" id="lb-next">›</button>
   <div id="lb-media"></div>
+  <div id="lb-info"></div>
   <div id="lb-cap"></div>
   <div id="lb-bar" class="hidden">
     <button id="lb-play">▶</button>
@@ -1114,15 +1131,20 @@ function renderLegend(){
   if(!bodyEl)return;
   const gren=Object.entries(TYPES).map(([k,ty])=>
     `<div class="lg-item"><span class="lg-ic" style="color:${ty.color}">${ICONS[k]}</span><span>${esc(LANG==="fr"?ty.label:ty.label)}</span></div>`).join("");
-  const tech=TECH_TOKENS.map(tk=>{
+  const clickLeg=TECH_CLICK.map(tk=>{
     const lbl=esc(LANG==="fr"?tk.fr:tk.en);
     return `<div class="lg-item"><span class="lg-ic">${tk.svg}</span><span>${lbl}</span></div>`;
+  }).join("");
+  const moveLeg=TECH_MOVE.map(tk=>{
+    const lbl=esc(LANG==="fr"?tk.fr:tk.en);
+    return `<div class="lg-item"><span class="tk-label" style="font-size:11px;padding:3px 7px">${lbl}</span></div>`;
   }).join("");
   bodyEl.innerHTML=`
     <div class="lg-h">${esc(t("legendGren"))}</div>
     <div class="lg-grid">${gren}</div>
     <div class="lg-h">${esc(t("legendTech"))}</div>
-    <div class="lg-grid">${tech}</div>`;
+    <div class="lg-grid">${clickLeg}</div>
+    <div class="lg-grid" style="margin-top:6px">${moveLeg}</div>`;
   }catch(err){console.warn("[legend] render failed:",err);}
 }
 
@@ -1267,6 +1289,7 @@ function renderMarkers(){
   const md=mapData();
   const box=$("#markers"); const paths=$("#trajpaths"); const defs=$("#trajdefs");
   box.innerHTML=""; paths.innerHTML="";
+  box.classList.toggle("has-open",state.openIds.length>0||!!state.activeExec||!!state.activeInsta);
   defs.innerHTML=Object.entries(TYPES).map(([k,ty])=>
     `<marker id="arr-${k}" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="4.2" markerHeight="4.2" orient="auto-start-reverse"><path d="M0 0 L6 3 L0 6 z" fill="${ty.color}"/></marker>`).join("");
 
@@ -1438,6 +1461,34 @@ function renderMarkers(){
     });
   }
 
+  // Post-process: stack overlapping markers (within 2% distance on map)
+  const mks=[...box.querySelectorAll(".mk:not(.mk-throw)")];
+  const THRESH=2.5; // percent
+  const stacked=new Set();
+  for(let i=0;i<mks.length;i++){
+    if(stacked.has(i))continue;
+    const x1=parseFloat(mks[i].style.left),y1=parseFloat(mks[i].style.top);
+    const cluster=[i];
+    for(let j=i+1;j<mks.length;j++){
+      if(stacked.has(j))continue;
+      const x2=parseFloat(mks[j].style.left),y2=parseFloat(mks[j].style.top);
+      if(Math.abs(x1-x2)<THRESH&&Math.abs(y1-y2)<THRESH)cluster.push(j);
+    }
+    if(cluster.length>1){
+      const wrap=document.createElement("div");
+      wrap.className="mk-stack";
+      wrap.style.left=x1+"%";wrap.style.top=y1+"%";
+      const anySel=cluster.some(idx=>mks[idx].classList.contains("sel"));
+      if(anySel)wrap.classList.add("sel-stack");
+      cluster.forEach(idx=>{
+        stacked.add(idx);
+        mks[idx].style.left="0";mks[idx].style.top="0";
+        wrap.appendChild(mks[idx]);
+      });
+      box.appendChild(wrap);
+    }
+  }
+
   renderSelectedTraj();
 }
 function trajPath(l){
@@ -1547,7 +1598,7 @@ function renderPanel(){
         else state.collapsedCards.add(id);
         renderAll();
       });
-      if(l)card.querySelectorAll(".media-item").forEach((el,i)=>el.addEventListener("click",()=>openLightbox(l.media,i)));
+      if(l)card.querySelectorAll(".media-item").forEach((el,i)=>el.addEventListener("click",()=>openLightbox(l.media,i,{name:l.name,technique:l.technique||""})));
       card.querySelectorAll(".var-tab").forEach(tab=>tab.addEventListener("click",e=>{
         e.stopPropagation();
         const vid=tab.dataset.var;
@@ -2498,12 +2549,12 @@ let lbState={kind:null,el:null,frozen:false,canvas:null};
 let lbGal={items:[],idx:0};
 let lbWheelLock=0;
 function fmtTime(s){if(!Number.isFinite(s))return"0:00";const m=Math.floor(s/60),x=Math.floor(s%60);return m+":"+String(x).padStart(2,"0");}
-function openLightbox(items,idx=0){
+function openLightbox(items,idx=0,ctx=null){
   if(!items)return;
   if(!Array.isArray(items))items=[items];
   items=items.filter(m=>m&&m.url);
   if(!items.length)return;
-  lbGal={items,idx:Math.max(0,Math.min(idx,items.length-1))};
+  lbGal={items,idx:Math.max(0,Math.min(idx,items.length-1)),ctx};
   renderLightbox();
   $("#lightbox").classList.add("show");
 }
@@ -2545,6 +2596,15 @@ function renderLightbox(){
   if(multi)parts.push(`${lbGal.idx+1} / ${lbGal.items.length}`);
   cap.textContent=parts.join("  ·  ");
   cap.style.display=parts.length?"":"none";
+  // Show lineup context info
+  const info=$("#lb-info");
+  if(info){
+    if(lbGal.ctx){
+      let h=`<span class="lb-name">${esc(lbGal.ctx.name||"")}</span>`;
+      if(lbGal.ctx.technique)h+=`<div class="lb-tech">${techIconsHTML(lbGal.ctx.technique,"sm")}</div>`;
+      info.innerHTML=h;
+    }else info.innerHTML="";
+  }
 }
 function lbStep(d){
   if(lbGal.items.length<2)return;
