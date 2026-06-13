@@ -329,8 +329,8 @@
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "Palace",
+          "variant": "From market",
           "land": {
             "x": 63.16,
             "y": 73.15
@@ -345,8 +345,33 @@
               "label": "Stand"
             },
             {
-              "url": "media/mirage/palace_smoke_4.webp",
+              "url": "media/mirage/palace-bkfsv.webp",
               "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "d1fbd90f-7c01-489f-b7b7-f2010fc499a7",
+          "name": "Palace",
+          "type": "smoke",
+          "side": "CT",
+          "technique": "Running + Jumpthrow",
+          "description": "",
+          "target": "Palace",
+          "variant": "From site",
+          "land": {
+            "x": 63.05,
+            "y": 73.36
+          },
+          "throw": {
+            "x": 47.22,
+            "y": 69.27
+          },
+          "media": [
+            {
+              "url": "media/mirage/palace-bktl4.mp4",
+              "label": ""
             }
           ],
           "tips": []
@@ -640,6 +665,33 @@
             }
           ],
           "tips": []
+        },
+        {
+          "id": "f2b5c6cd-ad55-481a-8d2a-d3a587d79985",
+          "name": "Top mid",
+          "type": "molotov",
+          "side": "T",
+          "technique": "Running + Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "land": {
+            "x": 70.5,
+            "y": 41.28
+          },
+          "throw": {
+            "x": 39.15,
+            "y": 41.28
+          },
+          "media": [
+            {
+              "url": "media/mirage/top-mid-bm4ia.mp4",
+              "label": ""
+            }
+          ],
+          "tips": [
+            "Listen to those 4 footsteps before getting stuck with the wall"
+          ]
         }
       ],
       "executes": [
