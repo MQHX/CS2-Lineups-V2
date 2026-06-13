@@ -952,7 +952,7 @@
           "id": "bb8606ea-e6a1-444b-80fb-8c3d5bba76b2",
           "name": "Banana",
           "type": "he",
-          "side": "T",
+          "side": "CT",
           "technique": "Left and right click + Throw",
           "description": "",
           "target": "",
@@ -969,6 +969,64 @@
             {
               "url": "media/inferno/banana-7xl93.mp4",
               "label": ""
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "822c4b36-061e-4b2f-b8a9-c3cbb57a086e",
+          "name": "Banana",
+          "type": "flash",
+          "side": "CT",
+          "technique": "left and right click jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "land": {
+            "x": 52.05,
+            "y": 33.63
+          },
+          "throw": {
+            "x": 60.43,
+            "y": 22.3
+          },
+          "media": [
+            {
+              "url": "media/inferno/banana-i5xhz.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/banana-i62pc.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "banana_smoke_4",
+          "name": "Banana (close to site)",
+          "type": "smoke",
+          "side": "CT",
+          "technique": "Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "land": {
+            "x": 57,
+            "y": 31
+          },
+          "throw": {
+            "x": 89.5,
+            "y": 65.3
+          },
+          "media": [
+            {
+              "url": "media/inferno/banana_9.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/banana_10.webp",
+              "label": "Aim"
             }
           ],
           "tips": []
@@ -1004,16 +1062,16 @@
         },
         {
           "id": "banana_smoke_3",
-          "name": "Banana (WALL)",
+          "name": "Banana (wall)",
           "type": "smoke",
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "BananaW",
+          "variant": "From CT-Spawn",
           "land": {
-            "x": 47.8,
-            "y": 42
+            "x": 48.06,
+            "y": 43.06
           },
           "throw": {
             "x": 92.8,
@@ -1032,29 +1090,145 @@
           "tips": []
         },
         {
-          "id": "banana_smoke_4",
-          "name": "Banana (WALL)",
+          "id": "caf5c7c8-ec8f-4f9a-b6cc-1a688c473c1d",
+          "name": "Banana (wall)",
           "type": "smoke",
+          "side": "CT",
+          "technique": "Left and right click",
+          "description": "",
+          "target": "BananaW",
+          "variant": "From B-Site",
+          "land": {
+            "x": 47.43,
+            "y": 41.91
+          },
+          "throw": {
+            "x": 52.46,
+            "y": 28.28
+          },
+          "media": [
+            {
+              "url": "media/inferno/banana-wall-hxplg.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/banana-wall-hxwyd.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "456f7d65-2e20-4a07-90aa-98fcf48e9a00",
+          "name": "Banana (wall)",
+          "type": "molotov",
           "side": "CT",
           "technique": "Jumpthrow",
           "description": "",
           "target": "",
           "variant": "",
           "land": {
-            "x": 57,
-            "y": 31
+            "x": 47.85,
+            "y": 40.33
           },
           "throw": {
-            "x": 89.5,
-            "y": 65.3
+            "x": 52.25,
+            "y": 15.49
           },
           "media": [
             {
-              "url": "media/inferno/banana_9.webp",
+              "url": "media/inferno/banana-wall-i2n1c.webp",
               "label": "Stand"
             },
             {
-              "url": "media/inferno/banana_10.webp",
+              "url": "media/inferno/banana-wall-i2t43.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "e6b4d0ef-10ff-4558-b1cc-60f79c7dd106",
+          "name": "Car",
+          "type": "molotov",
+          "side": "CT",
+          "technique": "Throw",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "land": {
+            "x": 52.57,
+            "y": 38.34
+          },
+          "throw": {
+            "x": 52.46,
+            "y": 28.28
+          },
+          "media": [
+            {
+              "url": "media/inferno/car-i07q4.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/car-i0dns.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "cfd9796e-64d5-4645-b71e-e2bd32a73092",
+          "name": "Car",
+          "type": "he",
+          "side": "CT",
+          "technique": "Throw",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "land": {
+            "x": 51,
+            "y": 36.04
+          },
+          "throw": {
+            "x": 52.78,
+            "y": 27.75
+          },
+          "media": [
+            {
+              "url": "media/inferno/car-i0rg3.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/car-i0xe2.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "b350b0fa-a121-4885-85cc-902c38f13558",
+          "name": "Car",
+          "type": "flash",
+          "side": "CT",
+          "technique": "Throw",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "land": {
+            "x": 54.46,
+            "y": 35.83
+          },
+          "throw": {
+            "x": 52.36,
+            "y": 15.59
+          },
+          "media": [
+            {
+              "url": "media/inferno/car-i3pjv.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/car-i3w5r.webp",
               "label": "Aim"
             }
           ],
@@ -1201,6 +1375,31 @@
             {
               "url": "media/inferno/dark_2.webp",
               "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "65dee441-624a-4057-ae63-46687e8011dd",
+          "name": "Default",
+          "type": "molotov",
+          "side": "CT",
+          "technique": "Running left and right click Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "land": {
+            "x": 52.99,
+            "y": 19.26
+          },
+          "throw": {
+            "x": 70.29,
+            "y": 19.05
+          },
+          "media": [
+            {
+              "url": "media/inferno/default-hvd0e.mp4",
+              "label": ""
             }
           ],
           "tips": []
@@ -1476,6 +1675,41 @@
           "items": [
             "ct_smoke_1",
             "coffin_smoke"
+          ]
+        },
+        {
+          "id": "cd448522-2b77-475b-9d85-9721ef0e00b7",
+          "name": "Banana retake 1",
+          "side": "CT",
+          "description": "",
+          "media": [
+            {
+              "url": "media/inferno/exec-banana-retake-i76lu.mp4",
+              "label": ""
+            }
+          ],
+          "tips": [],
+          "items": [
+            "caf5c7c8-ec8f-4f9a-b6cc-1a688c473c1d",
+            "e6b4d0ef-10ff-4558-b1cc-60f79c7dd106",
+            "cfd9796e-64d5-4645-b71e-e2bd32a73092"
+          ]
+        },
+        {
+          "id": "f4776a7a-86da-4ed9-afe2-767bf9d776fc",
+          "name": "Banana retake 2",
+          "side": "CT",
+          "description": "",
+          "media": [
+            {
+              "url": "media/inferno/exec-banana-retake-flash-i97eq.mp4",
+              "label": ""
+            }
+          ],
+          "tips": [],
+          "items": [
+            "456f7d65-2e20-4a07-90aa-98fcf48e9a00",
+            "b350b0fa-a121-4885-85cc-902c38f13558"
           ]
         }
       ],
