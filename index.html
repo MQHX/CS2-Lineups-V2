@@ -386,6 +386,20 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 #lb-info:empty{display:none}
 #lb-info .lb-name{font-family:var(--disp);font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
 #lb-info .lb-tech{display:flex;gap:4px;align-items:center}
+
+/* Thumbnail strip below image */
+#lb-strip{display:flex;gap:8px;justify-content:center;padding:4px;flex-wrap:wrap;max-width:90vw}
+#lb-strip:empty{display:none}
+.lb-thumb{width:70px;height:46px;border-radius:6px;overflow:hidden;border:2px solid transparent;cursor:pointer;flex:0 0 auto;background:#000;transition:border-color .12s}
+.lb-thumb:hover{border-color:rgba(240,163,60,.5)}
+.lb-thumb.on{border-color:var(--t)}
+.lb-thumb img,.lb-thumb video{width:100%;height:100%;object-fit:cover}
+
+/* When lightbox is open, collapse cards in the right panel to just headers */
+body.lb-open .lcard-body{display:none}
+body.lb-open .lcard{cursor:pointer}
+body.lb-open .lcard:hover{border-color:var(--t)}
+body.lb-open .lcard.lb-active{border-color:var(--t);background:rgba(240,163,60,.08)}
 #lb-media{display:flex;align-items:center;justify-content:center;min-height:0;flex:0 1 auto;max-width:96vw}
 #lb-media img,#lb-media video,#lb-media canvas{max-width:96vw;max-height:82vh;border-radius:8px;display:block}
 #lb-bar{display:flex;align-items:center;gap:12px;background:var(--bg1);border:1px solid var(--line);border-radius:99px;padding:8px 16px;max-width:96vw}
@@ -480,6 +494,7 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
   <button class="lb-nav" id="lb-next">›</button>
   <div id="lb-media"></div>
   <div id="lb-info"></div>
+  <div id="lb-strip"></div>
   <div id="lb-cap"></div>
   <div id="lb-bar" class="hidden">
     <button id="lb-play">▶</button>
@@ -697,6 +712,8 @@ en:{
   uploadHint:"Upload .png .jpg .gif .mp4 .webm — goes straight to GitHub. Configure Publish first.",
   videoLabel:"Execute video (mp4 / gif / png)",videoHint:"One video showing the whole execute. Use Upload above, or paste a URL.",
   target:"Target",targetPh:"e.g. Banana smoke",
+  cluster:"Cluster",clusterPh:"e.g. banana-utils",
+  clusterHint:"Optional. Lineups/instas with the same Cluster value will be stacked into one map marker.",
   sortAZ:"A → Z",sortedAZ:"Sorted alphabetically",
   instas:"Instas",newInsta:"+ New insta",edInsta:"Edit insta",
   instaHint:"One image showing all insta spots from spawn.",
@@ -780,6 +797,8 @@ fr:{
   uploadHint:"Importe .png .jpg .gif .mp4 .webm — direct sur GitHub. Configure d'abord la publication.",
   videoLabel:"Vidéo de l'execute (mp4 / gif / png)",videoHint:"Une vidéo qui montre tout l'execute. Utilise Importer ci-dessus, ou colle une URL.",
   target:"Cible",targetPh:"ex: Smoke banane",
+  cluster:"Cluster",clusterPh:"ex: utils-banane",
+  clusterHint:"Optionnel. Les lineups/instas avec le même Cluster sont empilés sur un seul marqueur de map.",
   sortAZ:"A → Z",sortedAZ:"Trié alphabétiquement",
   instas:"Instas",newInsta:"+ Nouvel insta",edInsta:"Modifier insta",
   instaHint:"Une image qui montre tous les instas depuis le spawn.",
@@ -833,6 +852,7 @@ function normLineup(l){
     technique:l.technique||"", description:l.description||"",
     target:typeof l.target==="string"?l.target.trim():"",
     variant:typeof l.variant==="string"?l.variant.trim():"",
+    cluster:typeof l.cluster==="string"?l.cluster.trim():"",
     land:{x:num(l.land?.x,50),y:num(l.land?.y,50)},
     throw:{x:num(l.throw?.x,50),y:num(l.throw?.y,60)},
     media:Array.isArray(l.media)?l.media.filter(m=>m&&m.url).map(m=>({url:m.url,label:m.label||""})):[],
@@ -861,6 +881,7 @@ function normInsta(n){
     image:typeof n.image==="string"?n.image.trim():"",
     target:typeof n.target==="string"?n.target.trim():"",
     variant:typeof n.variant==="string"?n.variant.trim():"",
+    cluster:typeof n.cluster==="string"?n.cluster.trim():"",
     land:{x:num(n.land?.x,50),y:num(n.land?.y,50)},
     throw:{x:num(n.throw?.x,50),y:num(n.throw?.y,60)}};
 }
@@ -1386,12 +1407,13 @@ function renderMarkers(){
       if(opened)activeVariant=opened;
     }
     const l=activeVariant;
-    const selected=variants.some(v=>state.openIds.includes(v.id));
+    const selected=!!order||variants.some(v=>state.openIds.includes(v.id));
     const c=TYPES[l.type].color;
     const mk=document.createElement("button");
     mk.className="mk"+(selected?" sel":"");
     mk.style.setProperty("--c",c);
     mk.style.left=l.land.x+"%"; mk.style.top=l.land.y+"%";
+    if(l.cluster)mk.dataset.cluster=l.cluster.toLowerCase();
     mk.title=l.name+(variants.length>1?` (${variants.length} variantes)`:"");
     mk.innerHTML=`<span class="diamond"></span>${ICONS[l.type]}`;
     if(variants.length>1&&!order){
@@ -1461,33 +1483,31 @@ function renderMarkers(){
     });
   }
 
-  // Post-process: stack overlapping markers (within 2% distance on map)
+  // Post-process: stack markers that share an explicit "cluster" value (manual grouping)
   const mks=[...box.querySelectorAll(".mk:not(.mk-throw)")];
-  const THRESH=2.5; // percent
-  const stacked=new Set();
-  for(let i=0;i<mks.length;i++){
-    if(stacked.has(i))continue;
-    const x1=parseFloat(mks[i].style.left),y1=parseFloat(mks[i].style.top);
-    const cluster=[i];
-    for(let j=i+1;j<mks.length;j++){
-      if(stacked.has(j))continue;
-      const x2=parseFloat(mks[j].style.left),y2=parseFloat(mks[j].style.top);
-      if(Math.abs(x1-x2)<THRESH&&Math.abs(y1-y2)<THRESH)cluster.push(j);
-    }
-    if(cluster.length>1){
-      const wrap=document.createElement("div");
-      wrap.className="mk-stack";
-      wrap.style.left=x1+"%";wrap.style.top=y1+"%";
-      const anySel=cluster.some(idx=>mks[idx].classList.contains("sel"));
-      if(anySel)wrap.classList.add("sel-stack");
-      cluster.forEach(idx=>{
-        stacked.add(idx);
-        mks[idx].style.left="0";mks[idx].style.top="0";
-        wrap.appendChild(mks[idx]);
-      });
-      box.appendChild(wrap);
-    }
-  }
+  const byCluster=new Map();
+  mks.forEach((mk,i)=>{
+    const c=mk.dataset.cluster;
+    if(!c)return;
+    if(!byCluster.has(c))byCluster.set(c,[]);
+    byCluster.get(c).push(i);
+  });
+  byCluster.forEach(idxs=>{
+    if(idxs.length<2)return;
+    // Stack at the position of the first marker
+    const first=mks[idxs[0]];
+    const x=parseFloat(first.style.left),y=parseFloat(first.style.top);
+    const wrap=document.createElement("div");
+    wrap.className="mk-stack";
+    wrap.style.left=x+"%";wrap.style.top=y+"%";
+    const anySel=idxs.some(idx=>mks[idx].classList.contains("sel"));
+    if(anySel)wrap.classList.add("sel-stack");
+    idxs.forEach(idx=>{
+      mks[idx].style.left="0";mks[idx].style.top="0";
+      wrap.appendChild(mks[idx]);
+    });
+    box.appendChild(wrap);
+  });
 
   renderSelectedTraj();
 }
@@ -1588,6 +1608,12 @@ function renderPanel(){
     panel.querySelectorAll(".lcard").forEach(card=>{
       const id=card.dataset.id;
       const l=findItem(id);
+      // When lightbox is open, clicking a card switches the lightbox to that lineup
+      card.addEventListener("click",e=>{
+        if(!document.body.classList.contains("lb-open"))return;
+        if(e.target.closest(".lcard-close,.lcard-toggle,.var-tab,.media-item"))return;
+        if(l&&l.media&&l.media.length)openLightbox(l.media,0,{id:l.id,name:l.name,technique:l.technique||""});
+      });
       card.querySelector(".lcard-close").addEventListener("click",e=>{
         e.stopPropagation();
         state.openIds=state.openIds.filter(x=>x!==id);state.collapsedCards.delete(id);renderAll();
@@ -1598,7 +1624,7 @@ function renderPanel(){
         else state.collapsedCards.add(id);
         renderAll();
       });
-      if(l)card.querySelectorAll(".media-item").forEach((el,i)=>el.addEventListener("click",()=>openLightbox(l.media,i,{name:l.name,technique:l.technique||""})));
+      if(l)card.querySelectorAll(".media-item").forEach((el,i)=>el.addEventListener("click",()=>openLightbox(l.media,i,{id:l.id,name:l.name,technique:l.technique||""})));
       card.querySelectorAll(".var-tab").forEach(tab=>tab.addEventListener("click",e=>{
         e.stopPropagation();
         const vid=tab.dataset.var;
@@ -2143,6 +2169,11 @@ function renderLineupForm(panel,md){
       </div>
       <div class="f-hint" style="margin-top:-2px">${esc(t("variantHint"))}</div>
 
+      <label class="f-label">${esc(t("cluster"))}</label>
+      <input id="f-cluster" value="${esc(l.cluster)}" placeholder="${esc(t("clusterPh"))}" list="cluster-suggest">
+      <datalist id="cluster-suggest">${[...new Set([...mapData().lineups.map(x=>x.cluster),...(mapData().instas||[]).map(x=>x.cluster)].filter(Boolean))].map(v=>`<option value="${esc(v)}">`).join("")}</datalist>
+      <div class="f-hint">${esc(t("clusterHint"))}</div>
+
       <label class="f-label">${esc(t("type"))}</label>
       <div class="seg" id="f-type">${Object.entries(TYPES).map(([k,ty])=>`<button data-v="${k}" class="${l.type===k?"on":""}">${ty.label}</button>`).join("")}</div>
 
@@ -2192,6 +2223,7 @@ function renderLineupForm(panel,md){
     l.name=$("#f-name").value.trim()||"Unnamed";
     l.target=$("#f-target").value.trim();
     l.variant=$("#f-variant").value.trim();
+    l.cluster=$("#f-cluster").value.trim();
     l.technique=$("#f-tech").value.trim();
     l.description=$("#f-desc").value;
     l.media=$$("#f-media .sub-row").map(r=>({url:r.querySelector(".m-url").value.trim(),label:r.querySelector(".m-cap").value.trim()})).filter(m=>m.url);
@@ -2201,7 +2233,7 @@ function renderLineupForm(panel,md){
   $("#ed-back").addEventListener("click",()=>{commit();state.editingId=null;state.placing=null;$("#mapwrap").classList.remove("placing");renderAll();});
   $("#f-done").addEventListener("click",()=>{commit();state.editingId=null;state.placing=null;$("#mapwrap").classList.remove("placing");toast(t("tLineupSaved"));renderAll();});
   $("#f-del").addEventListener("click",()=>confirmBox(t("delLineupT"),`« ${l.name} » — ${t("delLineupM")}`,()=>deleteLineup(l.id)));
-  ["#f-name","#f-target","#f-variant","#f-tech","#f-desc"].forEach(s=>$(s).addEventListener("change",commit));
+  ["#f-name","#f-target","#f-variant","#f-cluster","#f-tech","#f-desc"].forEach(s=>$(s).addEventListener("change",commit));
   $("#f-tech").addEventListener("input",e=>{const pv=$("#f-tech-preview");if(pv)pv.innerHTML=techIconsHTML(e.target.value);});
   $("#f-type").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;l.type=b.dataset.v;commit();renderAll();});
   $("#f-side").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;l.side=b.dataset.v;commit();renderAll();});
@@ -2237,6 +2269,11 @@ function renderInstaForm(panel,md){
         </div>
       </div>
       <div class="f-hint" style="margin-top:-2px">${esc(t("variantHint"))}</div>
+
+      <label class="f-label">${esc(t("cluster"))}</label>
+      <input id="n-cluster" value="${esc(n.cluster)}" placeholder="${esc(t("clusterPh"))}" list="cluster-suggest-n">
+      <datalist id="cluster-suggest-n">${[...new Set([...mapData().lineups.map(x=>x.cluster),...(mapData().instas||[]).map(x=>x.cluster)].filter(Boolean))].map(v=>`<option value="${esc(v)}">`).join("")}</datalist>
+      <div class="f-hint">${esc(t("clusterHint"))}</div>
 
       <label class="f-label">${esc(t("side"))}</label>
       <div class="seg" id="n-side">
@@ -2275,6 +2312,7 @@ function renderInstaForm(panel,md){
     n.name=$("#n-name").value.trim()||"Insta";
     n.target=$("#n-target").value.trim();
     n.variant=$("#n-variant").value.trim();
+    n.cluster=$("#n-cluster").value.trim();
     const urlInput=$("#n-image-url");
     if(urlInput)n.image=urlInput.value.trim();
     n.description=$("#n-desc").value;
@@ -2286,7 +2324,7 @@ function renderInstaForm(panel,md){
     md.instas=md.instas.filter(x=>x.id!==n.id);
     state.editingInstaId=null;save();toast(t("tInstaDel"));renderAll();
   }));
-  ["#n-name","#n-target","#n-variant","#n-desc"].forEach(s=>$(s).addEventListener("change",commit));
+  ["#n-name","#n-target","#n-variant","#n-cluster","#n-desc"].forEach(s=>$(s).addEventListener("change",commit));
   const urlInput=$("#n-image-url");if(urlInput)urlInput.addEventListener("change",commit);
   $("#n-side").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;n.side=b.dataset.v;commit();renderAll();});
   $("#n-place-land").addEventListener("click",()=>togglePlacing("land"));
@@ -2557,6 +2595,13 @@ function openLightbox(items,idx=0,ctx=null){
   lbGal={items,idx:Math.max(0,Math.min(idx,items.length-1)),ctx};
   renderLightbox();
   $("#lightbox").classList.add("show");
+  document.body.classList.add("lb-open");
+  // Mark the active card in the right panel
+  if(ctx&&ctx.id){
+    document.querySelectorAll(".lcard").forEach(c=>{
+      c.classList.toggle("lb-active",c.dataset.id===ctx.id);
+    });
+  }
 }
 function renderLightbox(){
   const m=lbGal.items[lbGal.idx];
@@ -2605,6 +2650,23 @@ function renderLightbox(){
       info.innerHTML=h;
     }else info.innerHTML="";
   }
+  // Generate thumbnail strip (only if more than 1 item)
+  const strip=$("#lb-strip");
+  if(strip){
+    if(lbGal.items.length>1){
+      strip.innerHTML=lbGal.items.map((m,i)=>{
+        const inner=isVideo(m.url)
+          ?`<video src="${esc(m.url)}" muted></video>`
+          :`<img src="${esc(m.url)}" alt="" loading="lazy">`;
+        return `<div class="lb-thumb ${i===lbGal.idx?"on":""}" data-idx="${i}">${inner}</div>`;
+      }).join("");
+      strip.querySelectorAll(".lb-thumb").forEach(t=>t.addEventListener("click",e=>{
+        e.stopPropagation();
+        const i=+t.dataset.idx;
+        if(i!==lbGal.idx){lbGal.idx=i;renderLightbox();}
+      }));
+    }else strip.innerHTML="";
+  }
 }
 function lbStep(d){
   if(lbGal.items.length<2)return;
@@ -2616,6 +2678,8 @@ function closeLightbox(){
   const v=$("#lb-media video");if(v)v.pause();
   $("#lightbox").classList.remove("show");
   $("#lb-media").innerHTML="";
+  document.body.classList.remove("lb-open");
+  document.querySelectorAll(".lcard.lb-active").forEach(c=>c.classList.remove("lb-active"));
 }
 $("#lb-close").addEventListener("click",closeLightbox);
 $("#lb-prev").addEventListener("click",e=>{e.stopPropagation();lbStep(-1);});
