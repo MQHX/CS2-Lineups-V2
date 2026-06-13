@@ -226,15 +226,17 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 
 /* throw-technique icon chips */
 .tk-row{display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap}
-.tk-block{display:flex;flex-direction:column;gap:4px}
+.tk-block{display:flex;flex-direction:column;gap:5px}
 .tk-row{display:inline-flex;gap:4px;flex-wrap:wrap;align-items:center}
 .tk{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;
   background:#1A1E25;color:#E8ECF2;border:none}
 .tk svg{width:20px;height:20px}
 .tk-sm .tk{width:22px;height:22px;border-radius:4px}
 .tk-sm .tk svg{width:14px;height:14px}
+.tk-label{display:inline-block;padding:5px 10px;border-radius:6px;background:#1A1E25;color:#E8ECF2;
+  font-family:var(--disp);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:capitalize}
 .tk-note{font-family:var(--mono);font-size:10.5px;color:var(--mut);margin-left:2px}
-.tk-sm .tk-note{display:none}
+.tk-sm .tk-note{font-size:10px}
 .tech-preview{margin-top:8px;min-height:32px}
 .tech-preview:empty{display:none}
 
@@ -507,42 +509,34 @@ const ICONS={
    is split on "+" and each part matched to a token below. Anything
    in (parentheses) is kept as a small text note. */
 /* ---- Technique system (csnades.gg style) ---- */
-/* Two categories: MOVEMENT (row 1) and THROW (row 2) */
+/* Row 1 = CLICK (icons: mouse + optional jump arrow) */
+/* Row 2 = MOVEMENT (text label only: Stationary, Running, Walking, Wtap, Crouched) */
+
+const MOUSE_LEFT=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v2.5"/><path d="M5.5 10.5a6.5 6.5 0 0 1 13 0v5.5a6.5 6.5 0 0 1-13 0z"/><line x1="12" y1="4.5" x2="12" y2="10.5"/><line x1="5.5" y1="10.5" x2="18.5" y2="10.5"/><rect x="5.5" y="4.5" width="6.5" height="6" rx="3.25" fill="currentColor" stroke="none" opacity=".55"/></svg>`;
+const MOUSE_RIGHT=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v2.5"/><path d="M5.5 10.5a6.5 6.5 0 0 1 13 0v5.5a6.5 6.5 0 0 1-13 0z"/><line x1="12" y1="4.5" x2="12" y2="10.5"/><line x1="5.5" y1="10.5" x2="18.5" y2="10.5"/><rect x="12" y="4.5" width="6.5" height="6" rx="3.25" fill="currentColor" stroke="none" opacity=".55"/></svg>`;
+const MOUSE_LR=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v2.5"/><path d="M5.5 10.5a6.5 6.5 0 0 1 13 0v5.5a6.5 6.5 0 0 1-13 0z"/><line x1="12" y1="4.5" x2="12" y2="10.5"/><line x1="5.5" y1="10.5" x2="18.5" y2="10.5"/><rect x="5.5" y="4.5" width="6.5" height="6" rx="3.25" fill="currentColor" stroke="none" opacity=".55"/><rect x="12" y="4.5" width="6.5" height="6" rx="3.25" fill="currentColor" stroke="none" opacity=".55"/></svg>`;
+const MOUSE_PLAIN=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v2.5"/><path d="M5.5 10.5a6.5 6.5 0 0 1 13 0v5.5a6.5 6.5 0 0 1-13 0z"/><line x1="12" y1="4.5" x2="12" y2="10.5"/><line x1="5.5" y1="10.5" x2="18.5" y2="10.5"/></svg>`;
+const JUMP_ARROW=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20V6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M6 12l6-8 6 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+/* Click tokens (shown as icons in row 1) */
+const TECH_CLICK=[
+  {id:"jump", test:p=>/jump ?throw|jumpthrow/.test(p), svg:JUMP_ARROW, en:"Jumpthrow",fr:"Jumpthrow"},
+  {id:"lr",   test:p=>/left and right|both click|left ?\+ ?right/.test(p), svg:MOUSE_LR, en:"Left + right click",fr:"Clic G+D"},
+  {id:"right",test:p=>/right click|rightclick/.test(p), svg:MOUSE_RIGHT, en:"Right click",fr:"Clic droit"},
+  {id:"left", test:p=>/left click|leftclick/.test(p), svg:MOUSE_LEFT, en:"Left click",fr:"Clic gauche"},
+  {id:"throw",test:p=>/\bthrow\b/.test(p), svg:MOUSE_LEFT, en:"Throw",fr:"Lancer"},
+];
+
+/* Movement tokens (shown as text labels in row 2) */
 const TECH_MOVE=[
-  {id:"stand", test:p=>/stationary|standing|stand|still/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="4.5" r="2.5"/><path d="M12 8v7"/><path d="M12 9L8.5 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 9l3.5 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 15l-3 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 15l3 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`,
-    en:"Stationary",fr:"Immobile"},
-  {id:"crouch",test:p=>/crouch|duck/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><circle cx="10" cy="4.5" r="2.5"/><path d="M10 8l2 5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 13l-4 5h3l1 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 13l3 4-2 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-    en:"Crouched",fr:"Accroupi"},
-  {id:"walk",  test:p=>/walk|shift/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="4" r="2.5"/><path d="M12 7.5v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 8.5L8.5 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 8.5l3.5 2.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 12.5l-2.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 12.5l3.5 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 21h3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/><path d="M17 21h3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg>`,
-    en:"Walk",fr:"Marcher"},
-  {id:"run",   test:p=>/run|running/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><circle cx="14" cy="4" r="2.5"/><path d="M14 7l-4 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 8l4-1.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 8.5l-4 1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 13l-4 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 13l5 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M2 9h4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".5"/><path d="M1 13h5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".5"/><path d="M2 17h4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".5"/></svg>`,
-    en:"Run",fr:"Courir"},
-  {id:"w",     test:p=>/^w$|\bw\b|forward|move forward/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3.5"/><text x="12" y="17" text-anchor="middle" fill="currentColor" stroke="none" font-family="sans-serif" font-weight="bold" font-size="14">W</text></svg>`,
-    en:"Hold W",fr:"Touche W"},
+  {id:"stand", test:p=>/stationary|standing|stand|still/.test(p), en:"Stationary",fr:"Immobile"},
+  {id:"crouch",test:p=>/crouch|duck/.test(p), en:"Crouched",fr:"Accroupi"},
+  {id:"walk",  test:p=>/walk|shift/.test(p), en:"Walking",fr:"Marcher"},
+  {id:"run",   test:p=>/run|running/.test(p), en:"Running",fr:"Courir"},
+  {id:"w",     test:p=>/wtap|w tap|\bw\b|forward/.test(p), en:"Wtap",fr:"Wtap"},
 ];
-const TECH_THROW=[
-  {id:"jump",  test:p=>/jump ?throw|jumpthrow/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20V6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M6 12l6-8 6 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-    en:"Jumpthrow",fr:"Jumpthrow"},
-  {id:"lr",   test:p=>/left and right|both click|left ?\+ ?right/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v2.5"/><path d="M5.5 10.5a6.5 6.5 0 0 1 13 0v5.5a6.5 6.5 0 0 1-13 0z"/><line x1="12" y1="4.5" x2="12" y2="10.5"/><line x1="5.5" y1="10.5" x2="18.5" y2="10.5"/><rect x="5.5" y="4.5" width="6.5" height="6" rx="3.25" fill="currentColor" stroke="none" opacity=".6"/><rect x="12" y="4.5" width="6.5" height="6" rx="3.25" fill="currentColor" stroke="none" opacity=".6"/></svg>`,
-    en:"Left + right click",fr:"Clic gauche + droit"},
-  {id:"right", test:p=>/right click|rightclick/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v2.5"/><path d="M5.5 10.5a6.5 6.5 0 0 1 13 0v5.5a6.5 6.5 0 0 1-13 0z"/><line x1="12" y1="4.5" x2="12" y2="10.5"/><line x1="5.5" y1="10.5" x2="18.5" y2="10.5"/><rect x="12" y="4.5" width="6.5" height="6" rx="3.25" fill="currentColor" stroke="none" opacity=".6"/></svg>`,
-    en:"Right click",fr:"Clic droit"},
-  {id:"left",  test:p=>/left click|leftclick/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v2.5"/><path d="M5.5 10.5a6.5 6.5 0 0 1 13 0v5.5a6.5 6.5 0 0 1-13 0z"/><line x1="12" y1="4.5" x2="12" y2="10.5"/><line x1="5.5" y1="10.5" x2="18.5" y2="10.5"/><rect x="5.5" y="4.5" width="6.5" height="6" rx="3.25" fill="currentColor" stroke="none" opacity=".6"/></svg>`,
-    en:"Left click",fr:"Clic gauche"},
-  {id:"throw", test:p=>/\bthrow\b/.test(p),
-    svg:`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v2.5"/><path d="M5.5 10.5a6.5 6.5 0 0 1 13 0v5.5a6.5 6.5 0 0 1-13 0z"/><line x1="12" y1="4.5" x2="12" y2="10.5"/><line x1="5.5" y1="10.5" x2="18.5" y2="10.5"/></svg>`,
-    en:"Throw",fr:"Lancer"},
-];
-const TECH_TOKENS=[...TECH_MOVE,...TECH_THROW];
+
+const TECH_TOKENS=[...TECH_CLICK,...TECH_MOVE];
 const STRIP_RE={};
 TECH_TOKENS.forEach(tk=>{
   const src=tk.test.toString();
@@ -566,28 +560,47 @@ function parseTech(str){
     }
     if(!matchedAny&&part&&!note)note=part;
   }
+  // Implicit: jumpthrow or throw always needs a mouse click shown
+  const hasClick=tokens.some(t=>["lr","left","right","throw"].includes(t.id));
+  if(!hasClick&&tokens.some(t=>t.id==="jump")){
+    // Jumpthrow → add left click
+    const lc=TECH_CLICK.find(t=>t.id==="left");if(lc)add(lc);
+  }
+  if(!hasClick&&!tokens.some(t=>t.id==="jump")&&tokens.length>0){
+    // Has movement but no click at all → add left click (default throw)
+    const lc=TECH_CLICK.find(t=>t.id==="left");if(lc)add(lc);
+  }
+  // If only click tokens and no movement → add stationary
+  const clickIds=new Set(TECH_CLICK.map(t=>t.id));
+  const hasMoveToken=tokens.some(t=>!clickIds.has(t.id));
+  if(tokens.length>0&&!hasMoveToken){
+    const st=TECH_MOVE.find(t=>t.id==="stand");if(st)add(st);
+  }
   return {tokens,note};
 }
 function techIconsHTML(str,size="md"){
   try{
     const {tokens,note}=parseTech(str);
     if(!tokens.length&&!note) return "";
-    const moveIds=new Set(TECH_MOVE.map(t=>t.id));
-    const moveTokens=tokens.filter(t=>moveIds.has(t.id));
-    const throwTokens=tokens.filter(t=>!moveIds.has(t.id));
+    const clickIds=new Set(TECH_CLICK.map(t=>t.id));
+    const clickTokens=tokens.filter(t=>clickIds.has(t.id));
+    const moveTokens=tokens.filter(t=>!clickIds.has(t.id));
     const chip=tk=>{
       const lbl=esc(LANG==="fr"?tk.fr:tk.en);
-      return `<span class="tk" title="${lbl}" aria-label="${lbl}">${tk.svg}</span>`;
+      return `<span class="tk" title="${lbl}">${tk.svg}</span>`;
     };
-    const cls=size==="sm"?"tk-sm":"";
+    const moveLbl=tk=>{
+      const lbl=LANG==="fr"?tk.fr:tk.en;
+      return `<span class="tk-label">${esc(lbl)}</span>`;
+    };
     if(size==="sm"){
-      // Compact: single row
-      return `<span class="tk-row tk-sm">${tokens.map(chip).join("")}${note?`<span class="tk-note">${esc(note)}</span>`:""}</span>`;
+      // Compact: icons only, single row
+      const labels=moveTokens.map(tk=>LANG==="fr"?tk.fr:tk.en).join(" · ");
+      return `<span class="tk-row tk-sm">${clickTokens.map(chip).join("")}${labels?`<span class="tk-note">${esc(labels)}</span>`:""}</span>`;
     }
-    // Full: two rows
     let html="";
-    if(moveTokens.length) html+=`<div class="tk-row ${cls}">${moveTokens.map(chip).join("")}</div>`;
-    if(throwTokens.length) html+=`<div class="tk-row ${cls}">${throwTokens.map(chip).join("")}</div>`;
+    if(clickTokens.length) html+=`<div class="tk-row">${clickTokens.map(chip).join("")}</div>`;
+    if(moveTokens.length) html+=`<div class="tk-row">${moveTokens.map(moveLbl).join("")}</div>`;
     if(note) html+=`<span class="tk-note">${esc(note)}</span>`;
     return `<div class="tk-block">${html}</div>`;
   }catch(e){return `<span class="tk-note">${esc(str)}</span>`;}
