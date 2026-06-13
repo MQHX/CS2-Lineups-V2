@@ -640,31 +640,6 @@
             }
           ],
           "tips": []
-        },
-        {
-          "id": "window_insta",
-          "name": "Window (T spawn (Insta))",
-          "type": "smoke",
-          "side": "T",
-          "technique": "W + Jumpthrow",
-          "description": "",
-          "target": "Window",
-          "variant": "Insta",
-          "land": {
-            "x": 38.1,
-            "y": 41
-          },
-          "throw": {
-            "x": 84.6,
-            "y": 32.8
-          },
-          "media": [
-            {
-              "url": "media/mirage/window_insta.webp",
-              "label": "Stand"
-            }
-          ],
-          "tips": []
         }
       ],
       "executes": [
@@ -730,7 +705,17 @@
           "name": "Window",
           "side": "T",
           "description": "",
-          "image": "media/mirage/insta-window-kuggn.webp"
+          "image": "media/mirage/insta-window-kuggn.webp",
+          "target": "Window",
+          "variant": "Insta",
+          "land": {
+            "x": 38,
+            "y": 41.07
+          },
+          "throw": {
+            "x": 84.44,
+            "y": 31.84
+          }
         }
       ],
       "drawings": []
@@ -1474,7 +1459,17 @@
           "name": "Mid",
           "side": "CT",
           "description": "",
-          "image": "media/inferno/insta-mid-kvms4.webp"
+          "image": "media/inferno/insta-mid-kvms4.webp",
+          "target": "",
+          "variant": "",
+          "land": {
+            "x": 50,
+            "y": 50
+          },
+          "throw": {
+            "x": 50,
+            "y": 60
+          }
         }
       ],
       "drawings": []
@@ -2879,7 +2874,17 @@
           "name": "Elbow",
           "side": "CT",
           "description": "",
-          "image": "media/ancient/insta-elbow-kwpve.webp"
+          "image": "media/ancient/insta-elbow-kwpve.webp",
+          "target": "",
+          "variant": "",
+          "land": {
+            "x": 50,
+            "y": 50
+          },
+          "throw": {
+            "x": 50,
+            "y": 60
+          }
         }
       ],
       "drawings": []
@@ -3704,21 +3709,51 @@
           "name": "Connector",
           "side": "T",
           "description": "",
-          "image": "media/train/insta-connector-kxj2z.webp"
+          "image": "media/train/insta-connector-kxj2z.webp",
+          "target": "",
+          "variant": "",
+          "land": {
+            "x": 50,
+            "y": 50
+          },
+          "throw": {
+            "x": 50,
+            "y": 60
+          }
         },
         {
           "id": "1805cb06-4407-4e4b-a9d7-41f8aa1e2436",
           "name": "Sandwich",
           "side": "T",
           "description": "",
-          "image": "media/train/insta-sandwich-kxqsm.webp"
+          "image": "media/train/insta-sandwich-kxqsm.webp",
+          "target": "",
+          "variant": "",
+          "land": {
+            "x": 50,
+            "y": 50
+          },
+          "throw": {
+            "x": 50,
+            "y": 60
+          }
         },
         {
           "id": "6dbd54c6-b60a-4b8f-839e-b026bb326134",
           "name": "Camera",
           "side": "T",
           "description": "",
-          "image": "media/train/insta-camera-kybis.webp"
+          "image": "media/train/insta-camera-kybis.webp",
+          "target": "",
+          "variant": "",
+          "land": {
+            "x": 50,
+            "y": 50
+          },
+          "throw": {
+            "x": 50,
+            "y": 60
+          }
         }
       ],
       "drawings": []
