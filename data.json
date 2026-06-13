@@ -721,20 +721,18 @@
             "b_short",
             "b_door"
           ]
-        },
-        {
-          "id": "window_insta_2",
-          "name": "Insta window",
-          "side": "T",
-          "description": "",
-          "media": [],
-          "tips": [],
-          "items": [
-            "window_insta"
-          ]
         }
       ],
       "strats": [],
+      "instas": [
+        {
+          "id": "8840b01d-9016-4005-8cf3-957b0b45df79",
+          "name": "Window",
+          "side": "T",
+          "description": "",
+          "image": "media/mirage/insta-window-kuggn.webp"
+        }
+      ],
       "drawings": []
     },
     "inferno": {
@@ -1467,20 +1465,18 @@
             "ct_smoke_1",
             "coffin_smoke"
           ]
-        },
-        {
-          "id": "mid_insta",
-          "name": "Mid insta",
-          "side": "CT",
-          "description": "",
-          "media": [],
-          "tips": [],
-          "items": [
-            "mid_insta_smoke"
-          ]
         }
       ],
       "strats": [],
+      "instas": [
+        {
+          "id": "7aa79a81-a82d-4f46-9ff8-c4239123931f",
+          "name": "Mid",
+          "side": "CT",
+          "description": "",
+          "image": "media/inferno/insta-mid-kvms4.webp"
+        }
+      ],
       "drawings": []
     },
     "overpass": {
@@ -2239,6 +2235,7 @@
         }
       ],
       "strats": [],
+      "instas": [],
       "drawings": []
     },
     "nuke": {
@@ -2515,6 +2512,7 @@
         }
       ],
       "strats": [],
+      "instas": [],
       "drawings": []
     },
     "ancient": {
@@ -2875,12 +2873,22 @@
         }
       ],
       "strats": [],
+      "instas": [
+        {
+          "id": "58bb71b3-39e5-4dfb-95e8-5bf810741541",
+          "name": "Elbow",
+          "side": "CT",
+          "description": "",
+          "image": "media/ancient/insta-elbow-kwpve.webp"
+        }
+      ],
       "drawings": []
     },
     "anubis": {
       "lineups": [],
       "executes": [],
       "strats": [],
+      "instas": [],
       "drawings": []
     },
     "dust2": {
@@ -3332,6 +3340,7 @@
         }
       ],
       "strats": [],
+      "instas": [],
       "drawings": []
     },
     "train": {
@@ -3686,28 +3695,39 @@
             "b_pop",
             "con_molly"
           ]
-        },
-        {
-          "id": "instas_train",
-          "name": "Camera/Sandwich/Connector Instas",
-          "side": "T",
-          "description": "",
-          "media": [],
-          "tips": [],
-          "items": [
-            "insta_camera",
-            "insta_sandwich",
-            "insta_connector"
-          ]
         }
       ],
       "strats": [],
+      "instas": [
+        {
+          "id": "566ff5c3-544e-46a8-97c8-84bec5a5cfd8",
+          "name": "Connector",
+          "side": "T",
+          "description": "",
+          "image": "media/train/insta-connector-kxj2z.webp"
+        },
+        {
+          "id": "1805cb06-4407-4e4b-a9d7-41f8aa1e2436",
+          "name": "Sandwich",
+          "side": "T",
+          "description": "",
+          "image": "media/train/insta-sandwich-kxqsm.webp"
+        },
+        {
+          "id": "6dbd54c6-b60a-4b8f-839e-b026bb326134",
+          "name": "Camera",
+          "side": "T",
+          "description": "",
+          "image": "media/train/insta-camera-kybis.webp"
+        }
+      ],
       "drawings": []
     },
     "vertigo": {
       "lineups": [],
       "executes": [],
       "strats": [],
+      "instas": [],
       "drawings": []
     }
   }
