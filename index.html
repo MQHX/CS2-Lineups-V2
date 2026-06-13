@@ -51,6 +51,8 @@ header{height:54px;display:flex;align-items:center;gap:14px;padding:0 18px;borde
 .btn-amber{background:var(--t);border-color:var(--t);color:#1A1206}
 .btn-amber:hover{background:#F7B257;border-color:#F7B257}
 .btn-ghost{background:transparent}
+.btn-flag{padding:5px 8px;display:flex;align-items:center;justify-content:center;border-radius:4px;overflow:hidden}
+.btn-flag svg{display:block;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.15)}
 .btn-danger{color:var(--danger);border-color:rgba(255,92,92,.4)}
 .btn-danger:hover{background:rgba(255,92,92,.1);border-color:var(--danger)}
 .btn-sm{padding:5px 10px;font-size:11.5px}
@@ -392,7 +394,7 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
   <button class="brand" id="brand">CS2<b>/</b>LINEUPS</button>
   <span class="hdr-map" id="hdr-map"></span>
   <span class="hdr-spacer"></span>
-  <button class="btn btn-ghost btn-sm" id="btn-lang">FR</button>
+  <button class="btn btn-ghost btn-sm btn-flag" id="btn-lang" title="Change language"></button>
   <button class="btn btn-ghost" id="btn-home" style="display:none">← Maps</button>
   <button class="btn" id="btn-edit" style="display:none"></button>
 </header>
@@ -584,8 +586,8 @@ en:{
   showAll:"✕ Show all",
   briefing:"Briefing",
   briefEmpty:"This map is empty. Open the editor (top right) to create your first lineup.",
-  briefText:"Click a marker on the map to open the full lineup. Hover a marker to preview the trajectory.",
-  briefExec:"Click an execute on the left to open the full step-by-step briefing.",
+  briefText:"Click a marker to open its lineup card. Click an execute or insta on the left panel to view it here.",
+  briefExec:"",
   briefStrat:"Click a zone on the map or a strategy on the left to see what to do.",
   howto:"How to",tips:"Tips",zone:"Zone",linked:"Utility & executes",
   openBriefing:"⤢ Open full briefing",steps:"steps",utils:"utils",
@@ -667,8 +669,8 @@ fr:{
   showAll:"✕ Tout afficher",
   briefing:"Briefing",
   briefEmpty:"Cette map est vide. Ouvre l'éditeur (en haut à droite) pour créer ton premier lineup.",
-  briefText:"Clique sur un marqueur pour ouvrir la fiche complète. Survole un marqueur pour voir la trajectoire.",
-  briefExec:"Clique sur un execute à gauche pour ouvrir le briefing complet, étape par étape.",
+  briefText:"Clique sur un marqueur pour ouvrir sa fiche. Clique sur un execute ou insta dans le panneau de gauche pour le voir ici.",
+  briefExec:"",
   briefStrat:"Clique sur une zone de la map ou une stratégie à gauche pour voir quoi faire.",
   howto:"How to",tips:"Tips",zone:"Zone",linked:"Utilitaires & executes",
   openBriefing:"⤢ Ouvrir le briefing complet",steps:"étapes",utils:"utils",
@@ -804,7 +806,9 @@ function normStrat(s){
 function normInsta(n){
   return {id:n.id||uid(),name:n.name||"Insta",side:(n.side==="CT")?"CT":"T",
     description:n.description||"",
-    image:typeof n.image==="string"?n.image.trim():""};
+    image:typeof n.image==="string"?n.image.trim():"",
+    land:{x:num(n.land?.x,50),y:num(n.land?.y,50)},
+    throw:{x:num(n.throw?.x,50),y:num(n.throw?.y,60)}};
 }
 
 /* ---------------- state ---------------- */
@@ -1046,7 +1050,10 @@ function placeholderRadar(name){
 
 /* ---------------- chrome (static i18n) ---------------- */
 function renderChrome(){
-  $("#btn-lang").textContent=LANG==="en"?"FR":"EN";
+  // Show flag of CURRENT language (click switches to the other)
+  const flagEN=`<svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" width="22" height="11"><clipPath id="s"><path d="M0 0v30h60V0z"/></clipPath><g clip-path="url(#s)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" stroke="#C8102E" stroke-width="4" clip-path="url(#s)"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>`;
+  const flagFR=`<svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" width="22" height="15"><rect width="10" height="20" fill="#002395"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ED2939"/></svg>`;
+  $("#btn-lang").innerHTML=LANG==="en"?flagEN:flagFR;
   $("#btn-home").textContent=t("back");
   $("#btn-edit").textContent=state.editMode?t("doneEdit"):t("editor");
   $("#btn-edit").classList.toggle("btn-amber",state.editMode);
@@ -1355,6 +1362,48 @@ function renderMarkers(){
       box.appendChild(tm);
     }
   });
+
+  // Insta markers (shown when active or in edit mode)
+  if(!order){
+    const instas=md.instas||[];
+    if(state.editMode&&state.edTab==="instas"){
+      instas.forEach(n=>{
+        const sel=state.editingInstaId===n.id;
+        const mk=document.createElement("button");
+        mk.className="mk"+(sel?" sel":"");
+        mk.style.setProperty("--c","#FF6B45");
+        mk.style.left=n.land.x+"%";mk.style.top=n.land.y+"%";
+        mk.title=n.name;
+        mk.innerHTML=`<span class="diamond"></span><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><circle cx="12" cy="12" r="4"/></svg>`;
+        mk.addEventListener("click",e=>{e.stopPropagation();state.editingInstaId=n.id;renderAll();});
+        enableDrag(mk,n,"land");
+        box.appendChild(mk);
+        if(sel){
+          const tm=document.createElement("div");
+          tm.className="mk-throw";tm.style.setProperty("--c","#FF6B45");
+          tm.style.left=n.throw.x+"%";tm.style.top=n.throw.y+"%";
+          enableDrag(tm,n,"throw");
+          box.appendChild(tm);
+        }
+      });
+    } else if(state.activeInsta){
+      const n=instas.find(x=>x.id===state.activeInsta);
+      if(n){
+        const mk=document.createElement("button");
+        mk.className="mk sel";
+        mk.style.setProperty("--c","#FF6B45");
+        mk.style.left=n.land.x+"%";mk.style.top=n.land.y+"%";
+        mk.title=n.name;
+        mk.innerHTML=`<span class="diamond"></span><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><circle cx="12" cy="12" r="4"/></svg>`;
+        box.appendChild(mk);
+        const tm=document.createElement("div");
+        tm.className="mk-throw";tm.style.setProperty("--c","#FF6B45");
+        tm.style.left=n.throw.x+"%";tm.style.top=n.throw.y+"%";
+        box.appendChild(tm);
+      }
+    }
+  }
+
   renderSelectedTraj();
 }
 function trajPath(l){
@@ -1372,12 +1421,25 @@ function renderSelectedTraj(){
   if(state.editMode){
     const l=md.lineups.find(x=>x.id===state.editingId);
     if(l)trajPath(l);
+    const n=md.instas.find(x=>x.id===state.editingInstaId);
+    if(n)instaTrajectory(n);
     return;
   }
   state.openIds.forEach(id=>{
     const l=md.lineups.find(x=>x.id===id);
     if(l)trajPath(l);
   });
+  if(state.activeInsta){
+    const n=md.instas.find(x=>x.id===state.activeInsta);
+    if(n)instaTrajectory(n);
+  }
+}
+function instaTrajectory(n){
+  const paths=$("#trajpaths");
+  const p=document.createElementNS("http://www.w3.org/2000/svg","path");
+  p.setAttribute("d",`M ${n.throw.x} ${n.throw.y} L ${n.land.x} ${n.land.y}`);
+  p.setAttribute("stroke","#FF6B45");
+  paths.appendChild(p);
 }
 function enableDrag(el,obj,key){
   el.addEventListener("pointerdown",e=>{
@@ -1529,8 +1591,7 @@ function renderPanel(){
   }
 
   panel.innerHTML=`<div class="dr-empty"><div class="big">${esc(t("briefing"))}</div>
-    <p>${esc(md.lineups.length?t("briefText"):t("briefEmpty"))}</p>
-    ${md.executes.length?`<p style="margin-top:8px">${esc(t("briefExec"))}</p>`:""}</div>`;
+    <p>${esc(md.lineups.length?t("briefText"):t("briefEmpty"))}</p></div>`;
 }
 
 function lineupCardHTML(l){
@@ -2069,6 +2130,14 @@ function renderInstaForm(panel,md){
         </div>
       </div>`:`<input id="n-image-url" value="" placeholder="${esc(t("imagePh"))}" style="margin-top:8px">`}
       <div class="f-hint">${esc(t("instaHint"))}</div>
+
+      <label class="f-label">${esc(t("position"))}</label>
+      <div class="media-toolbar">
+        <button class="btn btn-sm ${state.placing==="land"?"btn-amber":""}" id="n-place-land" type="button">${esc(t("impact"))}</button>
+        <button class="btn btn-sm ${state.placing==="throw"?"btn-amber":""}" id="n-place-throw" type="button">${esc(t("throwLbl"))}</button>
+      </div>
+      <div style="font-family:var(--mono);font-size:11px;color:var(--mut);margin-top:6px">${t("impact")} ${n.land.x}, ${n.land.y} · ${t("throwLbl")} ${n.throw.x}, ${n.throw.y}</div>
+
       <label class="f-label">${esc(t("desc"))}</label>
       <textarea id="n-desc">${esc(n.description)}</textarea>
       <div class="ed-foot">
@@ -2092,6 +2161,8 @@ function renderInstaForm(panel,md){
   ["#n-name","#n-desc"].forEach(s=>$(s).addEventListener("change",commit));
   const urlInput=$("#n-image-url");if(urlInput)urlInput.addEventListener("change",commit);
   $("#n-side").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;n.side=b.dataset.v;commit();renderAll();});
+  $("#n-place-land").addEventListener("click",()=>togglePlacing("land"));
+  $("#n-place-throw").addEventListener("click",()=>togglePlacing("throw"));
   $("#n-upload").addEventListener("click",()=>{
     commit();
     const inp=document.createElement("input");
@@ -2517,6 +2588,13 @@ function bindGlobal(){
         if(!l)return;
         if(state.placing==="land"){l.land=p;togglePlacing("throw");toast(t("tImpact"));}
         else{l.throw=p;togglePlacing(null);state.placing=null;wrap.classList.remove("placing");toast(t("tThrow"));}
+        save();renderAll();
+      }
+      if(state.editingInstaId){
+        const n=md.instas.find(x=>x.id===state.editingInstaId);
+        if(!n)return;
+        if(state.placing==="land"){n.land=p;togglePlacing("throw");toast(t("tImpact"));}
+        else{n.throw=p;togglePlacing(null);state.placing=null;wrap.classList.remove("placing");toast(t("tThrow"));}
         save();renderAll();
       }
       return;
