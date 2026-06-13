@@ -1483,8 +1483,31 @@ function renderMarkers(){
     mk.addEventListener("click",e=>{
       e.stopPropagation();
       if(state.editMode){
-        if(l._isInsta){state.editingInstaId=l.id;state.edTab="instas";renderAll();}
-        else startEditLineup(l.id);
+        if(variants.length>1){
+          box.querySelectorAll(".cluster-popup").forEach(p=>p.remove());
+          const popup=document.createElement("div");
+          popup.className="cluster-popup";
+          popup.style.left=l.land.x+"%";popup.style.top=(l.land.y+2)+"%";
+          popup.innerHTML=variants.map(v=>`
+            <button class="cp-row" data-id="${esc(v.id)}">
+              <span class="ic" style="color:${TYPES[v.type]?TYPES[v.type].color:"#888"}">${ICONS[v.type]||""}</span>
+              <span class="nm">${esc(v.name)}${v.variant?` <span style="color:var(--mut);font-size:11px">· ${esc(v.variant)}</span>`:""}</span>
+            </button>`).join("");
+          popup.querySelectorAll(".cp-row").forEach(r=>r.addEventListener("click",ev=>{
+            ev.stopPropagation();popup.remove();
+            const vid=r.dataset.id;
+            const item=variants.find(v=>v.id===vid);
+            if(item&&item._isInsta){state.editingInstaId=vid;state.edTab="instas";}
+            else startEditLineup(vid);
+            renderAll();
+          }));
+          const closeP=ev=>{if(!popup.contains(ev.target)&&!mk.contains(ev.target)){popup.remove();document.removeEventListener("click",closeP);}};
+          setTimeout(()=>document.addEventListener("click",closeP),0);
+          box.appendChild(popup);
+        }else{
+          if(l._isInsta){state.editingInstaId=l.id;state.edTab="instas";renderAll();}
+          else startEditLineup(l.id);
+        }
         return;
       }
       if(variants.length>1){
