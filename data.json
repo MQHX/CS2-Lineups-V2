@@ -1065,7 +1065,7 @@
           "name": "Coffin",
           "type": "smoke",
           "side": "T",
-          "technique": "Shift + Jumpthrow (KEEP POSITION FROM EXEC)",
+          "technique": "Shift + Jumpthrow",
           "description": "",
           "target": "",
           "variant": "",
@@ -1094,7 +1094,7 @@
           "name": "Coffin",
           "type": "molotov",
           "side": "T",
-          "technique": "W + Jumpthrow (THIS OR COFFIN SMOKE)",
+          "technique": "W + Jumpthrow",
           "description": "",
           "target": "",
           "variant": "",
@@ -1230,31 +1230,6 @@
             {
               "url": "media/inferno/split_2.webp",
               "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "mid_insta_smoke",
-          "name": "Mid",
-          "type": "smoke",
-          "side": "CT",
-          "technique": "",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "land": {
-            "x": 49.8,
-            "y": 66.6
-          },
-          "throw": {
-            "x": 89.3,
-            "y": 36.1
-          },
-          "media": [
-            {
-              "url": "media/inferno/insta_1.webp",
-              "label": "Stand"
             }
           ],
           "tips": []
@@ -1515,12 +1490,12 @@
           "target": "",
           "variant": "",
           "land": {
-            "x": 50,
-            "y": 50
+            "x": 53.72,
+            "y": 66.65
           },
           "throw": {
-            "x": 50,
-            "y": 60
+            "x": 88.63,
+            "y": 36.67
           }
         }
       ],
