@@ -1974,29 +1974,27 @@
           "name": "Fountain",
           "type": "smoke",
           "side": "CT",
-          "technique": "Jumpthrow",
+          "technique": "Running Jumpthrow",
           "description": "",
           "target": "",
           "variant": "",
           "land": {
-            "x": 55,
-            "y": 74.9
+            "x": 52.88,
+            "y": 72.41
           },
           "throw": {
-            "x": 45.5,
-            "y": 28.7
+            "x": 48.69,
+            "y": 40.02
           },
           "media": [
             {
-              "url": "media/overpass/fountain_smoke.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/overpass/fountain_smoke_2.webp",
-              "label": "Aim"
+              "url": "media/overpass/fountain-jqr53.mp4",
+              "label": ""
             }
           ],
-          "tips": []
+          "tips": [
+            "Run until the shadow"
+          ]
         },
         {
           "id": "heaven_smoke",
@@ -2008,8 +2006,8 @@
           "target": "Heaven",
           "variant": "From short",
           "land": {
-            "x": 57.8,
-            "y": 22.4
+            "x": 58.23,
+            "y": 22.83
           },
           "throw": {
             "x": 61.3,
@@ -2032,7 +2030,7 @@
           "name": "Heaven",
           "type": "smoke",
           "side": "T",
-          "technique": "Running (until shadow disappears) + Jumpthrow",
+          "technique": "Running  + Jumpthrow",
           "description": "",
           "target": "Heaven",
           "variant": "From T-Spawn",
@@ -2046,15 +2044,13 @@
           },
           "media": [
             {
-              "url": "media/overpass/heaven_smoke_3.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/overpass/heaven_smoke_4.webp",
-              "label": "Aim"
+              "url": "media/overpass/heaven-jvrjq.mp4",
+              "label": ""
             }
           ],
-          "tips": []
+          "tips": [
+            "Run until you hit the shadow"
+          ]
         },
         {
           "id": "monster_molly",
@@ -2148,7 +2144,7 @@
           "name": "Playground",
           "type": "molotov",
           "side": "CT",
-          "technique": "Running (until second divider) + Jumpthrow",
+          "technique": "Running + Jumpthrow",
           "description": "",
           "target": "",
           "variant": "",
@@ -2162,15 +2158,13 @@
           },
           "media": [
             {
-              "url": "media/overpass/playground_molly.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/overpass/playground_molly_2.webp",
-              "label": "Aim"
+              "url": "media/overpass/playground-jq8iw.mp4",
+              "label": ""
             }
           ],
-          "tips": []
+          "tips": [
+            "Run until second divider"
+          ]
         },
         {
           "id": "short_smoke_from_ct",
@@ -2220,15 +2214,13 @@
           },
           "media": [
             {
-              "url": "media/overpass/short_molly_1.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/overpass/short_molly_2.webp",
-              "label": "Aim"
+              "url": "media/overpass/short-jun3c.mp4",
+              "label": ""
             }
           ],
-          "tips": []
+          "tips": [
+            "Aim at the billboard"
+          ]
         },
         {
           "id": "short_molly_from_banana",
@@ -2258,6 +2250,33 @@
             }
           ],
           "tips": []
+        },
+        {
+          "id": "2f341449-3be7-42e2-9bfe-7fe170e21a95",
+          "name": "Short",
+          "type": "molotov",
+          "side": "T",
+          "technique": "Running left and right click jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "land": {
+            "x": 72.91,
+            "y": 39.92
+          },
+          "throw": {
+            "x": 82.66,
+            "y": 74.3
+          },
+          "media": [
+            {
+              "url": "media/overpass/short-jtf84.mp4",
+              "label": ""
+            }
+          ],
+          "tips": [
+            "Keep aiming at the bottom of the \"B\""
+          ]
         },
         {
           "id": "toilet_smoke",
@@ -2487,6 +2506,23 @@
             "heaven_smoke",
             "abc_smoke",
             "toxic_molly"
+          ]
+        },
+        {
+          "id": "caa99e95-f98f-4f7f-a36d-63943cc0e596",
+          "name": "Fountain smoke+molly",
+          "side": "CT",
+          "description": "",
+          "media": [
+            {
+              "url": "media/overpass/exec-fountain-smoke-molly-jruvl.mp4",
+              "label": ""
+            }
+          ],
+          "tips": [],
+          "items": [
+            "fountain_smoke",
+            "playground_molly"
           ]
         }
       ],
