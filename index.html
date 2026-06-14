@@ -392,7 +392,8 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .modal .acts{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
 #lightbox{position:fixed;top:0;left:0;right:0;bottom:0;z-index:120;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(5,7,10,.92);padding:22px;gap:12px}
 #lightbox.show{display:flex}
-@media(min-width:1100px){#lightbox.show{right:clamp(380px,30vw,540px)}}
+/* Lightbox covers everything — panel hidden behind it */
+body.lb-open .panel{display:none}
 #lb-info{background:rgba(10,13,18,.85);border:1px solid var(--line);border-radius:10px;padding:8px 14px;display:flex;flex-direction:column;align-items:center;gap:4px;max-width:90%;pointer-events:none;z-index:122;margin-top:-4px}
 #lb-info:empty{display:none}
 #lb-info .lb-name{font-family:var(--disp);font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
@@ -407,12 +408,7 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .lb-thumb img,.lb-thumb video{width:100%;height:100%;object-fit:cover}
 
 /* When lightbox is open, collapse cards in the right panel to just headers */
-body.lb-open .lcard-body{display:none}
-body.lb-open .panel .media-grid{display:none}
-body.lb-open .panel .exec-player{display:none}
-body.lb-open .lcard{cursor:pointer}
-body.lb-open .lcard:hover{border-color:var(--t)}
-body.lb-open .lcard.lb-active{border-color:var(--t);background:rgba(240,163,60,.08)}
+/* When lightbox is open, panel is hidden entirely */
 #lb-media{display:flex;align-items:center;justify-content:center;min-height:0;flex:0 1 auto;max-width:96vw}
 #lb-media img,#lb-media video,#lb-media canvas{max-width:96vw;max-height:82vh;border-radius:8px;display:block}
 #lb-bar{display:flex;align-items:center;gap:12px;background:var(--bg1);border:1px solid var(--line);border-radius:99px;padding:8px 16px;max-width:96vw}
@@ -1329,41 +1325,7 @@ function renderMarkers(){
   $("#map-empty").style.display=(md.lineups.length||state.editMode||state.viewMode==="strats")?"none":"flex";
 
   if(state.viewMode==="strats" && !state.editMode){
-    // Group strats by zone label
-    const zoneGroups=new Map();
-    visibleStrats().forEach(s=>{
-      if(!s.point)return;
-      const key=s.zone?s.zone.trim().toLowerCase():s.id;
-      if(!zoneGroups.has(key))zoneGroups.set(key,{strats:[],point:s.point,zone:s.zone||s.name.slice(0,6),side:s.side});
-      zoneGroups.get(key).strats.push(s);
-    });
-    zoneGroups.forEach(g=>{
-      const isSel=g.strats.some(s=>state.selectedStrat===s.id);
-      const z=document.createElement("button");
-      z.className="mk-zone "+g.side+(isSel?" sel":"");
-      z.style.left=g.point.x+"%"; z.style.top=g.point.y+"%";
-      z.textContent=g.zone;
-      z.title=g.strats.map(s=>s.name).join(" / ");
-      if(g.strats.length>1){
-        const badge=document.createElement("span");
-        badge.className="varbadge";badge.textContent=g.strats.length;
-        z.appendChild(badge);
-      }
-      z.addEventListener("click",e=>{e.stopPropagation();
-        if(g.strats.length===1){
-          const s=g.strats[0];
-          state.selectedStrat=(state.selectedStrat===s.id)?null:s.id;
-          state.stratExpand=new Set();renderAll();
-        }else{
-          const curIdx=g.strats.findIndex(s=>state.selectedStrat===s.id);
-          if(curIdx>=0 && curIdx===g.strats.length-1){state.selectedStrat=null;}
-          else{state.selectedStrat=g.strats[(curIdx+1)%g.strats.length].id;}
-          state.stratExpand=new Set();renderAll();
-        }
-      });
-      box.appendChild(z);
-    });
-    // Show linked lineups/execs as dimmed markers on the map
+    // No zone markers on map — only show linked lineups when a strat is selected
     if(state.selectedStrat){
       const strat=md.strats.find(s=>s.id===state.selectedStrat);
       if(strat){
@@ -1384,7 +1346,6 @@ function renderMarkers(){
           mk.className="mk"+(isSel?" sel":"");
           mk.style.setProperty("--c",c);
           mk.style.left=l.land.x+"%";mk.style.top=l.land.y+"%";
-          mk.style.opacity=isSel?"1":".45";
           mk.title=l.name;
           mk.innerHTML=`<span class="diamond"></span>${ICONS[l.type]}`;
           mk.addEventListener("click",e=>{
@@ -1394,8 +1355,9 @@ function renderMarkers(){
             renderAll();
           });
           box.appendChild(mk);
+          // Always show trajectory for strat lineups, throw point when expanded
+          trajPath(l);
           if(isSel){
-            trajPath(l);
             const tm=document.createElement("div");
             tm.className="mk-throw";tm.style.setProperty("--c",c);
             tm.style.left=l.throw.x+"%";tm.style.top=l.throw.y+"%";
@@ -1944,27 +1906,29 @@ function renderStratDetail(panel,s){
       ${s.media&&s.media.length?`<div class="media-grid" style="margin-top:10px" id="strat-media">${s.media.map(m=>mediaHTML(m)).join("")}</div>`:""}
       ${s.tips&&s.tips.length?`<ul class="tips" style="margin-top:10px">${s.tips.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
       ${s.items.length?`<div class="dr-h">${esc(t("linked"))}</div>${
-        s.items.map((it,i)=>{
+        (()=>{let sectionN=0;return s.items.map((it,i)=>{
           if(it.kind==="heading"){
+            sectionN=0;
             return `<div class="strat-heading">${esc(it.label)}</div>`;
           }
+          sectionN++;
           const expanded=state.stratExpand.has(it.id);
           if(it.kind==="exec"){
             const ex=md.executes.find(x=>x.id===it.id);if(!ex)return"";
             return `<button class="linkrow ${expanded?"on":""}" data-toggle="${ex.id}" data-kind="exec">
-              <span class="n">${i+1}</span><span class="ic" style="color:var(--t)">⚙</span>
+              <span class="n">${sectionN}</span><span class="ic" style="color:var(--t)">⚙</span>
               <span class="nm">${esc(ex.name)}</span><span class="sub">EXEC · ${ex.items.length}</span>
               <span class="chev">${expanded?"▾":"▸"}</span></button>
               ${expanded?renderExecInline(ex,md):""}`;
           }
           const l=md.lineups.find(x=>x.id===it.id);if(!l)return"";
           return `<button class="linkrow ${expanded?"on":""}" data-toggle="${l.id}" data-kind="lineup">
-            <span class="n">${i+1}</span>
+            <span class="n">${sectionN}</span>
             <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>
             <span class="nm">${esc(l.name)}</span><span class="sub">${l.technique?techIconsHTML(l.technique,"sm"):esc(TYPES[l.type].label)}</span>
             <span class="chev">${expanded?"▾":"▸"}</span></button>
             ${expanded?renderLineupInline(l):""}`;
-        }).join("")}`:""}
+        }).join("");})()}`:""}
     </div>`;
   $("#dr-close").addEventListener("click",()=>{state.selectedStrat=null;state.stratExpand=new Set();renderAll();});
   // Toggle expand on linkrow click
