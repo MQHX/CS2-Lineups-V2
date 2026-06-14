@@ -1576,7 +1576,7 @@
           "name": "Short",
           "type": "smoke",
           "side": "T",
-          "technique": "Running (until lamp stick) + Jumpthrow",
+          "technique": "Running + Jumpthrow",
           "description": "",
           "target": "",
           "variant": "",
@@ -1591,15 +1591,13 @@
           },
           "media": [
             {
-              "url": "media/inferno/lamp_1.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/inferno/lamp_2.webp",
-              "label": "Aim"
+              "url": "media/inferno/short-yzo53.mp4",
+              "label": ""
             }
           ],
-          "tips": []
+          "tips": [
+            "Run until the lamp stick"
+          ]
         },
         {
           "id": "short_2",
@@ -1861,8 +1859,8 @@
           "variant": "From banana",
           "cluster": "",
           "land": {
-            "x": 80.9,
-            "y": 44.6
+            "x": 80.46,
+            "y": 45.05
           },
           "throw": {
             "x": 46,
@@ -1904,7 +1902,7 @@
               "label": "Stand"
             },
             {
-              "url": "media/overpass/monster_from_ct_smoke_2.webp",
+              "url": "media/overpass/monster-yygeb.webp",
               "label": "Aim"
             }
           ],
@@ -2001,7 +1999,7 @@
           "name": "Short",
           "type": "molotov",
           "side": "CT",
-          "technique": "Walk + Throw",
+          "technique": "Run Throw",
           "description": "",
           "target": "Short",
           "variant": "From banana",
@@ -2016,15 +2014,13 @@
           },
           "media": [
             {
-              "url": "media/overpass/short_molly_3.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/overpass/short_molly_4.webp",
-              "label": "Aim"
+              "url": "media/overpass/short-ywv20.mp4",
+              "label": ""
             }
           ],
-          "tips": []
+          "tips": [
+            "Throw at 1:48"
+          ]
         },
         {
           "id": "a_flash_1",
@@ -2806,7 +2802,7 @@
               "label": "Stand"
             },
             {
-              "url": "media/nuke/outside_2.webp",
+              "url": "media/nuke/outside-1-z2zdw.webp",
               "label": "Aim"
             }
           ],
@@ -2939,7 +2935,12 @@
           "name": "A exec",
           "side": "T",
           "description": "",
-          "media": [],
+          "media": [
+            {
+              "url": "media/nuke/exec-a-exec-z3eew.mp4",
+              "label": ""
+            }
+          ],
           "tips": [],
           "items": [
             "a_molly",
@@ -2951,7 +2952,12 @@
           "name": "Outside",
           "side": "T",
           "description": "",
-          "media": [],
+          "media": [
+            {
+              "url": "media/nuke/exec-outside-z3vrt.mp4",
+              "label": ""
+            }
+          ],
           "tips": [],
           "items": [
             "outside_1",
@@ -2963,7 +2969,12 @@
           "name": "Outside (wide)",
           "side": "T",
           "description": "",
-          "media": [],
+          "media": [
+            {
+              "url": "media/nuke/exec-outside-wide-z4dzt.mp4",
+              "label": ""
+            }
+          ],
           "tips": [],
           "items": [
             "outside_wide_1",
@@ -3160,7 +3171,7 @@
           "name": "Lane",
           "type": "molotov",
           "side": "T",
-          "technique": "Running (until 3/4 of left side wall) + Left and right click Jumpthrow",
+          "technique": "Running  + Left and right click Jumpthrow",
           "description": "",
           "target": "",
           "variant": "",
@@ -3175,12 +3186,8 @@
           },
           "media": [
             {
-              "url": "media/ancient/lane_1.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/ancient/lane_2.webp",
-              "label": "Aim"
+              "url": "media/ancient/lane-z0gcn.mp4",
+              "label": ""
             }
           ],
           "tips": []
@@ -3300,6 +3307,36 @@
             },
             {
               "url": "media/ancient/short-aun5c.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "2a1b79d8-7991-4c7a-8487-c6cffbd15d3d",
+          "name": "Main",
+          "type": "smoke",
+          "side": "CT",
+          "technique": "Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 17.45,
+            "y": 34.78
+          },
+          "throw": {
+            "x": 56.34,
+            "y": 10.77
+          },
+          "media": [
+            {
+              "url": "media/ancient/main-z1j7h.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/ancient/main-z1myb.webp",
               "label": "Aim"
             }
           ],
