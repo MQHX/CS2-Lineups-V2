@@ -419,7 +419,7 @@ body.lb-open .panel .media-grid video[autoplay],body.lb-open .panel .media-item 
 #lb-play{width:34px;height:34px;border-radius:50%;background:var(--smoke);color:#0A0D12;display:flex;align-items:center;justify-content:center;font-size:13px;flex:0 0 auto}
 #lb-seek{width:min(420px,52vw);accent-color:var(--t);padding:0;border:none;background:transparent}
 #lb-time{font-family:var(--mono);font-size:11.5px;color:var(--mut);white-space:nowrap}
-#lb-close{position:fixed;top:14px;right:16px;z-index:121;font-size:18px;color:var(--mut);width:36px;height:36px;border-radius:50%;background:var(--bg1);border:1px solid var(--line)}
+#lb-close{position:absolute;top:10px;right:10px;z-index:121;font-size:18px;color:var(--mut);width:36px;height:36px;border-radius:50%;background:rgba(10,13,18,.8);border:1px solid var(--line);backdrop-filter:blur(4px)}
 #lb-close:hover{color:var(--ink)}
 #toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,16px);z-index:130;background:var(--bg3);border:1px solid var(--line);color:var(--ink);
   font-family:var(--disp);font-size:13px;letter-spacing:.05em;padding:10px 18px;border-radius:99px;opacity:0;pointer-events:none;transition:all .2s}
@@ -904,7 +904,7 @@ const state={
   viewMode:"lineups",            // lineups | strats
   editMode:false, edTab:"lineups",
   openIds:[], activeExec:null, activeInsta:null, selectedStrat:null,
-  stratExpand:new Set(), collapsedCards:new Set(),
+  stratExpand:new Set(), collapsedCards:new Set(), mediaIdx:{},
   editingId:null, editingExecId:null, editingStratId:null, editingInstaId:null,
   filters:{types:new Set(Object.keys(TYPES)),sides:new Set(["T","CT"]),q:""},
   placing:null,                  // land | throw | spoint
@@ -1764,7 +1764,7 @@ function renderPanel(){
         else state.collapsedCards.add(id);
         renderAll();
       });
-      if(l)card.querySelectorAll(".media-item").forEach((el,i)=>el.addEventListener("click",()=>openLightbox(l.media,i,{id:l.id,name:l.name,technique:l.technique||""})));
+      if(l)card.querySelectorAll(".media-item").forEach((el,i)=>el.addEventListener("click",()=>{state.mediaIdx[l.id]=i;openLightbox(l.media,i,{id:l.id,name:l.name,technique:l.technique||""});}));
       card.querySelectorAll(".var-tab").forEach(tab=>tab.addEventListener("click",e=>{
         e.stopPropagation();
         const vid=tab.dataset.var;
@@ -1839,18 +1839,38 @@ function renderPanel(){
           ${ex.items.length?`<div class="dr-h">${esc(t("steps"))}</div>`:""}
           ${ex.items.map((id,i)=>{
             const l=md.lineups.find(x=>x.id===id);if(!l)return"";
-            return `<button class="linkrow" data-id="${l.id}">
+            const expanded=state.stratExpand.has("exec-step-"+l.id);
+            // Find the "Aim" image (second media, or last one)
+            const aimMedia=l.media.length>1?l.media[l.media.length-1]:l.media[0];
+            return `<button class="linkrow ${expanded?"on":""}" data-step="${l.id}">
               <span class="n">${i+1}</span>
               <span class="ic" style="color:${TYPES[l.type].color}">${ICONS[l.type]}</span>
               <span class="nm">${esc(l.name)}</span>
-              <span class="sub">${l.technique?techIconsHTML(l.technique,"sm"):esc(TYPES[l.type].label)}</span></button>`;
+              <span class="sub">${l.technique?techIconsHTML(l.technique,"sm"):esc(TYPES[l.type].label)}</span>
+              <span class="chev">${expanded?"▾":"▸"}</span></button>
+              ${expanded&&aimMedia?`<div class="strat-inline" data-for="exec-step-${l.id}">
+                <div class="media-grid"><button class="media-item" type="button" data-step-media="${l.id}">
+                  ${isVideo(aimMedia.url)?`<video src="${esc(aimMedia.url)}" muted loop autoplay playsinline></video>`:`<img src="${esc(aimMedia.url)}" alt="${esc(aimMedia.label||"Aim")}" loading="lazy">`}
+                  ${aimMedia.label?`<span class="cap">${esc(aimMedia.label)}</span>`:""}
+                </button></div>
+              </div>`:""}`;
           }).join("")}
         </div>`;
-      $("#dr-close").addEventListener("click",()=>{state.activeExec=null;renderAll();});
-      panel.querySelectorAll(".media-item").forEach((el,i)=>el.addEventListener("click",()=>openLightbox(ex.media,i)));
-      panel.querySelectorAll(".linkrow").forEach(b=>b.addEventListener("click",()=>{
-        if(!state.openIds.includes(b.dataset.id))state.openIds.push(b.dataset.id);
+      $("#dr-close").addEventListener("click",()=>{state.activeExec=null;state.stratExpand=new Set();renderAll();});
+      panel.querySelectorAll(".media-item:not([data-step-media])").forEach((el,i)=>el.addEventListener("click",()=>openLightbox(ex.media,i)));
+      // Step toggle expand
+      panel.querySelectorAll("[data-step]").forEach(b=>b.addEventListener("click",()=>{
+        const key="exec-step-"+b.dataset.step;
+        if(state.stratExpand.has(key))state.stratExpand.delete(key);
+        else state.stratExpand.add(key);
         renderAll();
+      }));
+      // Step media click → open lightbox on the aim image
+      panel.querySelectorAll("[data-step-media]").forEach(b=>b.addEventListener("click",e=>{
+        e.stopPropagation();
+        const lid=b.dataset.stepMedia;
+        const l=md.lineups.find(x=>x.id===lid);
+        if(l&&l.media.length)openLightbox(l.media,l.media.length>1?l.media.length-1:0,{id:l.id,name:l.name,technique:l.technique||""});
       }));
       return;
     }
@@ -2782,6 +2802,8 @@ function openLightbox(items,idx=0,ctx=null){
   renderLightbox();
   $("#lightbox").classList.add("show");
   document.body.classList.add("lb-open");
+  // Pause any video playing in the panel
+  document.querySelectorAll(".panel video").forEach(v=>{try{v.pause();}catch(e){}});
   // Mark the active card in the right panel
   if(ctx&&ctx.id){
     document.querySelectorAll(".lcard").forEach(c=>{
@@ -2858,6 +2880,7 @@ function lbStep(d){
   if(lbGal.items.length<2)return;
   const v=$("#lb-media video");if(v)v.pause();
   lbGal.idx=(lbGal.idx+d+lbGal.items.length)%lbGal.items.length;
+  if(lbGal.ctx&&lbGal.ctx.id)state.mediaIdx[lbGal.ctx.id]=lbGal.idx;
   renderLightbox();
 }
 function closeLightbox(){
