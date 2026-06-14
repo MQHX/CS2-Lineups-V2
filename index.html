@@ -1244,13 +1244,15 @@ function renderRail(){
 
   let listHtml="";
   if(state.viewMode==="lineups"){
-    const instaHtml=md.instas&&md.instas.length?`<div class="rail-box" style="margin-top:10px"><div class="rail-h">${esc(t("instas"))}</div>${
-      md.instas.map(n=>`
+    const filteredExecs=md.executes.filter(ex=>!state.filters.sides.size||state.filters.sides.has(ex.side));
+    const filteredInstas=(md.instas||[]).filter(n=>!state.filters.sides.size||state.filters.sides.has(n.side));
+    const instaHtml=filteredInstas.length?`<div class="rail-box" style="margin-top:10px"><div class="rail-h">${esc(t("instas"))}</div>${
+      filteredInstas.map(n=>`
         <button class="xcard ${state.activeInsta===n.id?"on":""}" data-insta="${n.id}">
           <span class="xtop"><span class="xname">${esc(n.name)}</span><span class="sidedot ${n.side}">${n.side}</span></span>
         </button>`).join("")}</div>`:"";
     listHtml=`<div class="rail-box"><div class="rail-h">${esc(t("execs"))}${state.activeExec?`<button class="rail-clear" id="exec-showall">${esc(t("showAll"))}</button>`:""}</div>
-      ${md.executes.length? md.executes.map(ex=>`
+      ${filteredExecs.length? filteredExecs.map(ex=>`
         <button class="xcard ${state.activeExec===ex.id?"on":""}" data-exec="${ex.id}">
           <span class="xtop"><span class="xname">${esc(ex.name)}</span><span class="sidedot ${ex.side}">${ex.side}</span></span>
           ${ex.description?`<span class="xdesc">${esc(ex.description)}</span>`:""}
