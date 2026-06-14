@@ -392,8 +392,10 @@ svg.traj{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;ov
 .modal .acts{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
 #lightbox{position:fixed;top:0;left:0;right:0;bottom:0;z-index:120;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(5,7,10,.92);padding:22px;gap:12px}
 #lightbox.show{display:flex}
-/* Lightbox covers everything — panel hidden behind it */
-body.lb-open .panel{display:none}
+/* Lightbox stops before panel on desktop — panel stays visible */
+@media(min-width:1100px){#lightbox.show{right:clamp(380px,30vw,540px)}}
+/* Hide the drawer close button when lightbox is open (lightbox X closes everything) */
+body.lb-open .panel .dr-pad>[class*=eyebrow] .icon-btn{display:none}
 #lb-info{background:rgba(10,13,18,.85);border:1px solid var(--line);border-radius:10px;padding:8px 14px;display:flex;flex-direction:column;align-items:center;gap:4px;max-width:90%;pointer-events:none;z-index:122;margin-top:-4px}
 #lb-info:empty{display:none}
 #lb-info .lb-name{font-family:var(--disp);font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
@@ -409,6 +411,7 @@ body.lb-open .panel{display:none}
 
 /* When lightbox is open, collapse cards in the right panel to just headers */
 /* When lightbox is open, panel is hidden entirely */
+body.lb-open .panel .media-grid video[autoplay],body.lb-open .panel .media-item video{pointer-events:none;opacity:.15}
 #lb-media{display:flex;align-items:center;justify-content:center;min-height:0;flex:0 1 auto;max-width:96vw}
 #lb-media img,#lb-media video,#lb-media canvas{max-width:96vw;max-height:82vh;border-radius:8px;display:block}
 #lb-bar{display:flex;align-items:center;gap:12px;background:var(--bg1);border:1px solid var(--line);border-radius:99px;padding:8px 16px;max-width:96vw}
@@ -1355,9 +1358,9 @@ function renderMarkers(){
             renderAll();
           });
           box.appendChild(mk);
-          // Always show trajectory for strat lineups, throw point when expanded
-          trajPath(l);
+          // Trajectory + throw only when expanded
           if(isSel){
+            trajPath(l);
             const tm=document.createElement("div");
             tm.className="mk-throw";tm.style.setProperty("--c",c);
             tm.style.left=l.throw.x+"%";tm.style.top=l.throw.y+"%";
@@ -2863,6 +2866,9 @@ function closeLightbox(){
   $("#lb-media").innerHTML="";
   document.body.classList.remove("lb-open");
   document.querySelectorAll(".lcard.lb-active").forEach(c=>c.classList.remove("lb-active"));
+  // Close exec/lineup views too — return to base
+  if(state.activeExec){state.activeExec=null;state.openIds=[];renderAll();}
+  else if(state.openIds.length){state.openIds=[];renderAll();}
 }
 $("#lb-close").addEventListener("click",closeLightbox);
 $("#lb-prev").addEventListener("click",e=>{e.stopPropagation();lbStep(-1);});
