@@ -1752,7 +1752,7 @@ function renderPanel(){
       card.addEventListener("click",e=>{
         if(!document.body.classList.contains("lb-open"))return;
         if(e.target.closest(".lcard-close,.lcard-toggle,.var-tab,.media-item"))return;
-        if(l&&l.media&&l.media.length)openLightbox(l.media,0,{id:l.id,name:l.name,technique:l.technique||""});
+        if(l&&l.media&&l.media.length)openLightbox(l.media,state.mediaIdx[l.id]||0,{id:l.id,name:l.name,technique:l.technique||""});
       });
       card.querySelector(".lcard-close").addEventListener("click",e=>{
         e.stopPropagation();
