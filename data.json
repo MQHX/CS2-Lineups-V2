@@ -4,6 +4,90 @@
     "mirage": {
       "lineups": [
         {
+          "id": "palace_smoke_ct",
+          "name": "Palace",
+          "type": "smoke",
+          "side": "CT",
+          "technique": "Jumpthrow",
+          "description": "",
+          "target": "Palace",
+          "variant": "From market",
+          "cluster": "",
+          "land": {
+            "x": 63.16,
+            "y": 73.15
+          },
+          "throw": {
+            "x": 29.4,
+            "y": 43.8
+          },
+          "media": [
+            {
+              "url": "media/mirage/palace_smoke_3.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/palace-bkfsv.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "d1fbd90f-7c01-489f-b7b7-f2010fc499a7",
+          "name": "Palace",
+          "type": "smoke",
+          "side": "CT",
+          "technique": "Running + Jumpthrow",
+          "description": "",
+          "target": "Palace",
+          "variant": "From site",
+          "cluster": "",
+          "land": {
+            "x": 63.05,
+            "y": 73.36
+          },
+          "throw": {
+            "x": 47.22,
+            "y": 69.27
+          },
+          "media": [
+            {
+              "url": "media/mirage/palace-bktl4.mp4",
+              "label": ""
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "f2b5c6cd-ad55-481a-8d2a-d3a587d79985",
+          "name": "Top mid",
+          "type": "molotov",
+          "side": "CT",
+          "technique": "Running + Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 70.5,
+            "y": 41.28
+          },
+          "throw": {
+            "x": 39.15,
+            "y": 41.28
+          },
+          "media": [
+            {
+              "url": "media/mirage/top-mid-bm4ia.mp4",
+              "label": ""
+            }
+          ],
+          "tips": [
+            "Listen to those 4 footsteps before getting stuck with the wall"
+          ]
+        },
+        {
           "id": "short_smoke",
           "name": "Cat/Short",
           "type": "smoke",
@@ -334,62 +418,6 @@
           "tips": []
         },
         {
-          "id": "palace_smoke_ct",
-          "name": "Palace",
-          "type": "smoke",
-          "side": "CT",
-          "technique": "Jumpthrow",
-          "description": "",
-          "target": "Palace",
-          "variant": "From market",
-          "cluster": "",
-          "land": {
-            "x": 63.16,
-            "y": 73.15
-          },
-          "throw": {
-            "x": 29.4,
-            "y": 43.8
-          },
-          "media": [
-            {
-              "url": "media/mirage/palace_smoke_3.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/mirage/palace-bkfsv.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "d1fbd90f-7c01-489f-b7b7-f2010fc499a7",
-          "name": "Palace",
-          "type": "smoke",
-          "side": "CT",
-          "technique": "Running + Jumpthrow",
-          "description": "",
-          "target": "Palace",
-          "variant": "From site",
-          "cluster": "",
-          "land": {
-            "x": 63.05,
-            "y": 73.36
-          },
-          "throw": {
-            "x": 47.22,
-            "y": 69.27
-          },
-          "media": [
-            {
-              "url": "media/mirage/palace-bktl4.mp4",
-              "label": ""
-            }
-          ],
-          "tips": []
-        },
-        {
           "id": "palace_smoke",
           "name": "Palace (Lurk)",
           "type": "smoke",
@@ -504,36 +532,6 @@
             },
             {
               "url": "media/mirage/b_site_2.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "b_site_molly",
-          "name": "Site",
-          "type": "molotov",
-          "side": "CT",
-          "technique": "Running + Throw",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 23.95,
-            "y": 23.14
-          },
-          "throw": {
-            "x": 28.2,
-            "y": 41
-          },
-          "media": [
-            {
-              "url": "media/mirage/b_molly_1.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/mirage/b_molly_2.webp",
               "label": "Aim"
             }
           ],
@@ -688,34 +686,6 @@
             }
           ],
           "tips": []
-        },
-        {
-          "id": "f2b5c6cd-ad55-481a-8d2a-d3a587d79985",
-          "name": "Top mid",
-          "type": "molotov",
-          "side": "T",
-          "technique": "Running + Jumpthrow",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 70.5,
-            "y": 41.28
-          },
-          "throw": {
-            "x": 39.15,
-            "y": 41.28
-          },
-          "media": [
-            {
-              "url": "media/mirage/top-mid-bm4ia.mp4",
-              "label": ""
-            }
-          ],
-          "tips": [
-            "Listen to those 4 footsteps before getting stuck with the wall"
-          ]
         }
       ],
       "executes": [
@@ -830,126 +800,6 @@
           "tips": []
         },
         {
-          "id": "arche_smoke",
-          "name": "Arche",
-          "type": "smoke",
-          "side": "T",
-          "technique": "Jumpthrow",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 77.8,
-            "y": 51.4
-          },
-          "throw": {
-            "x": 45.9,
-            "y": 69
-          },
-          "media": [
-            {
-              "url": "media/inferno/split_1.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/inferno/split_3.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "b_pop_1",
-          "name": "B site",
-          "type": "flash",
-          "side": "T",
-          "technique": "W + Jumpthrow",
-          "description": "",
-          "target": "B_site",
-          "variant": "From barrels",
-          "cluster": "",
-          "land": {
-            "x": 58.9,
-            "y": 27.7
-          },
-          "throw": {
-            "x": 43.7,
-            "y": 46.4
-          },
-          "media": [
-            {
-              "url": "media/inferno/b-site-eorh0.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/inferno/b-site-epeyv.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "b_pop_2",
-          "name": "B site",
-          "type": "flash",
-          "side": "T",
-          "technique": "Left and right click + Jumpthrow",
-          "description": "",
-          "target": "B_site",
-          "variant": "From wall",
-          "cluster": "",
-          "land": {
-            "x": 58.9,
-            "y": 27.7
-          },
-          "throw": {
-            "x": 50.7,
-            "y": 41
-          },
-          "media": [
-            {
-              "url": "media/inferno/b_pop_3.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/inferno/b_pop_4.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "banana_flash",
-          "name": "Banana",
-          "type": "flash",
-          "side": "T",
-          "technique": "Left and right click + Jumpthrow",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 43,
-            "y": 54.5
-          },
-          "throw": {
-            "x": 32.9,
-            "y": 62.9
-          },
-          "media": [
-            {
-              "url": "media/inferno/banana_1.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/inferno/banana_2.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
           "id": "banana_smoke_1",
           "name": "Banana",
           "type": "smoke",
@@ -990,8 +840,8 @@
           "variant": "",
           "cluster": "",
           "land": {
-            "x": 43.79,
-            "y": 50.4
+            "x": 44.29,
+            "y": 50.92
           },
           "throw": {
             "x": 55.64,
@@ -1016,8 +866,8 @@
           "variant": "",
           "cluster": "",
           "land": {
-            "x": 52.05,
-            "y": 33.63
+            "x": 49.84,
+            "y": 35.09
           },
           "throw": {
             "x": 60.43,
@@ -1076,8 +926,8 @@
           "variant": "",
           "cluster": "",
           "land": {
-            "x": 43.1,
-            "y": 61.2
+            "x": 43.55,
+            "y": 61.3
           },
           "throw": {
             "x": 83.2,
@@ -1194,10 +1044,10 @@
           "description": "",
           "target": "",
           "variant": "",
-          "cluster": "",
+          "cluster": "car",
           "land": {
-            "x": 52.57,
-            "y": 38.34
+            "x": 52.15,
+            "y": 37.61
           },
           "throw": {
             "x": 52.46,
@@ -1224,10 +1074,10 @@
           "description": "",
           "target": "",
           "variant": "",
-          "cluster": "",
+          "cluster": "car",
           "land": {
-            "x": 51,
-            "y": 36.04
+            "x": 52.15,
+            "y": 37.61
           },
           "throw": {
             "x": 52.78,
@@ -1256,8 +1106,8 @@
           "variant": "",
           "cluster": "",
           "land": {
-            "x": 54.46,
-            "y": 35.83
+            "x": 55.4,
+            "y": 35.62
           },
           "throw": {
             "x": 52.36,
@@ -1276,6 +1126,152 @@
           "tips": []
         },
         {
+          "id": "65dee441-624a-4057-ae63-46687e8011dd",
+          "name": "Default",
+          "type": "molotov",
+          "side": "CT",
+          "technique": "Running left and right click Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 52.99,
+            "y": 19.26
+          },
+          "throw": {
+            "x": 70.29,
+            "y": 19.05
+          },
+          "media": [
+            {
+              "url": "media/inferno/default-hvd0e.mp4",
+              "label": ""
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "arche_smoke",
+          "name": "Arche",
+          "type": "smoke",
+          "side": "T",
+          "technique": "Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 77.8,
+            "y": 51.4
+          },
+          "throw": {
+            "x": 45.9,
+            "y": 69
+          },
+          "media": [
+            {
+              "url": "media/inferno/split_1.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/split_3.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "b_pop_1",
+          "name": "B site",
+          "type": "flash",
+          "side": "T",
+          "technique": "W + Jumpthrow",
+          "description": "",
+          "target": "B_site",
+          "variant": "From barrels",
+          "cluster": "",
+          "land": {
+            "x": 58.9,
+            "y": 27.7
+          },
+          "throw": {
+            "x": 43.7,
+            "y": 46.4
+          },
+          "media": [
+            {
+              "url": "media/inferno/b-site-eorh0.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/b-site-epeyv.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "b_pop_2",
+          "name": "B site",
+          "type": "flash",
+          "side": "T",
+          "technique": "Left and right click + Jumpthrow",
+          "description": "",
+          "target": "B_site",
+          "variant": "From wall",
+          "cluster": "",
+          "land": {
+            "x": 58.9,
+            "y": 27.7
+          },
+          "throw": {
+            "x": 50.7,
+            "y": 41
+          },
+          "media": [
+            {
+              "url": "media/inferno/b_pop_3.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/b_pop_4.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "banana_flash",
+          "name": "Banana",
+          "type": "flash",
+          "side": "T",
+          "technique": "Left and right click + Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 43.34,
+            "y": 54.59
+          },
+          "throw": {
+            "x": 32.9,
+            "y": 62.9
+          },
+          "media": [
+            {
+              "url": "media/inferno/banana_1.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/inferno/banana_2.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
           "id": "coffin_smoke",
           "name": "Coffin",
           "type": "smoke",
@@ -1284,10 +1280,10 @@
           "description": "",
           "target": "",
           "variant": "",
-          "cluster": "",
+          "cluster": "coffin",
           "land": {
-            "x": 50.8,
-            "y": 11.6
+            "x": 51.21,
+            "y": 14.13
           },
           "throw": {
             "x": 49,
@@ -1314,10 +1310,10 @@
           "description": "",
           "target": "",
           "variant": "",
-          "cluster": "",
+          "cluster": "coffin",
           "land": {
-            "x": 50.8,
-            "y": 13.8
+            "x": 51.21,
+            "y": 14.13
           },
           "throw": {
             "x": 49,
@@ -1426,32 +1422,6 @@
           "tips": []
         },
         {
-          "id": "65dee441-624a-4057-ae63-46687e8011dd",
-          "name": "Default",
-          "type": "molotov",
-          "side": "CT",
-          "technique": "Running left and right click Jumpthrow",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 52.99,
-            "y": 19.26
-          },
-          "throw": {
-            "x": 70.29,
-            "y": 19.05
-          },
-          "media": [
-            {
-              "url": "media/inferno/default-hvd0e.mp4",
-              "label": ""
-            }
-          ],
-          "tips": []
-        },
-        {
           "id": "library_smoke",
           "name": "Library",
           "type": "smoke",
@@ -1483,13 +1453,13 @@
         },
         {
           "id": "moto_smoke",
-          "name": "Moto (Mid)",
+          "name": "Moto",
           "type": "smoke",
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "moto",
+          "variant": "From mid",
           "cluster": "",
           "land": {
             "x": 87.5,
@@ -1513,13 +1483,13 @@
         },
         {
           "id": "moto_2",
-          "name": "Moto (Second mid)",
+          "name": "Moto",
           "type": "smoke",
           "side": "T",
           "technique": "Jumpthrow",
           "description": "",
-          "target": "",
-          "variant": "",
+          "target": "moto",
+          "variant": "From second mid",
           "cluster": "",
           "land": {
             "x": 87.5,
@@ -1664,6 +1634,41 @@
       ],
       "executes": [
         {
+          "id": "cd448522-2b77-475b-9d85-9721ef0e00b7",
+          "name": "Banana retake 1",
+          "side": "CT",
+          "description": "",
+          "media": [
+            {
+              "url": "media/inferno/exec-banana-retake-i76lu.mp4",
+              "label": ""
+            }
+          ],
+          "tips": [],
+          "items": [
+            "caf5c7c8-ec8f-4f9a-b6cc-1a688c473c1d",
+            "e6b4d0ef-10ff-4558-b1cc-60f79c7dd106",
+            "cfd9796e-64d5-4645-b71e-e2bd32a73092"
+          ]
+        },
+        {
+          "id": "f4776a7a-86da-4ed9-afe2-767bf9d776fc",
+          "name": "Banana retake 2",
+          "side": "CT",
+          "description": "",
+          "media": [
+            {
+              "url": "media/inferno/exec-banana-retake-flash-i97eq.mp4",
+              "label": ""
+            }
+          ],
+          "tips": [],
+          "items": [
+            "456f7d65-2e20-4a07-90aa-98fcf48e9a00",
+            "b350b0fa-a121-4885-85cc-902c38f13558"
+          ]
+        },
+        {
           "id": "A_rush",
           "name": "A apps rush",
           "side": "T",
@@ -1730,41 +1735,6 @@
             "ct_smoke_1",
             "coffin_smoke"
           ]
-        },
-        {
-          "id": "cd448522-2b77-475b-9d85-9721ef0e00b7",
-          "name": "Banana retake 1",
-          "side": "CT",
-          "description": "",
-          "media": [
-            {
-              "url": "media/inferno/exec-banana-retake-i76lu.mp4",
-              "label": ""
-            }
-          ],
-          "tips": [],
-          "items": [
-            "caf5c7c8-ec8f-4f9a-b6cc-1a688c473c1d",
-            "e6b4d0ef-10ff-4558-b1cc-60f79c7dd106",
-            "cfd9796e-64d5-4645-b71e-e2bd32a73092"
-          ]
-        },
-        {
-          "id": "f4776a7a-86da-4ed9-afe2-767bf9d776fc",
-          "name": "Banana retake 2",
-          "side": "CT",
-          "description": "",
-          "media": [
-            {
-              "url": "media/inferno/exec-banana-retake-flash-i97eq.mp4",
-              "label": ""
-            }
-          ],
-          "tips": [],
-          "items": [
-            "456f7d65-2e20-4a07-90aa-98fcf48e9a00",
-            "b350b0fa-a121-4885-85cc-902c38f13558"
-          ]
         }
       ],
       "strats": [],
@@ -1792,126 +1762,6 @@
     },
     "overpass": {
       "lineups": [
-        {
-          "id": "a_flash_1",
-          "name": "A site first",
-          "type": "flash",
-          "side": "T",
-          "technique": "Jumpthrow",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 49,
-            "y": 23.5
-          },
-          "throw": {
-            "x": 47.8,
-            "y": 44.4
-          },
-          "media": [
-            {
-              "url": "media/overpass/a_flash.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/overpass/a_flash_1.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "a_flash_2",
-          "name": "A site second",
-          "type": "flash",
-          "side": "T",
-          "technique": "Jumpthrow",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 51,
-            "y": 24.7
-          },
-          "throw": {
-            "x": 47.8,
-            "y": 44.4
-          },
-          "media": [
-            {
-              "url": "media/overpass/a_flash.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/overpass/a_flash_2.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "abc_smoke",
-          "name": "ABC",
-          "type": "smoke",
-          "side": "T",
-          "technique": "Throw",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 57.6,
-            "y": 35.83
-          },
-          "throw": {
-            "x": 61.3,
-            "y": 44.5
-          },
-          "media": [
-            {
-              "url": "media/overpass/b_exec.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/overpass/abc_smoke.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "b_flash_1",
-          "name": "B site first",
-          "type": "flash",
-          "side": "T",
-          "technique": "Throw",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 84,
-            "y": 35.4
-          },
-          "throw": {
-            "x": 85.6,
-            "y": 52.2
-          },
-          "media": [
-            {
-              "url": "media/overpass/b_flash.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/overpass/b_flash_1.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
         {
           "id": "bsite_smoke",
           "name": "B Site hold",
@@ -1943,96 +1793,6 @@
           "tips": []
         },
         {
-          "id": "b_flash_2",
-          "name": "B site second",
-          "type": "flash",
-          "side": "T",
-          "technique": "Throw",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 76.1,
-            "y": 36
-          },
-          "throw": {
-            "x": 85.6,
-            "y": 52.2
-          },
-          "media": [
-            {
-              "url": "media/overpass/b_flash.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/overpass/b_flash_2.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "bank_smoke",
-          "name": "Bank",
-          "type": "smoke",
-          "side": "T",
-          "technique": "Jumpthrow",
-          "description": "",
-          "target": "Bank",
-          "variant": "From banana",
-          "cluster": "",
-          "land": {
-            "x": 44.3,
-            "y": 10.8
-          },
-          "throw": {
-            "x": 46.5,
-            "y": 48.4
-          },
-          "media": [
-            {
-              "url": "media/overpass/a_exec.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/overpass/bank_smoke.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "bank_smoke_2",
-          "name": "Bank",
-          "type": "smoke",
-          "side": "T",
-          "technique": "Throw",
-          "description": "",
-          "target": "Bank",
-          "variant": "From long",
-          "cluster": "",
-          "land": {
-            "x": 44.3,
-            "y": 10.8
-          },
-          "throw": {
-            "x": 24.8,
-            "y": 33.1
-          },
-          "media": [
-            {
-              "url": "media/overpass/a_exec_2.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/overpass/bank_smoke_2.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
           "id": "fountain_smoke",
           "name": "Fountain",
           "type": "smoke",
@@ -2057,65 +1817,7 @@
             }
           ],
           "tips": [
-            "Run until the shadow"
-          ]
-        },
-        {
-          "id": "heaven_smoke",
-          "name": "Heaven",
-          "type": "smoke",
-          "side": "T",
-          "technique": "Jumpthrow",
-          "description": "",
-          "target": "Heaven",
-          "variant": "From short",
-          "cluster": "",
-          "land": {
-            "x": 58.23,
-            "y": 22.83
-          },
-          "throw": {
-            "x": 61.3,
-            "y": 44.5
-          },
-          "media": [
-            {
-              "url": "media/overpass/b_exec.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/overpass/heaven_smoke.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "heaven_smoke_2",
-          "name": "Heaven",
-          "type": "smoke",
-          "side": "T",
-          "technique": "Running  + Jumpthrow",
-          "description": "",
-          "target": "Heaven",
-          "variant": "From T-Spawn",
-          "cluster": "",
-          "land": {
-            "x": 57.8,
-            "y": 22.4
-          },
-          "throw": {
-            "x": 78.5,
-            "y": 67.4
-          },
-          "media": [
-            {
-              "url": "media/overpass/heaven-jvrjq.mp4",
-              "label": ""
-            }
-          ],
-          "tips": [
-            "Run until you hit the shadow"
+            "Run until you don't see the lamp shadow"
           ]
         },
         {
@@ -2325,6 +2027,274 @@
           "tips": []
         },
         {
+          "id": "a_flash_1",
+          "name": "A site first",
+          "type": "flash",
+          "side": "T",
+          "technique": "Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "asite",
+          "land": {
+            "x": 48.9,
+            "y": 24.3
+          },
+          "throw": {
+            "x": 47.8,
+            "y": 44.4
+          },
+          "media": [
+            {
+              "url": "media/overpass/a_flash.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/a_flash_1.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "a_flash_2",
+          "name": "A site second",
+          "type": "flash",
+          "side": "T",
+          "technique": "Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "asite",
+          "land": {
+            "x": 48.9,
+            "y": 24.3
+          },
+          "throw": {
+            "x": 47.8,
+            "y": 44.4
+          },
+          "media": [
+            {
+              "url": "media/overpass/a_flash.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/a_flash_2.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "abc_smoke",
+          "name": "ABC",
+          "type": "smoke",
+          "side": "T",
+          "technique": "Throw",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 57.6,
+            "y": 35.83
+          },
+          "throw": {
+            "x": 61.3,
+            "y": 44.5
+          },
+          "media": [
+            {
+              "url": "media/overpass/b_exec.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/abc_smoke.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "b_flash_1",
+          "name": "B site first",
+          "type": "flash",
+          "side": "T",
+          "technique": "Throw",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "bsite",
+          "land": {
+            "x": 81.4,
+            "y": 34.78
+          },
+          "throw": {
+            "x": 85.6,
+            "y": 52.2
+          },
+          "media": [
+            {
+              "url": "media/overpass/b_flash.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/b_flash_1.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "b_flash_2",
+          "name": "B site second",
+          "type": "flash",
+          "side": "T",
+          "technique": "Throw",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "bsite",
+          "land": {
+            "x": 81.4,
+            "y": 34.78
+          },
+          "throw": {
+            "x": 85.6,
+            "y": 52.2
+          },
+          "media": [
+            {
+              "url": "media/overpass/b_flash.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/b_flash_2.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "bank_smoke",
+          "name": "Bank",
+          "type": "smoke",
+          "side": "T",
+          "technique": "Jumpthrow",
+          "description": "",
+          "target": "Bank",
+          "variant": "From banana",
+          "cluster": "",
+          "land": {
+            "x": 44.3,
+            "y": 10.8
+          },
+          "throw": {
+            "x": 46.5,
+            "y": 48.4
+          },
+          "media": [
+            {
+              "url": "media/overpass/a_exec.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/bank_smoke.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "bank_smoke_2",
+          "name": "Bank",
+          "type": "smoke",
+          "side": "T",
+          "technique": "Throw",
+          "description": "",
+          "target": "Bank",
+          "variant": "From long",
+          "cluster": "",
+          "land": {
+            "x": 44.3,
+            "y": 10.8
+          },
+          "throw": {
+            "x": 24.8,
+            "y": 33.1
+          },
+          "media": [
+            {
+              "url": "media/overpass/a_exec_2.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/bank_smoke_2.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "heaven_smoke",
+          "name": "Heaven",
+          "type": "smoke",
+          "side": "T",
+          "technique": "Jumpthrow",
+          "description": "",
+          "target": "Heaven",
+          "variant": "From short",
+          "cluster": "",
+          "land": {
+            "x": 58.23,
+            "y": 22.83
+          },
+          "throw": {
+            "x": 61.3,
+            "y": 44.5
+          },
+          "media": [
+            {
+              "url": "media/overpass/b_exec.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/overpass/heaven_smoke.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "heaven_smoke_2",
+          "name": "Heaven",
+          "type": "smoke",
+          "side": "T",
+          "technique": "Running  + Jumpthrow",
+          "description": "",
+          "target": "Heaven",
+          "variant": "From T-Spawn",
+          "cluster": "",
+          "land": {
+            "x": 57.8,
+            "y": 22.4
+          },
+          "throw": {
+            "x": 78.5,
+            "y": 67.4
+          },
+          "media": [
+            {
+              "url": "media/overpass/heaven-jvrjq.mp4",
+              "label": ""
+            }
+          ],
+          "tips": [
+            "Run until you hit the shadow"
+          ]
+        },
+        {
           "id": "2f341449-3be7-42e2-9bfe-7fe170e21a95",
           "name": "Short",
           "type": "molotov",
@@ -2349,7 +2319,7 @@
             }
           ],
           "tips": [
-            "Keep aiming at the bottom of the \"B\""
+            "Keep aiming at the bottom of the \"B\", throw at the end of the shadow"
           ]
         },
         {
@@ -2535,6 +2505,23 @@
       ],
       "executes": [
         {
+          "id": "caa99e95-f98f-4f7f-a36d-63943cc0e596",
+          "name": "Fountain smoke+molly",
+          "side": "CT",
+          "description": "",
+          "media": [
+            {
+              "url": "media/overpass/exec-fountain-smoke-molly-jruvl.mp4",
+              "label": ""
+            }
+          ],
+          "tips": [],
+          "items": [
+            "fountain_smoke",
+            "playground_molly"
+          ]
+        },
+        {
           "id": "A_exec_banana",
           "name": "A Execute (banana)",
           "side": "T",
@@ -2586,23 +2573,6 @@
             "heaven_smoke",
             "abc_smoke",
             "toxic_molly"
-          ]
-        },
-        {
-          "id": "caa99e95-f98f-4f7f-a36d-63943cc0e596",
-          "name": "Fountain smoke+molly",
-          "side": "CT",
-          "description": "",
-          "media": [
-            {
-              "url": "media/overpass/exec-fountain-smoke-molly-jruvl.mp4",
-              "label": ""
-            }
-          ],
-          "tips": [],
-          "items": [
-            "fountain_smoke",
-            "playground_molly"
           ]
         }
       ],
@@ -3008,6 +2978,94 @@
     "ancient": {
       "lineups": [
         {
+          "id": "ramp_smoke",
+          "name": "Ramp",
+          "type": "smoke",
+          "side": "CT",
+          "technique": "Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 81.9,
+            "y": 44.9
+          },
+          "throw": {
+            "x": 76.8,
+            "y": 20.9
+          },
+          "media": [
+            {
+              "url": "media/ancient/b_retake.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/ancient/b_ramp.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "site_molly",
+          "name": "Site",
+          "type": "molotov",
+          "side": "CT",
+          "technique": "Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 71.7,
+            "y": 41
+          },
+          "throw": {
+            "x": 76.8,
+            "y": 20.9
+          },
+          "media": [
+            {
+              "url": "media/ancient/b_retake.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/ancient/b_site.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "0192a400-da34-4561-9ea4-243d0f1f6550",
+          "name": "Cave",
+          "type": "molotov",
+          "side": "T",
+          "technique": "Running + Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 66.3,
+            "y": 46.31
+          },
+          "throw": {
+            "x": 78.38,
+            "y": 58.68
+          },
+          "media": [
+            {
+              "url": "media/ancient/cave-b2r62.mp4",
+              "label": ""
+            }
+          ],
+          "tips": [
+            "You need to throw it BEFORE hitting the wall"
+          ]
+        },
+        {
           "id": "cheetah_smoke",
           "name": "Cheetah",
           "type": "smoke",
@@ -3159,7 +3217,7 @@
         },
         {
           "id": "mid_flash",
-          "name": "Mid (doesn't flash teammates)",
+          "name": "Mid",
           "type": "flash",
           "side": "T",
           "technique": "W + Jumpthrow",
@@ -3218,36 +3276,6 @@
           "tips": []
         },
         {
-          "id": "ramp_smoke",
-          "name": "Ramp",
-          "type": "smoke",
-          "side": "CT",
-          "technique": "Jumpthrow",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 81.9,
-            "y": 44.9
-          },
-          "throw": {
-            "x": 76.8,
-            "y": 20.9
-          },
-          "media": [
-            {
-              "url": "media/ancient/b_retake.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/ancient/b_ramp.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
           "id": "short",
           "name": "Short",
           "type": "smoke",
@@ -3258,8 +3286,8 @@
           "variant": "",
           "cluster": "",
           "land": {
-            "x": 71.3,
-            "y": 32
+            "x": 71.02,
+            "y": 31.95
           },
           "throw": {
             "x": 81.7,
@@ -3276,67 +3304,21 @@
             }
           ],
           "tips": []
-        },
-        {
-          "id": "site_molly",
-          "name": "Site",
-          "type": "molotov",
-          "side": "CT",
-          "technique": "Jumpthrow",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 71.7,
-            "y": 41
-          },
-          "throw": {
-            "x": 76.8,
-            "y": 20.9
-          },
-          "media": [
-            {
-              "url": "media/ancient/b_retake.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/ancient/b_site.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "0192a400-da34-4561-9ea4-243d0f1f6550",
-          "name": "Cave",
-          "type": "molotov",
-          "side": "T",
-          "technique": "Running + Jumpthrow",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 66.3,
-            "y": 46.31
-          },
-          "throw": {
-            "x": 78.38,
-            "y": 58.68
-          },
-          "media": [
-            {
-              "url": "media/ancient/cave-b2r62.mp4",
-              "label": ""
-            }
-          ],
-          "tips": [
-            "You need to throw it BEFORE hitting the wall"
-          ]
         }
       ],
       "executes": [
+        {
+          "id": "b_retake",
+          "name": "B retake",
+          "side": "CT",
+          "description": "",
+          "media": [],
+          "tips": [],
+          "items": [
+            "ramp_smoke",
+            "site_molly"
+          ]
+        },
         {
           "id": "a_exec",
           "name": "A execute",
@@ -3370,18 +3352,6 @@
             "long",
             "short",
             "ninja_molly"
-          ]
-        },
-        {
-          "id": "b_retake",
-          "name": "B retake",
-          "side": "CT",
-          "description": "",
-          "media": [],
-          "tips": [],
-          "items": [
-            "ramp_smoke",
-            "site_molly"
           ]
         }
       ],
@@ -3417,6 +3387,126 @@
     },
     "dust2": {
       "lineups": [
+        {
+          "id": "ldoor_smoke",
+          "name": "Long door",
+          "type": "smoke",
+          "side": "CT",
+          "technique": "Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 67.5,
+            "y": 56.3
+          },
+          "throw": {
+            "x": 76.3,
+            "y": 18.3
+          },
+          "media": [
+            {
+              "url": "media/dust2/ldoor_1.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/ldoor_2.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "mid_pop",
+          "name": "Mid",
+          "type": "flash",
+          "side": "CT",
+          "technique": "Throw",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 47,
+            "y": 36.9
+          },
+          "throw": {
+            "x": 47,
+            "y": 20.6
+          },
+          "media": [
+            {
+              "url": "media/dust2/mid_combo_1.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/mid_combo_4.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "suicide",
+          "name": "Suicide",
+          "type": "smoke",
+          "side": "CT",
+          "technique": "Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 53.4,
+            "y": 63.1
+          },
+          "throw": {
+            "x": 47,
+            "y": 20.6
+          },
+          "media": [
+            {
+              "url": "media/dust2/mid_combo_1.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/mid_combo_2.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "top_mid",
+          "name": "Top mid",
+          "type": "smoke",
+          "side": "CT",
+          "technique": "Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 44,
+            "y": 70.5
+          },
+          "throw": {
+            "x": 47,
+            "y": 20.6
+          },
+          "media": [
+            {
+              "url": "media/dust2/mid_combo_1.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/dust2/mid_combo_3.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
         {
           "id": "b_exec_1",
           "name": "B door",
@@ -3458,8 +3548,8 @@
           "variant": "",
           "cluster": "",
           "land": {
-            "x": 27.3,
-            "y": 12
+            "x": 27.09,
+            "y": 12.55
           },
           "throw": {
             "x": 24.3,
@@ -3518,8 +3608,8 @@
           "variant": "",
           "cluster": "",
           "land": {
-            "x": 50.4,
-            "y": 24
+            "x": 50.79,
+            "y": 24.5
           },
           "throw": {
             "x": 47.9,
@@ -3628,66 +3718,6 @@
           "tips": []
         },
         {
-          "id": "ldoor_smoke",
-          "name": "Long door",
-          "type": "smoke",
-          "side": "CT",
-          "technique": "Jumpthrow",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 67.5,
-            "y": 56.3
-          },
-          "throw": {
-            "x": 76.3,
-            "y": 18.3
-          },
-          "media": [
-            {
-              "url": "media/dust2/ldoor_1.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/dust2/ldoor_2.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "mid_pop",
-          "name": "Mid",
-          "type": "flash",
-          "side": "CT",
-          "technique": "Throw",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 47,
-            "y": 36.9
-          },
-          "throw": {
-            "x": 47,
-            "y": 20.6
-          },
-          "media": [
-            {
-              "url": "media/dust2/mid_combo_1.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/dust2/mid_combo_4.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
           "id": "short_smoke_1",
           "name": "Short cross 1",
           "type": "smoke",
@@ -3748,66 +3778,6 @@
           "tips": []
         },
         {
-          "id": "suicide",
-          "name": "Suicide",
-          "type": "smoke",
-          "side": "CT",
-          "technique": "Jumpthrow",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 53.4,
-            "y": 63.1
-          },
-          "throw": {
-            "x": 47,
-            "y": 20.6
-          },
-          "media": [
-            {
-              "url": "media/dust2/mid_combo_1.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/dust2/mid_combo_2.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
-          "id": "top_mid",
-          "name": "Top mid",
-          "type": "smoke",
-          "side": "CT",
-          "technique": "Jumpthrow",
-          "description": "",
-          "target": "",
-          "variant": "",
-          "cluster": "",
-          "land": {
-            "x": 44,
-            "y": 70.5
-          },
-          "throw": {
-            "x": 47,
-            "y": 20.6
-          },
-          "media": [
-            {
-              "url": "media/dust2/mid_combo_1.webp",
-              "label": "Stand"
-            },
-            {
-              "url": "media/dust2/mid_combo_3.webp",
-              "label": "Aim"
-            }
-          ],
-          "tips": []
-        },
-        {
           "id": "xbox_mid",
           "name": "Xbox",
           "type": "smoke",
@@ -3840,6 +3810,19 @@
       ],
       "executes": [
         {
+          "id": "mid_retake",
+          "name": "Mid push",
+          "side": "CT",
+          "description": "",
+          "media": [],
+          "tips": [],
+          "items": [
+            "top_mid",
+            "suicide",
+            "mid_pop"
+          ]
+        },
+        {
           "id": "B_exec",
           "name": "B exec",
           "side": "T",
@@ -3861,19 +3844,6 @@
           "items": [
             "short_smoke_1",
             "short_smoke_2"
-          ]
-        },
-        {
-          "id": "mid_retake",
-          "name": "Mid push",
-          "side": "CT",
-          "description": "",
-          "media": [],
-          "tips": [],
-          "items": [
-            "top_mid",
-            "suicide",
-            "mid_pop"
           ]
         }
       ],
