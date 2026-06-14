@@ -12,6 +12,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 44.71,
             "y": 33.52
@@ -41,6 +42,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 49.8,
             "y": 46
@@ -70,6 +72,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 61.48,
             "y": 37.61
@@ -99,6 +102,7 @@
           "description": "",
           "target": "CT",
           "variant": "From Mid",
+          "cluster": "",
           "land": {
             "x": 43.34,
             "y": 74.72
@@ -128,6 +132,7 @@
           "description": "",
           "target": "CT",
           "variant": "From Ramp",
+          "cluster": "",
           "land": {
             "x": 43.6,
             "y": 74.6
@@ -157,6 +162,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 17.76,
             "y": 35.83
@@ -186,6 +192,7 @@
           "description": "",
           "target": "Jungle",
           "variant": "From T-Roof",
+          "cluster": "",
           "land": {
             "x": 48.6,
             "y": 59.3
@@ -215,6 +222,7 @@
           "description": "",
           "target": "Jungle",
           "variant": "From T-Spawn",
+          "cluster": "",
           "land": {
             "x": 48.6,
             "y": 59.3
@@ -244,6 +252,7 @@
           "description": "",
           "target": "Jungle",
           "variant": "From ramp",
+          "cluster": "",
           "land": {
             "x": 48.6,
             "y": 59.3
@@ -273,6 +282,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 25.31,
             "y": 35.93
@@ -302,6 +312,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 55.4,
             "y": 37.82
@@ -331,6 +342,7 @@
           "description": "",
           "target": "Palace",
           "variant": "From market",
+          "cluster": "",
           "land": {
             "x": 63.16,
             "y": 73.15
@@ -360,6 +372,7 @@
           "description": "",
           "target": "Palace",
           "variant": "From site",
+          "cluster": "",
           "land": {
             "x": 63.05,
             "y": 73.36
@@ -385,6 +398,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 61.3,
             "y": 68.6
@@ -414,6 +428,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 56.4,
             "y": 60
@@ -443,6 +458,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 38.63,
             "y": 26.29
@@ -472,6 +488,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 22.27,
             "y": 25.55
@@ -501,6 +518,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 23.95,
             "y": 23.14
@@ -530,6 +548,7 @@
           "description": "",
           "target": "Stairs",
           "variant": "From T-Roof",
+          "cluster": "",
           "land": {
             "x": 52.9,
             "y": 59.3
@@ -559,6 +578,7 @@
           "description": "",
           "target": "Stairs",
           "variant": "From ramp",
+          "cluster": "",
           "land": {
             "x": 52.9,
             "y": 59.3
@@ -588,6 +608,7 @@
           "description": "",
           "target": "Stairs",
           "variant": "From T-Spawn",
+          "cluster": "",
           "land": {
             "x": 52.9,
             "y": 59.3
@@ -617,6 +638,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 49.7,
             "y": 54
@@ -646,6 +668,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 63.7,
             "y": 67.5
@@ -675,6 +698,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 70.5,
             "y": 41.28
@@ -760,6 +784,7 @@
           "image": "media/mirage/insta-window-kuggn.webp",
           "target": "Window",
           "variant": "Insta",
+          "cluster": "",
           "land": {
             "x": 38.1,
             "y": 41.17
@@ -783,6 +808,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 83.1,
             "y": 73.7
@@ -812,6 +838,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 77.8,
             "y": 51.4
@@ -841,6 +868,7 @@
           "description": "",
           "target": "B_site",
           "variant": "From barrels",
+          "cluster": "",
           "land": {
             "x": 58.9,
             "y": 27.7
@@ -870,6 +898,7 @@
           "description": "",
           "target": "B_site",
           "variant": "From wall",
+          "cluster": "",
           "land": {
             "x": 58.9,
             "y": 27.7
@@ -899,6 +928,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 43,
             "y": 54.5
@@ -928,6 +958,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 43.9,
             "y": 57.2
@@ -957,6 +988,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 43.79,
             "y": 50.4
@@ -982,6 +1014,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 52.05,
             "y": 33.63
@@ -1011,6 +1044,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 57,
             "y": 31
@@ -1040,6 +1074,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 43.1,
             "y": 61.2
@@ -1069,6 +1104,7 @@
           "description": "",
           "target": "BananaW",
           "variant": "From CT-Spawn",
+          "cluster": "",
           "land": {
             "x": 48.06,
             "y": 43.06
@@ -1098,6 +1134,7 @@
           "description": "",
           "target": "BananaW",
           "variant": "From B-Site",
+          "cluster": "",
           "land": {
             "x": 47.43,
             "y": 41.91
@@ -1127,6 +1164,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 47.85,
             "y": 40.33
@@ -1156,6 +1194,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 52.57,
             "y": 38.34
@@ -1185,6 +1224,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 51,
             "y": 36.04
@@ -1214,6 +1254,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 54.46,
             "y": 35.83
@@ -1243,6 +1284,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 50.8,
             "y": 11.6
@@ -1272,6 +1314,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 50.8,
             "y": 13.8
@@ -1301,6 +1344,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 61,
             "y": 23.3
@@ -1330,6 +1374,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 61,
             "y": 23.3
@@ -1359,6 +1404,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 42.5,
             "y": 15.1
@@ -1388,6 +1434,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 52.99,
             "y": 19.26
@@ -1413,6 +1460,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 92,
             "y": 55.4
@@ -1442,6 +1490,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 87.5,
             "y": 61.9
@@ -1471,6 +1520,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 87.5,
             "y": 61.9
@@ -1500,6 +1550,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 42.1,
             "y": 25.2
@@ -1529,6 +1580,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 50.7,
             "y": 27.9
@@ -1558,6 +1610,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 70.2,
             "y": 76.2
@@ -1587,6 +1640,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 77.3,
             "y": 77.6
@@ -1723,6 +1777,7 @@
           "image": "media/inferno/insta-mid-kvms4.webp",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 53.72,
             "y": 66.65
@@ -1746,6 +1801,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 49,
             "y": 23.5
@@ -1775,6 +1831,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 51,
             "y": 24.7
@@ -1804,9 +1861,10 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
-            "x": 57.5,
-            "y": 35.6
+            "x": 57.6,
+            "y": 35.83
           },
           "throw": {
             "x": 61.3,
@@ -1833,6 +1891,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 84,
             "y": 35.4
@@ -1862,9 +1921,10 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
-            "x": 75.1,
-            "y": 28.3
+            "x": 75.11,
+            "y": 28.8
           },
           "throw": {
             "x": 75.8,
@@ -1891,6 +1951,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 76.1,
             "y": 36
@@ -1920,6 +1981,7 @@
           "description": "",
           "target": "Bank",
           "variant": "From banana",
+          "cluster": "",
           "land": {
             "x": 44.3,
             "y": 10.8
@@ -1949,6 +2011,7 @@
           "description": "",
           "target": "Bank",
           "variant": "From long",
+          "cluster": "",
           "land": {
             "x": 44.3,
             "y": 10.8
@@ -1978,6 +2041,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 52.88,
             "y": 72.41
@@ -2005,6 +2069,7 @@
           "description": "",
           "target": "Heaven",
           "variant": "From short",
+          "cluster": "",
           "land": {
             "x": 58.23,
             "y": 22.83
@@ -2034,6 +2099,7 @@
           "description": "",
           "target": "Heaven",
           "variant": "From T-Spawn",
+          "cluster": "",
           "land": {
             "x": 57.8,
             "y": 22.4
@@ -2061,6 +2127,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 80.9,
             "y": 39.7
@@ -2090,6 +2157,7 @@
           "description": "",
           "target": "Monster",
           "variant": "From banana",
+          "cluster": "",
           "land": {
             "x": 80.9,
             "y": 44.6
@@ -2119,6 +2187,7 @@
           "description": "",
           "target": "Monster",
           "variant": "From CT-Spawn",
+          "cluster": "",
           "land": {
             "x": 80.9,
             "y": 44.6
@@ -2148,9 +2217,10 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
-            "x": 50.9,
-            "y": 81.3
+            "x": 51.21,
+            "y": 80.59
           },
           "throw": {
             "x": 49,
@@ -2175,9 +2245,10 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "short",
           "land": {
-            "x": 70,
-            "y": 51
+            "x": 69.34,
+            "y": 50.61
           },
           "throw": {
             "x": 50.9,
@@ -2204,9 +2275,10 @@
           "description": "",
           "target": "Short",
           "variant": "From B-Site",
+          "cluster": "short",
           "land": {
-            "x": 68,
-            "y": 51
+            "x": 69.34,
+            "y": 50.61
           },
           "throw": {
             "x": 53.5,
@@ -2231,6 +2303,7 @@
           "description": "",
           "target": "Short",
           "variant": "From banana",
+          "cluster": "short",
           "land": {
             "x": 68,
             "y": 51
@@ -2260,6 +2333,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 72.91,
             "y": 39.92
@@ -2287,6 +2361,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 40.3,
             "y": 50.2
@@ -2316,6 +2391,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 75,
             "y": 24.1
@@ -2345,6 +2421,7 @@
           "description": "",
           "target": "Trash",
           "variant": "From banana",
+          "cluster": "",
           "land": {
             "x": 53.9,
             "y": 13.8
@@ -2374,6 +2451,7 @@
           "description": "",
           "target": "Trash",
           "variant": "From long",
+          "cluster": "",
           "land": {
             "x": 53.9,
             "y": 13.8
@@ -2403,6 +2481,7 @@
           "description": "",
           "target": "Truck",
           "variant": "From banana",
+          "cluster": "",
           "land": {
             "x": 53.5,
             "y": 21.4
@@ -2432,6 +2511,7 @@
           "description": "",
           "target": "Truck",
           "variant": "From long",
+          "cluster": "",
           "land": {
             "x": 53.5,
             "y": 21.4
@@ -2526,7 +2606,117 @@
           ]
         }
       ],
-      "strats": [],
+      "strats": [
+        {
+          "id": "0b20ad68-6c62-498a-87a5-9dd7509b47a1",
+          "name": "HOLD",
+          "side": "CT",
+          "zone": "A",
+          "point": {
+            "x": 45.44,
+            "y": 22.09
+          },
+          "description": "Vary positions, most of the time holding banana/toilets as long as possible is the best. Use the fountain smoke to prevent them from rushing. You can also play long/connector but banana hold stays the most important part",
+          "media": [],
+          "tips": [],
+          "items": [
+            {
+              "kind": "heading",
+              "label": "Starting"
+            },
+            {
+              "kind": "exec",
+              "id": "caa99e95-f98f-4f7f-a36d-63943cc0e596"
+            },
+            {
+              "kind": "lineup",
+              "id": "short_molly_from_banana"
+            },
+            {
+              "kind": "heading",
+              "label": "During"
+            },
+            {
+              "kind": "lineup",
+              "id": "monster_smoke_from_banana"
+            }
+          ]
+        },
+        {
+          "id": "dfc97b5a-340e-4b7e-8fd4-381f12edf6c3",
+          "name": "HOLD",
+          "side": "CT",
+          "zone": "B",
+          "point": {
+            "x": 70.08,
+            "y": 31.84
+          },
+          "description": "Always smoke monster and molly short to prevent them from rushing or force them to use utility. Taking short control is also good, especially breaking the connector door to have full vision over con.",
+          "media": [],
+          "tips": [],
+          "items": [
+            {
+              "kind": "heading",
+              "label": "Starting"
+            },
+            {
+              "kind": "lineup",
+              "id": "monster_smoke_from_ct"
+            },
+            {
+              "kind": "lineup",
+              "id": "short_molly"
+            }
+          ]
+        },
+        {
+          "id": "03d78a22-740d-44d0-8b7e-4a72055abbad",
+          "name": "FAST PUSH",
+          "side": "T",
+          "zone": "B",
+          "point": {
+            "x": 82.13,
+            "y": 50.61
+          },
+          "description": "You don't HAVE to throw that short molly, but it can be good if you decide to fully push monster, to force CTs to stay on site and outnumber them",
+          "media": [],
+          "tips": [],
+          "items": [
+            {
+              "kind": "lineup",
+              "id": "2f341449-3be7-42e2-9bfe-7fe170e21a95"
+            },
+            {
+              "kind": "lineup",
+              "id": "b_flash_1"
+            },
+            {
+              "kind": "lineup",
+              "id": "b_flash_2"
+            }
+          ]
+        },
+        {
+          "id": "bf636ac4-ee5d-4bf7-94e6-b56b9ce7e5b5",
+          "name": "EXECUTE",
+          "side": "T",
+          "zone": "B",
+          "point": null,
+          "description": "You can either execute from short, or just throw the heaven smoke from T-Spawn and split push",
+          "media": [],
+          "tips": [],
+          "items": [
+            {
+              "kind": "lineup",
+              "id": "heaven_smoke_2"
+            },
+            {
+              "kind": "exec",
+              "id": "B_exec_short"
+            }
+          ]
+        }
+      ],
       "instas": [],
       "drawings": []
     },
@@ -2541,6 +2731,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 55.8,
             "y": 47.3
@@ -2570,6 +2761,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 53.4,
             "y": 46.3
@@ -2599,6 +2791,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 57.8,
             "y": 61.6
@@ -2628,6 +2821,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 58.7,
             "y": 70
@@ -2657,6 +2851,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 61.7,
             "y": 70
@@ -2686,6 +2881,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 59.7,
             "y": 65.1
@@ -2715,6 +2911,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 62.1,
             "y": 66.9
@@ -2744,6 +2941,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 52.9,
             "y": 57.2
@@ -2818,6 +3016,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 61.2,
             "y": 53.7
@@ -2847,6 +3046,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 37.8,
             "y": 18.8
@@ -2876,6 +3076,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 30.9,
             "y": 31.7
@@ -2905,6 +3106,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 70.9,
             "y": 56
@@ -2934,6 +3136,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 81.9,
             "y": 33.8
@@ -2963,6 +3166,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 44,
             "y": 57
@@ -2992,6 +3196,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 71.2,
             "y": 44.5
@@ -3021,6 +3226,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 81.9,
             "y": 44.9
@@ -3050,6 +3256,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 71.3,
             "y": 32
@@ -3079,6 +3286,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 71.7,
             "y": 41
@@ -3108,6 +3316,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 66.3,
             "y": 46.31
@@ -3186,6 +3395,7 @@
           "image": "media/ancient/insta-elbow-kwpve.webp",
           "target": "Elbow",
           "variant": "Insta",
+          "cluster": "",
           "land": {
             "x": 39.47,
             "y": 55.12
@@ -3216,6 +3426,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 24.8,
             "y": 22.3
@@ -3245,6 +3456,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 27.3,
             "y": 12
@@ -3274,6 +3486,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 80.7,
             "y": 23.2
@@ -3303,6 +3516,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 50.4,
             "y": 24
@@ -3332,6 +3546,7 @@
           "description": "",
           "target": "Door",
           "variant": "From Suicide",
+          "cluster": "",
           "land": {
             "x": 44.7,
             "y": 35.2
@@ -3361,6 +3576,7 @@
           "description": "",
           "target": "Door",
           "variant": "From T-Spawn",
+          "cluster": "",
           "land": {
             "x": 44.7,
             "y": 35.2
@@ -3390,6 +3606,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 85.3,
             "y": 43.5
@@ -3419,6 +3636,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 67.5,
             "y": 56.3
@@ -3448,6 +3666,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 47,
             "y": 36.9
@@ -3477,6 +3696,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 66,
             "y": 25.1
@@ -3506,6 +3726,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 66.4,
             "y": 18.7
@@ -3535,6 +3756,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 53.4,
             "y": 63.1
@@ -3564,6 +3786,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 44,
             "y": 70.5
@@ -3593,6 +3816,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 47.3,
             "y": 39.9
@@ -3668,6 +3892,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 46.7,
             "y": 67.1
@@ -3697,6 +3922,7 @@
           "description": "",
           "target": "Camera",
           "variant": "Insta",
+          "cluster": "",
           "land": {
             "x": 70.3,
             "y": 46
@@ -3722,6 +3948,7 @@
           "description": "",
           "target": "Camera",
           "variant": "From T-Spawn",
+          "cluster": "",
           "land": {
             "x": 70.3,
             "y": 46
@@ -3751,6 +3978,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 68,
             "y": 67.2
@@ -3780,6 +4008,7 @@
           "description": "",
           "target": "Connector",
           "variant": "Insta",
+          "cluster": "",
           "land": {
             "x": 59.9,
             "y": 58
@@ -3805,6 +4034,7 @@
           "description": "",
           "target": "Connector",
           "variant": "From T-Spawn",
+          "cluster": "",
           "land": {
             "x": 59.9,
             "y": 58
@@ -3834,6 +4064,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 53,
             "y": 68.2
@@ -3863,6 +4094,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 37.4,
             "y": 39.1
@@ -3892,6 +4124,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 42.5,
             "y": 40.1
@@ -3921,6 +4154,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 44.7,
             "y": 36.9
@@ -3950,6 +4184,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 44.1,
             "y": 43.3
@@ -3979,6 +4214,7 @@
           "description": "",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 58.2,
             "y": 41.5
@@ -4021,6 +4257,7 @@
           "image": "media/train/insta-connector-kxj2z.webp",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 50,
             "y": 50
@@ -4038,6 +4275,7 @@
           "image": "media/train/insta-sandwich-kxqsm.webp",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 50,
             "y": 50
@@ -4055,6 +4293,7 @@
           "image": "media/train/insta-camera-kybis.webp",
           "target": "",
           "variant": "",
+          "cluster": "",
           "land": {
             "x": 50,
             "y": 50
