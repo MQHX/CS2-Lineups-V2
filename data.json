@@ -88,6 +88,66 @@
           ]
         },
         {
+          "id": "6ec845ec-e669-4033-853f-6b47a9c44b33",
+          "name": "A Site",
+          "type": "flash",
+          "side": "T",
+          "technique": "Throw",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 64.63,
+            "y": 57.63
+          },
+          "throw": {
+            "x": 78.15,
+            "y": 49.87
+          },
+          "media": [
+            {
+              "url": "media/mirage/a-site-sbqsk.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/a-site-sbut8.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "0f093c92-bb6e-4eca-a72d-049581e7f183",
+          "name": "B Site",
+          "type": "flash",
+          "side": "T",
+          "technique": "Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 34.22,
+            "y": 21.67
+          },
+          "throw": {
+            "x": 47.96,
+            "y": 18.53
+          },
+          "media": [
+            {
+              "url": "media/mirage/b-site-scuxo.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/b-site-sczhe.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
           "id": "short_smoke",
           "name": "Cat/Short",
           "type": "smoke",
@@ -353,6 +413,32 @@
             {
               "url": "media/mirage/jungle_4.webp",
               "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "5dcb2561-2350-4a15-828d-1eb65f61a2d7",
+          "name": "Ladder",
+          "type": "molotov",
+          "side": "T",
+          "technique": "Crouch Throw",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 39.15,
+            "y": 33
+          },
+          "throw": {
+            "x": 42.61,
+            "y": 44
+          },
+          "media": [
+            {
+              "url": "media/mirage/ladder-sdymm.mp4",
+              "label": ""
             }
           ],
           "tips": []
@@ -682,6 +768,36 @@
             },
             {
               "url": "media/mirage/palace_molly_2.webp",
+              "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "1cb56b54-18d2-4f25-b664-8765a5d5dd4f",
+          "name": "Window",
+          "type": "smoke",
+          "side": "T",
+          "technique": "Jumpthrow",
+          "description": "",
+          "target": "window",
+          "variant": "From T-Spawn",
+          "cluster": "",
+          "land": {
+            "x": 38,
+            "y": 41.59
+          },
+          "throw": {
+            "x": 88.42,
+            "y": 30.69
+          },
+          "media": [
+            {
+              "url": "media/mirage/window-s9uud.webp",
+              "label": "Stand"
+            },
+            {
+              "url": "media/mirage/window-sa0cc.webp",
               "label": "Aim"
             }
           ],
@@ -2744,6 +2860,32 @@
             {
               "url": "media/nuke/a_2.webp",
               "label": "Aim"
+            }
+          ],
+          "tips": []
+        },
+        {
+          "id": "c2c7ae07-c4ca-43ee-a87b-b4f6029064fe",
+          "name": "Hut",
+          "type": "molotov",
+          "side": "T",
+          "technique": "Running Jumpthrow",
+          "description": "",
+          "target": "",
+          "variant": "",
+          "cluster": "",
+          "land": {
+            "x": 51.94,
+            "y": 53.86
+          },
+          "throw": {
+            "x": 42.19,
+            "y": 53.86
+          },
+          "media": [
+            {
+              "url": "media/nuke/hut-sficb.mp4",
+              "label": ""
             }
           ],
           "tips": []
